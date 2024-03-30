@@ -6,7 +6,9 @@
 
    사실 observer가 관찰하기보다는 갱신을 위한 data를 전달 받기를 기다리고 있다고 보는 것이 정확하다. Observer pattern은 event driven architecture와 같은 event 기반 시스템에서 사용된다.
 
-   Observer pattern의 변형인 publisher-subscriber pattern이 있다. 작동 원리 자체는 observer pattern과 동일하지만, **publisher와 subscriber 사이에 broker가 존재**하여 둘 간의 연결을 관리하고 전파하는 역할을 맡는다. 이는 publisher와 subscriber 사이의 결합도를 낮추는 효과가 있다. 그러나 observer pattern은 subject가 observer를 향해 직접적으로 data를 넘겨주는 동기적 방식이지만, publisher-subscriber pattern은 publish와 subscribe가 같은 timeline 내에 존재하지 않는 비동기적 방식이다. 따라서 data를 보내는 순서가 중요한 경우에는 observer pattern을 사용하는 것이 좋다.
+   1. publisher-subscriber pattern
+
+      Observer pattern의 변형 pattern이다. 작동 원리 자체는 observer pattern과 동일하지만, **publisher와 subscriber 사이에 broker가 존재**하여 둘 간의 연결을 관리하고 전파하는 역할을 맡는다. 이는 publisher와 subscriber 사이의 결합도를 낮추는 효과가 있다. 그러나 observer pattern은 subject가 observer를 향해 직접적으로 data를 넘겨주는 동기적 방식이지만, publisher-subscriber pattern은 publish와 subscribe가 같은 timeline 내에 존재하지 않는 비동기적 방식이다. 따라서 data를 보내는 순서가 중요한 경우에는 observer pattern을 사용하는 것이 좋다.
 
 2. 사용
 
