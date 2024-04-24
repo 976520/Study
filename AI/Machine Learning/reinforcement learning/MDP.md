@@ -20,21 +20,21 @@
 
    **Markov process는 시간 $t$에 따른 state $S_{t}$의 변화**를 나타내고, 이 상태의 변화를 transition(전이)이라고 한다. 이러한 변화를 확률로 표현하면 state transition probability(상태 전이 확률)이라고 한다.
 
-   $t$에서의 상태를 $s$라고 하고, $t+1$에서의 상태를 $s'$라고 하면, $s$에서 $s'$로 이동할 확률 state transition probability $P_{ss'}$는 conditional probability(조건부 확률)를 이용해 다음과 같이 나타낼 수 있다.
+   $t$에서의 상태를 $i$라고 하고, $t+1$에서의 상태를 $j$라고 하면, $i$에서 $j$로 이동할 확률 state transition probability $P_{ij}$는 conditional probability(조건부 확률)를 이용해 다음과 같이 나타낼 수 있다.
 
-   > $P_{ss'} = P(S_{t+1} = s' | S_{t} = s)$
+   > $P_{ij} = P(S_{t+1} = j | S_{t} = i)$
 
    이에 대한 조건은 다음과 같다.
 
-   1. 상태 $s$에서 상태 $s'$로 transition할 probability가 존재한다.
+   1. 상태 $i$에서 상태 $j$로 transition할 probability가 존재한다.
 
-      > $P_{ss'}>0$
+      > $P_{ij}>0$
 
-   2. 상태 $s$에서 가능한 모든 $s'$로의 transition probability의 합은 1이다.
+   2. 상태 $i$에서 가능한 모든 $j$로의 transition probability의 합은 1이다.
 
-      > $\sum_{s' \in S} P_{ss'} = 1$
+      > $\sum_{j \in S} P_{ij} = 1$
 
-      즉, 상태 $s$에서 반드시 어떤 상태 $s'$로 transition하게 된다.
+      즉, 상태 $i$에서 반드시 어떤 상태 $j$로 transition하게 된다.
 
 2. State transition diagram
 
@@ -62,15 +62,33 @@
    > 0 & 0 & 0 & 0 & 1 \\
    > \end{bmatrix}$
 
-   $S_t$가 `독서`, $S_{t+1}$이 `취침`일 때 $P_{ss'} = 0.7$이다. 즉, `취침` state의 결정에 있어 `독서`가 70%의 확률로 영향을 미치며, `웹 서핑`이 30%의 확률로 개입하는 것을 알 수 있다.
+   $S_t$가 `독서`, $S_{t+1}$이 `취침`일 때 $P_{ij} = 0.7$이다. 즉, `취침` state의 결정에 있어 `독서`가 70%의 확률로 영향을 미치며, `웹 서핑`이 30%의 확률로 개입하는 것을 알 수 있다.
 
-   이처럼 state transition probability matrix와 현재 state를 알고 있다면 전체 markov process의 state를 구할 수 있다. 현재 시점 $t$에 대한 state $S_t$가 $(1\times M)$ 행렬인 분포 $x$를 따를 때,
+   이처럼 $S_{t+1}$을 결정하는 데에 $S_{t}$가 높은 확률로 영향을 미칠 뿐, 다른 random variable(확률 변수)가 전혀 개입하지 않는 것은 아니다.
 
-   > $P(S_{t+1} = s') = \displaystyle\sum_{s \in S} P(S_{t+1} = s' | S_t = s)P(S_t = s)$ $= \displaystyle\sum_{s \in S} x_{s} \times y_{ss'}$ = sQ
+   또한 state transition probability matrix와 현재 state를 알고 있다면 전체 markov process의 state를 구할 수 있다. 현재 시점 $t$에 대한 state $S_t$가 $(1\times M)$ 행렬인 분포 $x$를 따를 때,
 
-   $x_s$는 $(1\times M)$ 행렬이고, $y_{ss'}$는 $(M\times M)$ 행렬이다. 따라서 $t+1$ 시점의 transition probability matrix는 $(1\times M)$의 $xQ$가 된다.
+   > $P(S_{t+1} = j) = \displaystyle\sum_{i \in S} P(S_{t+1} = j | S_t = i)P(S_t = i)$
 
-   또한 $S_{t+1}$을 결정하는 데에 $S_{t}$가 높은 확률로 영향을 미칠 뿐, 다른 random variable(확률 변수)가 전혀 개입하지 않는 것은 아니다.
+   이는 내적을 이용하여 다음과 같이 나타낼 수 있다.
+
+   > $\displaystyle\sum_{i \in S} x_{i} \times y_{ij}$ = $xQ$
+
+   이때 $x_i$는 $(1\times M)$ 행렬이고, $y_{ij}$는 $(M\times M)$ 행렬이다. 따라서 $t+1$ 시점의 transition probability matrix는 $(1\times M)$의 $xQ$가 된다.
+
+   $t+2$ 시점의 경우에는 다음과 같은데,
+
+   > $P(S_{t+2} = k|S_{t} = i) = \displaystyle\sum_{j \in S} P(S_{t+2} = k | S_{t+1} = j,S_{t} = i)P(S_{t+1} = j|S_{t}=i)$
+
+   이를 $Q$의 $i$번째 row와 $Q$의 $k$번째 column으로 나타내면 다음과 같다.
+
+   > $\displaystyle\sum_{j \in S} q_{ij} \times y_{jk}$ = $Q^{2}_{ik}$
+
+   이를 일반화하면 다음과 같다.
+
+   > $P(S_{n+m}=k|S_{n}=i) = Q^{m}_{ik}$
+
+   따라서 $n+m$ 시점의 분포는 $xQ^{m}$이 된다. Transition probability matrix은 markov process의 변화 추이를 나타내는 것이기 때문에, 현재 state의 분포 $x$에 변화 추이를 곱하면 미래를 예측할 수 있다. State가 $m$번 transition한 경우에는 $m$번 곱하여 구할 수 있다. 결과적으로 위의 수식과 동일하다.
 
 ---
 
