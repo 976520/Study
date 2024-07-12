@@ -10,4 +10,12 @@
 
    Design Pattern과 비슷한 면이 많지만, Software Architecture는 보다 높은 수준의 추상화를 제시하며, 더 넓은 범위의 설계를 다룬다. 따라서 Software Architecture가 더 큰 범주에 속한다.
 
+2. 원칙
+
+   1. modularity(모듈화)
+
+   2. abstraction(추상화)
+
+   3. encapsulation(캡슐화)
+
 ---
