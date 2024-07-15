@@ -39,7 +39,7 @@
 
     class DataAccessLayer:
         def access_data(self, data):
-            return "i'm data from database"
+            return "data from database"
 
     data_access_layer = DataAccessLayer()
     business_logic_layer = BusinessLogicLayer(data_access_layer)
@@ -48,10 +48,12 @@
 
     request = "User request"
     result = presentation_layer.handle_request(request)
-    print(f"Result: {result}")
+    print(f"i'm {result}") # 출력: i'm data from database
 
    ```
 
-   `PresentationLayer` class는 application 계층과 상호작용하여 사용자의 요청을 처리한다. `handle_request` method는 사용자의 요청을 받아 application 계층에 반환한다. `ApplicationLayer` class는 business logic 계층과 상호작용하여 요청을 처리한다. `BusinessLogicLayer` class는 data access 계층과 상호작용하여 data를 처리한다.
+   `PresentationLayer` class는 application 계층과 상호작용하여 사용자의 요청을 처리한다. `ApplicationLayer` class는 business logic 계층과 상호작용하여 요청을 처리한다. `BusinessLogicLayer` class는 data access 계층과 상호작용하여 data를 처리한다. `DataAccessLayer` class는 database에서 data에 access한다..
+
+   `handle_request`, `process_request`, `process_data` method는 이전 계층에서 넘어온 data를 받아 처리하여 반환하는 역할을 한다.
 
 ---
