@@ -85,3 +85,29 @@
 ---
 
 ## 원칙
+
+OOP에서 지켜야 하는 5가지 원칙을 통틀어 객체지향 5원칙이라고 부른다. 각 원칙의 앞글자를 따서 SOLID라고 하기도 한다.
+
+1. Single Responsibility Principle(단일 책임 원칙)
+
+   > 객체는 오직 하나의 책임을 지녀야 한다.
+
+   여기서 책임이란 변경의 이유와 동일하다.
+
+2. Open-Closed Principle(개방 폐쇄 원칙)
+
+   > 객체는 확장에 대해서는 개방적이고 수정에 대해서는 폐쇄적이어야 한다.
+
+3. Liskov Substitution Principle(리스코프 치환 원칙)
+
+   > 자식 클래스는 언제나 자신의 부모 클래스를 대체할 수 있다.
+
+4. Interface Segregation Principle(인터페이스 분리 원칙)
+
+   > 클라이언트에서 사용하지 않는 메서드는 사용해선 안 된다.
+
+5. Dependency Inversion Principle(의존성 역전 원칙)
+
+   > 추상성이 높고 안정적인 고수준의 클래스는 구체적이고 불안정한 저수준의 클래스에 의존해서는 안 된다.
+
+---
