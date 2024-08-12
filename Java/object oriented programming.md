@@ -66,7 +66,15 @@
 
    컴퓨터의 RAM이 고장 났을 때 다른 RAM으로 교체하면 정상적으로 작동한다. 마찬가지로 class 내부의 캡슐화된 코드는 독립적으로 관리되어 동일한 기능이라면 다른 코드로 대체될 수 있다. 이를 통해 코드의 모듈화 편의성과 재사용성을 높일 수 있다.
 
-2. 상속
+2. 상속(inheritance)
+
+   상속은 하위 객체가 상위 객체의 특성과 기능을 물려받는 것을 뜻한다. 상속받은 하위 객체가 상위 객체의 method와 field를 사용할 수 있게 되며, 이는 재사용성을 높인다.
+
+   이때 상위 객체 class를 parent(부모) class, super class, base(기본) class 라고 하기도 하며, 하위 객체 class를 child(자식) class, subclass, derived(파생) class, extended(확장) class라고 하기도 한다.
+
+   **Overriding은 하위 class가 상위 class에서 상속받은 method를 자신에게 맞게 재정의하는 것**을 말한다. 예를 들어 human이라는 class를 상속받아 권재헌, 이주언, 황지훈 등 하위 class를 추가할 수 있다. 상위 class의 method를 그대로 사용하지 않고, 하위 class의 상황에 맞게 동작하도록 변경할 수 있다. overriding된 method는 하위 class에서 호출될 때, 상위 class의 method가 아닌 하위 class에서 재정의된 method가 실행된다.
+
+   다른 예시로, human class에 greet()라는 method가 있다고 가정하면, 이주언 class는 이 method를 overriding하여 "hello, i'm 이주언."라고 인사하도록 변경할 수 있다. 이때 권재헌 class는 "hello, i'm nigga."와 같이 다르게 overriding할 수 있다. 이러한 overriding을 통해 코드의 유연성과 확장성을 높일 수 있다.
 
 3. 다형성
 
