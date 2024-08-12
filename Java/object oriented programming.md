@@ -76,7 +76,7 @@
 
    다른 예시로, human class에 greet()라는 method가 있다고 가정하면, 이주언 class는 이 method를 overriding하여 "hello, i'm 이주언."라고 인사하도록 변경할 수 있다. 이때 권재헌 class는 "hello, i'm nigga."와 같이 다르게 overriding할 수 있다. 이러한 overriding을 통해 코드의 유연성과 확장성을 높일 수 있다.
 
-3. 다형성
+3. 다형성(polymorphism)
 
 ---
 
