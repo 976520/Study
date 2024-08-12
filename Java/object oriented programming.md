@@ -92,11 +92,78 @@ OOP에서 지켜야 하는 5가지 원칙을 통틀어 객체지향 5원칙이�
 
    > 객체는 오직 하나의 책임을 지녀야 한다.
 
-   여기서 책임이란 변경의 이유와 동일하다.
+   하나의 객체는 오직 하나의 기능을 수행하여야 한다. 만일 하나의 객체가 여러 기능을 수행하게 된다면, 다른 기능을 수행하는 코드끼리 클래스 내부에서 결합하여 코드의 변경이 일어났을 때 그것이 영향을 끼치는 기능이 많아지게 된다.
+
+   따라서 책임이란 변경의 이유와 동일하다. 이 원칙을 따름으로써 각 class 주제에 적합한 알맞은 책임을 부여한다면, 한 책임의 변경으로부터 다른 책임의 변경이 일어나고 이것이 반복되는 연쇄 작용을 방지할 수 있다. 여기서 class명까지 기능에 맞게 잘 작성한다면 더 좋을 것이다.
+
+   이 원칙의 핵심은 class의 책임을 최대한 분산시키고 기능 변경 시의 파급 효과를 최소화하여 유지보수성을 증대시키는 것에 있다.
+
+   아래 코드는 유저 정보의 유효성을 검사하고 관리하는 기능을 수행한다. 이때 유저 정보의 유효성 검사 기능은 `UserValidator` class의 `validateEmail` method에서 수행하고 유저 정보의 저장과 관리 기능은 `User` class의 `User` method에서 수행한다.
+
+   ```java
+    class User {
+        private String name;
+        private String email;
+
+        public User(String name, String email) {
+            this.name = name;
+            this.email = email;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+    }
+
+    class UserValidator {
+        public boolean validateEmail(User user) {
+            String email = user.getEmail();
+            return email != null && email.contains("@");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            User user = new User("haensol", "haensol@naver.com");
+
+            UserValidator validator = new UserValidator();
+            boolean isEmailValid = validator.validateEmail(user);
+
+            if (isEmailValid) {
+                System.out.println("valid.");
+            } else {
+                System.out.println("invalid.");
+            }
+        }
+    }
+
+   ```
+
+   이때 `UserValidator` class가 다음과 같이 변경된다고 가정한다. 기존 class에서 `printUserName` method가 유저 이름의 출력이라는 전혀 다른 기능을 수행하고 있으므로, 이는 single responsibility principle를 위반한다고 할 수 있다.
+
+   ```java
+
+    class UserValidator {
+      public boolean validateEmail(User user) {
+          String email = user.getEmail();
+          return email != null && email.contains("@");
+      }
+
+      public void printUserName(User user) {
+          System.out.println(user.getName());
+      }
+    }
+   ```
 
 2. Open-Closed Principle(개방 폐쇄 원칙)
 
    > 객체는 확장에 대해서는 개방적이고 수정에 대해서는 폐쇄적이어야 한다.
+
+   기능이 변하거나 확장하는 것은 자유로워야 하지만, 그 과정에서 기존의 코드가 수정되는 것에서는 신중해야 한다.
 
 3. Liskov Substitution Principle(리스코프 치환 원칙)
 
