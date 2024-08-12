@@ -25,13 +25,16 @@
    기본적인 프로그래밍 언어인 C언어로 간단한 변수 프로그램을 작성해보면 다음과 같다.
 
    ```c
-   int number;
-   number = 10;
-   //number = 'a' 와 같이 입력할 시 오류가 난다.
+   int main() {
+      int number;
+      number = 10;
+      //number = 'a' 와 같이 입력할 시 오류가 난다.
 
-   char character;
-   character = 'h'
-   //character = 1 와 같이 입력할 시 오류가 난다.
+      char character;
+      character = 'h'
+      //character = 1 와 같이 입력할 시 오류가 난다.
+   }
+
    ```
 
    비슷한 프로그램을 Python으로 작성해 보면 다음과 같다.
