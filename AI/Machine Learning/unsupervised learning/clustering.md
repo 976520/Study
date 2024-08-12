@@ -10,13 +10,31 @@
 
    한마디로 비슷한 것끼리 묶는다는 것이다. 따라서 **같은 군집에 속한 데이터는 서로 비슷하고, 다른 군집에 속한 데이터는 서로 달라야 한다**. 이를 경영학의 마케팅 분야에서 segment라고 부르기도 한다.
 
+   따라서 군집을 구성하기 위해서는 데이터 간의 proximity(근접성) 또는 similarity(유사성)을 파악하여 그 결과에 따라 데이터를 하나의 군집으로 모아야 한다.
+
    이때 거리는 보통 유클리드 거리(euclidean distance)로 정의된다. $n$차원의 데이터 $p$와 $q$가 각각 $(p_1, p_2, … , p_n)$, $(q_1, q_2, …, q_n)$ 의 좌표를 가질 때, 두 점 $p$와 $q$ 사이의 거리 $D$에 대해 다음 공식이 성립한다. ~~다음 식처럼 유클리드 노름을 통해 표현하는 경우가 많지만 필자의 지능 이슈로 인해 이 글에서는 노름을 사용하지 않는다.~~
 
-   > $D = ||x-y||=\sqrt{\displaystyle\sum_{i=1}^n(x_i-y_i)^2}$
-
-   이러한 군집화는 여러 종류가 있지만, 이들의 원리는 모두 같다. 그 원리라 하면, 같은 그룹끼리의 cohension(응집도)와 다른 그룹과의 separation(분리도)를 모두 최대화하는 것이다.
+   > $D(x,y) = ||x-y||=\sqrt{\displaystyle\sum_{i=1}^n(x_i-y_i)^2}$
 
    ![군집화](https://github.com/user-attachments/assets/0080383b-8b5c-422a-8192-8a7dde0c6ec7)
+
+   이러한 군집화는 여러 종류가 있지만, 이들의 원리는 모두 같다. 그 원리라 하면, 같은 그룹끼리의 cohesion(응집도)와 다른 그룹과의 separation(분리도)를 모두 최대화하는 것이다.
+
+   군집 $C_i에서$의 cohesion은 다음과 같이 데이터와 데이터 간의 거리의 합으로 측정할 수 있고,
+
+   > $Cohesion(C_i) = \displaystyle\sum_{a∈C_i}\displaystyle\sum_{b∈C_i}D(a,b)$
+
+   다음과 같이 각 데이터와 그 데이터의 중심 $R_i$간의 거리의 합을 이용해 측정할 수도 있다.
+
+   > $Cohesion(C_i) = \displaystyle\sum_{a∈C_i}D(a, R_i)$
+
+   군집 $C_i$, $C_j$에서의 separation은 다음과 같이 두 군집 간 데이터의 모든 쌍의 거리의 합으로 측정할 수도 있고,
+
+   > $Separation(C_i, C_j) = \displaystyle\sum_{a∈C_i}\displaystyle\sum_{b∈C_j}D(a,b)$
+
+   다음과 같이 두 군집의 중심 $R_i$, $R_j$간의 거리로 측정할 수도 있다.
+
+   > $Separation(C_i, C_j) = d(R_i, R_j)$
 
 2. 분류 모델과의 차이
 
