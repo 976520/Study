@@ -169,11 +169,109 @@ OOP에서 지켜야 하는 5가지 원칙을 통틀어 객체지향 5원칙이�
 
    만약 하나의 객체를 수정해야 할 때 해당 객체에 의존하는 다른 객체들까지 연쇄적으로 수정하게 된다면, 이는 유지보수성이 좋은 설계라고 할 수 없다. 따라서 객체간의 의존성을 최소화하여 코드 변경에 따른 영향력을 최소화하여야 한다.
 
+   아래 코드에서는 `Shape` interface와 이를 구현한 `Circle`, `Rectangle` class를 통해 프로그램을 확장한다. 이 과정에서 기존의 `AreaCalculator` class 내부 코드를 변경하지 않았으므로 Open Closed Principle 원칙을 지켰다고 할 수 있다.
+
+   ```java
+    interface Shape {
+        double calculateArea();
+    }
+
+    class Circle implements Shape {
+        private double radius;
+
+        public Circle(double radius) {
+            this.radius = radius;
+        }
+
+        @Override
+        public double calculateArea() {
+            return Math.PI * radius * radius;
+        }
+    }
+
+    class Rectangle implements Shape {
+        private double width;
+        private double height;
+
+        public Rectangle(double width, double height) {
+            this.width = width;
+            this.height = height;
+        }
+
+        @Override
+        public double calculateArea() {
+            return width * height;
+        }
+    }
+
+    class AreaCalculator {
+        public double calculateTotalArea(Shape[] shapes) {
+            double totalArea = 0;
+            for (Shape shape : shapes) {
+                totalArea += shape.calculateArea();
+            }
+            return totalArea;
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Shape[] shapes = new Shape[] {
+                new Circle(5),
+                new Rectangle(4, 6)
+            };
+
+            AreaCalculator calculator = new AreaCalculator();
+            double totalArea = calculator.calculateTotalArea(shapes);
+            System.out.println(totalArea);
+        }
+    }
+   ```
+
 3. Liskov Substitution Principle(리스코프 치환 원칙)
 
    > 하위 클래스는 언제나 자신의 상위 클래스를 대체할 수 있다.
 
-   상위 클래스가 들어갈 자리에 하위 클래스를 위치시켜도 단순히 컴파일이 성공하는 것을 넘어서 계획대로 작동해야 한다.
+   상위 class가 들어갈 자리에 하위 class를 위치시켜도 단순히 컴파일이 성공하는 것을 넘어서 계획대로 작동해야 한다. 이것을 상위 class와 하위 class간의 일관성이 있다고 한다.
+
+   OOP에서 상속이 일어나면, 하위 class는 상위 class의 특성을 가지며 그를 토대로 확장할 수 있지만 상위 class의 기능을 무시하거나 약화시키지 않아야 한다. liskov substitution principle는 올바른 상속을 위해 하위 객체의 확장이 부모 객체의 방향성을 완전히 따르도록 하는 것이다.
+
+   이 원칙을 준수하면 OOP의 요소 중 다형성이 증대되는 효과가 있다.
+
+   아래 코드에서 `Bird` class는 `fly` method를 가지며, 모든 새는 날 수 있다고 가정한다. `Pigeon`, `Penguin` class는 모두 `Bird`를 상속받았지만, `Penguin`은 날 수 없기 때문에 `fly` method를 호출할 때 예외를 throw한다. 이때 하위 class인 `Penguin`이 부모 class의 기대 동작, `fly`를 충족하지 않기 때문에 liskov substitution principle를 위반한다.
+
+   ```java
+    class Bird {
+        public void fly() {
+            System.out.println("날아간다~");
+        }
+    }
+
+    class Pigeon extends Bird {
+        @Override
+        public void fly() {
+            System.out.println("비둘기, 난다.");
+        }
+    }
+
+    class Penguin extends Bird {
+        @Override
+        public void fly() {
+            throw new UnsupportedOperationException("펭귄, 못 난다.");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Bird Pigeon = new Pigeon();
+            Bird penguin = new Penguin();
+
+            Pigeon.fly();
+
+            penguin.fly();
+        }
+    }
+   ```
 
 4. Interface Segregation Principle(인터페이스 분리 원칙)
 
