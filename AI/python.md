@@ -315,4 +315,14 @@ print("Hello World!");
          print(add(3, 4)) # 출력 : 7
       ```
 
+   3. lambda
+
+      앞선 두 수를 더하는 코드를 lambda 표현식으로 구현하면 다음과 같다.
+
+      ```python
+         (lambda x,y: x + y)(3, 4)
+      ```
+
+      이렇게 함수를 한 줄로 쓸 수 있게 해주는 것이 lambda 표현식이다.
+
 ---
