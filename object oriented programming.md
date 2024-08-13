@@ -356,6 +356,112 @@ OOP에서 지켜야 하는 5가지 원칙을 통틀어 객체지향 5원칙이�
 
    Dependency inversion principle이란 객체가 어떤 class를 참조해서 사용해야 한다면, 그 class를 직접 참조하는 것이 아닌 그의 상위 요소, 즉 추상 class 혹은 interface로 참조하라는 원칙이다.
 
-   객체들이 서로 정보를 주고 받을 때 의존 관계가 형성된다.
+   의존 관계란, 한 class가 기능을 수행하려 할 때 다른 class의 기능이 필요한 관계를 뜻한다. 객체들이 서로 정보를 주고 받을 때 의존 관계가 형성된다.
+
+   클라이언트가 상속 관계로 이루어진 모듈을 사용할 때, 하위 모듈을 직접 사용하지 않아야 한다. 하위 모듈의 구체적인 내용에 의존하여 코드를 자주 수정하기보다 상위 interface의 추상적인 내용에 의존하여 코드를 보다 덜 수정하는 것이 유지보수성이 더 높다고 할 수 있다.
+
+   위 코드에서 `Switch` class는 `LightBulb` class에 직접 의존하고 있다. 만약 `LightBulb`를 다른 class로 교체하려면 `Switch` class도 수정해야 한다.
+
+   ```java
+    class LightBulb {
+        public void turnOn() {
+            System.out.println("전구켜짐");
+        }
+
+        public void turnOff() {
+            System.out.println("전구꺼짐");
+        }
+    }
+
+    class Switch {
+        private LightBulb lightBulb;
+
+        public Switch(LightBulb lightBulb) {
+            this.lightBulb = lightBulb;
+        }
+
+        public void operate(String command) {
+            if (command.equalsIgnoreCase("on")) {
+                lightBulb.turnOn();
+            } else if (command.equalsIgnoreCase("off")) {
+                lightBulb.turnOff();
+            }
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            LightBulb lightBulb = new LightBulb();
+            Switch mySwitch = new Switch(lightBulb);
+            mySwitch.operate("on");
+            mySwitch.operate("off");
+        }
+    }
+   ```
+
+   `Switchable`이라는 interface를 새로 만들고, `LightBulb`와 `Fan`이 이를 구현하도록 한다. `Switch` class는 이제 `Switchable`에 의존하므로, 저수준 모듈이 무엇이든 상관없이 작동할 수 있다. 이 방식으로 `Switch`는 저수준 구현에 의존하지 않으므로, dependency inversion principle를 준수하게 된다. 필요에 따라 새로운 class를 쉽게 추가할 수 있고, 이에 따라 `Switch`는 변경할 필요도 없습니다.
+
+   ```java
+    interface Switchable {
+        void turnOn();
+        void turnOff();
+    }
+
+    class LightBulb implements Switchable {
+        @Override
+        public void turnOn() {
+            System.out.println("전구켜짐");
+        }
+
+        @Override
+        public void turnOff() {
+            System.out.println("전구꺼짐");
+        }
+    }
+
+    class Fan implements Switchable {
+        @Override
+        public void turnOn() {
+            System.out.println("선풍기켜짐");
+        }
+
+        @Override
+        public void turnOff() {
+            System.out.println("선풍기꺼짐");
+        }
+    }
+
+    class Switch {
+        private Switchable device;
+
+        public Switch(Switchable device) {
+            this.device = device;
+        }
+
+        public void operate(String command) {
+            if (command.equalsIgnoreCase("on")) {
+                device.turnOn();
+            } else if (command.equalsIgnoreCase("off")) {
+                device.turnOff();
+            }
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Switchable lightBulb = new LightBulb();
+            Switchable fan = new Fan();
+
+            Switch mySwitch1 = new Switch(lightBulb);
+            Switch mySwitch2 = new Switch(fan);
+
+            mySwitch1.operate("on");
+            mySwitch1.operate("off");
+
+            mySwitch2.operate("on");
+            mySwitch2.operate("off");
+        }
+    }
+   ```
 
 ---
