@@ -134,9 +134,9 @@ OOP에서 지켜야 하는 5가지 원칙을 통틀어 객체지향 5원칙이�
             boolean isEmailValid = validator.validateEmail(user);
 
             if (isEmailValid) {
-                System.out.println("valid.");
+                System.out.println("ㅆㄱㄴ");
             } else {
-                System.out.println("invalid.");
+                System.out.println("컷ㅋ");
             }
         }
     }
@@ -275,7 +275,80 @@ OOP에서 지켜야 하는 5가지 원칙을 통틀어 객체지향 5원칙이�
 
 4. Interface Segregation Principle(인터페이스 분리 원칙)
 
-   > 클라이언트에서 사용하지 않는 메서드는 사용해선 안 된다.
+   > 클라이언트가 자신이 이용하지 않는 메서드에 의존하면 안된다
+
+   Interface는 동일 목적 하에 동일한 기능을 수행하도록 강제한다. 어떤 class가 특정한 interface를 사용하여 구현된다면, 그 class는 반드시 그 interface에 포함되어있는 method를 구현하도록 하는 것이다. 이는 Java의 다형성을 극대화하여 유지보수성을 높인다.
+
+   Interface segregation principle는 범용적인 interface보다 클라이언트, 즉 사용자가 실제로 사용하는 interface를 만들어야 한다는 의미로, interface를 그 기능에 맞게 분리해야 한다는 원칙이다.
+
+   만약 interface의 추상 method들을 범용적으로 구현한다면, 그 interface를 상속받은 class는 자신이 사용하지 않는 method마저 구현된다는 단점이 있다. 또한 사용하지 않는 interface의 추상 method가 변경된다면 class에서도 수정이 필요해진다. 이는 유지보수성을 크게 하락시킬 수 있다.
+
+   Interface segregation principle은 single responsibility principle와 유사한 면이 있다. 후자가 class의 단일 책임을 위한 원칙이라면, 전자는 interface의 단일 책임 원칙을 강조한다고 할 수 있다. 즉 이 원칙은 class가 아닌 interface의 분리를 통해 이루어진다.
+
+   아래 코드에서는 `Robotics` interface가 `work`와 `eat` method를 포함한다. `용빈` class는 두 method를 모두 구현할 수 있지만, `용빈이의로봇`은 `eat` method를 구현할 필요가 없다. 하지만 interface를 위해 불필요한 `eat`을 구현해야만 한다. 이는 interface segregation principle를 위반한 것이다.
+
+   ```java
+    interface Robotics {
+        void work();
+        void eat();
+    }
+
+    class 용빈 implements Robotics {
+        @Override
+        public void work() {
+            System.out.println("용빈이가 훈련을 한다.");
+        }
+
+        @Override
+        public void eat() {
+            System.out.println("용빈이가 급식을 먹는다.");
+        }
+    }
+
+    class 용빈이의로봇 implements Robotics {
+        @Override
+        public void work() {
+            System.out.println("로봇이 훈련을 한다.");
+        }
+
+        @Override
+        public void eat() {
+            // 로봇은 먹을 수 없다!
+        }
+    }
+   ```
+
+   아래 코드에서는 기존 `Robotics` interface를 기능에 따라 두 개의 작은 interface로 나누었다. 문제가 되었던 `용빈이의로봇` class가 자신에게 필요한 `work`만 구현하여 불필요한 method 구현을 방지하였다.
+
+   ```java
+    interface Workable {
+        void work();
+    }
+
+    interface Eatable {
+        void eat();
+    }
+
+    class 용빈 implements Workable, Eatable {
+        @Override
+        public void work() {
+            System.out.println("용빈이가 훈련을 한다.");
+        }
+
+        @Override
+        public void eat() {
+            System.out.println("용빈이가 급식을 먹는다.");
+        }
+    }
+
+    class 용빈이의로봇 implements Workable {
+        @Override
+        public void work() {
+            System.out.println("로봇이 훈련을 한다.");
+        }
+    }
+
+   ```
 
 5. Dependency Inversion Principle(의존성 역전 원칙)
 
