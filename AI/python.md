@@ -291,4 +291,28 @@ print("Hello World!");
          '''
          ```
 
+3. 함수
+
+   1. 함수 선언
+
+      파이썬에서 함수의 선언은 `def` 키워드를 이용한다. 함수를 호출할 때 괄호 안에 값을 넣어서 매개변수로 전달할 수 있다.
+
+      ```python
+         def fun(a):
+            print('parameter: ', a) # 출력: 3
+
+         fun(3)
+      ```
+
+   2. return
+
+      파이썬에서도 `return` 키워드를 이용하여 알맞은 값을 반환할 수 있다. 다음 코드는 인수로 두 값을 받아서 그 합을 반환하는 함수를 구현한 코드이다.
+
+      ```python
+         def add(value1, value2):
+            return value1 + value2
+
+         print(add(3, 4)) # 출력 : 7
+      ```
+
 ---
