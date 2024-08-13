@@ -76,13 +76,13 @@
 
    다른 예시로, human class에 greet()라는 method가 있다고 가정하면, 이주언 class는 이 method를 overriding하여 "hello, i'm 이주언."라고 인사하도록 변경할 수 있다. 이때 권재헌 class는 "hello, i'm nigga."와 같이 다르게 overriding할 수 있다. 이러한 overriding을 통해 코드의 유연성과 확장성을 높일 수 있다.
 
-   Overloading은 하나의 class 안에서 같은 이름의 method를 여러 개 정의하는 것이다.
-
 3. 다형성(polymorphism)
 
    > 다형성은 대입되는 객체에 따라서 method를 다르게 동작하도록 구현하는 것이다.
 
    하나의 method가 상황에 따라 다른 의미로 해석될 수 있는 것을 일컫는다. 다른 객체에서도 동작이 비슷하면 다형성을 이용해 코드를 간결하게 작성할 수 있다. 권재헌과 이주언은 서로 다르게 인사한다. 따라서 human class의 greet() method를 하위 class에서 수정한다면 각 객체에 적합하게 이용할 수 있게 된다. greet()를 전달하는 것은 동일할지라도 사람마다 다르게 반응하도록 하는 것이다. 이렇듯 동일하게 명령해도 객체에 따라 다른 결과가 나타나도록 하는 것이 다형성이다.
+
+   **Overloading은 하나의 class 안에서 같은 이름의 method를 여러 개 정의하는 것**이다. 단 각 method의 매개변수의 개수나 자료형은 달라야 한다. 즉, 반환 값만 다른 method는 overloading 할 수 없다. 같은 기능알 하는 method를 하나의 이름으로 사용함으로써 이름을 절약할 수 있다는 장점이 있다.
 
 ---
 
