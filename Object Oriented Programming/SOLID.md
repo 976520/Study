@@ -83,7 +83,7 @@ OOP에서 지켜야 하는 5가지 원칙을 통틀어 객체지향 5원칙이�
 
    만약 하나의 객체를 수정해야 할 때 해당 객체에 의존하는 다른 객체들까지 연쇄적으로 수정하게 된다면, 이는 유지보수성이 좋은 설계라고 할 수 없다. 따라서 객체간의 의존성을 최소화하여 코드 변경에 따른 영향력을 최소화하여야 한다.
 
-   아래 코드에서는 `Shape` interface와 이를 구현한 `Circle`, `Rectangle` class를 통해 프로그램을 확장한다. 이 과정에서 기존의 `AreaCalculator` class 내부 코드를 변경하지 않았으므로 Open Closed Principle 원칙을 지켰다고 할 수 있다.
+   아래 코드에서는 `Shape` interface와 이를 구현한 `Circle`, `Rectangle` class를 통해 프로그램을 확장한다. 이 과정에서 기존의 `AreaCalculator` class 내부 코드를 변경하지 않았으므로 open closed principle 원칙을 지켰다고 할 수 있다.
 
    ```java
     interface Shape {
@@ -274,7 +274,7 @@ OOP에서 지켜야 하는 5가지 원칙을 통틀어 객체지향 5원칙이�
 
    클라이언트가 상속 관계로 이루어진 모듈을 사용할 때, 하위 모듈을 직접 사용하지 않아야 한다. 하위 모듈의 구체적인 내용에 의존하여 코드를 자주 수정하기보다 상위 interface의 추상적인 내용에 의존하여 코드를 보다 덜 수정하는 것이 유지보수성이 더 높다고 할 수 있다.
 
-   위 코드에서 `Switch` class는 `LightBulb` class에 직접 의존하고 있다. 만약 `LightBulb`를 다른 class로 교체하려면 `Switch` class도 수정해야 한다.
+   위 코드에서 `Switch`는 `LightBulb`에 직접 의존하고 있다. 만약 `LightBulb`를 다른 class로 교체하려면 `Switch`도 수정해야 한다.
 
    ```java
     class LightBulb {
@@ -306,9 +306,9 @@ OOP에서 지켜야 하는 5가지 원칙을 통틀어 객체지향 5원칙이�
     public class Main {
         public static void main(String[] args) {
             LightBulb lightBulb = new LightBulb();
-            Switch mySwitch = new Switch(lightBulb);
-            mySwitch.operate("on");
-            mySwitch.operate("off");
+            Switch lightBulbSwitch = new Switch(lightBulb);
+            lightBulbSwitch.operate("on");
+            lightBulbSwitch.operate("off");
         }
     }
    ```
@@ -366,14 +366,14 @@ OOP에서 지켜야 하는 5가지 원칙을 통틀어 객체지향 5원칙이�
             Switchable lightBulb = new LightBulb();
             Switchable fan = new Fan();
 
-            Switch mySwitch1 = new Switch(lightBulb);
-            Switch mySwitch2 = new Switch(fan);
+            Switch lightBulbSwitch = new Switch(lightBulb);
+            Switch fanSwitch = new Switch(fan);
 
-            mySwitch1.operate("on");
-            mySwitch1.operate("off");
+            lightBulbSwitch.operate("on");
+            lightBulbSwitch.operate("off");
 
-            mySwitch2.operate("on");
-            mySwitch2.operate("off");
+            fanSwitch.operate("on");
+            fanSwitch.operate("off");
         }
     }
    ```
