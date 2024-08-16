@@ -75,7 +75,7 @@ const data = [
 let weight = 0;
 let bias = 0;
 
-// 하이퍼파라미터 설정
+// hyper parameters 설정
 const learningRate = 0.01;
 const epochs = 1000;
 
@@ -133,7 +133,7 @@ console.log(`bias: ${bias}`);
 
 Optimizer에도 여러 종류가 있다. 보통 한 방법론의 단점을 개선하여 발전시키는 방향으로 다른 방법론이 제시되지만, 모든 상황에 특정 optimizer가 가장 성능이 좋다고 단언하기는 어려운 부분이 많다. dataset과 신경망의 특성에 따라 각 optimizer의 성능은 크게 차이가 날 수 있다. 현재로써는 대부분의 상황에 후술할 ADAM 알고리즘을 채택하고는 있지만, 어떤 알고리즘이 가장 적절할 지 실험해 볼 필요성은 아직 다분하다고 할 수 있다.
 
-여기서 기술할 알고리즘은 모두 first-order optimization의 변형들이다. 이는 한 번 미분한 값을 활용하여 optimization하는 것이다. First가 있으니 물론 second-order optimization을 기반으로 한 알고리즘들도 있으나, hessian matrix라는 2차 편미분 행렬과 그 역행렬을 계산하는 과정에서 막대한 비용이 발생하므로 잘 사용하지 않는다.
+여기서 기술할 알고리즘은 모두 first-order optimization의 변형들이다. 이는 한 번 미분한 값을 활용하여 optimization하는 것이다. First가 있으니 물론 second-order optimization을 기반으로 한 알고리즘들도 있으나, hessian matrix라는 2차 편미분 행렬과 그 역행렬을 계산하는 과정에서 막대한 cost가 발생하므로 잘 사용하지 않는다.
 
 ~~필자의 능지 이슈로 인해 단일 변수 함수에 대한 편미분 수식만 기술했다.~~
 
