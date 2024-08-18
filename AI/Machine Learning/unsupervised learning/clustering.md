@@ -68,23 +68,23 @@
 
          K-Means의 원리는 먼저 $k$개의 centroid를 random하게 선택하고 각 개체는 가장 가까운 centroid와 같은 군집으로 할당한다. 그리고 각 군집에 속한 개체의 평균을 통해 중심을 다시 계산하고 다시 각 개체의 가장 가까운 군집으로 재할당하며, 이 과정을 재할당이 더 일어나지 않아서 centroid가 이동하지 않거나 최대 반복횟수에 도달할 때 까지 반복한다.
 
-         K-Means의 장점은 과정이 직관적이여서 이해하기 편하며, 계산량이 비교적 적어서 대용량 데이터의 처리에 유리하다는 것이다. 하지만 군집의 중심의 개수 $k$가 hyper parameters라는 불편함이 있다. 또한 재할당 과정에서 군집에 속한 개체의 평균을 이용하기 때문에 극단적인 한 값에 굉장히 민감하다는 한계가 있다. 따라서 데이터의 분포가 circular(원형) 데이터가 아닐 경우 clustering이 잘 이루어지지 않는다. 이를 개선하기 위한 방법이 K-Median이며, 이 방법은 재할당 과정에서 평균 대신 중앙값을 활용한다는 점에서 K-Means와 차이가 있다.
+         K-Means의 장점은 과정이 직관적이여서 이해하기 편하며, 계산량이 비교적 적어서 대용량 데이터의 처리에 유리하다는 것이다. 하지만 군집의 centroid의 개수 $k$가 hyper parameters라는 불편함이 있다. 또한 재할당 과정에서 군집에 속한 개체의 평균을 이용하기 때문에 극단적인 한 값에 굉장히 민감하다는 한계가 있다. 따라서 데이터의 분포가 circular(원형) 데이터가 아닐 경우 clustering이 잘 이루어지지 않는다. 이를 개선하기 위한 방법이 K-Median이며, 이 방법은 재할당 과정에서 평균 대신 중앙값을 활용한다는 점에서 K-Means와 차이가 있다.
 
       2. destiny based(밀도 기반)
 
          Destiny based clustering은 군집을 ‘높은 밀도를 가진 데이터의 공간’으로 정의한다. 즉, 서로 근접하거나 패턴을 보이는 데이터라고 할지라도 밀도가 낮다면 군집으로 인식하지 않고 무시한다.
 
-         따라서 밀도 기반 군집화는 중심 기반 군집화의 한계점을 보완했다고 볼 수 있다. 밀도 기반 군집화는 밀도가 낮은 곳, 즉 다른 개체들과 동떨어진 개체를 군집에 포함시키지 않으므로~~왕따~~, 앞서 설명한 K-Means처럼 극단적인 한 값에 대해 민감하게 반응하지 않는다.
+         따라서 destiny based clustering은 중심 기반 군집화의 한계점을 보완했다고 볼 수 있다. destiny based clustering은 밀도가 낮은 곳, 즉 다른 개체들과 동떨어진 개체를 군집에 포함시키지 않으므로~~왕따~~, 앞서 설명한 K-Means처럼 극단적인 한 값에 대해 민감하게 반응하지 않는다.
 
-         DBSCAN는 Density-Based Spatial Clustering of Applications with Noise의 약자로, 개체들의 밀도를 계산하여 밀도가 높게 분포된 개체들끼리 묶어주는 밀도 기반 군집화의 표본과도 같은 기법이다. K-Means처럼 중심의 개수를 지정하지는 않지만 epsilon라고 하는 반지름의 길이를 지정해주어야 한다.
+         DBSCAN는 Density-Based Spatial Clustering of Applications with Noise의 약자로, 개체들의 밀도를 계산하여 밀도가 높게 분포된 개체들끼리 묶어주는 destiny based clustering의 표본과도 같은 기법이다. K-Means처럼 중심의 개수를 지정하지는 않지만 epsilon라고 하는 반지름의 길이를 지정해주어야 한다.
 
          DBSCAN에서의 데이터는 세 종류로 나뉜다. 먼저 군집 내부에 있는 core point(핵심점)이 있다. 이 core point가 중심이고 epsilon을 반지름으로 하는 원을 $p$라고 정의할 때 $p$에는 속하지만 핵심점은 아닌 border point(경계점), 원 $p$에조차 속하지 않는 noise point(잡음점)이 있다. 때문에 K-Means에서 부각된 단점 중 하나인 극단적인 한 값에 대한 효과적인 대응이 가능하다. 이에 더불어 밀도만 일정하다면 요상하게 분포된 온갖 모양의 데이터들에 대해 군집을 찾아낼 수 있다.
 
       3. distribution based(분포 기반)
 
-         분포 기반 군집화는 데이터가 어느 군집에 속할 확률이 더 높은지 계산하여 나눈다.
+         Distribution based clustering은 데이터가 어느 군집에 속할 확률이 더 높은지 계산하여 나눈다.
 
-         GMM는 Gaussian mixture model의 약자로 전체 데이터를 $k$개의 정규분포로 표현할 수 있는 데이터들의 결합이라고 간주하고, 데이터로부터 maximum likelihood estimator(최대 우도 추정량)을 추정한다. 이때 최대 우도 추정이란, 해당 사건의 발생 확률을 최대로 높이는 분포를 찾는 것이다. 즉, 각 분포에 속할 수 있는 확률이 높은 개체들로 군집을 형성하는 것이다. 이에 따라 GMM은 각 정규분포의 평균과 분산, 각 데이터가 각 정규분포에 해당될 확률을 추정한다. 따라서 GMM은 총 정규분포의 개수를 개발자가 미리 정해주어야 한다.
+         GMM는 Gaussian mixture model의 약자로 전체 데이터를 $k$개의 정규분포로 표현할 수 있는 데이터들의 결합이라고 간주하고, 데이터로부터 maximum likelihood estimator(최대 우도 추정량)을 추정한다. 이는 해당 사건의 발생 확률을 최대로 높이는 분포를 찾는 것이다. 즉, 각 분포에 속할 수 있는 확률이 높은 개체들로 군집을 형성하는 것이다. 이에 따라 GMM은 각 정규분포의 평균과 분산, 각 데이터가 각 정규분포에 해당될 확률을 추정한다. 따라서 GMM의 총 정규분포의 개수는 hyper parameters이다.
 
          앞서 말한 maximum likelihood estimator을 구하는 알고리즘으로 expectation maximization(기댓값 최대화)이 있다. 이는 우선 한 분포에 대해 데이터의 maximum likelihood estimator가 최대가 될 때 까지 모든 분포에 대해 데이터를 재계산한다. maximum likelihood estimator가 최대가 된다면 이것으로 최종적인 기댓값을 산출한다. 이러한 두 단계를 각각 expectation(예측) 단계와 maximization(최대화) 단계로 명명한다.
 
