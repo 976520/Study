@@ -1,6 +1,6 @@
 # 경사하강법 탐구하기
 
-> 경사하강법은 함수의 최솟값을 찾는 optimizer 이다.
+> Gradient descent(경사하강법)은 함수의 최솟값을 찾는 optimizer 이다.
 
 ~~인공신경망을 만만하게 본 학우들이 처음으로 갈려나가는 관문이다.~~
 
@@ -12,7 +12,7 @@ optimizer는 최적화 이론 기법이라고 할 수 있다.
 
 1. 정의
 
-   경사하강법이란 함수의 값이 낮아지는 방향으로 각 독립변수들의 값을 변형시키면서 함수가 최솟값을 갖도록 하는 독립변수의 값을 탐색하는 방법이다. 함수의 gradient(경사)를 구하고, 해당 gradient의 반대 방향으로 이동시킨다. 이 과정을 극값, 즉 최소 지점에 이를 때 까지 반복한다. 반대로 이를 최고 지점에 이를 때 까지 반복하면 경사상승법이라고 한다.
+   Gradient descent란 함수의 값이 낮아지는 방향으로 각 독립변수들의 값을 변형시키면서 함수가 최솟값을 갖도록 하는 독립변수의 값을 탐색하는 방법이다. 함수의 gradient(경사)를 구하고, 해당 gradient의 반대 방향으로 이동시킨다. 이 과정을 극값, 즉 최소 지점에 이를 때 까지 반복한다. 반대로 이를 최고 지점에 이를 때 까지 반복하면 경사상승법이라고 한다.
 
 2. gradient
 
@@ -24,7 +24,7 @@ optimizer는 최적화 이론 기법이라고 할 수 있다.
 
 ## 알고리즘
 
-기본적인~~아주 이상적인 data의~~ 경사하강법의 알고리즘은 다음 순서를 거친다.
+기본적인~~아주 이상적인 data의~~ gradient descent의 알고리즘은 다음 순서를 거친다.
 
 1. 시작점
 
@@ -54,13 +54,13 @@ optimizer는 최적화 이론 기법이라고 할 수 있다.
 
 3. 반복
 
-   Objective function(목적함수)이 특정 값으로 알맞게 수렴할 때 까지 이 과정을 반복한다. 인공신경망에서는 loss function(손실함수)이 최소가 되는 지점을 찾기 위해 경사하강법을 사용한다.
+   Objective function(목적함수)이 특정 값으로 알맞게 수렴할 때 까지 이 과정을 반복한다. 인공신경망에서는 loss function(손실함수)이 최소가 되는 지점을 찾기 위해 gradient descent을 사용한다.
 
 ---
 
 ## 사용
 
-Javascript로 다음과 같이 간단한 선형 [회귀](https://github.com/976520/TIL/blob/main/AI/Machine%20Learning/supervised%20learning/prediction.md) 문제를 경사하강법으로 해결할 수 있다.
+Javascript로 다음과 같이 간단한 선형 [회귀](https://github.com/976520/TIL/blob/main/AI/Machine%20Learning/supervised%20learning/prediction.md) 문제를 gradient descent으로 해결할 수 있다.
 
 ```javascript
 // dataset
@@ -141,15 +141,15 @@ Optimizer에도 여러 종류가 있다. 보통 한 방법론의 단점을 개�
 
    1. 개념
 
-      SGD는 Stochastic Gradient Descent의 약자로, 확률적 경사하강법이라고 하여 mini batch라고 하는 전체 dataset에서 확률적으로 선택된 소규모 data sample group을 사용하여 각 단계에서 gradient를 계산하고 가중치를 update 하는 방식으로 작동한다.
+      SGD는 Stochastic Gradient Descent의 약자로, 확률적 gradient descent이라고 하여 mini batch라고 하는 전체 dataset에서 확률적으로 선택된 소규모 data sample group을 사용하여 각 단계에서 gradient를 계산하고 가중치를 update 하는 방식으로 작동한다.
 
-      기존의 경사하강법은 full batch를 바탕으로 진행하기에 학습 수렴속도가 느리다는 단점이 있었지만, 이 방법은 대량의 data에 대한 훈련을 빠르게 수행할 수 있게 한다. 하지만 mini batch의 크기(batch size)와 learning rate에 따라 model 성능에 큰 영향을 받는다는 단점이 있다.
+      기존의 gradient descent은 full batch를 바탕으로 진행하기에 학습 수렴속도가 느리다는 단점이 있었지만, 이 방법은 대량의 data에 대한 훈련을 빠르게 수행할 수 있게 한다. 하지만 mini batch의 크기(batch size)와 learning rate에 따라 model 성능에 큰 영향을 받는다는 단점이 있다.
 
    2. 알고리즘
 
       앞서 설명했듯, mini batch 내의 각 data point에 대한 loss를 계산하고 그에 대한 가중치의 편미분을 수행한다. 이를 통해 loss function의 gradient를 산출하고, 이 gradient를 이용하여 가중치를 update한다. 이때 hyper parameters로 정해진 learning rate가 사용되어 가중치를 얼마나 크게 조정할 지 결정한다. ~~가중치의 가중치~~ mini batch 단위로 이 과정을 반복하여 model을 최적화할 수 있다.
 
-      Update 식은 다음과 같으며 이는 경사하강법과 동일하다. SGD와 경사하강법의 차이는 오직 입력된 data에서만 존재한다.
+      Update 식은 다음과 같으며 이는 gradient descent과 동일하다. SGD와 gradient descent의 차이는 오직 입력된 data에서만 존재한다.
 
       > $x_{t+1}$ $=$ $x_t - η \frac{∂f}{∂x}(x_t)$
 
@@ -212,7 +212,7 @@ Optimizer에도 여러 종류가 있다. 보통 한 방법론의 단점을 개�
 
    1. 개념
 
-      Momentum은 기존 경사하강법에 가속도항을 추가하여 local minimum 문제를 해결한 경사하강 방법론이다.
+      Momentum은 기존 gradient descent에 가속도항을 추가하여 local minimum 문제를 해결한 경사하강 방법론이다.
 
    2. 알고리즘
 
