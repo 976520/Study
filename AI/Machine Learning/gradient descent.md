@@ -487,7 +487,7 @@ Optimizer에도 여러 종류가 있다. 보통 한 방법론의 단점을 개�
 
       > $m_t=β_1m_{t-1}+(1-β_1)g_t$
 
-      RMSProp의 제곱된 gradient의 지수 가중 이동 평균을 저장한다.
+      RMSProp의 제곱된 gradient의 exponentially weighted moving average을 저장한다.
 
       > $m_t=β_1m_{t-1}+(1-β_1)g_t^2$
 
