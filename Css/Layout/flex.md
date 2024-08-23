@@ -46,6 +46,8 @@ display: flex;
 
     <img src="https://github.com/976520/TIL/assets/123460320/57ab2d25-28fc-4c6c-9e3a-cd652fbb2a4f" height="150px"/>
 
+---
+
 ## 속성
 
 플렉스 박스 레이아웃에 적용할 수 있는 속성은 다음과 같다.
@@ -104,3 +106,5 @@ display: flex;
        - `center` cross axis 방향의 중앙을 기준으로 정렬한다.
        - `baseline` item의 baseline을 기준으로 정렬한다.
          <imt src="https://github.com/976520/TIL/assets/123460320/57b0c56e-ceed-48d6-9491-adc83076a509" width="500"/>
+
+---
