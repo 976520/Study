@@ -6,7 +6,7 @@
 
 ![인공신경망](https://github.com/user-attachments/assets/a7d88944-e430-4459-9d28-8638bfaf6091)
 
-노란색 동그라미로 표현된 것은 neural network의 processing element 역할을 하며 node라고 부른다. 이는 자신에게 input되는 값들과 weight들을 받아서 자신의 activation(활성화) 상태에 따라 하나의 처리 결과를 만들어 전달하는 역할을 한다. 대부분의 경우 각 node는 0부터 1까지의 값을 취하며 이는 그 뉴런의 활성화 정도를 나타낸다. 인간의 신경세포는 input되어 처리된 정보의 강도가 임계값 미만이 되면 비활성화하고, 이상이 되면 활성화하여 그 결과를 ou
+노란색 동그라미로 표현된 것은 neural network의 processing element 역할을 하며 node라고 부른다. 이는 자신에게 input되는 값들과 weight들을 받아서 자신의 activation(활성화) 상태에 따라 하나의 처리 결과를 만들어 전달하는 역할을 한다. 대부분의 경우 각 node는 0부터 1까지의 값을 취하며 이는 그 뉴런의 활성화 정도를 나타낸다. 인간의 신경세포는 input되어 처리된 정보의 강도가 임계값 미만이 되면 비활성화하고, 이상이 되면 활성화하여 그 결과를 output한다.
 
 node를 용도별로 분리한 단위를 layer(층)이라고 하며, 이러한 layer가 1개 존재하는 신경망을 single layer perceptron(단층 퍼셉트론), 2개 이상 존재하는 신경망을 multi layer perceptron(다층 퍼셉트론)이라고 한다.
 
