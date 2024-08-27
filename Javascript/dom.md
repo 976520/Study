@@ -49,7 +49,7 @@ DOM구조를 조회할 때는 `console.dir` 을 사용한다. 이는 `console.lo
 
    여기서 `console.dir(document.body.children[n])` 으로 n번째 자식만을 조회할 수 있다.
 
-2. 특정 id를 가진 엘리먼트의 자식요소
+2. 특정 id를 가진 element의 자식요소
 
    매번 자식요소를 조회할 때 마다 `console.dir(document.body.children[3])` 이런걸 쓰고 있으면 귀찮기 마련이다. 이럴 때 따로 변수 선언을 하고 id를 할당하면 번거롭지 않을 수 있다.
 
@@ -58,7 +58,7 @@ DOM구조를 조회할 때는 `console.dir` 을 사용한다. 이는 `console.lo
    console.dir(exampleId);
    ```
 
-3. 특정 id를 가진 엘리먼트의 부모요소 ~~느그 아부지 뭐하시노~~
+3. 특정 id를 가진 element의 부모요소 ~~느그 아부지 뭐하시노~~
 
    `console.dir(document.body.children[n].parentElement)` 는 n번째 자식 요소의 부모요소를 조회하는 코드이다. 정말 읽기 불편하기 때문에 아까와 같이 변수 선언을 해서 가독성을 높여보겠다.
 
