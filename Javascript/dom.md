@@ -68,3 +68,76 @@ DOM구조를 조회할 때는 `console.dir` 을 사용한다. 이는 `console.lo
    ```
 
 ---
+
+## DOM 조작
+
+JS에서는 DOM을 조작하여 HTML 요소에 대해 변경, 추가, 삭제 등의 작업을 할 수 있다.
+
+1. 선택
+
+   `getElementById()`, `getElementsByClassName()`를 통해 각각 특정 id 혹은 class를 가진 요소를 선택할 수 있다.
+
+   ```javascript
+   const firstElement = document.getElementById("id");
+   const secondElement = document.getElementsByClassName("class");
+   ```
+
+   또한 `querySelector()`, `querySelectorAll()`을 통해 CSS 선택자를 이용해 요소를 선택할 수 있다.
+
+   ```javascript
+   const firstElement = document.querySelector("#id");
+   const secondElement = document.querySelector(".class");
+   ```
+
+2. 생성
+
+   `createElement()`를 통해 새로운 요소를 생성할 수 있고, `appendChild()`를 통해 생성한 요소를 특정 부모 요소의 하위에 추가할 수 있다.
+
+   ```javascript
+   const element = document.createElement("div");
+   document.body.appendChild(element);
+   ```
+
+   `prepend()`를 통해 부모 요소의 첫 번째 자식으로 요소를 추가할 수 있고, `before()`,`after()`를 통해 각각 선택한 요소의 앞과 뒤에 새 요소를 추가할 수 있다.
+
+3. 삭제
+
+   `removeChild`를 통해 부모 요소로부터 특정 자식 요소를 제거할 수 있다.
+
+   ```javascript
+   const parentElement = document.getElementById("parent");
+   const childElement = document.getElementById("child");
+   parentElement.removeChild(childElement);
+   ```
+
+4. 속성 조작
+
+   `setAttribute`, `getAttribute`를 통해 요소의 속성을 설정하거나 조회할 수 있다. 이때 첫 번째 매개변수로 변경할 속성의 이름, 두 번째 매개변수로 변경할 내용을 입력한다. 또한 `classList`를 통해 다음과 같이 요소의 class를 추가, 제거, 혹은 토글할 수 있다.
+
+   ```javascript
+   const link = document.querySelector("a");
+   link.setAttribute("href", "https://velog.io/@haensol/dom");
+   link.classList.add("active");
+   ```
+
+5. style 조작
+
+   `style`을 이용해 요소의 CSS style을 조작할 수 있다.
+
+   ```javascript
+   const root = document.getElementById("root");
+   root.style.color = "tomato";
+   ```
+
+6. event 추가
+
+   `addEventListener`를 통해 요소에 event listener를 추가하여 특정 event에 반응하게 할 수 있다.
+
+   ```javascript
+   const button = document.querySelector("button");
+   button.addEventListener("click", () => {
+     alert("clicked");
+   });
+   ```
+
+---
