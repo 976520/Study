@@ -124,129 +124,6 @@
    print(f"P(S_t+1 = '웹 서핑' | S_t = '독서') = {Q[1, 2]}") # 출력: 0.3
    ```
 
-6. Stationary distribution
-
-   만약 어떤 $\vec{v}Q^{n}$이 어떤 극한 분포에 수렴한다면, 이를 stationary distribution(정적 분포)이라고 한다. 이는 현재 state의 분포가 시간에 따라 변하지 않는 것을 의미한다. 이렇게 수렴하여 변하지 않는 상태를 stationary state(정상 상태)라고 한다.
-
-   $\vec{v}Q^{n}$이 다음 조건을 만족한다면,
-
-   $$\vec{v}Q = \vec{v}$$
-
-   이와 같이 정리할 수 있다.
-
-   $$\vec{v}Q^n = \vec{v}Q^{n-1} \dots = \vec{v}Q^2 = \vec{v}Q = \vec{v}$$
-
-   이때 $Q$가 identity matrix라고 할 수 있으며, 이때의 분포가 stationary distribution이 된다.
-
-   행렬 $Q$를 linear transformation(선형 변환)으로 봤을 때, $Q$에 의한 변환이 자기 자신의 상수배가 되는 vector를 eigenvector라고 한다. 이때 상수를 eigenvalue라고 한다. 이를 식으로 표현하면 다음과 같다.
-
-   $$Q\vec{v} = \lambda\vec{v}$$
-
-   $\lambda$는 행렬 $Q$의 eigenvalue이며, $\vec{v}$는 행렬 $Q$에 대한 eigenvector이다. 여기서는 stationary distribution이 eigenvector가 된다.
-
-   따라서 stationary distribution은 $\lambda=1$에 대응하는 eigenvector가 된다. 즉, markov process의 transition probability matrix의 eigenvalue 중 하나는 반드시 1이여야 한다.
-
-   이를 통해 stationary distribution를 찾을 수 있다. 간단히 transition probability matrix $Q$의 eigenvalue와 eigenvector를 구하고, eigenvalue가 1인 eigenvector가 stationary distribution을 찾으면 된다. 이 과정을 예시로 설명하자면 다음과 같다.
-
-   다음과 같은 transition probability matrix $Q$가 있다고 할 때,
-
-   $$
-   Q = \begin{pmatrix}
-   0.5 & 0.5 \\
-   0.2 & 0.8
-   \end{pmatrix}
-   $$
-
-   ```python
-   Q = np.array([[0.5, 0.5],
-                 [0.2, 0.8]])
-   ```
-
-   이 행렬의 eigenvalue $\lambda$와 eigenvector $\vec{v}$를 구하면 다음과 같다.
-
-   $$
-   \lambda_1 = 1, \lambda_2 = 0.3 \\
-   \vec{v_1} = \begin{pmatrix} 0.4 \\ 0.6 \end{pmatrix}, \vec{v_2} = \begin{pmatrix} -0.8 \\ 0.6 \end{pmatrix}
-   $$
-
-   ```python
-   eigenvalues, eigenvectors = np.linalg.eig(Q)
-   ```
-
-   여기서 eigenvalue가 1인 eigenvector $\vec{v_1}$이 stationary distribution이 된다.
-
-   ```python
-   stationary_vector = eigenvectors[:, np.isclose(eigenvalues, 1)]
-   ```
-
-   이를 정규화하면 다음과 같다.
-
-   $$
-   \vec{x} = \frac{1}{0.4 + 0.6} \begin{pmatrix} 0.4 \\ 0.6 \end{pmatrix} = \begin{pmatrix} 0.4 \\ 0.6 \end{pmatrix}
-   $$
-
-   ```python
-   stationary_distribution = stationary_vector / np.sum(stationary_vector)
-   ```
-
-   따라서 stationary distribution는 $\begin{pmatrix} 0.4 \\ 0.6 \end{pmatrix}$가 된다.
-
-   ```python
-   print(stationary_distribution) # 출력: [0.4 0.6]
-   ```
-
-   만약 행렬 $Q$가 전치 행렬 $Q^T$를 가지고 있다면, 이를 이용하여 stationary distribution를 찾을 수 있다. 예를 들어, 다음과 같은 행렬 $Q$가 있다고 할 때,
-
-   $$
-   Q^T = \begin{pmatrix}
-   0.5 & 0.2 \\
-   0.5 & 0.8
-   \end{pmatrix}
-   $$
-
-   ```python
-   Q_T = Q.T
-   ```
-
-   이 전치 행렬의 eigenvalue $\lambda$와 eigenvector $\vec{v}$를 구하면 다음과 같다.
-
-   $$
-   \lambda_1 = 1, \lambda_2 = 0.3 \\
-   \vec{v_1} = \begin{pmatrix} 0.6 \\ 0.4 \end{pmatrix}, \vec{v_2} = \begin{pmatrix} 0.6 \\ -0.8 \end{pmatrix}
-   $$
-
-   ```python
-   eigenvalues_T, eigenvectors_T = np.linalg.eig(Q_T)
-   ```
-
-   여기서 eigenvalue가 1인 eigenvector $\vec{v_1}$이 stationary distribution이 된다.
-
-   ```python
-   stationary_vector_T = eigenvectors_T[:, np.isclose(eigenvalues_T, 1)]
-   ```
-
-   이를 정규화하면 다음과 같다.
-
-   $$
-   \vec{x} = \frac{1}{0.6 + 0.4} \begin{pmatrix} 0.6 \\ 0.4 \end{pmatrix} = \begin{pmatrix} 0.6 \\ 0.4 \end{pmatrix}
-   $$
-
-   ```python
-   stationary_distribution_T = stationary_vector_T / np.sum(stationary_vector_T)
-   ```
-
-   따라서 stationary distribution는 $\begin{pmatrix} 0.6 \\ 0.4 \end{pmatrix}$가 된다.
-
-   ```python
-   print(stationary_distribution_T) # 출력: [0.6 0.4]
-   ```
-
-   원래 행렬 $Q$의 stationary distribution에 전치를 취한 것과 같다는 점을 확인할 수 있다.
-
-   ```python
-   print(stationary_distribution_T == stationary_distribution.T) # 출력: True
-   ```
-
 ## Markov process
 
 > Markov process는 markov property를 가진 stochastic process이다.
@@ -416,6 +293,129 @@
    $$
 
    이처럼 identity matrix는 행렬 곱셈에서 항등원 역할을 하며, markov process에서는 상태가 변하지 않는 경우를 나타낸다. 행렬의 크기에 따라 다양한 크기의 identity matrix가 존재한다.
+
+6. Stationary distribution
+
+   만약 어떤 $\vec{v}Q^{n}$이 어떤 극한 분포에 수렴한다면, 이를 stationary distribution(정적 분포)이라고 한다. 이는 현재 state의 분포가 시간에 따라 변하지 않는 것을 의미한다. 이렇게 수렴하여 변하지 않는 상태를 stationary state(정상 상태)라고 한다.
+
+   $\vec{v}Q^{n}$이 다음 조건을 만족한다면,
+
+   $$\vec{v}Q = \vec{v}$$
+
+   이와 같이 정리할 수 있다.
+
+   $$\vec{v}Q^n = \vec{v}Q^{n-1} \dots = \vec{v}Q^2 = \vec{v}Q = \vec{v}$$
+
+   이때 $Q$가 identity matrix라고 할 수 있으며, 이때의 분포가 stationary distribution이 된다.
+
+   행렬 $Q$를 linear transformation(선형 변환)으로 봤을 때, $Q$에 의한 변환이 자기 자신의 상수배가 되는 vector를 eigenvector라고 한다. 이때 상수를 eigenvalue라고 한다. 이를 식으로 표현하면 다음과 같다.
+
+   $$Q\vec{v} = \lambda\vec{v}$$
+
+   $\lambda$는 행렬 $Q$의 eigenvalue이며, $\vec{v}$는 행렬 $Q$에 대한 eigenvector이다. 여기서는 stationary distribution이 eigenvector가 된다.
+
+   따라서 stationary distribution은 $\lambda=1$에 대응하는 eigenvector가 된다. 즉, markov process의 transition probability matrix의 eigenvalue 중 하나는 반드시 1이여야 한다.
+
+   이를 통해 stationary distribution를 찾을 수 있다. 간단히 transition probability matrix $Q$의 eigenvalue와 eigenvector를 구하고, eigenvalue가 1인 eigenvector가 stationary distribution을 찾으면 된다. 이 과정을 예시로 설명하자면 다음과 같다.
+
+   다음과 같은 transition probability matrix $Q$가 있다고 할 때,
+
+   $$
+   Q = \begin{pmatrix}
+   0.5 & 0.5 \\
+   0.2 & 0.8
+   \end{pmatrix}
+   $$
+
+   ```python
+   Q = np.array([[0.5, 0.5],
+                 [0.2, 0.8]])
+   ```
+
+   이 행렬의 eigenvalue $\lambda$와 eigenvector $\vec{v}$를 구하면 다음과 같다.
+
+   $$
+   \lambda_1 = 1, \lambda_2 = 0.3 \\
+   \vec{v_1} = \begin{pmatrix} 0.4 \\ 0.6 \end{pmatrix}, \vec{v_2} = \begin{pmatrix} -0.8 \\ 0.6 \end{pmatrix}
+   $$
+
+   ```python
+   eigenvalues, eigenvectors = np.linalg.eig(Q)
+   ```
+
+   여기서 eigenvalue가 1인 eigenvector $\vec{v_1}$이 stationary distribution이 된다.
+
+   ```python
+   stationary_vector = eigenvectors[:, np.isclose(eigenvalues, 1)]
+   ```
+
+   이를 정규화하면 다음과 같다.
+
+   $$
+   \vec{x} = \frac{1}{0.4 + 0.6} \begin{pmatrix} 0.4 \\ 0.6 \end{pmatrix} = \begin{pmatrix} 0.4 \\ 0.6 \end{pmatrix}
+   $$
+
+   ```python
+   stationary_distribution = stationary_vector / np.sum(stationary_vector)
+   ```
+
+   따라서 stationary distribution는 $\begin{pmatrix} 0.4 \\ 0.6 \end{pmatrix}$가 된다.
+
+   ```python
+   print(stationary_distribution) # 출력: [0.4 0.6]
+   ```
+
+   만약 행렬 $Q$가 전치 행렬 $Q^T$를 가지고 있다면, 이를 이용하여 stationary distribution를 찾을 수 있다. 예를 들어, 다음과 같은 행렬 $Q$가 있다고 할 때,
+
+   $$
+   Q^T = \begin{pmatrix}
+   0.5 & 0.2 \\
+   0.5 & 0.8
+   \end{pmatrix}
+   $$
+
+   ```python
+   Q_T = Q.T
+   ```
+
+   이 전치 행렬의 eigenvalue $\lambda$와 eigenvector $\vec{v}$를 구하면 다음과 같다.
+
+   $$
+   \lambda_1 = 1, \lambda_2 = 0.3 \\
+   \vec{v_1} = \begin{pmatrix} 0.6 \\ 0.4 \end{pmatrix}, \vec{v_2} = \begin{pmatrix} 0.6 \\ -0.8 \end{pmatrix}
+   $$
+
+   ```python
+   eigenvalues_T, eigenvectors_T = np.linalg.eig(Q_T)
+   ```
+
+   여기서 eigenvalue가 1인 eigenvector $\vec{v_1}$이 stationary distribution이 된다.
+
+   ```python
+   stationary_vector_T = eigenvectors_T[:, np.isclose(eigenvalues_T, 1)]
+   ```
+
+   이를 정규화하면 다음과 같다.
+
+   $$
+   \vec{x} = \frac{1}{0.6 + 0.4} \begin{pmatrix} 0.6 \\ 0.4 \end{pmatrix} = \begin{pmatrix} 0.6 \\ 0.4 \end{pmatrix}
+   $$
+
+   ```python
+   stationary_distribution_T = stationary_vector_T / np.sum(stationary_vector_T)
+   ```
+
+   따라서 stationary distribution는 $\begin{pmatrix} 0.6 \\ 0.4 \end{pmatrix}$가 된다.
+
+   ```python
+   print(stationary_distribution_T) # 출력: [0.6 0.4]
+   ```
+
+   원래 행렬 $Q$의 stationary distribution에 전치를 취한 것과 같다는 점을 확인할 수 있다.
+
+   ```python
+   print(stationary_distribution_T == stationary_distribution.T) # 출력: True
+   ```
 
 ---
 
