@@ -29,7 +29,7 @@ DOM은 Document Object Model(문서 객체 모델)의 약자로 JS에서 HTML의
 
 즉, 모든 요소와 속성을 객체로 만들고, 이 객체를 **부모-자식 관계를 표현하는 트리 구조로 구성**한 것이 DOM이다. DOM의 의의는 DOM이 제공하는 API를 이용해 개발자가 JS로 이것을 조작할 수 있는 데에 있다. JS는 이것을 이용해 HTML 요소나 style을 생성/변경/삭제하거나 event를 추가하고 그에 반응할 수 있다.
 
-이때 <html>, <head>와 같은 tag들은 모두 이 트리의 node이자 element이다. 하지만 “sexy text”, “sexy link”와 같이 text로 표현된 것들은 element는 아니지만 node는 맞다.
+이때 `<html>`, `<head>`와 같은 tag들은 모두 이 트리의 node이자 element이다. 하지만 “sexy text”, “sexy link”와 같이 text로 표현된 것들은 element는 아니지만 node는 맞다.
 
 ---
 
@@ -37,7 +37,7 @@ DOM은 Document Object Model(문서 객체 모델)의 약자로 JS에서 HTML의
 
 DOM구조를 조회할 때는 `console.dir` 을 사용한다. 이는 `console.log` 와 다르게 DOM을 Object 형태로 출력한다.
 
-1. <body>의 자식요소
+1. `<body>`의 자식요소
 
    `console.dir(document.body)` 를 입력하여 body 아래의 모든 속성을 객체의 형태로 확인할 수 있다. 이중 chileren이 body의 자식요소를 뜻한다.
 
