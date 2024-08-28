@@ -25,7 +25,7 @@
 
     <img src="https://github.com/user-attachments/assets/b83e74ea-27b9-4285-960e-4e9850b53cfd" alt="image" width="500" />
 
-    여기서 Injector는 DI container라고도 불리며, 객체 간의 **의존성을 관리하고 주입**하는 역할을 담당하는 구성 요소이다. Dependency Injection pattern에서는 Injector가 Client 객체에게 필요한 의존성. 여기서는 Service 객체를 직접 생성하여 제공한다. 이로써 Client는 자신이 필요로 하는 의존성을 스스로 생성하거나 관리할 필요가 없어지며, 대신 Injector가 모든 의존성의 생성과 관리를 전담하게 된다.
+    여기서 Injector는 DI container라고도 불리며, 객체 간의 **의존성을 관리하고 주입**하는 역할을 담당하는 구성 요소이다. Dependency Injection pattern에서는 Injector가 Client 객체에게 필요한 의존성, 즉 Service 객체를 직접 생성하여 제공한다. 이로써 Client는 자신이 필요로 하는 의존성을 스스로 생성하거나 관리할 필요가 없어지며, 대신 Injector가 모든 의존성의 생성과 관리를 전담하게 된다.
 
     Injector가 이러한 역할을 수행하기 위해서는 각 객체 간의 의존 관계와 생성에 필요한 정보를 알고 있어야 한다. 예를 들어, Client 객체를 생성할 때 어떤 Service 객체를 주입해야 하는지, 그리고 해당 Service 객체를 생성하기 위해 필요한 생성자 인자가 무엇인지 등을 파악하고 있어야 한다.
 
