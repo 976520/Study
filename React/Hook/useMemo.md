@@ -16,7 +16,7 @@
    const cachedValue = useMemo(calculateValue, deps);
    ```
 
-   `useMemo`는 `useEffect`처럼 첫 번째 인자로 콜백 함수, 두 번째 인자로 의존성 배열을 받는다. 의존성 배열의 사용은 `useEffect`와 동일하며, 마운트 될 때에만 값을 계산하고 그 이후론 계속 memoization 된 값을 꺼내와 사용한다는 차이가 있다.
+   `useMemo`는 `useEffect`처럼 첫 번째 인자로 callback 함수, 두 번째 인자로 의존성 배열을 받는다. 의존성 배열의 사용은 `useEffect`와 동일하며, 마운트 될 때에만 값을 계산하고 그 이후론 계속 memoization 된 값을 꺼내와 사용한다는 차이가 있다.
 
 3. 사용
 

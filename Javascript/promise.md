@@ -28,7 +28,7 @@
 
 3. 특징
 
-   비동기 작업을 순차적으로 실행할 수 있다. 그러나 비동기적 처리가 완벽히 가능하게 해주는 것은 아니며, 단지 보기 쉽게 만들어주는 것 뿐이다. [callback 함수](https://github.com/976520/TIL/blob/main/javascript/callback.md)가 많아지면 '콜백 지옥'에 빠져 가독성이 구려지게 된다. 이를 개선하기 위해 promise를 사용한다.
+   비동기 작업을 순차적으로 실행할 수 있다. 그러나 비동기적 처리가 완벽히 가능하게 해주는 것은 아니며, 단지 보기 쉽게 만들어주는 것 뿐이다. [callback 함수](https://github.com/976520/TIL/blob/main/javascript/callback.md)가 많아지면 'callback 지옥'에 빠져 가독성이 구려지게 된다. 이를 개선하기 위해 promise를 사용한다.
 
 ---
 
@@ -48,8 +48,8 @@
    }
    ```
 
-   promise 객체의 생성은 `new`와 promise 생성자 함수를 이용한다. 이때 생성자 함수는 두 개의 매개 변수를 가진 콜백 함수를 넣게 되는데, 첫 번째 인수는 작업이 성공했을 때 성공(resolve)임을 알려주는 객체이며, 두 번째 인수는 작업이 실패했을 때 실패(reject)임을 알려주는 오류 객체이다.
-   또한 이 콜백 함수를 executor라고 한다.
+   promise 객체의 생성은 `new`와 promise 생성자 함수를 이용한다. 이때 생성자 함수는 두 개의 매개 변수를 가진 callback 함수를 넣게 되는데, 첫 번째 인수는 작업이 성공했을 때 성공(resolve)임을 알려주는 객체이며, 두 번째 인수는 작업이 실패했을 때 실패(reject)임을 알려주는 오류 객체이다.
+   또한 이 callback 함수를 executor라고 한다.
 
 2. 처리
 
@@ -65,7 +65,7 @@
       });
       ```
 
-      `.then`메서드는 **처리가 이행(fulfilled)되어 promise 객체에서 `resolve()` 를 호출**하게 되면, 콜백 함수를 등록하고, 새로운 promise를 반환한다. 이때 호출한 `resolve()`의 매개변수가 `.then` 매서드의 콜백 함수 인자로 들어가 `.then`내부에서 프로미스 객체 내부에서 처리한 값을 사용할 수 있다.
+      `.then`메서드는 **처리가 이행(fulfilled)되어 promise 객체에서 `resolve()` 를 호출**하게 되면, callback 함수를 등록하고, 새로운 promise를 반환한다. 이때 호출한 `resolve()`의 매개변수가 `.then` 매서드의 callback 함수 인자로 들어가 `.then`내부에서 프로미스 객체 내부에서 처리한 값을 사용할 수 있다.
 
    2. catch
 
@@ -85,7 +85,7 @@
       });
       ```
 
-      `.finally`는 **결과에 관련 없이** 실행할 콜백 함수를 등록하고, 새로운 promise를 반환한다.
+      `.finally`는 **결과에 관련 없이** 실행할 callback 함수를 등록하고, 새로운 promise를 반환한다.
 
    4. all
 
