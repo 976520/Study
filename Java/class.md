@@ -113,15 +113,28 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 
    `[type] [필드명] (= 초기값);`을 통해 선언할 수 있다. 이 field의 선언은 class의 중괄호 내부 어디서든 존재할 수 있다.
 
+   `[type]`을 통해 field에 저장할 데이터의 종류를 결정할 수 있다. `int`, `float` 등의 기본 type과 배열, class, interface 등의 참조 type이 모두 올 수 있다.
+
 2. 이해
 
    > 객체의 데이터를 저장하는 역할을 한다.
 
    여기서 데이터란, 객체의 고유 데이터 뿐만 아니라 객체의 부품 객체, state 등을 모두 포괄한다.
 
-3. 변수와의 차이
+3. 사용
 
-   선언 형태는 일반적인 변수와 비슷할지라도 각각 구분된 개념이다. 객체에 내부의 변수는 constructor 혹은 method 안에서만 사용되며, 이들이 종료되면 자동으로 소멸하게 된다. 하지만 field는 constructor와 method 전체에서 사용되며, 객체가 소멸되지 않는 한 계속 존재한다.
+   ```java
+   String name = "이주언";
+   String sex = "male";
+
+   short class = 4;
+   int number = 14;
+   boolean isGay = true;
+   ```
+
+4. 변수와의 차이
+
+   선언 형태는 일반적인 변수와 비슷할지라도 각각 구분된 개념이다. 그래서 혹자는 field를 class 멤버 변수라고 칭하기도 한다. 객체에 내부의 변수는 constructor 혹은 method 안에서만 사용되며, 이들이 종료되면 자동으로 소멸하게 된다. 하지만 field는 constructor와 method 전체에서 사용되며, 객체가 소멸되지 않는 한 계속 존재한다.
 
 ---
 
