@@ -14,7 +14,7 @@ npm install axios
 
 1. 개념
 
-   axios는 javascript 기반의 HTTP 라이브러리로, 서버와 클라이언트 간의 통신을 아주 간편하게 해준다. javascript에서는 fetch를 이용하여 api 통신을 해도 무방하지만, 앞서 말한 간편성과 더불어 여러 장점을 가지기 때문에 axios를 이용하는 경우도 다분하다.
+   axios는 javascript 기반의 HTTP 라이브러리로, 서버와 클라이언트 간의 통신을 아주 간편하게 해준다. javascript에서는 fetch를 이용하여 api 통신을 해도 무방하지만, 간편성과 더불어 여러 장점을 가지기 때문에 axios를 이용하는 경우도 다분하다.
 
    promise 기반이기 때문에 기본적으로 비동기적인 request와 response 처리를 지원한다. 이러한 HTTP request와 response를 JSON 형태로 자동으로 변경한다.
 
