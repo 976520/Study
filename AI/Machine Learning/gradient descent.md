@@ -12,13 +12,13 @@ optimizer는 최적화 이론 기법이라고 할 수 있다.
 
 1. 정의
 
-   Gradient descent란 함수의 값이 낮아지는 방향으로 각 독립변수들의 값을 변형시키면서 함수가 최솟값을 갖도록 하는 독립변수의 값을 탐색하는 방법이다. 함수의 gradient(경사)를 구하고, 해당 gradient의 반대 방향으로 이동시킨다. 이 과정을 극값, 즉 최소 지점에 이를 때 까지 반복한다. 반대로 이를 최고 지점에 이를 때 까지 반복하면 경사상승법이라고 한다.
+   Gradient descent란 함수의 값이 낮아지는 방향으로 각 독립변수들의 값을 변형시키면서 함수가 최솟값을 갖도록 하는 독립변수의 값을 탐색하는 방법이다. 후술할 방법을 통하여 함수의 gradient(경사)를 구하고, 해당 gradient의 반대 방향으로 이동시킨다. '경사'를 따라 '하강'하는 것이다. 이 과정을 극값, 즉 최소 지점에 이를 때 까지 반복한다. 반대로 이를 최고 지점에 이를 때 까지 반복하면 경사상승법이라고 한다.
 
 2. gradient
 
    여기서 gradient란 $R^n$ -> $R$ 형태의 실수 함수의 미분을 뜻한다.
 
-   함수값이 실수인 $n$차원 다변수함수 $f(x)=f(x_1, x_2, ..., x_n)$가 있을 때, **$f(x)$를 각 변수에 대해 일차 편미분한 벡터**를 gradient라고 하며 매개변수가 $x$일 때 목적함수 $f$의 gradient 값을 $∇f(x)$와 같이 표현한다. 따라서 gradient는 $x$에 대해 $f(x)$가 가장 가파르게 증가하는 방향과 증가율을 나타낸다고 할 수 있다.
+   함수값이 실수인 $n$차원 다변수함수 $f(x)=f(x_1, x_2, ..., x_n)$가 있을 때, **$f(x)$를 각 변수에 대해 1차 편미분한 벡터**를 gradient라고 하며 매개변수가 $x$일 때 목적함수 $f$의 gradient 값을 $∇f(x)$와 같이 표현한다. 매개변수가 여러 개라면 각 변수에 대해 편미분 연산을 해야 한다. 따라서 gradient는 $x$에 대해 $f(x)$가 가장 가파르게 증가하는 방향과 증가율을 나타낸다고 할 수 있다.
 
 ---
 
@@ -34,6 +34,8 @@ optimizer는 최적화 이론 기법이라고 할 수 있다.
 
    ![Untitled](https://github.com/user-attachments/assets/bb8e8ebd-7dce-408b-8075-05cc73504846)
 
+   그리고 후에 사용할 learning rate(학습률)와 gradient의 초기값을 설정한다.
+
 2. update
 
    최적화하고자 하는 함수 $f(x)$에 대해 다음과 같은 식을 이용해 다음 가중치의 위치로 이동하며, 이를 update라고 한다. 이때 $x_t$는 $t$번째 반복의 매개변수 $x$값이다.
@@ -48,7 +50,7 @@ optimizer는 최적화 이론 기법이라고 할 수 있다.
 
    > $∇f(x_1, x_2, ..., x_n) = (\frac{∂f}{∂x_1},\frac{∂f}{∂x_2},...,\frac{∂f}{∂x_n}) = \frac{∂f}{∂x}(x_1, x_2,...,x_n)$
 
-   이때 계수 **$η$는 step size(이동할 거리)를 조정하는 hyper parameters이며, 이를 learning rate(학습률)라고 한다.** learning rate가 너무 크면 수렴할 값을 놓치고 발산할 수 있고(overshooting), learning rate가 너무 작으면 그만큼 수렴이 늦어질(learn too slow) 수 있다. 다음은 이를 표현한 그림이다.
+   이때 계수 **$η$는 step size(이동할 거리)를 조정하는 계수이며, 이는 hyper parameters로 이전에 설정한 learning rate의 값과 같다.** learning rate가 너무 크면 수렴할 값을 놓치고 발산할 수 있고(overshooting), learning rate가 너무 작으면 그만큼 수렴이 늦어질(learn too slow) 수 있다. 다음은 이를 표현한 그림이다.
 
    ![Untitled2](https://github.com/user-attachments/assets/4d799835-d665-4575-af65-75ff74b592e9)
 
