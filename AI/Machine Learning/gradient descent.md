@@ -34,7 +34,7 @@ optimizer는 최적화 이론 기법이라고 할 수 있다.
 
    ![Untitled](https://github.com/user-attachments/assets/bb8e8ebd-7dce-408b-8075-05cc73504846)
 
-   그리고 후에 사용할 learning rate(학습률)와 gradient의 초기값을 설정한다.
+   그리고 후에 사용할 learning rate(학습률) $η$을 0과 1 사이의 값으로 설정한다. gradient의 초기값 $x_0$을 설정하며, 이는 무작위로 생성하여도 무관하다.
 
 2. update
 
@@ -50,13 +50,21 @@ optimizer는 최적화 이론 기법이라고 할 수 있다.
 
    > $∇f(x_1, x_2, ..., x_n) = (\frac{∂f}{∂x_1},\frac{∂f}{∂x_2},...,\frac{∂f}{∂x_n}) = \frac{∂f}{∂x}(x_1, x_2,...,x_n)$
 
-   이때 계수 **$η$는 step size(이동할 거리)를 조정하는 계수이며, 이는 hyper parameters로 이전에 설정한 learning rate의 값과 같다.** learning rate가 너무 크면 수렴할 값을 놓치고 발산할 수 있고(overshooting), learning rate가 너무 작으면 그만큼 수렴이 늦어질(learn too slow) 수 있다. 다음은 이를 표현한 그림이다.
+   이때 계수 **$η$는 step size(이동할 거리)를 조정하는 계수이다.** 하강하는 보폭이라고 생각하면 편하다. 또한, 이는 hyper parameters로 이전에 설정한 **learning rate의 값과 같다**.
+
+   이 learning rate가 너무 크면 수렴할 값을 놓치고 발산할 수 있고(overshooting), learning rate가 너무 작으면 그만큼 수렴이 늦어질(learn too slow) 수 있다. 다음은 이를 표현한 그림이다.
 
    ![Untitled2](https://github.com/user-attachments/assets/4d799835-d665-4575-af65-75ff74b592e9)
 
 3. 반복
 
-   Objective function(목적함수)이 특정 값으로 알맞게 수렴할 때 까지 이 과정을 반복한다. 인공신경망에서는 loss function(손실함수)이 최소가 되는 지점을 찾기 위해 gradient descent을 사용한다.
+   다음 조건 중 한 가지가 만족될 때 까지 이 과정을 반복한다.
+
+   1. Objective function(목적함수)이 특정 값으로 수렴한다.
+
+   2. Gradient $x$의 값이 범위 내에서 더이상 변화하지 않는다.
+
+   인공신경망에서는 loss function(손실함수)이 최소가 되는 지점을 찾기 위해 gradient descent을 사용한다.
 
 ---
 
