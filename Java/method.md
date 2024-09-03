@@ -4,8 +4,6 @@
 
 Method에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/blob/main/Java/Object%20Oriented%20Programming/%EA%B0%9C%EB%85%90.md)로 redirect 하겠다.
 
----
-
 1. 이해
 
    Java에서 method는 객체의 동작에 해당하는 중괄호 블록을 뜻한다. Method는 field에 접근하여 읽고 수정하는 역할도 하지만, 다른 객체를 생성하여 여러 기능을 수행하기도 한다. 이 method는 객체 간의 데이터를 전달하는 수단으로 이용된다.
