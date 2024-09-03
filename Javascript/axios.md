@@ -16,7 +16,7 @@ yarn add axios
 
 1. 개념
 
-   Axios는 javascript 기반의 HTTP 라이브러리로, 서버와 클라이언트 간의 통신을 아주 간편하게 해준다. javascript에서는 fetch를 이용하여 api 통신을 해도 무방하지만, 간결한 코드를 통한 간편성과 더불어 편리한 에러 handling, 취소 기능, timeout 기능 등 유용성 또한 가지기 때문에 axios를 이용하는 경우도 다분하다.
+   Axios는 JS6 기반의 HTTP 라이브러리로, 서버와 클라이언트 간의 통신을 아주 간편하게 해준다. javascript에서는 fetch를 이용하여 api 통신을 해도 무방하지만, 간결한 코드를 통한 간편성과 더불어 편리한 에러 handling, 취소 기능, timeout 기능 등 유용성 또한 가지기 때문에 axios를 이용하는 경우도 다분하다.
 
 2. 특징
 
@@ -183,7 +183,7 @@ yarn add axios
 
 1. api 통신
 
-   [promise](https://github.com/976520/TIL/blob/main/javascript/promise.md)를 쓸 때와, [async, await](https://github.com/976520/TIL/blob/main/javascript/async%2C%20await.md)를 쓸 때와 비교하는 것이 중요하다.
+   [promise](https://github.com/976520/TIL/blob/main/javascript/promise.md)만 쓸 때와, [async, await](https://github.com/976520/TIL/blob/main/javascript/async%2C%20await.md)를 쓸 때와 비교하는 것이 중요하다.
 
    ```javascript
    function fetchData(url) {
@@ -198,7 +198,7 @@ yarn add axios
    }
    ```
 
-2. async, await 사용
+2. async, await 병행 사용
 
    위와 같이 chaining을 계속 이어나가다 보면 복잡한 요청의 경우 handler가 끝없이 이어져 코드의 가독성이 떨어질 수 있다. 따라서 async, await를 다음과 같이 적절히 이용하여 이를 해결할 수 있다.
 
