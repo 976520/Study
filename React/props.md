@@ -24,7 +24,7 @@
 
 ## 문법
 
-아래 코드의 함수 컴포넌트는 매개변수로 받은 props를 `return()`안에서 사용하고 있다.
+아래 코드의 함수 component는 매개변수로 받은 props를 `return()`안에서 사용하고 있다.
 
 ```javascript
 function Example(props) {
@@ -36,7 +36,7 @@ function Example(props) {
 }
 ```
 
-아래 코드에서는 컴포넌트를 사용할 때 태그 안의 속성으로 props를 전달하고 있다.
+아래 코드에서는 component를 사용할 때 태그 안의 속성으로 props를 전달하고 있다.
 
 ```javascript
 function App() {

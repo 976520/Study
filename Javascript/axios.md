@@ -20,7 +20,9 @@ yarn add axios
 
 2. 특징
 
-   Promise 기반이기 때문에 기본적으로 비동기적인 request와 response 처리를 지원한다. 이러한 HTTP request와 response를 JSON 형태로 자동으로 변경한다.
+   Axios는 Promise 기반이기 때문에 기본적으로 비동기적인 request와 response 처리를 지원한다. 이러한 HTTP request와 response를 JSON 형태로 자동으로 변환하며, HTTP 요청을 캔슬하거나, 요청과 응답에 대해 인터셉터를 사용할 수 있는 등 유연한 기능을 제공한다.
+
+   또한, 클라이언트 측에서 쿠키와 인증 토큰 등을 쉽게 관리할 수 있도록 도와준다. Error Handling이 간편하고, Node.js와 브라우저 환경 모두에서 사용할 수 있는 범용성을 갖추고 있다. 다양한 HTTP 메서드와 URL 매개변수 등을 쉽게 설정할 수 있어 REST API 통신을 보다 효율적으로 할 수 있다.
 
 ---
 
@@ -193,5 +195,7 @@ yarn add axios
        });
    }
    ```
+
+2. 요청 취소
 
 ---
