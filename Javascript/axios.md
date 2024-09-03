@@ -16,13 +16,13 @@ yarn add axios
 
 1. 개념
 
-   Axios는 JS6 기반의 HTTP 라이브러리로, 서버와 클라이언트 간의 통신을 아주 간편하게 해준다. javascript에서는 fetch를 이용하여 api 통신을 해도 무방하지만, 간결한 코드를 통한 간편성과 더불어 편리한 에러 handling, 취소 기능, timeout 기능 등 유용성 또한 가지기 때문에 axios를 이용하는 경우도 다분하다.
+   Axios는 JS6 기반의 HTTP 라이브러리로, 서버와 클라이언트 간의 통신을 아주 간편하게 해준다. javascript에서는 fetch를 이용하여 api 통신을 해도 무방하지만, 간결한 코드를 통한 간편성 때문에 axios를 이용하는 경우도 다분하다.
 
    하지만 비교적 큰 라이브러리 크기와 추가적인 종속성이 필요한 경우가 있다. fetch API와 비교해 브라우저 호환성 문제는 덜하지만, 최신 브라우저에서 fetch 를 선호하는 경우도 있다.
 
 2. 특징
 
-   Axios는 Promise 기반이기 때문에 기본적으로 비동기적인 request와 response 처리를 지원한다. 이러한 HTTP request와 response를 JSON 형태로 자동으로 변환하며, HTTP 요청을 캔슬하거나, 요청과 응답에 대해 인터셉터를 사용할 수 있는 등 유연한 기능을 제공한다.
+   Axios는 **promise 기반**이기 때문에 기본적으로 비동기적인 request와 response 처리를 지원한다. 이러한 **HTTP request와 response를 JSON 형태로 자동으로 변환**한다. 기본적으로 error handling이 편리하고 timeout 기능을 제공하며, HTTP 요청을 취소하거나, 요청과 응답에 대해 인터셉터를 사용할 수 있는 등 유연한 기능을 제공한다.
 
    또한, 클라이언트 측에서 쿠키와 인증 토큰 등을 쉽게 관리할 수 있도록 도와준다. Error Handling이 간편하고, Node.js와 브라우저 환경 모두에서 사용할 수 있는 범용성을 갖추고 있다. 다양한 HTTP 메서드와 URL 매개변수 등을 쉽게 설정할 수 있어 REST API 통신을 보다 효율적으로 할 수 있다.
 
