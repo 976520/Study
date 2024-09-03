@@ -58,15 +58,8 @@ Instance에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL
             this.탈모(10);
         }
     }
-
-    public class stress {
-        public static void main(String[] args) {
-            이주언 이주언 = new 이주언();
-            이주언.탈모(5);
-        }
-    }
-
-    // 출력: 이주언 has only 95 hairs.
    ```
+
+   이 코드에서 `numberOfHairs`와 `탈모()`는 각각 instance field와 instance method이다. Class 내부에서 이들을 명확하게 참조하여 사용하기 위해 `this`를 이용한 모습이다.
 
 ---
