@@ -16,13 +16,15 @@ yarn add axios
 
 1. 개념
 
-   Axios는 javascript 기반의 HTTP 라이브러리로, 서버와 클라이언트 간의 통신을 아주 간편하게 해준다. javascript에서는 fetch를 이용하여 api 통신을 해도 무방하지만, 간편성과 더불어 여러 장점을 가지기 때문에 axios를 이용하는 경우도 다분하다.
+   Axios는 javascript 기반의 HTTP 라이브러리로, 서버와 클라이언트 간의 통신을 아주 간편하게 해준다. javascript에서는 fetch를 이용하여 api 통신을 해도 무방하지만, 간결한 코드를 통한 간편성과 더불어 편리한 에러 handling, 취소 기능, timeout 기능 등 유용성 또한 가지기 때문에 axios를 이용하는 경우도 다분하다.
 
 2. 특징
 
    Axios는 Promise 기반이기 때문에 기본적으로 비동기적인 request와 response 처리를 지원한다. 이러한 HTTP request와 response를 JSON 형태로 자동으로 변환하며, HTTP 요청을 캔슬하거나, 요청과 응답에 대해 인터셉터를 사용할 수 있는 등 유연한 기능을 제공한다.
 
    또한, 클라이언트 측에서 쿠키와 인증 토큰 등을 쉽게 관리할 수 있도록 도와준다. Error Handling이 간편하고, Node.js와 브라우저 환경 모두에서 사용할 수 있는 범용성을 갖추고 있다. 다양한 HTTP 메서드와 URL 매개변수 등을 쉽게 설정할 수 있어 REST API 통신을 보다 효율적으로 할 수 있다.
+
+   하지만 비교적 큰 라이브러리 크기와 추가적인 종속성이 필요한 경우가 있다. fetch API와 비교해 브라우저 호환성 문제는 덜하지만, 최신 브라우저에서 fetch 를 선호하는 경우도 있다.
 
 ---
 
@@ -184,11 +186,11 @@ yarn add axios
    [promise](https://github.com/976520/TIL/blob/main/javascript/promise.md)를 쓸 때와, [async, await](https://github.com/976520/TIL/blob/main/javascript/async%2C%20await.md)를 쓸 때와 비교하는 것이 중요하다.
 
    ```javascript
-   function example() {
+   function fetchData(url) {
      return axios
        .get(url)
        .then((response) => {
-         return response.data;
+         response.data;
        })
        .catch((error) => {
          throw error;
@@ -196,6 +198,48 @@ yarn add axios
    }
    ```
 
-2. 요청 취소
+2. async, await 사용
+
+   위와 같이 chaining을 계속 이어나가다 보면 복잡한 요청의 경우 handler가 끝없이 이어져 코드의 가독성이 떨어질 수 있다. 따라서 async, await를 다음과 같이 적절히 이용하여 이를 해결할 수 있다.
+
+   ```javascript
+   async function fetchData(url) {
+     try {
+       const response = await axios.get(url);
+       return response.data;
+     } catch (error) {
+       throw error;
+     }
+   }
+   ```
+
+3. 요청 취소
+
+   Axios에서는 요청을 취소하기 위해 `CancelToken`을 사용한다. 이 기능을 사용하면 다음과 같이 요청을 보낸 후 언제든지 해당 요청을 무효화 할 수 있다. 아래 코드에서는 1초 간격으로 요청을 두 번 보내게 되는데, 두 번째 요청이 들어갔을 때 첫 번째 요청이 취소되게 된다.
+
+   ```javascript
+   const CancelToken = axios.CancelToken;
+   let cancel;
+   function fetchData(url) {
+     if (cancel) cancel();
+
+     return axios
+       .get(url, {
+         cancelToken: new CancelToken((c) => (cancel = c)),
+       })
+       .then((response) => {
+         response.data;
+       })
+       .catch((error) => {
+         throw error;
+       });
+   }
+
+   fetchData("First_URL");
+
+   setTimeout(() => {
+     fetchData("Second_URL");
+   }, 1000);
+   ```
 
 ---
