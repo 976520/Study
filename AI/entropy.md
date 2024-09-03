@@ -16,7 +16,7 @@
 
 2. Cross Entropy
 
-   Cross entropy는두 확률 분포의 차이를 구하기 위해 사용된다. Machine learning에서는 실제 데이터의 확률 분포와 모델이 계산한 확률 분포의 dissimilarity(차이)를 구할 때 사용한다.
+   Cross entropy는 **두 확률 분포의 차이**를 구하기 위해 사용된다. Machine learning에서는 실제 데이터의 확률 분포와 모델이 계산한 확률 분포의 dissimilarity(차이)를 구할 때 사용한다.
 
    실제 분포 $p$를 예측하는 분포 $q$가 있을 때, cross entropy는 다음과 같이 정의된다.
 
