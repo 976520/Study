@@ -1,6 +1,6 @@
 # 경사하강법 탐구하기
 
-> Gradient descent(경사하강법)은 함수의 최솟값을 찾는 optimizer 이다.
+> Gradient descent method(경사하강법)은 함수의 최솟값을 찾는 optimizer 이다.
 
 ~~인공신경망을 만만하게 본 학우들이 처음으로 갈려나가는 관문이다.~~
 
