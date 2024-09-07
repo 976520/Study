@@ -143,7 +143,7 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 
       String school = "광주소프트웨어마이스터고등학교";
       int number = 1414;
-      boolean isGay = true;
+      boolean isGay;
 
       Head head = new Head;
       Hair hair = new Hair;
@@ -162,11 +162,17 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
    public class 황지훈 {
 
       이주언 girlfriend = new 이주언;
+      girlfriend.isGay = true;
 
-      void 거세() {
+      void 중성화() {
          girlfriend.sex = "female"
+         girlfriend.isGay = false;
       }
+
+      System.out.println("now, 이주언's sex is" + girlfriend.sex);
    }
+
+   // 출력: now, 이주언's sex is female
    ```
 
    위 코드에서는 이주언 class의 field를 외부에서 변경하기 위해 `girlfriend` 변수를 통해 class를 참조하고, .(도트) 연산자를 통해 field에 접근하였다.
