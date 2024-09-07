@@ -182,9 +182,3 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
    선언 형태는 일반적인 변수와 비슷할지라도 각각 구분된 개념이다. 그래서 혹자는 field를 class 멤버 변수라고 칭하기도 한다. 객체에 내부의 변수는 constructor 혹은 method 안에서만 사용되며, 이들이 종료되면 자동으로 소멸하게 된다. 하지만 field는 constructor와 method 전체에서 사용되며, 객체가 소멸되지 않는 한 계속 존재한다.
 
 ---
-
-## method
-
-> method는 객체의 동작을 실행하는 역할을 한다.
-
----
