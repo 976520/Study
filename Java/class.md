@@ -8,7 +8,7 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 
 1. 문법
 
-   `<접근 지정자> class <class명> {}`을 통해 같이 class를 생성할 수 있다. 이때 class명에는 다음과 같은 작성 조건이 존재한다. 이 때 중괄호를 통해 class 선어의 시작과 끝을 명시한다.
+   `(접근 지정자) class [class명] {}`을 통해 같이 class를 생성할 수 있다. 이때 class명에는 다음과 같은 작성 조건이 존재한다. 이 때 중괄호를 통해 class 선어의 시작과 끝을 명시한다.
 
    1. 하나 이상의 문자로 이루어져야 한다.
 
@@ -20,7 +20,7 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 
    Class명을 한글로 작성하여도 무관하며, 영문으로 작성할 시 대소문자를 구분한다. 첫 글자를 대문자로 작성하는 것이 관례이다.
 
-2. 예시
+2. 사용
 
    다음과 같이 class를 선언할 수 있다.
 
@@ -44,9 +44,9 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 
 1. 문법
 
-   `<class명> <변수명> = new <class명>`을 통해 class를 참조하여 새로운 instance를 생성할 수 있다.
+   `[class명] [변수명] = new [class명]`을 통해 class를 참조하여 새로운 instance를 생성할 수 있다.
 
-2. 예시
+2. 사용
 
    다음과 같이 class로부터 객체를 생성할 수 있다.
 
@@ -83,7 +83,7 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 
    코드에서 오직 1개만 존재해야 하는 실행 class는 java 코드의 실행 진입점인 `main()` method를 제공하는 역할을 한다. `MakingInstance`는 실행 class에 해당한다.
 
-2. 예시
+2. 사용
 
    앞선 예제의 `Object` 안에 `main()` method를 작성하여 라이브러리 class인 동시에 실행 class인 class를 만들 수도 있다.
 
@@ -110,6 +110,8 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 ## field
 
 1. 문법
+
+   `[type] [필드명] (= 초기값);`을 통해 선언할 수 있다. 이 field의 선언은 class의 중괄호 내부 어디서든 존재할 수 있다.
 
 2. 이해
 
