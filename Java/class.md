@@ -188,9 +188,3 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 > method는 객체의 동작을 실행하는 역할을 한다.
 
 ---
-
-## constructor(생성자)
-
-> constructor는 객체 생성 시 초기화하는 역할을 한다.
-
----
