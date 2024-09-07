@@ -1,6 +1,6 @@
 # Java의 시작과 끝
 
-Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/blob/main/Java/Object%20Oriented%20Programming/%EA%B0%9C%EB%85%90.md)로 redirect 하겠다...
+Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/blob/main/Java/Object%20Oriented%20Programming/%EA%B0%9C%EB%85%90.md)로 redirect 하겠다. 이 글은 독자가 [OOP](https://github.com/976520/TIL/tree/main/Java/Object%20Oriented%20Programming)에 대한 기초적인 이해가 있다는 가정 하에 작성되었다. 따라서 OOP의 개념을 java에서 심층적으로 활용하는 방향으로 서술한다.
 
 ---
 
@@ -109,9 +109,17 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 
 ## field
 
-> 객체의 데이터를 저장하는 역할을 한다.
+1. 문법
 
-여기서 데이터란, 객체의 고유 데이터 뿐만 아니라 객체의 부품 객체, state 등을 모두 포괄한다. 선언 형태는 일반적인 변수와 비슷할지라도 각각 구분된 개념이다.
+2. 이해
+
+   > 객체의 데이터를 저장하는 역할을 한다.
+
+   여기서 데이터란, 객체의 고유 데이터 뿐만 아니라 객체의 부품 객체, state 등을 모두 포괄한다.
+
+3. 변수와의 차이
+
+   선언 형태는 일반적인 변수와 비슷할지라도 각각 구분된 개념이다. 객체에 내부의 변수는 constructor 혹은 method 안에서만 사용되며, 이들이 종료되면 자동으로 소멸하게 된다. 하지만 field는 constructor와 method 전체에서 사용되며, 객체가 소멸되지 않는 한 계속 존재한다.
 
 ---
 
