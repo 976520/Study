@@ -1,4 +1,4 @@
-## Java의 시작
+## Java의 시작과 끝
 
 Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/blob/main/Java/Object%20Oriented%20Programming/%EA%B0%9C%EB%85%90.md)로 redirect 하겠다...
 
@@ -20,11 +20,15 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
    public class Object {
 
    }
+
+   class BrotherOfObject {
+
+   }
    ```
 
-   Java에서는 항상 class명과 소스 파일명이 동일하다. 위와 같은 경우 파일명이 `Object.java`가 되어야 한다. 소스 파일 역시 대소문자를 구분하므로 주의해야 한다. 따라서 일반적으로 소스 파일 하나당 class 하나를 생성하지만, 그 이상의 class 생성이 불가능하지는 않다.
+   Java에서는 항상 **class명과 소스 파일명이 동일**하다. 위와 같은 경우 파일명이 `Object.java`가 되어야 한다. 소스 파일 역시 대소문자를 구분하므로 주의해야 한다. 일반적으로 소스 파일 하나당 class 하나를 생성하지만, 그 이상의 class 생성이 불가능하지는 않다. 소스 파일은 class의 선언을 담고 있을 뿐, class 자체와는 구분되는 개념이다. 따라서 위와 같은 코드를 컴파일하면 `Object.class`와 `BrotherOfObject.class`가 각각 생성된다. 하지만 **소스 파일명과 동일한 이름의 class만 접근 제한자를 `public`으로 설정**할 수 있다.
 
-2. instance 생성
+1. instance 생성
 
    또한 다음과 같이 class로부터 객체를 생성할 수 있다.
 
@@ -43,7 +47,7 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 
    이 코드가 실행되면 메모리에 class 변수와 객체가 생성된다. `Object` class는 하나지만, `new` 키워드를 사용한 만큼 객체가 메모리상에 새로 생성되며, 같은 class를 통해 생성되었지만 각각의 Object 객체는 자신만의 고유 데이터를 가진다. 또한 각 변수가 참조하는 `Object` 객체는 각각 완전히 독립된 서로 다른 객체이다.
 
-3. class의 구분
+1. class의 구분
 
    Class는 용도에 따라 다음 두 종류로 나뉜다.
 
