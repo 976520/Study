@@ -1,16 +1,28 @@
 ## Java의 시작
 
-Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/blob/main/Java/Object%20Oriented%20Programming/%EA%B0%9C%EB%85%90.md)로 redirect 한다...
+Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/blob/main/Java/Object%20Oriented%20Programming/%EA%B0%9C%EB%85%90.md)로 redirect 하겠다...
 
 1. class 선언
 
-   `<접근 지정자> class <class명> {}`을 통해 다음과 같이 class를 생성할 수 있다.
+   `<접근 지정자> class <class명> {}`을 통해 다음과 같이 class를 생성할 수 있다. 이때 class명에는 다음과 같은 작성 조건이 존재한다. 이 때 중괄호를 통해 class 선어의 시작과 끝을 명시한다.
+
+   1. 하나 이상의 문자로 이루어져야 한다.
+
+   2. 첫 번째 글자는 숫자가 올 수 없다.
+
+   3. $(달러사인), \_(언더바) 이외의 특수문자는 사용할 수 없다.
+
+   4. Java의 예약어는 사용할 수 없다.
+
+   Class명을 한글로 작성하여도 무관하며, 영문으로 작성할 시 대소문자를 구분한다. 첫 글자를 대문자로 작성하는 것이 관례이다.
 
    ```java
    public class Object {
 
    }
    ```
+
+   Java에서는 항상 class명과 소스 파일명이 동일하다. 위와 같은 경우 파일명이 `Object.java`가 되어야 한다. 소스 파일 역시 대소문자를 구분하므로 주의해야 한다. 따라서 일반적으로 소스 파일 하나당 class 하나를 생성하지만, 그 이상의 class 생성이 불가능하지는 않다.
 
 2. instance 생성
 
@@ -48,7 +60,7 @@ Class에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
    ```java
    public class Object {
 
-    // 귀찮아서 안 썼지만, 라이브러리 class로서의 코드가 여기에 있을 수 있으며,
+    // 귀찮아서 안 썼지만, 라이브러리 class로서의 코드가 여기에 있을 수 있다.
 
     // 동시에 실행을 위한 main() method도 있을 수 있다.
     Public static void main(String[] args) {
