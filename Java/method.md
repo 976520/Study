@@ -69,4 +69,16 @@ Method에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/b
 
 4. overloading
 
+   Class 내의 같은 이름의 method를 다수 선언하는 것을 method overloading이라고 한다. 두 개 이상의 method 이름이 같으므로, 매개변수의 type, 개수, 순서 중 하나 이상이 달라야 한다. Overloading은 매개값을 다양하게 받아 각각 알맞게 처리할 수 있도록 하게 해준다.
+
+   예를 들어 다음과 같은 method가 있다고 할 때,
+
+   ```java
+    int add(int firstNum, int secondNum) {
+      return firstNum + secondNum;
+    }
+   ```
+
+   `add()` method를 호출하기 위해서는 두 개의 `int` type parameter들이 필요하다. 하지만 `double` type 값의 덧셈 연산을 할 때에는 이 method를 호출하지 못한다. 같은 class 내에 같은 동작을 하지만 `double`로 선언된 method를 만들면 이를 해결할 수 있다.
+
 ---
