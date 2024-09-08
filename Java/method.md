@@ -52,7 +52,7 @@ Method에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/b
         }
     }
 
-    public class Main {
+    public class stress {
         public static void main(String[] args) {
             이주언 이주언 = new 이주언();
             이주언.탈모(5);
@@ -62,5 +62,9 @@ Method에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/b
 
     // 출력: 이주언 has only 95 hairs.
    ```
+
+   `이주언` class에서는 `탈모()`의 호출을 위해 `이주언()` constructor를 이용하여 객체가 생성될 때 `탈모()`가 실행되게끔 하였다.
+
+   `stress` class에서는 `이주언` class의 `탈모()`와 `printNumberOfHairs()` method를 호출하기 위하여 `이주언`의 instance를 새로 생성하였다.
 
 ---
