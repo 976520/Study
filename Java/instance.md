@@ -38,3 +38,35 @@ Instance에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL
 1. 이해
 
    Instance 멤버란, instance를 생성한 후 사용할 수 있는 field와 method를 뜻하며, 각각 instance field와 instance method 라고 칭한다. 이들은 객체에 소속된 멤버이기 때문에 당연히 객체가 있어야 사용이 가능해진다.
+
+2. `this`
+
+   객체 외부에서 instance 멤버에 접근하기 위해 참조를 이용하는 것과 같이 객체 내부에서는 instance 멤버에 접하기 위해 `this`를 사용한다. `this`는 객체가 자신을 1인칭으로 가리키는 것이다.
+
+3. 사용
+
+   ```java
+    class 이주언 {
+        int numberOfHairs = 100;
+
+        int 탈모(int numberOfLostHairs) {
+            this.numberOfHairs -= numberOfLostHairs;
+            return this.numberOfHairs;
+        }
+
+        이주언() {
+            this.탈모(10);
+        }
+    }
+
+    public class stress {
+        public static void main(String[] args) {
+            이주언 이주언 = new 이주언();
+            이주언.탈모(5);
+        }
+    }
+
+    // 출력: 이주언 has only 95 hairs.
+   ```
+
+---
