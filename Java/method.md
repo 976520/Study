@@ -74,11 +74,31 @@ Method에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/b
    예를 들어 다음과 같은 method가 있다고 할 때,
 
    ```java
-    int add(int firstNum, int secondNum) {
-      return firstNum + secondNum;
-    }
+   int add(int firstNum, int secondNum) {
+     return firstNum + secondNum;
+   }
    ```
 
-   `add()` method를 호출하기 위해서는 두 개의 `int` type parameter들이 필요하다. 하지만 `double` type 값의 덧셈 연산을 할 때에는 이 method를 호출하지 못한다. 같은 class 내에 같은 동작을 하지만 `double`로 선언된 method를 만들면 이를 해결할 수 있다.
+   `add()` method를 호출하기 위해서는 두 개의 `int` type parameter들이 필요하다. 하지만 `double` type 값의 덧셈 연산을 할 때에는 이 method를 호출하지 못한다. 같은 class 내에 같은 동작을 하는 `double`로 선언된 method를 만들면 이를 해결할 수 있다.
+
+   ```java
+   double add(double firstNum, double secondNum) {
+      return firstNum + secondNum;
+   }
+   ```
+
+   Overloading 된 method를 호출할 경우 parameter의 타입을 보고 실행 할 method를 결정한다. 가령, 아래와 같이 메소드를 호출하면 `int`로 선언된 `add()`가 실행될 것이다.
+
+   ```java
+   add(7, 8)
+   ```
+
+   만약 다음과 같이 두 매개변수의 자료형이 애매하게 일치하지 않을 경우, 자동 타입 변환이 가능한지를 검사한다.
+
+   ```java
+   add(16, 7.5)
+   ```
+
+   위와 같은 경우 첫 번째 매개변수의 type인 `int`는 `double`로 형변환이 가능하므로, `double`로 선언된 `add()`가 실행되게 된다.
 
 ---
