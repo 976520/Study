@@ -67,4 +67,6 @@ Method에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/b
 
    `stress` class에서는 `이주언` class의 `탈모()`와 `printNumberOfHairs()` method를 호출하기 위하여 `이주언`의 instance를 새로 생성하였다.
 
+4. overloading
+
 ---
