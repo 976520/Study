@@ -32,7 +32,7 @@ Method에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/b
 
 3. 사용
 
-   Method는 호출에 의해 실행된다. Class 외부에서 호출할 경우 우선 class에서 객체를 생성한 뒤, 참조를 이용하여 method를 호출해야 한다.
+   Method는 호출에 의해 실행된다. Class 외부에서 호출할 경우 우선 class에서 객체를 생성한 뒤, 참조를 이용하여 method를 호출해야 한다. Method는 객체에 소속된 멤버이므로 객체가 없으면 method도 없기 때문이다.
 
    ```java
     class 이주언 {
