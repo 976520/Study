@@ -31,3 +31,36 @@ Method에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/b
    Method명을 한글로 작성하여도 무관하다. 영문으로 작성할 시 첫 글자를 소문자로 작성하고, 여러 단어가 혼합된 이름이라면 뒤이어 오는 단어의 첫 글자를 대문자로 작성하는 camel case를 쓰는 것이 관례이다. 또한 이름을 지을 때 각 method가 어떤 기능을 하는지 쉽게 알 수 있도록 기능의 이름을 사용하는 것이 좋다.
 
 3. 사용
+
+   Method는 호출에 의해 실행된다. Class 외부에서 호출할 경우 우선 class에서 객체를 생성한 뒤, 참조를 이용하여 method를 호출해야 한다.
+
+   ```java
+    class 이주언 {
+        int numberOfHairs = 100;
+
+        int 탈모(int numberOfLostHairs) {
+            numberOfHairs -= numberOfLostHairs;
+            return numberOfHairs;
+        }
+
+        이주언() {
+            탈모(10);
+        }
+
+        void printNumberOfHairs() {
+            System.out.println("이주언 has only " + numberOfHairs + " hairs.");
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            이주언 이주언 = new 이주언();
+            이주언.탈모(5);
+            이주언.printNumberOfHairs();
+        }
+    }
+
+    // 출력: 이주언 has only 95 hairs.
+   ```
+
+---
