@@ -50,7 +50,7 @@ Method에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/b
         }
     }
 
-    public class stress {
+    public class Stress {
         public static void main(String[] args) {
             이주언 이주언 = new 이주언();
             이주언.탈모(5);
