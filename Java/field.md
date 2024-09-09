@@ -102,14 +102,30 @@ Field에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 
       초기화 코드가 복잡하거나, 외부 데이터를 통해 초기화해야 한다면 constructor를 통해 초기값을 지정할 수 있다. 이때 constructor는 final field의 최종 초기화를 반드시 끝마쳐야 한다.
 
-3. 상수
+---
 
-   > 불변의 값을 뜻한다.
+## static final field
 
-   이 불변의 값을 저장하는 field를 java에서도 상수(constant)라고 하는데, final field와는 다음과 같은 차이점들을 갖는다.
+1. 이해
 
-   1. 상수는 공용성을 가진다.
+   > 상수는 불변의 값을 뜻한다.
 
-   2. 상수는 여러 값으로 초기화될 수 없다.
+   이 불변의 값을 저장하는 field를 상수(constant)라고 하는데, java에서 이는 static final field로 구현된다. Static final field는 c
+
+2. final field와의 차이
+
+   final field와는 다음과 같은 차이점들을 갖는다.
+
+   1. 상수는 **공용성**을 가진다.
+
+      객체가 상수를 사용할 때, 객체마다 따로 저장할 필요가 없다. Final filed는 객체마다 저장된다는 점에서 차이가 있다.
+
+   2. 상수는 **여러 값으로 초기화될 수 없다**.
+
+      Final field의 경우는 constructor의 parameter를 통해 여러 값을 가질 수 있다.
+
+3. 문법
+
+   `static final [type] [field명]( = 초기값);`
 
 ---
