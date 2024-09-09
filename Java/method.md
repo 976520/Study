@@ -1,4 +1,6 @@
-## 메소드 연기
+# 메소드 연기
+
+## method
 
 > method는 객체의 동작을 실행하는 역할을 한다.
 
@@ -65,15 +67,21 @@ Method에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/b
 
    `stress` class에서는 `이주언` class의 `탈모()`와 `printNumberOfHairs()` method를 호출하기 위하여 `이주언`의 instance를 새로 생성하였다.
 
-4. overloading
+---
+
+## overloading
+
+1. 이해
 
    Class 내의 같은 이름의 method를 다수 선언하는 것을 method overloading이라고 한다. 두 개 이상의 method 이름이 같으므로, 매개변수의 type, 개수, 순서 중 하나 이상이 달라야 한다. Overloading은 매개값을 다양하게 받아 각각 알맞게 처리할 수 있도록 하게 해준다.
+
+2. 사용
 
    예를 들어 다음과 같은 method가 있다고 할 때,
 
    ```java
    int add(int firstNum, int secondNum) {
-     return firstNum + secondNum;
+   return firstNum + secondNum;
    }
    ```
 
@@ -81,7 +89,7 @@ Method에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/b
 
    ```java
    double add(double firstNum, double secondNum) {
-      return firstNum + secondNum;
+   return firstNum + secondNum;
    }
    ```
 

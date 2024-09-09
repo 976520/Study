@@ -1,8 +1,12 @@
-## field
+# 필드
 
 > 객체의 속성이다.
 
 Field에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/blob/main/Java/Object%20Oriented%20Programming/%EA%B0%9C%EB%85%90.md)로 redirect 하겠다.
+
+---
+
+## field
 
 1. 이해
 
@@ -75,5 +79,13 @@ Field에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 1. 변수와의 차이
 
    선언 형태는 일반적인 변수와 비슷할지라도 각각 구분된 개념이다. 그래서 혹자는 field를 class 멤버 변수라고 칭하기도 한다. 객체에 내부의 변수는 constructor 혹은 method 안에서만 사용되며, 이들이 종료되면 자동으로 소멸하게 된다. 하지만 field는 class 안의 constructor와 method 전체에 걸쳐서 사용되며, 객체가 소멸되지 않는 한 계속 존재한다.
+
+---
+
+## final field
+
+1. 이해
+
+   Final field는 일반적인 field와 달리 초기값이 final value, 즉 최종적인 값이 되어서 실행 도중에 수정이 불가능하다.
 
 ---
