@@ -86,6 +86,30 @@ Field에 대한 원론적인 설명은 [여기](https://github.com/976520/TIL/bl
 
 1. 이해
 
-   Final field는 일반적인 field와 달리 초기값이 final value, 즉 최종적인 값이 되어서 실행 도중에 수정이 불가능하다.
+   Final field는 보통 field와 달리 초기값이 final value, 즉 최종적인 값이 되어서 실행 도중에 수정이 불가능하다.
+
+2. 문법
+
+   `final [type] [필드명]( = 초기값);`을 통해 선언할 수 있다. `final`이 붙었다는 것 이외에는 일반적인 field와 문법이 동일하다.
+
+   Final field에 초기값을 할당할 수 있는 방법은 다음과 같다.
+
+   1. 최초로 field를 선언할 때 할당
+
+      값이 단순하다면 선언 시에 할당하는 것이 간단하다.
+
+   2. constructor를 통해 할당
+
+      초기화 코드가 복잡하거나, 외부 데이터를 통해 초기화해야 한다면 constructor를 통해 초기값을 지정할 수 있다. 이때 constructor는 final field의 최종 초기화를 반드시 끝마쳐야 한다.
+
+3. 상수
+
+   > 불변의 값을 뜻한다.
+
+   이 불변의 값을 저장하는 field를 java에서도 상수(constant)라고 하는데, final field와는 다음과 같은 차이점들을 갖는다.
+
+   1. 상수는 공용성을 가진다.
+
+   2. 상수는 여러 값으로 초기화될 수 없다.
 
 ---
