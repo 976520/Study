@@ -12,9 +12,9 @@
    const [state, setState] = useState(initialState);
    ```
 
-   `useState`를 통해 상태 변수 `state`를 선언한 모습이다. 여기서 `useState`의 파라미터 `initialState`가 `state`의 초기값이며, `setState` 함수를 통해 `state`를 다른 값으로 업데이트 할 수 있다.
+   `useState`를 통해 component에서 상태 변수 `state`를 선언한 모습이다. 여기서 `useState`의 파라미터 `initialState`가 `state`의 초기값이며, `setState` 함수를 통해 `state`를 다른 값으로 update 할 수 있다.
 
-   보통 업데이트 함수명은 `set+<상태변수명>` 으로 작성한다.
+   보통 update 함수명은 `set+<상태변수명>` 으로 작성한다.
 
 3. 사용
 
