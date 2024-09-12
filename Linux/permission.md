@@ -4,6 +4,8 @@
 
    대부분의 파일 시스템에서는 group 각 파일과 directory에 **사용자 혹은 group의 read(읽기), write(쓰기), execute(사용)에 대한 접근 권한**을 부여할 수 있으며 이를 permission이라고 한다.
 
+   read는 파일을 열람할 수 있는 권한, write는 파일을 쓰거나 수정할 수 있는 권한, execute는 실행할 수 있는 권한이다.
+
    Linux를 포함한 Unix 계열 OS들도 이러한 permission 시스템을 가지고 있으며, 이를 traditional Unix permissions 라고 하기도 한다.
 
 2. 조회
@@ -18,6 +20,16 @@
 
    ![image](https://github.com/user-attachments/assets/0ac17d3e-d883-4705-adf7-c7833b7c2b20)
 
-   이때 한 행의 첫 열에서 파일 유형을 나타내는 첫 글자를 제외한, `drwxr-x---`와 같이 생긴 것이 permission에 대한 정보이다.
+   이때 한 행의 첫 열에서 파일 유형을 나타내는 첫 글자를 제외한, `rwxr-x---`와 같이 생긴 것이 permission에 대한 정보이다.
+
+3. 규칙
+
+   앞서 예시로 나온 `rwxr-x---`를 다시 세 글자씩 분리해 보자면 `rwx` `r-x` `---` 와 같이 나뉠 것이다. 이는 순서대로 파일 소유자의 권한, 파일 소유 group의 권한, 그 외의 권한을 뜻한다. 또한 권한의 세 종류인 read, write, execute를 각각 한 글자로 줄여 r, w, x로 표현한다.
+
+   예를 들어 `rwx` `r-x` `---` 의 경우, 부여된 권한은 다음과 같다.
+
+   - 파일 소유자는 read, write, execute가 모두 가능하다.
+   - 파일 소유 group는 read, execute는 가능하지만 write는 불가능하다.
+   - 이외의 경우 read, write, execute 모두 불가능하다.
 
 ---
