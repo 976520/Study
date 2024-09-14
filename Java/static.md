@@ -8,7 +8,7 @@
 
    Static 멤버는 class로부터 생성된 instance에 소속된 멤버가 아니라, class에 직접 소속된 멤버이기 때문에 class 멤버라고 부르기도 한다.
 
-   Static 멤버는 class에 고정된 멤버로서,
+   Static 멤버는 class에 고정된 멤버로서, class
 
    Field를 새로 만들 때 instance field로 선언할 것인가, static field로 선언할 것인가를 고민할 상황이 생길 것이다. 만약 객체마다 가지고 있어야 할 데이터라면 instance field로 선언하고, 그럴 필요 없이 class 내부에서 공용적으로 사용되는 데이터라면 static field로 선언하는 것이 좋다.
 
@@ -25,3 +25,5 @@
 3. 사용
 
 4. 초기화
+
+---
