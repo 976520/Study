@@ -18,6 +18,10 @@
 
    Markov prosess는 시간 $t$에 따른 state $S_{t}$의 변화를 나타내고, 이 상태의 변화를 transition(전이)이라고 한다. 이러한 변화를 확률로 표현하게 되는데, 이를 state transition probability(상태 전이 확률)이라고 한다.
 
+   $t$에서의 상태를 $s$라고 하고, $t+1$에서의 상태를 $s'$라고 하면, state transition probability $P_{ss'}$는 조건부 확률을 이용해 다음과 같이 나타낼 수 있다.
+
+   > $P_{ss'} = P(S_{t+1} = s' | S_{t} = s)$
+
 ---
 
 ## Markov Reward Process
