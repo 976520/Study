@@ -10,4 +10,47 @@
 
    또한, factory method pattern을 사용하면 객체 생성 코드와 객체 사용 코드를 분리할 수 있어 결합도를 낮출 수 있다. 이는 코드의 유지보수성을 높이고, 변경에 유연하게 대응할 수 있게 한다.
 
+2. 사용
+
+   ```python
+   from abc import ABC, abstractmethod
+
+   class Creator(ABC):
+       @abstractmethod
+       def factory_method(self):
+           pass
+
+       def some_operation(self):
+           product = self.factory_method()
+           product.use()
+
+   class ConcreteCreatorA(Creator):
+       def factory_method(self):
+           return ConcreteProductA()
+
+   class ConcreteCreatorB(Creator):
+       def factory_method(self):
+           return ConcreteProductB()
+
+   class Product(ABC):
+       @abstractmethod
+       def use(self):
+           pass
+
+   class ConcreteProductA(Product):
+       def use(self):
+           print("im product A")
+
+   class ConcreteProductB(Product):
+       def use(self):
+           print("im product B")
+
+   if __name__ == "__main__":
+       creator_a = ConcreteCreatorA()
+       creator_a.some_operation()
+
+       creator_b = ConcreteCreatorB()
+       creator_b.some_operation()
+   ```
+
 ---
