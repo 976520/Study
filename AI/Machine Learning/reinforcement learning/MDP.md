@@ -24,6 +24,10 @@
 
    > $P_{ss'} = P(S_{t+1} = s' | S_{t} = s)$
 
+2. State transition probability matrix
+
+   State transition probability matrix는 모든 state의 전이 확률을 나타낸 행렬이다. 이를 통해 $S_{t}$에서 $S_{t+1}$로 transition 할 확률을 쉽게 계산할 수 있다.
+
 ---
 
 ## Markov Reward Process
