@@ -60,4 +60,44 @@
 
       `ConcreteClass`는 `TemplateMethod`를 상속받아 각 method를 구현한다.
 
+   2. java
+
+      ```java
+      abstract class TemplateMethod {
+          public void templateMethod() {
+              step1();
+              step2();
+              step3();
+          }
+
+          protected abstract void step1();
+          protected abstract void step2();
+          protected abstract void step3();
+      }
+
+      class ConcreteClass extends TemplateMethod {
+          @Override
+          protected void step1() {
+              System.out.println("Step 1");
+          }
+
+          @Override
+          protected void step2() {
+              System.out.println("Step 2");
+          }
+
+          @Override
+          protected void step3() {
+              System.out.println("Step 3");
+          }
+      }
+
+      public class Main {
+          public static void main(String[] args) {
+              ConcreteClass concreteClass = new ConcreteClass();
+              concreteClass.templateMethod();
+          }
+      }
+      ```
+
 ---
