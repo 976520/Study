@@ -18,4 +18,44 @@
 
       의존성이 심하게 얽혀 복잡하게 꼬여 있는 상황을 의미한다.
 
+2. 사용
+
+   1. python
+
+      ```python
+        from abc import ABC, abstractmethod
+
+        class TemplateMethod(ABC):
+            def template_method(self):
+                self.step1()
+                self.step2()
+                self.step3()
+
+            @abstractmethod
+            def step1(self):
+                pass
+
+            @abstractmethod
+            def step2(self):
+                pass
+
+            @abstractmethod
+            def step3(self):
+                pass
+
+        class ConcreteClass(TemplateMethod):
+            def step1(self):
+                print("Step 1")
+
+            def step2(self):
+                print("Step 2")
+
+            def step3(self):
+                print("Step 3")
+
+        ConcreteClass().template_method()
+      ```
+
+      `TemplateMethod` class는 ABC(Abstract Base Class)로, base class를 상속받는 class가 반드시 base class의 method를 구현하도록 강제된다. 이때 `@abstractmethod`를 사용하여 해당 method가 반드시 구현되어야 한다는 것을 명시한다. 이 코드의 `step1`, `step2`, `step3` method가 이에 해당하며, `template_method`에서 이 세 method를 호출하여 알고리즘의 흐름을 정의한다.
+
 ---
