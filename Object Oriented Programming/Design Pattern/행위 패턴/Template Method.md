@@ -58,4 +58,6 @@
 
       `TemplateMethod` class는 ABC(Abstract Base Class)로, base class를 상속받는 class가 반드시 base class의 method를 구현하도록 강제된다. 이때 `@abstractmethod`를 사용하여 해당 method가 반드시 구현되어야 한다는 것을 명시한다. 이 코드의 `step1`, `step2`, `step3` method가 이에 해당하며, `template_method`에서 이 세 method를 호출하여 알고리즘의 흐름을 정의한다.
 
+      `ConcreteClass`는 `TemplateMethod`를 상속받아 각 method를 구현한다.
+
 ---
