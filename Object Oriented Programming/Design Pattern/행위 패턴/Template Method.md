@@ -6,7 +6,7 @@
 
    Template method pattern은 **여러 class에서 공통으로 사용하는 method를 template화 하여 상위 class에서 정의하고, 하위 class에서 재정의하여 세부 동작을 다르게 구현**하는 pattern이다. 즉, 기능의 뼈대(template)와 실제 구현을 분리한다고 할 수 있다. 상속이라는 기능을 극대화하여 알고리즘의 layout을 맞추는 것에 포커스를 둔다.
 
-   이때 template는 변하지 않는 것을 의미한다. 따라서 변하지 않을 기능만을 추상 class에 정의하고, 변하거나 확장될 수 있는 기능은 구현 class에서 추상 method를 override하여 작성한다.
+   이때 template는 변하지 않는 것을 의미한다. 따라서 변하지 않을 기능만을 추상 class에 정의하고, 변하거나 확장될 수 있는 기능은 구현 class에서 추상 method를 override하여 작성한다. 때문에 추상 class에서 코딩을 자세하게 할 수록 하위 class의 구현에서의 자유도가 줄어든다는 특징이 있다.
 
    알고리즘이 단계별로 나누어져야하는 상황이거나, 같은 역할을 하는 method가 여러 곳에서 다른 형태로 사용될 경우 유용하게 사용할 수 있다.
 
