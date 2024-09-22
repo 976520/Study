@@ -1,7 +1,3 @@
-# Kim Ximya X D.Sanders - Process <-- 명곡추
-
-> Process는 실행 중인 program을 의미한다.
-
 ## 이해
 
 1. 등장 배경
