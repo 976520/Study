@@ -46,8 +46,12 @@
 
    함수가 호출 될 때마다 매개변수, 지역 변수, 복귀 주소 등을 포함하는 activation record(활성화 레코드)가 stack에 push된다. 함수에서 제어가 복귀될 때 stack에서 activation record가 pop된다. Memory가 동적으로 할당됨에 따라 heap이 확장되고, memory가 system에 반환되면 heap이 축소된다. 이 stack과 heap이 서로의 방향으로 커지게 되는데, OS는 이들이 서로 겹치지 않도록 해야 한다.
 
-4. program과의 차이
+4. program과의 관계
 
    Program은 명령어 list를 내용으로 가진 파일(실행 파일)이며, passive entity(수동적인 존재)이다. 반면에 process는 다음에 실행할 명령어를 지정하는 program counter와 관련 resource 등을 가진 active entity(능동적인 존재)이다. 실행 파일이 memory에 올라가면, program은 process가 된다.
+
+   동일한 program이 여러 개의 process로 실행될 수 있다. 이때 각각의 process는 독립적인 memory 영역을 가지며, 서로 다른 작업을 동시에 수행할 수 있다. 예를 들어 우리가 chrome을 여러 번 실행하면 이들은 tab으로 분리되어 별도의 process로 간주된다.
+
+   Process가 다른 개체를 위한 실행 환경이 될 수 있다. 예를 들어 JVM(Java Virtual Machine)은 java program을 실행하는 환경을 제공하는데, 이때 JVM 자체는 하나의 process이다.
 
 ---
