@@ -22,6 +22,8 @@
 
       Model과 View 간의 상호 동작을 관리하는 데 사용된다. 사용자의 입력을 받고, model에 필요한 data를 요청한다. model이 데이터를 처리한 후, 결과를 view에 전달하여 사용자에게 표시한다. Controller는 application의 logic을 포함하고, model과 view 간의 통신을 조정한다.
 
+      Controller는 model과 view의 정보를 가지고 있어야 한다. 이 말인 즉슨, **model과 view는 다른 요소들에 대한 정보를 가지고 있으면 안된다**. Model과 view는 변경이 일어났을 때 이를 다른 요소에게 전달하는 방법만 구현할 뿐이다. 이 변경 사항을 받고 이를 해석해서 각각의 요소들에게 다시 통지하는 역할은 controller가 하게 된다.
+
    사용자가 controller를 조작하면, controller는 model을 통해 data를 가져와 view를 제어하여 사용자에게 표시한다.
 
    이를 통해 user interface로부터 business logic을 분리하여 application의 시각적 요소나 그 이면에서 구동되는 logic을 독립적으로 개발하고, 서로 영향 없이 수월하게 고칠 수 있는 architecture를 구축할 수 있다. 따라서 MVC pattern의 구성 요소간 직접적인 참조를 피하고, dependency를 최소화해야 한다.
