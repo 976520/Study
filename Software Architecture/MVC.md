@@ -26,7 +26,7 @@
 
    ```python
    class Model:
-       def __init__(self):
+        def __init__(self):
             self.data = "Initial data"
 
         def get_data(self):
