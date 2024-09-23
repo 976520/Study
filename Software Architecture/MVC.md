@@ -10,9 +10,13 @@
 
       Application의 data를 나타내는 데 사용된다. Database에 저장된 data를 처리하거나, data의 구조를 정의하는 데 사용된다. Model은 data의 상태를 관리하고, data에 대한 모든 logic을 포함한다.
 
+      따라서 model은 사용자가 편집하기를 원하는 모든 data를 가지고 있어야 한다.
+
    2. view
 
       사용자가 보게 될 user interface를 나타내는 데 사용된다. Text, check box, button 등과 같은 UI 요소를 포함한다. View는 model에서 데이터를 가져와 사용자에게 표시한다.
+
+      View는 model이 가지고 있는 정보를 따로 **저장**해서는 안된다. 예를 들어 화면에 어떤 정보를 표시하기 위해, model이 가지고 있는 data를 전달받게 될 때, 그 data를 따로 저장해서는 안된다. 이 data는 오직 model에서만 관리되어야 한다.
 
    3. controller
 
@@ -20,7 +24,7 @@
 
    사용자가 controller를 조작하면, controller는 model을 통해 data를 가져와 view를 제어하여 사용자에게 표시한다.
 
-   이를 통해 user interface로부터 business logic을 분리하여 application의 시각적 요소나 그 이면에서 구동되는 logic을 독립적으로 개발하고, 서로 영향 없이 수월하게 고칠 수 있는 architecture를 구축할 수 있다.
+   이를 통해 user interface로부터 business logic을 분리하여 application의 시각적 요소나 그 이면에서 구동되는 logic을 독립적으로 개발하고, 서로 영향 없이 수월하게 고칠 수 있는 architecture를 구축할 수 있다. 따라서 MVC pattern의 구성 요소간 직접적인 참조를 피하고, dependency를 최소화해야 한다.
 
 2. 사용
 
