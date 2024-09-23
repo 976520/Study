@@ -22,4 +22,45 @@
 
    이를 통해 user interface로부터 business logic을 분리하여 application의 시각적 요소나 그 이면에서 구동되는 logic을 독립적으로 개발하고, 서로 영향 없이 수월하게 고칠 수 있는 architecture를 구축할 수 있다.
 
+2. 사용
+
+   ```python
+   class Model:
+       def __init__(self):
+            self.data = "Initial data"
+
+        def get_data(self):
+            return self.data
+
+        def set_data(self, new_data):
+            self.data = new_data
+
+    class View:
+        def display(self, data):
+            print(f"View: {data}")
+
+    class Controller:
+        def __init__(self, model, view):
+            self.model = model
+            self.view = view
+
+        def update_model(self, new_data):
+            self.model.set_data(new_data)
+
+        def get_model_data(self):
+            return self.model.get_data()
+
+        def display_view(self):
+            data = self.get_model_data()
+            self.view.display(data)
+
+    model = Model()
+    view = View()
+    controller = Controller(model, view)
+
+    controller.display_view()
+    controller.update_model("New data")
+    controller.display_view()
+   ```
+
 ---
