@@ -6,6 +6,35 @@
 
    React는 component 간에 데이터를 전달할 때 props를 이용한다. 하지만 여러 component를 지나서 전달해야 하거나(props drilling), 여러 component들이 동일한 데이터를 필요로 하는 경우가 있다. 이때 중간의 component에 불필요한 데이터를 전달한 다는 점에서 코드가 다소 복잡해 질 수 있다.
 
+   ```javascript
+   function App() {
+     const data = "Hello from App!";
+     return (
+       <div>
+         <ParentComponent data={data} />
+       </div>
+     );
+   }
+
+   function ParentComponent({ data }) {
+     return (
+       <div>
+         <ChildComponent data={data} />
+       </div>
+     );
+   }
+
+   function ChildComponent({ data }) {
+     return (
+       <div>
+         <p>{data}</p>
+       </div>
+     );
+   }
+
+   export default App;
+   ```
+
    Context API는 이러한 상황에서 중간 component를 모두 건너뛰고 데이터를 필요로 하는 component에게 즉시 전달할 수 있다. Component의 상하 관계를 무시하고 필요한 component를 불러 사용할 수 있다는 것이다.
 
 2. rendering
