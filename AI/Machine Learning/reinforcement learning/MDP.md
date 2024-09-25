@@ -60,13 +60,13 @@
 
    이처럼 $S_{t+1}$을 결정하는 데에 $S_{t}$가 높은 확률로 영향을 미칠 뿐, 다른 random variable(확률 변수)가 전혀 개입하지 않는 것은 아니다.
 
-   또한 state transition probability matrix와 현재 state를 알고 있다면 전체 markov process의 state를 구할 수 있다. 현재 시점 $t$에 대한 state $S_t$가 $(1\times M)$ 행렬인 분포 $x$를 따를 때,
+   또한 state transition probability matrix와 현재 state를 알고 있다면 전체 markov process의 state를 구할 수 있다. 현재 시점 $t$에 대한 state $S_t$가 $(1\times M)$ 행렬인 분포 $\vec{x}$를 따를 때,
 
    > $P(S_{t+1} = j) = \displaystyle\sum_{i \in S} P(S_{t+1} = j | S_t = i)P(S_t = i)$
 
    이는 내적을 이용하여 다음과 같이 나타낼 수 있다.
 
-   > $\displaystyle\sum_{i \in S} x_{i} \times y_{ij}$ = $xQ$
+   > $\displaystyle\sum_{i \in S} x_{i} \times q_{ij}$ = $\vec{x}Q$
 
    이때 $x_i$는 $(1\times M)$ 행렬이고, $y_{ij}$는 $(M\times M)$ 행렬이다. 따라서 $t+1$ 시점의 transition probability matrix는 $(1\times M)$의 $xQ$가 된다.
 
@@ -76,13 +76,13 @@
 
    이를 $Q$의 $i$번째 row와 $Q$의 $k$번째 column으로 나타내면 다음과 같다.
 
-   > $\displaystyle\sum_{j \in S} q_{ij} \times y_{jk} = Q^{2}_{ik}$
+   > $\displaystyle\sum_{j \in S} q_{ij} \times q_{jk} = Q^{2}_{ik}$
 
    이를 일반화하면 다음과 같다.
 
-   > $P(S_{n+m}=k|S_{n}=i) = Q^{m}_{ik}$
+   > $P(S_{t+n}=j|S_{t}=i) = Q^{n}_{ij} = [Q_{ij}]^{n}$
 
-   따라서 $n+m$ 시점의 분포는 $xQ^{m}$이 된다. Transition probability matrix은 markov process의 변화 추이를 나타내는 것이기 때문에, 현재 state의 분포 $x$에 변화 추이를 곱하면 미래를 예측할 수 있다. State가 $m$번 transition한 경우에는 $m$번 곱하여 구할 수 있다. 결과적으로 위의 수식과 동일하다.
+   따라서 $t+m$ 시점의 분포는 $\vec{x}Q^{n}$이 된다. Transition probability matrix은 markov process의 변화 추이를 나타내는 것이기 때문에, 현재 state의 분포 $x$에 변화 추이를 곱하면 미래를 예측할 수 있다. State가 $n$번 transition한 경우에는 $n$번 곱하여 구할 수 있다. 결과적으로 위의 수식과 동일하다.
 
 4. stationary distribution
 
