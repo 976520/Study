@@ -36,5 +36,3 @@
    ```
 
    static block은 class가 처음 로드될 때 한 번만 실행되며, 주로 static field의 초기화에 사용된다.
-
----
