@@ -41,9 +41,17 @@
 
    Context API에서 state를 변경하게 되면, provider로 감싼 모든 component들이 rerendering된다. 따라서 전역적으로 쓰이지만 자주 변경할 필요가 없는 값을 이용해야 할 때 context API를 채택하면 좋다.
 
-3. 사용
+3. 생성
 
-   `React.createContext`를 통해 context를 생성할 수 있으며, 인자에 어떠한 값을 넣으면 그 값으로 초기화된다. 또한 `Provider`를 사용하여 하위 component들에게 데이터를 전달할 수 있다.
+   `createContext`를 통해 context를 생성할 수 있으며, 인자에 어떠한 값을 넣으면 그 값으로 초기화된다.
+
+   ```javascript
+   const contextExample = createContext();
+   ```
+
+4. provider
+
+   `Provider`를 사용하여 하위 component들에게 데이터를 전달할 수 있다.
 
    ```javascript
    const contextExample = createContext();
@@ -76,5 +84,34 @@
    ```
 
    위 예제에서 `MyContext`를 생성하고, `App` component에서 `MyContext.Provider`를 사용하여 `value`를 전달하고 있다. `ChildComponent`에서는 `useContext` hook을 사용하여 `MyContext`의 값을 받아와서 사용하고 있다.
+
+5. consumer
+
+   `Consumer`를 사용하여 데이터를 받아올 수 있다.
+
+   ```javascript
+   const contextExample = createContext();
+
+   function App() {
+     const [value, setValue] = useState("data in context");
+     return (
+       <contextExample.Provider value={value}>
+         <ParentComponent />
+       </contextExample.Provider>
+     );
+   }
+
+   function ParentComponent() {
+     return (
+       <>
+         <ChildComponent />
+       </>
+     );
+   }
+
+   function ChildComponent() {
+     return <contextExample.Consumer>{(data) => <p>{data}</p>}</contextExample.Consumer>;
+   }
+   ```
 
 ---
