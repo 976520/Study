@@ -37,11 +37,7 @@
 
    Context API는 이러한 상황에서 중간 component를 모두 건너뛰고 데이터를 필요로 하는 component에게 즉시 전달할 수 있다. Component의 상하 관계를 무시하고 필요한 component를 불러 사용할 수 있다는 것이다.
 
-2. rendering
-
-   Context API에서 state를 변경하게 되면, provider로 감싼 모든 component들이 rerendering된다. 따라서 전역적으로 쓰이지만 자주 변경할 필요가 없는 값을 이용해야 할 때 context API를 채택하면 좋다.
-
-3. 생성
+2. 생성
 
    `createContext`를 통해 context를 생성할 수 있으며, 인자에 어떠한 값을 넣으면 그 값으로 초기화된다.
 
@@ -49,9 +45,9 @@
    const contextExample = createContext();
    ```
 
-4. provider
+3. provider, consumer
 
-   `Provider`를 사용하여 하위 component들에게 데이터를 전달할 수 있다.
+   `Provider`를 사용하여 하위 component들에게 데이터를 전달할 수 있다. 또한 하위 component는 `Consumer`를 사용하여 데이터를 받아올 수 있다. `Consumer`를 사용하면 context의 값이 변경될 때마다 해당 값을 사용하는 component가 자동으로 rerendering된다. 이를 통해 context의 상태 변화에 따라 UI를 동적으로 업데이트할 수 있다.
 
    ```javascript
    const contextExample = createContext();
@@ -77,41 +73,12 @@
      const data = useContext(contextExample);
      return (
        <>
-         <p>{data}</p>
+         <contextExample.Consumer>{(data) => <p>{data}</p>}</contextExample.Consumer>
        </>
      );
    }
    ```
 
    위 예제에서 `MyContext`를 생성하고, `App` component에서 `MyContext.Provider`를 사용하여 `value`를 전달하고 있다. `ChildComponent`에서는 `useContext` hook을 사용하여 `MyContext`의 값을 받아와서 사용하고 있다.
-
-5. consumer
-
-   `Consumer`를 사용하여 데이터를 받아올 수 있다.
-
-   ```javascript
-   const contextExample = createContext();
-
-   function App() {
-     const [value, setValue] = useState("data in context");
-     return (
-       <contextExample.Provider value={value}>
-         <ParentComponent />
-       </contextExample.Provider>
-     );
-   }
-
-   function ParentComponent() {
-     return (
-       <>
-         <ChildComponent />
-       </>
-     );
-   }
-
-   function ChildComponent() {
-     return <contextExample.Consumer>{(data) => <p>{data}</p>}</contextExample.Consumer>;
-   }
-   ```
 
 ---
