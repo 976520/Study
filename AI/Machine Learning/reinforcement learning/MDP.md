@@ -12,6 +12,10 @@
 
 정의된 확률 분포를 따라 state 사이를 이동하는 과정이다.
 
+1. Stochastic process
+
+   > Stochastic process(확률 과정)는 시간의 진행에 대해 확률적인 변화를 가지는 구조를 의미한다.
+
 1. Markov property
 
    Markov process은 어떤 state가 연속 시간에서(in continuous time) 변화하고, 다음 state $S_{t+1}$가 현재 state $S_{t}$에만 의존하여 확률적으로 변화하는 것을 뜻한다. 즉, $S_{t+1}$에는 $S_{t}$만이 영향을 미칠 수 있으며, 그 이전 history는 영향을 미치지 않는다. 때문에 과거와 현재의 state를 모두 고려 했을 때 미래의 state가 나타날 확률과 현재의 state만 고려했을 때 미래의 state가 나타날 확률이 동일하다. 이를 수식으로 나타내면 다음과 같다.
@@ -20,13 +24,13 @@
 
    이러한 성질을 markov property라고 한다. **Markov property은 $S_{t}$가 $S_{t+1}$를 결정하는 데 필요한 모든 정보를 포함하고 있다는 것**을 의미한다. 따라서 과거의 상태는 현재의 상태를 통해 간접적으로만 영향을 미치게 된다.
 
-2. Markov chain
+1. Markov chain
 
    > Markov chain은 markov property를 가진 discrete time stochastic process(이산 시간 확률 과정)이다.
 
    Markov process중 이산 시간에서(in discrete time) 동작하는 model을 Markov chain이라고 한다. 시간이 불연속적, 즉 단계별(step-by-step)로 변화한다. State는 이산적이며 일반적으로 정수로 표현된다. 각 단계에서 가능한 state의 수는 유한하거나 무한하다.
 
-3. State transition probability
+1. State transition probability
 
    **Markov process는 시간 $t$에 따른 state $S_{t}$의 변화**를 나타내고, 이 상태의 변화를 transition(전이)이라고 한다. 이러한 변화를 확률로 표현하면 state transition probability(상태 전이 확률)이라고 한다.
 
@@ -46,7 +50,7 @@
 
       즉, 상태 $i$에서 반드시 어떤 상태 $j$로 transition하게 된다.
 
-4. Irreducible
+1. Irreducible
 
    Irreducible한 markov process는 모든 state가 서로 도달 가능한 state임을 의미한다. 즉, 임의의 state $i$에서 다른 임의의 state $j$로 도달할 수 있는 경로가 존재한다면, 그 markov process은 irreducible이라고 한다.
 
@@ -60,7 +64,7 @@
 
    Irreducible markov process는 모든 상태가 서로 연결되어 있어, 시스템이 어느 상태에서 시작하더라도 결국 모든 상태를 방문할 수 있음을 보장한다.
 
-5. State transition diagram
+1. State transition diagram
 
    State transition diagram은 모든 state와 state transition probability를 나타낸 directed graph이다.
 
@@ -70,7 +74,7 @@
 
    `독서`에서 `웹 서핑`, `취침`으로 이동할 확률을 모두 더하면 1이 나온다. 이처럼 하나의 state에서 다른 state로 이동할 확률의 총합은 1인 것을 알 수 있다. 그리고 `취침`은 종료 state이기 때문에 다른 state로 이동할 확률은 0이다.
 
-6. State vector
+1. State vector
 
    > State vector는 현재 시점에서 각 state에 있을 확률을 나타낸 vector이다.
 
@@ -96,7 +100,7 @@
 
    이를 통해 전체 markov process의 상태 변화를 예측할 수 있다.
 
-7. State transition probability matrix
+1. State transition probability matrix
 
    > State transition probability matrix는 모든 state의 전이 확률을 나타낸 행렬이다.
 
@@ -220,7 +224,7 @@
 
    이와 같이 state vector와 transition matrix의 행렬곱을 이용하여 markov process의 미래 상태를 예측할 수 있다.
 
-8. Identity Matrix
+1. Identity Matrix
 
    > Identity matrix는 대각선 요소가 모두 1이고 나머지 요소가 모두 0인 정방 행렬이다.
 
@@ -270,7 +274,7 @@
 
    이처럼 identity matrix는 행렬 곱셈에서 항등원 역할을 하며, markov process에서는 상태가 변하지 않는 경우를 나타낸다. 행렬의 크기에 따라 다양한 크기의 identity matrix가 존재한다.
 
-9. stationary distribution
+1. stationary distribution
 
 만약 어떤 $\vec{v}Q^{n}$이 어떤 극한 분포에 수렴한다면, 이를 stationary distribution(정적 분포)이라고 한다. 이는 현재 state의 분포가 시간에 따라 변하지 않는 것을 의미한다. 이렇게 수렴하여 변하지 않는 상태를 stationary state(정상 상태)라고 한다.
 
