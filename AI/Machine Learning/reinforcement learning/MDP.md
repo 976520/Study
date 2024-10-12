@@ -76,7 +76,7 @@
 
    이를 $Q$의 $i$번째 row와 $Q$의 $k$번째 column으로 나타내면 다음과 같다.
 
-   > $\displaystyle\sum_{j \in S} q_{ij} \times y_{jk}$ = $Q^{2}_{ik}$
+   > $\displaystyle\sum_{j \in S} q_{ij} \times y_{jk} = Q^{2}_{ik}$
 
    이를 일반화하면 다음과 같다.
 
