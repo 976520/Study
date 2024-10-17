@@ -10,6 +10,12 @@ CORS를 설정한다는 뜻은 browser가 자신의 origin이 아닌 다른 orig
 
 ## 원리
 
-1. HTTP Request
+1. Request
 
-   대개 application에서 다른 origin의 resource를 request할 때는 HTTP protocol을 이용하게 되는데, 이 때 browser는 요청 header의 origin이라는 filed에 요청을 보내는 출처를 함께 보내게 된다.
+   대개 application에서 다른 origin의 resource를 request할 때는 HTTP protocol을 이용하게 되는데, 이 때 browser는 Request header의 origin이라는 filed에 요청을 보내는 출처를 함께 보내게 된다.
+
+2. Response
+
+   Server에서 그에 대한 응답을 할 때, Response header에 Access-Control-Allow-Origin 정보를 담아 보낸다.
+
+   이때 header에 access를 허락하는 내용이 없다면 CORS error가 발생하기도 한다.
