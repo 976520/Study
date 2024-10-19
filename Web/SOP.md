@@ -26,9 +26,13 @@
 
       동일 출처에서만 DOM 조작이 가능하다.
 
-   3. AJAX 요청
+   3. AJAX 요청 API 호출
 
       동일 출처에서만 AJAX를 통한 data request 이 가능하다.
+
+   4. web font
+
+      Stylesheet file 내 @font-face에서 다른 출처의 글꼴을 사용할 수 없다.
 
 3. 예외
 
