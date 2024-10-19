@@ -33,3 +33,43 @@ CORS를 설정한다는 뜻은 browser가 자신의 origin이 아닌 다른 orig
    Local 환경에서만의 CORS issue를 해결하고 싶다면 [Allow CORS](https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) extension을 설치하면 된다.
 
 2. response header 설정
+
+   가장 일반적인 방식으로, server에서 HTTP response header를 설정하여 특정 origin에서의 요청을 허용할 수 있다.
+
+   1. origin
+
+      특정 출처를 명시하여 해당 출처에 대한 access를 허용한다. \*(애스터리스크)를 이용하여 모든 출처를 허용할 수 있다.
+
+      ```http
+      Access-Control-Allow-Origin: https://github.com/976520
+      ```
+
+   2. method
+
+      허용할 HTTP method를 설정할 수 있다.
+
+      ```http
+      Access-Control-Allow-Methods: GET, POST
+      ```
+
+   3. headers
+
+      Request를 보낼 수 있는 header 목록을 명시할 수 있다.
+
+      ```http
+      Access-Control-Allow-Headers: Authorization
+      ```
+
+   4. credentials
+
+      Browser에서 cookie와 같은 인증 정보를 함께 보낼 수 있도록 허용할 수 있다.
+
+      ```http
+      Access-Control-Allow-Credentials: true
+      ```
+
+3. proxy server 이용
+
+   요청을 차단하는 주체는 browser이기 때문에, browser를 거치지 않고 server간에 통신을 할 때에는 SOP가 적용되지 않는다.
+
+4. server에서 외부 API 접근
