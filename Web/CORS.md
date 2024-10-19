@@ -4,6 +4,8 @@
 
 CORS를 설정한다는 뜻은 browser가 자신의 origin이 아닌 다른 origin으로부터 resource를 load하는 것을 server가 허가해주도록 하는 것이다.
 
+~~허가해주지 않으면 [SOP로 무장한 browser](https://github.com/976520/Study/blob/main/Web/SOP.md)에 의해 요청이 무참히 찢기는 것을 볼 수 있다.~~
+
 ~~필자와 같은 뉴비 웹 개발자들을 한 번씩은 괴롭혀 주는~~ CORS error 역시 이 CORS 설정을 하라는 소리이다.
 
 ---
@@ -81,3 +83,5 @@ CORS를 설정한다는 뜻은 browser가 자신의 origin이 아닌 다른 orig
    CORS issue는 client가 cross origin에 request를 할 때 발생하는 문제이다. 하지만 server에서 외부 API에 접근하는 경우에는 SOP나 CORS가 적용되지 않는다. ~~백엔드를 해야하는 이유~~ 따라서, 서버 측에서 외부 API에 직접 access하는 방법도 사용할 수 있다.
 
    이 경우 proxy server를 이용하는 경우와 동작이 비슷하다.
+
+---
