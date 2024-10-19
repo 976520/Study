@@ -77,3 +77,5 @@ CORS를 설정한다는 뜻은 browser가 자신의 origin이 아닌 다른 orig
    사용자의 browser는 외부 API에 직접 request하는 대신, 동일 출처의 proxy server로 request를 보내게 된다. proxy server는 client의 request를 받아 실제로 요청하려던 외부 API server에 대신 request를 보낸다. 마지막으로 외부 API server에서 받은 response을 proxy server가 client로 다시 전달한다.
 
 4. server에서 외부 API 접근
+
+   CORS issue는 client가 cross origin에 request를 할 때 발생하는 문제이다. 하지만 server에서 외부 API에 접근하는 경우에는 SOP나 CORS가 적용되지 않는다. ~~백엔드를 해야하는 이유~~ 따라서, 서버 측에서 외부 API에 직접 access하는 방법도 사용할 수 있다.
