@@ -10,11 +10,11 @@ CORS를 설정한다는 뜻은 browser가 자신의 origin이 아닌 다른 orig
 
 ## 원리
 
-1. Request
+1. request
 
    대개 application에서 다른 origin의 resource를 request할 때는 HTTP protocol을 이용하게 되는데, 이 때 browser는 Request header의 origin이라는 filed에 요청을 보내는 출처를 함께 보내게 된다.
 
-2. Response
+2. response
 
    Server에서 그에 대한 응답을 할 때, Response header에 Access-Control-Allow-Origin 정보를 담아 보낸다.
 
@@ -23,3 +23,13 @@ CORS를 설정한다는 뜻은 browser가 자신의 origin이 아닌 다른 orig
 3. 대조
 
    Server가 response에 Access-Control-Allow-Origin header를 포함하지 않거나, request한 origin이 server에서 허용된 origin과 일치하지 않으면, browser는 그 request를 차단한다. 이때 browser는 CORS error를 개발자 console에 표시한다.
+
+---
+
+## CORS issue 해결
+
+1. chrome extension 설치
+
+   Local 환경에서만의 CORS issue를 해결하고 싶다면 [Allow CORS](https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) extension을 설치하면 된다.
+
+2. response header 설정
