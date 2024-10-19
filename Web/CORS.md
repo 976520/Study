@@ -19,3 +19,7 @@ CORS를 설정한다는 뜻은 browser가 자신의 origin이 아닌 다른 orig
    Server에서 그에 대한 응답을 할 때, Response header에 Access-Control-Allow-Origin 정보를 담아 보낸다.
 
    이때 header에 access를 허락하는 내용이 없다면 CORS error가 발생하기도 한다.
+
+3. 대조
+
+   Server가 response에 Access-Control-Allow-Origin header를 포함하지 않거나, request한 origin이 server에서 허용된 origin과 일치하지 않으면, browser는 그 request를 차단한다. 이때 browser는 CORS error를 개발자 console에 표시한다.
