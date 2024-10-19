@@ -10,7 +10,13 @@ CORS를 설정한다는 뜻은 브라우저가 자신의 origin이 아닌 다른
 
 ## SOP
 
-> SOP는 Same Origin Policy의 약자로, 다른 출처에서 가져온 리소스와 상호작용하는 것을 제한하는 정책이다.
+1. 이해
+
+   SOP는 Same Origin Policy의 약자로, 다른 출처에서 가져온 리소스와 상호작용하는 것을 제한하는 정책이다.
+
+   이를 통하여 잠재적 악성 문서를 격리하여, XSS(Cross-Site Scripting) 및 CSRF(Cross-Site Request Forgery, 요청 위조)등의 보안 공격을 막을 수 있다는 장점이 있다.
+
+   SOP를 위반하였는지는 서버가 아닌 브라우저가 확인하게 된다.
 
 1. 적용
 
@@ -27,10 +33,6 @@ CORS를 설정한다는 뜻은 브라우저가 자신의 origin이 아닌 다른
    3. AJAX 요청
 
       동일 출처에서만 AJAX를 통한 데이터 요청 가능.
-
-이를 통하여 잠재적 악성 문서를 격리하여, XSS(Cross-Site Scripting) 및 CSRF(Cross-Site Request Forgery, 요청 위조)등의 보안 공격을 막을 수 있다는 장점이 있다.
-
-SOP를 위반하였는지는 서버가 아닌 브라우저가 확인하게 된다.
 
 ---
 
