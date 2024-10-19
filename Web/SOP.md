@@ -36,10 +36,16 @@
 
       서버에서 적절한 header로 허용된 경우는 access가 허용된다.
 
-   2. `<script>` 태그
+   2. Javascript
 
-      이를 이용한 JSONP 취약점이 있다.
+      `<script>` 태그의 src를 이용하여 다른 출처의 JS resource에 access하는 것이 가능하다. 이를 이용한 JSONP 취약점이 있다.
 
-   3. 이미지, stylesheet 등
+   3. 이미지
+
+      `<img>` 태그의 src에서 다른 출처의 png, jpeg 파일에 access하는 것이 가능하다.
+
+   4. stylesheet
+
+      `<link>` 태그의 href를 이용하여 다른 출처의 stylesheet resource에 access하는 것이 가능하다.
 
 ---
