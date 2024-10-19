@@ -4,7 +4,7 @@
 
    SOP는 Same Origin Policy의 약자로, 다른 출처에서 가져온 resource와 상호작용하는 것을 제한하는 정책이다.
 
-   SOP를 위반하였는지는 server가 아닌 browser가 확인하게 된다. 이 때 다음 중 하나라도 다르면 출처가 다르다고 간주한다.
+   SOP를 위반하였는지는 server가 아닌 browser가 확인하게 된다. 이 때 다음 중 하나라도 다르면 다른 출처, 즉 cross origin으로 간주한다.
 
    1. Protocol
 
