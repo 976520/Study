@@ -12,6 +12,8 @@
 
 2. 사용
 
+   Singleton pattern의 기본적인 구현은 다음과 같다.
+
    ```python
    class Singleton:
       _instance = None
@@ -27,5 +29,7 @@
 
    print(singleton1 is singleton2)  # 출력: True
    ```
+
+   `@classmethod`를 사용하는 이유는 클래스 메서드로 선언하여 인스턴스를 생성하지 않고도 클래스 메서드를 호출할 수 있도록 하기 위함이다.
 
 ---
