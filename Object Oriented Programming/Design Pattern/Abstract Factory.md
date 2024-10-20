@@ -41,6 +41,48 @@
     print(people.speak())  # 출력: 나는 재헌
    ```
 
+   ```java
+    public interface Factory {
+        public Object create(String name);
+    }
+
+    public class 이주언_object {
+        public String speak() {
+            return "나는 주언";
+        }
+    }
+
+    public class 권재헌_object {
+        public String speak() {
+            return "나는 재헌";
+        }
+    }
+
+    public class FactoryImpl implements Factory {
+        public Object create(String name) {
+            if (name.equals("이주언")) {
+                return new 이주언_object();
+            } else if (name.equals("권재헌")) {
+                return new 권재헌_object();
+            } else {
+                return null;
+            }
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            Factory factory = new FactoryImpl();
+
+            Object people = factory.create("이주언");
+            System.out.println(((이주언_object)people).speak());  // 출력: 나는 주언
+
+            people = factory.create("권재헌");
+            System.out.println(((권재헌_object)people).speak());  // 출력: 나는 재헌
+        }
+    }
+   ```
+
    `Factory` class에서 `create` 메소드를 통해 각각 `이주언_object` 또는 `권재헌_object` class의 instance를 생성하고 반환한다. 클라이언트 코드에서는 `Factory()` class의 `create` method를 통해 각각의 객체를 생성하고 사용할 수 있다.
 
 ---
