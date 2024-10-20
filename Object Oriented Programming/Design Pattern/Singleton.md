@@ -24,12 +24,18 @@
                cls._instance = cls()
          return cls._instance
 
+   # 싱글톤 인스턴스 생성
    singleton1 = Singleton.get_instance()
    singleton2 = Singleton.get_instance()
 
+   # 싱글톤 인스턴스 비교
    print(singleton1 is singleton2)  # 출력: True
    ```
 
-   `@classmethod`를 사용하는 이유는 클래스 메서드로 선언하여 인스턴스를 생성하지 않고도 클래스 메서드를 호출할 수 있도록 하기 위함이다.
+   `_instance`는 class 변수로, class 내에서 여러 instance가 공유하는 변수이다.
+
+   `get_instance` method에서는 이미 생성된 instance가 있는 경우 이를 반환하고, 없는 경우 생성 후 반환한다. 이때 `@classmethod`를 사용하는 이유는 class method로 선언하여 instance를 생성하지 않고도 class method를 호출할 수 있도록 하기 위함이다.
+
+   따라서 `singleton1`과 `singleton2`는 같은 instance를 가리키는 포인터를 가지게 된다.
 
 ---
