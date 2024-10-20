@@ -6,6 +6,8 @@
 
    Singleton pattern을 따르는 class는 constructor가 여러 번 호출되더라도, 실제로 생성된 객체는 하나이다. 최초 생성 이후에 호출된 constructor는 최초의 constructor가 생성한 객체를 return한다.
 
+   이렇게 되면 하나의 instance만을 고정 메모리 영역에 생성하고, 이후에 생성되는 instance는 이미 생성된 instance를 가리키는 포인터를 가지게 된다. 때문에 추후 해당 instance에 접근하는 경우 메모리 낭비를 방지할 수 있다.
+
 2. 사용
 
    ```python
@@ -23,3 +25,5 @@
 
    print(singleton1 is singleton2)  # 출력: True
    ```
+
+---
