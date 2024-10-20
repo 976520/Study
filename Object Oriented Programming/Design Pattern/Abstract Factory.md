@@ -18,17 +18,17 @@
     class Factory:
         def create(self, name):
             if name == "이주언":
-                return 이주언()
+                return 이주언_object()
             elif name == "권재헌":
-                return 권재헌()
+                return 권재헌_object()
             else:
                 return None
 
-    class 이주언:
+    class 이주언_object:
         def speak(self):
             return "나는 주언"
 
-    class 권재헌:
+    class 권재헌_object:
         def speak(self):
             return "나는 재헌"
 
@@ -40,5 +40,7 @@
     people = factory.create("권재헌")
     print(people.speak())  # 출력: 나는 재헌
    ```
+
+   `Factory` class에서 `create` 메소드를 통해 각각 `이주언_object` 또는 `권재헌_object` class의 instance를 생성하고 반환한다. 클라이언트 코드에서는 `Factory()` class의 `create` method를 통해 각각의 객체를 생성하고 사용할 수 있다.
 
 ---
