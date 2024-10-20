@@ -24,11 +24,9 @@
                cls._instance = cls()
          return cls._instance
 
-   # 싱글톤 인스턴스 생성
    singleton1 = Singleton.get_instance()
    singleton2 = Singleton.get_instance()
 
-   # 싱글톤 인스턴스 비교
    print(singleton1 is singleton2)  # 출력: True
    ```
 
