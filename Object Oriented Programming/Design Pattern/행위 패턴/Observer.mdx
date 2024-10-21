@@ -8,4 +8,41 @@
 
 2. 사용
 
+   1. python
+
+      ```python
+      class Subject:
+          def __init__(self):
+              self.observers = []
+
+          def register_observer(self, observer):
+              self.observers.append(observer)
+
+          def notify_observers(self, message):
+              for observer in self.observers:
+                  observer.update(message)
+
+      class Observer:
+          def update(self, message):
+              print(f"Received message: {message}")
+
+      subject = Subject()
+      observer1 = Observer()
+      observer2 = Observer()
+
+      subject.register_observer(observer1)
+      subject.register_observer(observer2)
+
+      subject.notify_observers("Hi!")
+
+      '''
+      출력:
+      Received message: Hi!
+      Received message: Hi!
+      '''
+      ```
+
+      `Subject` class는 관찰자 목록을 관리하고, 메시지를 전송한다. `Observer` class는 메시지를 수신한다.
+      `Observer` instance는 `Subject` instance에 등록되고, `Subject` instance에 메시지가 전송되면 `observer1`과 `observer2`에 대해 각각 한 번씩 `update` method가 호출된다.
+
 ---
