@@ -12,67 +12,70 @@
 
 2. 사용
 
-   Singleton pattern의 기본적인 구현은 다음과 같다.
+   1. python
 
-   ```python
-   class Singleton:
-      obj = None
+      ```python
+      class Singleton:
+         obj = None
 
-      @classmethod
-      def get_instance(cls):
-         if not cls.obj:
-               cls.obj = cls()
-         return cls.obj
+         @classmethod
+         def get_instance(cls):
+            if not cls.obj:
+                  cls.obj = cls()
+            return cls.obj
 
-   singleton1 = Singleton.get_instance()
-   singleton2 = Singleton.get_instance()
+      singleton1 = Singleton.get_instance()
+      singleton2 = Singleton.get_instance()
 
-   print(singleton1 is singleton2)  # 출력: True
-   ```
+      print(singleton1 is singleton2)  # 출력: True
+      ```
 
-   `obj`는 class 변수로, class 내에서 여러 instance가 공유하는 변수이다.
+      `obj`는 class 변수로, class 내에서 여러 instance가 공유하는 변수이다.
 
-   `get_instance()` method에서는 이미 생성된 instance가 있는 경우 이를 반환하고, 없는 경우 생성 후 반환한다. 이때 `@classmethod`를 사용하는 이유는 class method로 선언하여 instance를 생성하지 않고도 class method를 호출할 수 있도록 하기 위함이다.
+      `get_instance()` method에서는 이미 생성된 instance가 있는 경우 이를 반환하고, 없는 경우 생성 후 반환한다. 이때 `@classmethod`를 사용하는 이유는 class method로 선언하여 instance를 생성하지 않고도 class method를 호출할 수 있도록 하기 위함이다.
 
-   ```java
-   public class Singleton {
-      private static Singleton obj;
+   2. java
 
-      private Singleton() {}
+      ```java
+      public class Singleton {
+         private static Singleton obj;
 
-      public static Singleton getInstance() {
-         if (obj == null) {
-            obj = new Singleton();
+         private Singleton() {}
+
+         public static Singleton getInstance() {
+            if (obj == null) {
+               obj = new Singleton();
+            }
+            return obj;
          }
-         return obj;
       }
-   }
 
-   Singleton singleton1 = Singleton.getInstance();
-   Singleton singleton2 = Singleton.getInstance();
+      Singleton singleton1 = Singleton.getInstance();
+      Singleton singleton2 = Singleton.getInstance();
 
-   System.out.println(singleton1 == singleton2); // 출력: true
-   ```
+      System.out.println(singleton1 == singleton2); // 출력: true
 
-   ```cpp
-   class Singleton {
-      static Singleton* obj;
+      ```
 
-      Singleton() {}
+      ```cpp
+      class Singleton {
+         static Singleton* obj;
 
-      static Singleton* getInstance() {
-         if (!obj) {
-            obj = new Singleton();
+         Singleton() {}
+
+         static Singleton* getInstance() {
+            if (!obj) {
+               obj = new Singleton();
+            }
+            return obj;
          }
-         return obj;
-      }
-   };
+      };
 
-   Singleton* singleton1 = Singleton::getInstance();
-   Singleton* singleton2 = Singleton::getInstance();
+      Singleton* singleton1 = Singleton::getInstance();
+      Singleton* singleton2 = Singleton::getInstance();
 
-   std::cout << (singleton1 == singleton2 ? "true" : "false") << std::endl; // 출력: true
-   ```
+      std::cout << (singleton1 == singleton2 ? "true" : "false") << std::endl; // 출력: true
+      ```
 
    `getInstance()` 메소드를 통해 instance를 생성하고, 이미 생성된 instance가 있다면 해당 instance를 반환한다. 이때 private으로 선언된 constructor를 사용하여 외부에서 instance를 생성하는 것을 방지한다.
 
