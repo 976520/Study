@@ -37,7 +37,7 @@
    2. java
 
       ```java
-      public class Singleton {
+      class Singleton {
          private static Singleton obj;
 
          private Singleton() {}
@@ -50,35 +50,19 @@
          }
       }
 
-      Singleton singleton1 = Singleton.getInstance();
-      Singleton singleton2 = Singleton.getInstance();
+      public class Main {
+         public static void main(String[] args) {
+            Singleton singleton1 = Singleton.getInstance();
+            Singleton singleton2 = Singleton.getInstance();
 
-      System.out.println(singleton1 == singleton2); // 출력: true
-
-      ```
-
-      ```cpp
-      class Singleton {
-         static Singleton* obj;
-
-         Singleton() {}
-
-         static Singleton* getInstance() {
-            if (!obj) {
-               obj = new Singleton();
-            }
-            return obj;
+            System.out.println(singleton1 == singleton2); // 출력: true
          }
-      };
+      }
 
-      Singleton* singleton1 = Singleton::getInstance();
-      Singleton* singleton2 = Singleton::getInstance();
-
-      std::cout << (singleton1 == singleton2 ? "true" : "false") << std::endl; // 출력: true
       ```
 
-   `getInstance()` 메소드를 통해 instance를 생성하고, 이미 생성된 instance가 있다면 해당 instance를 반환한다. 이때 private으로 선언된 constructor를 사용하여 외부에서 instance를 생성하는 것을 방지한다.
+      `getInstance()` 메소드를 통해 instance를 생성하고, 이미 생성된 instance가 있다면 해당 instance를 반환한다. 이때 private으로 선언된 constructor를 사용하여 외부에서 instance를 생성하는 것을 방지한다.
 
-   따라서 세 코드에서 모두 `singleton1`과 `singleton2`는 같은 instance를 가리키는 포인터를 가지게 됩니다.
+   따라서 두 코드에서 모두 `singleton1`과 `singleton2`는 같은 instance를 가리키는 포인터를 가지게 됩니다.
 
 ---
