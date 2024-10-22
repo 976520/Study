@@ -1,0 +1,11 @@
+## Svelte 특징
+
+1. 실제 DOM 사용
+
+   React는 각 구성 요소를 만들 때 마다 virtual DOM 객체가 만들어지고, 실제 DOM과 virtual DOM을 비교하여 변경 사항만을 실제 DOM에 업데이트하는 방식으로 작동한다.
+   반면에 svelte는 바로 실제 DOM에 적용하는 방식으로 작동한다.
+
+   Svelte는 코드를 runtime에 해석하지 않고, buildtime에 vinilla javascript로 변환하여 사용하기 때문에 속도가 빠르고, 라이브러리를 같이 배포할 필요가 없어서 간편하다.
+
+   또한 `qurrySelector` 등 javascript의 내장 문법을 통해 실제 DOM을 조작할 수 있다는 장점이 있다. Virtual DOM을 사용하는 라이브러리는 성능 저하의 이유로 실제 DOM을 조작하는 것을 피하는 편이다.
+   React에서는 refs, useRef 등을 통해 실제 DOM을 조작하는 편법을 이용한다.
