@@ -90,12 +90,27 @@ const App = () => {
    `;
    ```
 
-4. global style
+4. 가상 선택자
+
+   styled components에서는 가상 선택자를 사용할 수 있다.
+
+   ```javascript
+   import styled from "styled-components";
+   import ButtonExample from "./ButtonExample";
+   const ButtonExample3 = styled(ButtonExample)`
+     &:hover {
+       background-color: lime;
+     }
+   `;
+   ```
+
+5. global style
 
    Global로 CSS style을 적용하고 싶은 경우, styled components의 `createGlobalStyle`을 사용하여 작성할 수 있다.
 
    ```javascript
    import styled, { createGlobalStyle } from "styled-components";
+   import ButtonExample from "./ButtonExample";
 
    const GlobalStyle = createGlobalStyle`
      body {
