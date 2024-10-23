@@ -84,6 +84,10 @@ Design Pattern과 비슷한 면이 많지만, Software Architecture는 보다 �
 
    4. targeted market(목표 시장)
 
+      예를 들어 targeted market이 중소기업이라면, 제품의 cost and benefit이 중요한 품질속성이 된다. targeted market이 대기업이라면, 제품의 performance가 중요한 품질속성이 된다. 또한 targeted market이 대중이라면, 제품의 usability가 중요한 품질속성이 된다. 그리고 targeted market이 platform이라면, 제품의 portability과 funtionality(기능성)가 중요한 품질속성이 된다. 만약 제품군으로 large-sized market을 공략하기 위해서는 product line(생산 라인) 방식도 고려되어야 한다.
+
+      이처럼 targeted market에 따라 제품의 특성이 달라질 수 있기 때문에, 이를 결정하는 것이 중요하다.
+
    5. rollout schedule(발매 일정)
 
       현 제품이 기본적인 기능만을 제공하며, 차후에 추가적인 기능이 release될 예정이라면 architecture의 flexibility(유연성)와 customizability(특화성)가 중요한 품질속성이 된다. 출시 일정에 따라 제품의 특성이 달라질 수 있기 때문이다.
