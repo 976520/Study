@@ -90,21 +90,31 @@ const App = () => {
    `;
    ```
 
-4. 가상 선택자
+4. props
+
+   styled component의 스타일에 props를 적용하여 동적으로 스타일을 변경할 수 있다.
+
+   ```javascript
+   const ButtonExample3 = styled.div`
+     color: ${(props) => (props.primary ? "tomato" : "black")};
+   `;
+   ```
+
+   이 코드에서는 `primary` props가 `true`일 때 `tomato` 색상을, `false`일 때 `black` 색상을 적용한다.
+
+5. 가상 선택자
 
    styled components에서는 가상 선택자를 사용할 수 있다. `&`를 사용하여 현재 component를 참조할 수 있다.
 
    ```javascript
-   import styled from "styled-components";
-   import ButtonExample from "./ButtonExample";
-   const ButtonExample3 = styled(ButtonExample)`
+   const ButtonExample4 = styled.button`
      &:hover {
        background-color: lime;
      }
    `;
    ```
 
-5. global style
+6. global style
 
    Global로 CSS style을 적용하고 싶은 경우, styled components의 `createGlobalStyle`을 사용하여 작성할 수 있다.
 
