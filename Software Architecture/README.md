@@ -84,6 +84,8 @@ Design Pattern과 비슷한 면이 많지만, Software Architecture는 보다 �
 
    2. cost and benefit(비용 및 효익)
 
+      서로 다른 architecture는 서로 다른 cost and benefit를 가진다. 가령 유연한 architecture는 구축 비용 부분에서는 더 높은 cost를 가지지만, 유지 보수 및 수정 부분에서는 더 높은 benefit을 제공한다.
+
    3. projected lifetime of the system(시스템의 프로젝트 생명 주기)
 
       한 system의 장기간 사용을 원한다면 modifiability와 scalability, portability가 주요한 quality attribute이 된다.
