@@ -6,6 +6,49 @@
 
    코드를 작성하다 보면 class의 양이 점점 늘게 되고, 이들이 복잡하게 얽혀 개발자가 서로의 역할을 알기 어려워진다. 규모가 큰 system을 구축하기 위해서 서로 관련된 여러 class들을 적절히 제어해야 한다. 이때 이를 개별적으로 제어하는 것이 아닌, 일종의 중계자를 두어 사용자의 요구를 집약적으로 얽힌 class들에게 전달해 주고, 처리에 대한 결과를 반환한다면 개발자는 복잡한 내부 구조를 알 필요 없이 단순한 interface를 이용하기만 하면 된다.
 
-   <img src="https://github.com/user-attachments/assets/57304870-38d3-41f9-8ad0-f4a4cc14ba79" width="600"/>
+   <img src="https://github.com/user-attachments/assets/57304870-38d3-41f9-8ad0-f4a4cc14ba79" width="600" />
 
    예를 들어 라이브러리의 각 class와 method들이 어떤 동작을 하는 지 이해하기 어려워 바로 가져다 쓰기 거시기할 때, 이에 대한 적절한 naming을 통해 사용자가 라이브러리를 쉽게 사용할 수 있도록 interface를 만들어 제공하는 것이 facade pattern의 일종이라고 할 수 있다.
+
+2. 사용
+
+   ```python
+   class SubSystem1:
+      def operation1(self):
+         return "Subsystem1: 요잇"
+
+      def operationN(self):
+         return "Subsystem1: 땅!"
+
+   class SubSystem2:
+      def operation1(self):
+         return "Subsystem2: 요잇"
+
+      def operationZ(self):
+         return "Subsystem2: 땅!"
+
+   class Facade:
+      def __init__(self, subsystem1: SubSystem1, subsystem2: SubSystem2):
+         self._subsystem1 = subsystem1
+         self._subsystem2 = subsystem2
+
+      def operation(self):
+         results = []
+         results.append("Facade: 요잇")
+         results.append(self._subsystem1.operation1())
+         results.append(self._subsystem2.operation1())
+         results.append("Facade: 땅!")
+         results.append(self._subsystem1.operationN())
+         results.append(self._subsystem2.operationZ())
+         return "\n".join(results)
+
+   def client_code(facade: Facade):
+      print(facade.operation(), end="")
+
+   subsystem1 = SubSystem1()
+   subsystem2 = SubSystem2()
+   facade = Facade(subsystem1, subsystem2)
+   client_code(facade)
+   ```
+
+---
