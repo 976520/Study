@@ -28,7 +28,7 @@ Design Pattern과 비슷한 면이 많지만, Software Architecture는 보다 �
 
 1. implementation attributes
 
-   Implementation attributes는 시스템의 구현 방법에 대한 속성이다. 즉, runtime시 관측되지 않는 구현 특성에서의 quality attributes이다.
+   Implementation attributes는 시스템의 구현 방법에 대한 속성이다. 즉, runtime시 관측되지 않는 구현 특성에서의 quality attribute이다.
 
    1. portability(이식성)
 
@@ -78,19 +78,27 @@ Design Pattern과 비슷한 면이 많지만, Software Architecture는 보다 �
 
    1. time to market(시장 적시성)
 
+      제품 개시일이 이미 공식적으로 발표되어서 launching 일정이 변경될 수 없거나, 경쟁사의 제품보다 먼저 출시해야 한다면, 이 일정을 맞추는 일은 architecture에 영향을 미친다.
+
+      제품이 시장에 진입하는 시간은 Commercial, off-the-shelf(상용기성품)이나, 이전 project에서 reuse component와 같이 개발된 요소를 사용함으로써 단축할 수 있다. System의 일부를 새롭게 추가하거나 배치하는 능력은 system의 분할에 의존한다.
+
    2. cost and benefit(비용 및 효익)
 
    3. projected lifetime of the system(시스템의 프로젝트 생명 주기)
 
+      한 system의 장기간 사용을 원한다면 modifiability와 scalability, portability가 주요한 quality attribute이 된다.
+
+      이러한 추가적인 하부구조의 구축은 제품의 시장진입 시점을 늦추게 된다. 반면에 이로 인해 얻을 수 있는 수정 및 확장이 용이한 제품은 그만큼 사용기간을 연장시켜 해당 시장에서 오랫동안 생존하게 된다.
+
    4. targeted market(목표 시장)
 
-      예를 들어 targeted market이 중소기업이라면, 제품의 cost and benefit이 중요한 품질속성이 된다. targeted market이 대기업이라면, 제품의 performance가 중요한 품질속성이 된다. 또한 targeted market이 대중이라면, 제품의 usability가 중요한 품질속성이 된다. 그리고 targeted market이 platform이라면, 제품의 portability과 funtionality(기능성)가 중요한 품질속성이 된다. 만약 제품군으로 large-sized market을 공략하기 위해서는 product line(생산 라인) 방식도 고려되어야 한다.
+      예를 들어 targeted market이 중소기업이라면, 제품의 cost and benefit이 중요한 quality attribute이 된다. targeted market이 대기업이라면, 제품의 performance가 중요한 quality attribute이 된다. 또한 targeted market이 대중이라면, 제품의 usability가 중요한 quality attribute이 된다. 그리고 targeted market이 platform이라면, 제품의 portability과 funtionality(기능성)가 중요한 quality attribute이 된다. 만약 제품군으로 large-sized market을 공략하기 위해서는 product line(생산 라인) 방식도 고려되어야 한다.
 
       이처럼 targeted market에 따라 제품의 특성이 달라질 수 있기 때문에, 이를 결정하는 것이 중요하다.
 
    5. rollout schedule(발매 일정)
 
-      현 제품이 기본적인 기능만을 제공하며, 차후에 추가적인 기능이 release될 예정이라면 architecture의 flexibility(유연성)와 customizability(특화성)가 중요한 품질속성이 된다. 출시 일정에 따라 제품의 특성이 달라질 수 있기 때문이다.
+      현 제품이 기본적인 기능만을 제공하며, 차후에 추가적인 기능이 release될 예정이라면 architecture의 flexibility와 customizability(특화성)가 중요한 quality attribute이 된다. 출시 일정에 따라 제품의 특성이 달라질 수 있기 때문이다.
 
    6. integration with legacy systems(기존 시스템과의 통합)
 
