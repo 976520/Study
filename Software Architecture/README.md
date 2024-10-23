@@ -106,6 +106,4 @@ Design Pattern과 비슷한 면이 많지만, Software Architecture는 보다 �
 
       제공하려는 system이 기존 system과 통합되어야 할 경우, 적절한 통합 mechanism이 정의되어야 한다.
 
-4. typical quality attributes trade-off pairs
-
 ---
