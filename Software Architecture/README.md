@@ -80,7 +80,7 @@ Design Pattern과 비슷한 면이 많지만, Software Architecture는 보다 �
 
       제품 개시일이 이미 공식적으로 발표되어서 launching 일정이 변경될 수 없거나, 경쟁사의 제품보다 먼저 출시해야 한다면, 이 일정을 맞추는 일은 architecture에 영향을 미친다.
 
-      제품이 시장에 진입하는 시간은 Commercial, off-the-shelf(상용기성품)이나, 이전 project에서 reuse component와 같이 개발된 요소를 사용함으로써 단축할 수 있다. System의 일부를 새롭게 추가하거나 배치하는 능력은 system의 분할에 의존한다.
+      제품이 시장에 진입하는 시간은 commercial off-the-shelf(상용기성품)이나, 이전 project에서 reuse component와 같이 개발된 요소를 사용함으로써 단축할 수 있다. System의 일부를 새롭게 추가하거나 배치하는 능력은 system의 분할에 의존한다.
 
    2. cost and benefit(비용 및 효익)
 
