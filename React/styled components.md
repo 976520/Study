@@ -20,6 +20,8 @@ npm install styled-components
 
    이에 따라 코드의 재사용성이 높아지고, 유지보수성이 좋아진다는 장점이 있다.
 
+---
+
 ## 사용
 
 styled components를 파일에 다음과 같이 `import` 하여 사용한다.
@@ -53,7 +55,7 @@ const App = () => {
    ```javascript
    const ButtonExample = styled.div`
      font-size: 16px;
-     background-color: red;
+     background-color: tomato;
    `;
 
    export default ButtonExample;
@@ -84,6 +86,37 @@ const App = () => {
 
    const ButtonExample2 = styled(ButtonExample)`
      font-size: 16px;
-     background-color: red;
+     background-color: tomato;
    `;
    ```
+
+4. global style
+
+   Global로 CSS style을 적용하고 싶은 경우, styled components의 `createGlobalStyle`을 사용하여 작성할 수 있다.
+
+   ```javascript
+   import styled, { createGlobalStyle } from "styled-components";
+
+   const GlobalStyle = createGlobalStyle`
+     body {
+       margin: 0;
+       padding: 0;
+       font-family: sans-serif;
+     }
+     button {
+       background-color: tomato;
+     }
+   `;
+
+   function App() {
+     return (
+       <>
+         <GlobalStyle />
+         <ButtonExample />
+         <ButtonExample />
+       </>
+     );
+   }
+   ```
+
+---
