@@ -92,7 +92,7 @@ const App = () => {
 
 4. 가상 선택자
 
-   styled components에서는 가상 선택자를 사용할 수 있다.
+   styled components에서는 가상 선택자를 사용할 수 있다. `&`를 사용하여 현재 component를 참조할 수 있다.
 
    ```javascript
    import styled from "styled-components";
