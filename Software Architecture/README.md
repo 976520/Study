@@ -74,4 +74,8 @@ Design Pattern과 비슷한 면이 많지만, Software Architecture는 보다 �
 
       사용자가 얼마나 쉽게 시스템을 사용할 수 있는지 측정하는 척도이다. 이를 통해 시스템의 기능을 쉽게 배워 사용할 수 있도록, 오류의 영향을 최소화하고, 사용자의 요구에 맞춰 시스템이 효율적으로 작동하도록 한다.
 
+3. Business attributes
+
+4. Typical quality attributes trade-off pairs
+
 ---
