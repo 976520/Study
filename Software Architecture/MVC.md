@@ -2,18 +2,20 @@
 
 1. 이해
 
-   MVC pattern은 system을 model, view, controller의 세 가지 요소로 분리하는 pattern이다. 이에 대한 상세한 설명은 다음과 같다.
+   MVC pattern은 system을 model, view, controller의 세 가지 요소로 분리하는 pattern으로, 각 요소는 다음과 같은 기능을 수행한다.
 
    1. model
 
-      Application의 data를 나타낸다.
+      Application의 data를 나타내는 데 사용된다. Database에 저장된 data를 처리하거나, data의 구조를 정의하는 데 사용된다. Model은 data의 상태를 관리하고, data에 대한 모든 logic을 포함한다.
 
    2. view
 
-      Text, check box, button 등의 user interface를 나타낸다.
+      사용자가 보게 될 user interface를 나타내는 데 사용된다. Text, check box, button 등과 같은 UI 요소를 포함한다. View는 model에서 데이터를 가져와 사용자에게 표시한다.
 
    3. controller
 
-      Data와 business logic간의 상호 동작을 관리한다.
+      Model과 View 간의 상호 동작을 관리하는 데 사용된다. 사용자의 입력을 받고, model에 필요한 데이터를 요청한다. model이 데이터를 처리한 후, 결과를 view에 전달하여 사용자에게 표시한다. Controller는 application의 logic을 포함하고, model과 view 간의 통신을 조정한다.
+
+   이를 통해 user interface로부터 business logic을 분리하여 application의 시각적 요소나 그 이면에서 구동되는 logic을 독립적으로 개발하고, 서로 영향 없이 수월하게 고칠 수 있는 architecture를 구축할 수 있다.
 
 ---
