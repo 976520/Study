@@ -51,6 +51,18 @@
 
        creator_b = ConcreteCreatorB()
        creator_b.some_operation()
+
+   '''
+   출력:
+   im product A
+   im product B
+   '''
    ```
+
+   추상 method `factory_method`는 객체 생성의 책임을 가지고 있으며, 하위 class에서 구체적으로 구현되게 된다. `some_operation()`는 factory method를 호출하여 객체를 생성하고 `use()`로 사용하는 메서드이다.
+
+   `ConcreteCreatorA`와 `ConcreteCreatorB`는 `Creator` class를 상속받아 `factory_method`를 구체적으로 구현하고 있다. 이는 각각 `ConcreteProductA`와 `ConcreteProductB`를 생성하는 방식이 다르다는 것을 의미한다. `Product` class는 추상 class로 추상 method `use()`를 가지고 있다. `ConcreteProductA`와 `ConcreteProductB`는 `Product` class를 상속받아 `use()`를 구체적으로 구현하고 있다.
+
+   구체적인 제품 class인 `ConcreteProductA`와 `ConcreteProductB`는 `Product`를 상속받아 각각 다른 방식으로 `use()`를 구현하고 있다.
 
 ---
