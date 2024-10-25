@@ -54,13 +54,7 @@
 
    State transition diagram를 행렬로 표현한 것이다. 모든 element가 0 이상 1 이하의 값을 가지며 각 row의 합이 1인 것을 확인할 수 있다. 위의 예시 transition diagram에 대한 state transition probability matrix는 다음과 같다.
 
-   > $Q =$ $\begin{bmatrix}
-   > 0 & 0.1 & 0.1 & 0.8 & 0 \\ 
-   > 0 & 0 & 0.3 & 0 & 0.7 \\
-   > 0.1 & 0.2 & 0.2 & 0 & 0.5 \\
-   > 0.6 & 0 & 0 & 0.4 & 0 \\
-   > 0 & 0 & 0 & 0 & 1 \\
-   > \end{bmatrix}$
+   > $Q =$ $\begin{bmatrix} 0 & 0.1 & 0.1 & 0.8 & 0 \\ 0 & 0 & 0.3 & 0 & 0.7 \\ 0.1 & 0.2 & 0.2 & 0 & 0.5 \\ 0.6 & 0 & 0 & 0.4 & 0 \\ 0 & 0 & 0 & 0 & 1 \\ \end{bmatrix}$
 
    $S_t$가 `독서`, $S_{t+1}$이 `취침`일 때 $P_{ij} = 0.7$이다. 즉, `취침` state의 결정에 있어 `독서`가 70%의 확률로 영향을 미치며, `웹 서핑`이 30%의 확률로 개입하는 것을 알 수 있다.
 
@@ -89,6 +83,8 @@
    > $P(S_{n+m}=k|S_{n}=i) = Q^{m}_{ik}$
 
    따라서 $n+m$ 시점의 분포는 $xQ^{m}$이 된다. Transition probability matrix은 markov process의 변화 추이를 나타내는 것이기 때문에, 현재 state의 분포 $x$에 변화 추이를 곱하면 미래를 예측할 수 있다. State가 $m$번 transition한 경우에는 $m$번 곱하여 구할 수 있다. 결과적으로 위의 수식과 동일하다.
+
+4. stationary distribution
 
 ---
 
