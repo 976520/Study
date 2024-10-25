@@ -2,6 +2,8 @@
 
 > Markov decision process는 discrete time stochastic control process(이산 시간 확률 제어 과정)이다.
 
+수학이 싫은 강화학습 엔지니어 꿈나무들은 도망가주시기 바랍니다.
+
 ---
 
 ## Markov process
@@ -40,7 +42,21 @@
 
       즉, 상태 $i$에서 반드시 어떤 상태 $j$로 transition하게 된다.
 
-4. State transition diagram
+4. Irreducible
+
+   Irreducible한 markov process는 모든 state가 서로 도달 가능한 state임을 의미한다. 즉, 임의의 state $i$에서 다른 임의의 state $j$로 도달할 수 있는 경로가 존재한다면, 그 markov process은 irreducible이라고 한다.
+
+   이를 수식으로 나타내면 다음과 같다.
+
+   상태 $i$에서 상태 $j$로 도달할 수 있는 확률을 $P_{ij}^{(n)}$라고 할 때, 어떤 양의 정수 $n$에 대해 다음이 성립하면,
+
+   > $P_{ij}^{(n)} > 0$
+
+   상태 $i$에서 상태 $j$로 도달할 수 있다고 한다. 모든 상태 쌍 $(i, j)$에 대해 이러한 조건이 성립하면, 그 markov process은 irreducible이다.
+
+   Irreducible markov process는 모든 상태가 서로 연결되어 있어, 시스템이 어느 상태에서 시작하더라도 결국 모든 상태를 방문할 수 있음을 보장한다.
+
+5. State transition diagram
 
    State transition diagram은 모든 state와 state transition probability를 나타낸 directed graph이다.
 
@@ -50,7 +66,7 @@
 
    `독서`에서 `웹 서핑`, `취침`으로 이동할 확률을 모두 더하면 1이 나온다. 이처럼 하나의 state에서 다른 state로 이동할 확률의 총합은 1인 것을 알 수 있다. 그리고 `취침`은 종료 state이기 때문에 다른 state로 이동할 확률은 0이다.
 
-5. State transition probability matrix
+6. State transition probability matrix
 
    > State transition probability matrix는 모든 state의 전이 확률을 나타낸 행렬이다.
 
@@ -106,7 +122,7 @@
 
    따라서 $t+m$ 시점의 분포는 $\vec{v}Q^{n}$이 된다. Transition probability matrix은 markov process의 변화 추이를 나타내는 것이기 때문에, 현재 state의 분포 $v$에 변화 추이를 곱하면 미래를 예측할 수 있다. State가 $n$번 transition한 경우에는 $n$번 곱하여 구할 수 있다. 결과적으로 위의 수식과 동일하다.
 
-6. stationary distribution
+7. stationary distribution
 
    만약 어떤 $\vec{v}Q^{n}$이 어떤 극한 분포에 수렴한다면, 이를 stationary distribution(정적 분포)이라고 한다. 이는 현재 state의 분포가 시간에 따라 변하지 않는 것을 의미한다. 이렇게 수렴하여 변하지 않는 상태를 stationary state(정상 상태)라고 한다.
 
@@ -126,7 +142,7 @@
 
    따라서 stationary distribution은 $\lambda=1$에 대응하는 eigenvector가 된다. 즉, markov process의 transition probability matrix의 eigenvalue 중 하나는 반드시 1이여야 한다.
 
-   Stationary distribution를 찾기 위해서는 transition probability matrix $Q$의 eigenvalue와 eigenvector를 구하면 된다. 이때 eigenvalue가 1인 eigenvector가 stationary distribution이 된다. 이를 구하는 과정은 다음과 같다.
+   이를 통해 stationary distribution를 찾을 수 있다. 간단히 transition probability matrix $Q$의 eigenvalue와 eigenvector를 구하고, eigenvalue가 1인 eigenvector가 stationary distribution을 찾으면 된다. 이 과정을 예시로 설명하자면 다음과 같다.
 
    다음과 같은 transition probability matrix $Q$가 있다고 할 때,
 
@@ -181,4 +197,12 @@
 
 1. 이해
 
+   > Markov reward process는 markov process에 reward system을 추가한 것이다.
+
    Markov process는 현재 state만이 다음 state를 결정하는 것이라면, Markov reward process는 현재 state와 다음 state의 reward를 고려하여 다음 state를 결정하는 것이다. 여기서 reward는 현재 state에서 다음 state로 transition할 때 이동한 미래 state의 좋고 나쁨에 따라 현재 state에 부여하는 보상을 의미한다.
+
+## Markov Decision Process
+
+1. 이해
+
+   > Markov decision process는 markov reward process에 action을 추가한 것이다.
