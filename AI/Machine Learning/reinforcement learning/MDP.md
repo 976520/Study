@@ -72,7 +72,15 @@
 
    State transition diagram를 행렬로 표현한 것이다. 모든 element가 0 이상 1 이하의 값을 가지며 각 row의 합이 1인 것(row stochastic)을 확인할 수 있다. 위의 예시 transition diagram에 대한 state transition probability matrix는 다음과 같다.
 
-   $$Q =\begin{bmatrix} 0 & 0.1 & 0.1 & 0.8 & 0 \\ 0 & 0 & 0.3 & 0 & 0.7 \\ 0.1 & 0.2 & 0.2 & 0 & 0.5 \\ 0.6 & 0 & 0 & 0.4 & 0 \\ 0 & 0 & 0 & 0 & 1 \\ \end{bmatrix}$$
+   $$
+   Q = \begin{bmatrix}
+   0 & 0.1 & 0.1 & 0.8 & 0 \\
+   0 & 0 & 0.3 & 0 & 0.7 \\
+   0.1 & 0.2 & 0.2 & 0 & 0.5 \\
+   0.6 & 0 & 0 & 0.4 & 0 \\
+   0 & 0 & 0 & 0 & 1 \\
+   \end{bmatrix}
+   $$
 
    $S_t$가 `독서`, $S_{t+1}$이 `취침`일 때 $P_{ij} = 0.7$이다. 즉, `취침` state의 결정에 있어 `독서`가 70%의 확률로 영향을 미치며, `웹 서핑`이 30%의 확률로 개입하는 것을 알 수 있다.
 
