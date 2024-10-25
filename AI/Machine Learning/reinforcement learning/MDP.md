@@ -128,12 +128,7 @@
 
    Stationary distribution를 찾기 위해서는 transition probability matrix $Q$의 eigenvalue와 eigenvector를 구하면 된다. 이때 eigenvalue가 1인 eigenvector가 stationary distribution이 된다. 이를 구하는 과정은 다음과 같다.
 
-   1. Transition probability matrix $Q$를 구한다.
-   2. $Q$의 eigenvalue와 eigenvector를 구한다.
-   3. Eigenvalue가 1인 eigenvector를 찾는다.
-   4. Eigenvector를 정규화하여 stationary distribution를 구한다.
-
-   예를 들어, 다음과 같은 transition probability matrix $Q$가 있다고 할 때,
+   다음과 같은 transition probability matrix $Q$가 있다고 할 때,
 
    $$
    Q = \begin{pmatrix}
@@ -142,6 +137,11 @@
    \end{pmatrix}
    $$
 
+   ```python
+   Q = np.array([[0.5, 0.5],
+                 [0.2, 0.8]])
+   ```
+
    이 행렬의 eigenvalue $\lambda$와 eigenvector $\vec{v}$를 구하면 다음과 같다.
 
    $$
@@ -149,13 +149,31 @@
    \vec{v_1} = \begin{pmatrix} 0.4 \\ 0.6 \end{pmatrix}, \vec{v_2} = \begin{pmatrix} -0.8 \\ 0.6 \end{pmatrix}
    $$
 
-   여기서 eigenvalue가 1인 eigenvector $\vec{v_1}$이 stationary distribution이 된다. 이를 정규화하면 다음과 같다.
+   ```python
+   eigenvalues, eigenvectors = np.linalg.eig(Q)
+   ```
+
+   여기서 eigenvalue가 1인 eigenvector $\vec{v_1}$이 stationary distribution이 된다.
+
+   ```python
+   stationary_vector = eigenvectors[:, np.isclose(eigenvalues, 1)]
+   ```
+
+   이를 정규화하면 다음과 같다.
 
    $$
    \vec{x} = \frac{1}{0.4 + 0.6} \begin{pmatrix} 0.4 \\ 0.6 \end{pmatrix} = \begin{pmatrix} 0.4 \\ 0.6 \end{pmatrix}
    $$
 
+   ```python
+   stationary_distribution = stationary_vector / np.sum(stationary_vector)
+   ```
+
    따라서 stationary distribution는 $\begin{pmatrix} 0.4 \\ 0.6 \end{pmatrix}$가 된다.
+
+   ```python
+   print(stationary_distribution) # 출력: [0.4 0.6]
+   ```
 
 ---
 
