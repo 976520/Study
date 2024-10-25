@@ -50,9 +50,11 @@
 
    > State transition probability matrix는 모든 state의 전이 확률을 나타낸 행렬이다.
 
-   State transition diagram를 행렬로 표현한 것이다. 각 행의 합이 1인 것을 확인할 수 있다.
+   State transition probability matrix는 전체 markov process의 변화 추이를 나타낸다.
 
-   > $S_{t} =$ $\begin{bmatrix}
+   State transition diagram를 행렬로 표현한 것이다. 모든 element가 0 이상 1 이하의 값을 가지며 각 row의 합이 1인 것을 확인할 수 있다. 위의 예시 transition diagram에 대한 state transition probability matrix는 다음과 같다.
+
+   > $Q =$ $\begin{bmatrix}
    > 0 & 0.1 & 0.1 & 0.8 & 0 \\ 
    > 0 & 0 & 0.3 & 0 & 0.7 \\
    > 0.1 & 0.2 & 0.2 & 0 & 0.5 \\
@@ -60,7 +62,15 @@
    > 0 & 0 & 0 & 0 & 1 \\
    > \end{bmatrix}$
 
-   $S_t$가 `독서`, $S_{t+1}$이 `취침`일 때 $P_{ss'} = 0.7$이다. 즉, `취침` state의 결정에 있어 `독서`가 70%의 확률로 영향을 미치며, `웹 서핑`이 30%의 확률로 개입하는 것을 알 수 있다. 이처럼 $S_{t+1}$을 결정하는 데에 $S_{t}$가 높은 확률로 영향을 미칠 뿐, 다른 random variable(확률 변수)가 전혀 개입하지 않는 것은 아니다.
+   $S_t$가 `독서`, $S_{t+1}$이 `취침`일 때 $P_{ss'} = 0.7$이다. 즉, `취침` state의 결정에 있어 `독서`가 70%의 확률로 영향을 미치며, `웹 서핑`이 30%의 확률로 개입하는 것을 알 수 있다.
+
+   이처럼 state transition probability matrix와 현재 state를 알고 있다면 전체 markov process의 state를 구할 수 있다. 현재 시점 $t$에 대한 state $S_t$가 $(1\times M)$ 행렬인 분포 $x$를 따를 때,
+
+   > $P(S_{t+1} = s') = \displaystyle\sum_{s \in S} P(S_{t+1} = s' | S_t = s)P(S_t = s)$ $= \displaystyle\sum_{s \in S} x_{s} \times y_{ss'}$ = sQ
+
+   $x_s$는 $(1\times M)$ 행렬이고, $y_{ss'}$는 $(M\times M)$ 행렬이다. 따라서 $t+1$ 시점의 transition probability matrix는 $(1\times M)$의 $xQ$가 된다.
+
+   또한 $S_{t+1}$을 결정하는 데에 $S_{t}$가 높은 확률로 영향을 미칠 뿐, 다른 random variable(확률 변수)가 전혀 개입하지 않는 것은 아니다.
 
 ---
 
