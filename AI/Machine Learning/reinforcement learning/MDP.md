@@ -116,7 +116,7 @@
 
    이를 일반화하면 다음과 같다.
 
-   > $P(S_{t+n}=j|S_{t}=i) = Q^{n}_{ij} = [Q_{ij}]^{n}$
+   > $P(S_{t+n}=j|S_{t}=i)=Q^{n}_{ij} = [Q_{ij}]^{n}$
 
    따라서 $t+m$ 시점의 분포는 $\vec{v}Q^{n}$이 된다. Transition probability matrix은 markov process의 변화 추이를 나타내는 것이기 때문에, 현재 state의 분포 $v$에 변화 추이를 곱하면 미래를 예측할 수 있다. State가 $n$번 transition한 경우에는 $n$번 곱하여 구할 수 있다. 결과적으로 위의 수식과 동일하다.
 
