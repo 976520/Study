@@ -30,7 +30,7 @@
 
    > $\sum_{s' \in S} P_{ss'} = 1$
 
-2. State transition probability matrix
+2. State transition diagram
 
    State transition diagram은 모든 state와 state transition probability를 나타낸 directed graph이다.
 
@@ -38,7 +38,26 @@
 
    위 transition diagram에서는 각 원이 state를 나타내고, 화살표는 state transition을 의미하고, 화살표의 숫자로 state transition probability를 나타낸다.
 
-   State transition probability matrix는 모든 state의 전이 확률을 나타낸 행렬이다. 이를 통해 $S_{t}$에서 $S_{t+1}$로 transition 할 확률을 쉽게 계산할 수 있다.
+   `독서`에서 `웹 서핑`, `취침`으로 이동할 확률을 모두 더하면 1이 나온다. 이처럼 하나의 state에서 다른 state로 이동할 확률의 총합은 1인 것을 알 수 있다. 그리고 `취침`은 종료 state이기 때문에 다른 state로 이동할 확률은 0이다.
+
+3. State transition probability matrix
+
+   > State transition probability matrix는 모든 state의 전이 확률을 나타낸 행렬이다.
+
+   State transition diagram를 행렬로 표현한 것이다.
+
+   > $$
+   > P =
+   > \begin{bmatrix}
+   > 0 & 0.1 & 0.1 & 0.8 & 0 \\
+   > 0 & 0 & 0.3 & 0 & 0.7 \\
+   > 0.1 & 0.2 & 0.2 & 0 & 0.5 \\
+   > 0.6 & 0 & 0 & 0.4 & 0 \\
+   > 0 & 0 & 0 & 0 & 1 \\
+   > \end{bmatrix}
+   > $$
+
+   이를 통해 $S_{t}$에서 $S_{t+1}$로 transition 할 확률을 쉽게 계산할 수 있다.
 
 ---
 
