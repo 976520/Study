@@ -36,7 +36,7 @@
 
       즉, 상태 $i$에서 반드시 어떤 상태 $j$로 transition하게 된다.
 
-2. State transition diagram
+2. State transition diagram(상태 전이 그래프)
 
    State transition diagram은 모든 state와 state transition probability를 나타낸 directed graph이다.
 
@@ -85,6 +85,16 @@
    따라서 $t+m$ 시점의 분포는 $\vec{x}Q^{n}$이 된다. Transition probability matrix은 markov process의 변화 추이를 나타내는 것이기 때문에, 현재 state의 분포 $x$에 변화 추이를 곱하면 미래를 예측할 수 있다. State가 $n$번 transition한 경우에는 $n$번 곱하여 구할 수 있다. 결과적으로 위의 수식과 동일하다.
 
 4. stationary distribution
+
+   만약 어떤 $\vec{x}Q^{n}$이 어떤 극한 분포에 수렴한다면, 이를 stationary distribution(정적 분포)이라고 한다. 이는 현재 state의 분포가 시간에 따라 변하지 않는 것을 의미한다. 이렇게 수렴하여 변하지 않는 상태를 stationary state(정상 상태)라고 한다.
+
+   $\vec{x}Q^{n}$이 다음 조건을 만족한다면,
+
+   > $\vec{x}Q = \vec{x}$
+
+   이와 같이 정리할 수 있다.
+
+   > $\vec{x}Q^n = \vec{x}Q^{n-1} \dots = \vec{x}Q^2 = \vec{x}Q = \vec{x}$
 
 ---
 
