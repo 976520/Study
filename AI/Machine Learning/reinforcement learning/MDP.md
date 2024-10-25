@@ -8,13 +8,11 @@
 
 ## Markov process
 
-1. 이해
+> Markov process는 markov property를 가진 discrete time stochastic process(이산 시간 확률 과정)이다.
 
-   > Markov process는 markov property를 가진 discrete time stochastic process(이산 시간 확률 과정)이다.
+정의된 확률 분포를 따라 state 사이를 이동하는 과정이다. 또한 markov chain과 같은 의미이다.
 
-   정의된 확률 분포를 따라 state 사이를 이동하는 과정이다. 또한 markov chain과 같은 의미이다.
-
-2. Markov property
+1. Markov property
 
    Markov process는 어떤 state가 일정한 간격으로 변화하고, 다음 state $S_{t+1}$가 현재 state $S_{t}$에만 의존하여 확률적으로 변화하는 것을 뜻한다. 즉, $S_{t+1}$에는 $S_{t}$만이 영향을 미칠 수 있으며, 그 이전 history는 영향을 미치지 않는다. 때문에 과거와 현재의 state를 모두 고려 했을 때 미래의 state가 나타날 확률과 현재의 state만 고려했을 때 미래의 state가 나타날 확률이 동일하다. 이를 수식으로 나타내면 다음과 같다.
 
@@ -22,7 +20,7 @@
 
    이러한 성질을 markov property라고 한다. **Markov property은 $S_{t}$가 $S_{t+1}$를 결정하는 데 필요한 모든 정보를 포함하고 있다는 것**을 의미한다. 따라서 과거의 상태는 현재의 상태를 통해 간접적으로만 영향을 미치게 된다.
 
-3. State transition probability
+2. State transition probability
 
    **Markov process는 시간 $t$에 따른 state $S_{t}$의 변화**를 나타내고, 이 상태의 변화를 transition(전이)이라고 한다. 이러한 변화를 확률로 표현하면 state transition probability(상태 전이 확률)이라고 한다.
 
@@ -42,7 +40,7 @@
 
       즉, 상태 $i$에서 반드시 어떤 상태 $j$로 transition하게 된다.
 
-4. Irreducible
+3. Irreducible
 
    Irreducible한 markov process는 모든 state가 서로 도달 가능한 state임을 의미한다. 즉, 임의의 state $i$에서 다른 임의의 state $j$로 도달할 수 있는 경로가 존재한다면, 그 markov process은 irreducible이라고 한다.
 
@@ -56,7 +54,7 @@
 
    Irreducible markov process는 모든 상태가 서로 연결되어 있어, 시스템이 어느 상태에서 시작하더라도 결국 모든 상태를 방문할 수 있음을 보장한다.
 
-5. State transition diagram
+4. State transition diagram
 
    State transition diagram은 모든 state와 state transition probability를 나타낸 directed graph이다.
 
@@ -66,7 +64,7 @@
 
    `독서`에서 `웹 서핑`, `취침`으로 이동할 확률을 모두 더하면 1이 나온다. 이처럼 하나의 state에서 다른 state로 이동할 확률의 총합은 1인 것을 알 수 있다. 그리고 `취침`은 종료 state이기 때문에 다른 state로 이동할 확률은 0이다.
 
-6. State transition probability matrix
+5. State transition probability matrix
 
    > State transition probability matrix는 모든 state의 전이 확률을 나타낸 행렬이다.
 
@@ -122,7 +120,7 @@
 
    따라서 $t+m$ 시점의 분포는 $\vec{v}Q^{n}$이 된다. Transition probability matrix은 markov process의 변화 추이를 나타내는 것이기 때문에, 현재 state의 분포 $v$에 변화 추이를 곱하면 미래를 예측할 수 있다. State가 $n$번 transition한 경우에는 $n$번 곱하여 구할 수 있다. 결과적으로 위의 수식과 동일하다.
 
-7. stationary distribution
+6. stationary distribution
 
    만약 어떤 $\vec{v}Q^{n}$이 어떤 극한 분포에 수렴한다면, 이를 stationary distribution(정적 분포)이라고 한다. 이는 현재 state의 분포가 시간에 따라 변하지 않는 것을 의미한다. 이렇게 수렴하여 변하지 않는 상태를 stationary state(정상 상태)라고 한다.
 
@@ -195,14 +193,10 @@
 
 ## Markov Reward Process
 
-1. 이해
+> Markov reward process는 markov process에 reward system을 추가한 것이다.
 
-   > Markov reward process는 markov process에 reward system을 추가한 것이다.
-
-   Markov process는 현재 state만이 다음 state를 결정하는 것이라면, Markov reward process는 현재 state와 다음 state의 reward를 고려하여 다음 state를 결정하는 것이다. 여기서 reward는 현재 state에서 다음 state로 transition할 때 이동한 미래 state의 좋고 나쁨에 따라 현재 state에 부여하는 보상을 의미한다.
+Markov process는 현재 state만이 다음 state를 결정하는 것이라면, Markov reward process는 현재 state와 다음 state의 reward를 고려하여 다음 state를 결정하는 것이다. 여기서 reward는 현재 state에서 다음 state로 transition할 때 이동한 미래 state의 좋고 나쁨에 따라 현재 state에 부여하는 보상을 의미한다.
 
 ## Markov Decision Process
 
-1. 이해
-
-   > Markov decision process는 markov reward process에 action을 추가한 것이다.
+> Markov decision process는 markov reward process에 action을 추가한 것이다.
