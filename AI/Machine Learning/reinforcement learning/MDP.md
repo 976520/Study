@@ -80,7 +80,7 @@
    \end{bmatrix}
    $$
 
-   이 vector는 현재 시점 $t$에서 첫 번째 state에 있을 확률이 20%, 두 번째 state에 있을 확률이 30%, 세 번째 state에 있을 확률이 10%, 네 번째 state에 있을 확률이 40%, 다섯 번째 state에 있을 확률이 0%임을 나타낸다.
+   이 vector는 현재 시점 $t$에서 첫 번째 state에 있을 확률이 20%, 두 번째 state에 있을 확률이 30%, 세 번째 state에 있을 확률이 10%, 네 번째 state에 있을 확률이 40%, 다섯 번째 state에 있을 확률이 0%임을 나타낸다. 모든 확률의 합이 100%가 되어야 하므로, state vector의 각 element의 합은 1이다.
 
    State vector는 시간에 따라 변화하며, 후술할 state transition probability matrix와의 행렬곱을 통해 다음 시점의 state vector를 구할 수 있다. 현재 시점 $t$의 state vector $\vec{v}$와 state transition probability matrix $Q$가 주어졌을 때, 다음 시점 $t+1$의 state vector $\vec{v}'$는 다음과 같다.
 
