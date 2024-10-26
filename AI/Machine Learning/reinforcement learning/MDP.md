@@ -283,6 +283,58 @@
    print(stationary_distribution) # 출력: [0.4 0.6]
    ```
 
+   만약 행렬 $Q$가 전치 행렬 $Q^T$를 가지고 있다면, 이를 이용하여 stationary distribution를 찾을 수 있다. 예를 들어, 다음과 같은 행렬 $Q$가 있다고 할 때,
+
+   $$
+   Q^T = \begin{pmatrix}
+   0.5 & 0.2 \\
+   0.5 & 0.8
+   \end{pmatrix}
+   $$
+
+   ```python
+   Q_T = Q.T
+   ```
+
+   이 전치 행렬의 eigenvalue $\lambda$와 eigenvector $\vec{v}$를 구하면 다음과 같다.
+
+   $$
+   \lambda_1 = 1, \lambda_2 = 0.3 \\
+   \vec{v_1} = \begin{pmatrix} 0.6 \\ 0.4 \end{pmatrix}, \vec{v_2} = \begin{pmatrix} 0.6 \\ -0.8 \end{pmatrix}
+   $$
+
+   ```python
+   eigenvalues_T, eigenvectors_T = np.linalg.eig(Q_T)
+   ```
+
+   여기서 eigenvalue가 1인 eigenvector $\vec{v_1}$이 stationary distribution이 된다.
+
+   ```python
+   stationary_vector_T = eigenvectors_T[:, np.isclose(eigenvalues_T, 1)]
+   ```
+
+   이를 정규화하면 다음과 같다.
+
+   $$
+   \vec{x} = \frac{1}{0.6 + 0.4} \begin{pmatrix} 0.6 \\ 0.4 \end{pmatrix} = \begin{pmatrix} 0.6 \\ 0.4 \end{pmatrix}
+   $$
+
+   ```python
+   stationary_distribution_T = stationary_vector_T / np.sum(stationary_vector_T)
+   ```
+
+   따라서 stationary distribution는 $\begin{pmatrix} 0.6 \\ 0.4 \end{pmatrix}$가 된다.
+
+   ```python
+   print(stationary_distribution_T) # 출력: [0.6 0.4]
+   ```
+
+   원래 행렬 $Q$의 stationary distribution에 전치를 취한 것과 같다는 점을 확인할 수 있다.
+
+   ```python
+   print(stationary_distribution_T == stationary_distribution.T) # 출력: True
+   ```
+
 ---
 
 ## Markov Reward Process
