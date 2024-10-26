@@ -2,7 +2,7 @@
 
 > Markov decision process는 discrete time stochastic control process(이산 시간 확률 제어 과정)이다.
 
-수학이 싫은 강화학습 엔지니어 꿈나무들은 도망가주시기 바랍니다.
+~~수학이 싫은 강화학습 엔지니어 꿈나무들은 도망가주시기 바랍니다.~~
 
 ---
 
@@ -14,7 +14,7 @@
 
 1. Markov property
 
-   Markov process는 어떤 state가 일정한 간격으로 변화하고, 다음 state $S_{t+1}$가 현재 state $S_{t}$에만 의존하여 확률적으로 변화하는 것을 뜻한다. 즉, $S_{t+1}$에는 $S_{t}$만이 영향을 미칠 수 있으며, 그 이전 history는 영향을 미치지 않는다. 때문에 과거와 현재의 state를 모두 고려 했을 때 미래의 state가 나타날 확률과 현재의 state만 고려했을 때 미래의 state가 나타날 확률이 동일하다. 이를 수식으로 나타내면 다음과 같다.
+   Markov process는 어떤 state가 일정한 간격으로(discrete) 변화하고, 다음 state $S_{t+1}$가 현재 state $S_{t}$에만 의존하여 확률적으로 변화하는 것을 뜻한다. 즉, $S_{t+1}$에는 $S_{t}$만이 영향을 미칠 수 있으며, 그 이전 history는 영향을 미치지 않는다. 때문에 과거와 현재의 state를 모두 고려 했을 때 미래의 state가 나타날 확률과 현재의 state만 고려했을 때 미래의 state가 나타날 확률이 동일하다. 이를 수식으로 나타내면 다음과 같다.
 
    $$P(S_{t+1} | S_{t}) = P(S_{t+1} | S_{t}, ..., S_{t-1}, S_{t})$$
 
@@ -64,11 +64,37 @@
 
    `독서`에서 `웹 서핑`, `취침`으로 이동할 확률을 모두 더하면 1이 나온다. 이처럼 하나의 state에서 다른 state로 이동할 확률의 총합은 1인 것을 알 수 있다. 그리고 `취침`은 종료 state이기 때문에 다른 state로 이동할 확률은 0이다.
 
-5. State transition probability matrix
+5. State vector
+
+   > State vector는 현재 시점에서 각 state에 있을 확률을 나타낸 vector이다.
+
+   State vector는 현재 시점 $t$에서의 상태 분포를 나타내며, 각 element는 해당 state에 있을 확률을 나타낸다. 예를 들어, 현재 시점 $t$에서의 state vector $\vec{v}$가 다음과 같다고 할 때.
+
+   $$
+   \vec{v} = \begin{bmatrix}
+   0.2 \\
+   0.3 \\
+   0.1 \\
+   0.4 \\
+   0
+   \end{bmatrix}
+   $$
+
+   이 vector는 현재 시점 $t$에서 첫 번째 state에 있을 확률이 20%, 두 번째 state에 있을 확률이 30%, 세 번째 state에 있을 확률이 10%, 네 번째 state에 있을 확률이 40%, 다섯 번째 state에 있을 확률이 0%임을 나타낸다.
+
+   State vector는 시간에 따라 변화하며, 후술할 state transition probability matrix와의 행렬곱을 통해 다음 시점의 state vector를 구할 수 있다. 현재 시점 $t$의 state vector $\vec{v}$와 state transition probability matrix $Q$가 주어졌을 때, 다음 시점 $t+1$의 state vector $\vec{v}'$는 다음과 같다.
+
+   $$
+   \vec{v}' = \vec{v}Q
+   $$
+
+   이를 통해 전체 markov process의 상태 변화를 예측할 수 있다.
+
+6. State transition probability matrix
 
    > State transition probability matrix는 모든 state의 전이 확률을 나타낸 행렬이다.
 
-   State transition probability matrix는 전체 markov process의 변화 추이를 나타낸다.
+   State transition probability matrix는 전체 markov process의 각 state가 다른 state로 변화 추이를 나타낸다.
 
    State transition diagram를 행렬로 표현한 것이다. 모든 element가 0 이상 1 이하의 값을 가지며 각 row의 합이 1인 것(row stochastic)을 확인할 수 있다. 위의 예시 transition diagram에 대한 state transition probability matrix는 다음과 같다.
 
@@ -104,7 +130,7 @@
    print(f"P(S_t+1 = '웹 서핑' | S_t = '독서') = {Q[1, 2]}") # 출력: 0.3
    ```
 
-   또한 state transition probability matrix와 현재 state를 알고 있다면 전체 markov process의 state를 구할 수 있다. 현재 시점 $t$에 대한 state $S_t$가 $(1\times M)$ 행렬인 분포 $\vec{v}$를 따를 때,
+   또한 state transition probability matrix와 현재 state를 알고 있다면 행렬곱을 이용하여 전체 markov process의 state를 구할 수 있다. 현재 시점 $t$에 대한 state $S_t$가 $(1\times M)$ 행렬로 표현된 state vector $\vec{v}$를 따를 때,
 
    $$P(S_{t+1} = j) = \displaystyle\sum_{i \in S} P(S_{t+1} = j | S_t = i)P(S_t = i)$$
 
@@ -128,7 +154,67 @@
 
    따라서 $t+m$ 시점의 분포는 $\vec{v}Q^{n}$이 된다. Transition probability matrix은 markov process의 변화 추이를 나타내는 것이기 때문에, 현재 state의 분포 $v$에 변화 추이를 곱하면 미래를 예측할 수 있다. State가 $n$번 transition한 경우에는 $n$번 곱하여 구할 수 있다. 결과적으로 위의 수식과 동일하다.
 
-6. stationary distribution
+   예를 들어, 현재 state vector $\vec{v}$와 state transition probability matrix $Q$가 다음과 같다고 가정하면,
+
+   $$
+   \vec{v} = \begin{bmatrix}
+   0.2 & 0.3 & 0.1 & 0.4 & 0
+   \end{bmatrix}
+   $$
+
+   $$
+   Q = \begin{bmatrix}
+   0 & 0.1 & 0.1 & 0.8 & 0 \\
+   0 & 0 & 0.3 & 0 & 0.7 \\
+   0.1 & 0.2 & 0.2 & 0 & 0.5 \\
+   0.6 & 0 & 0 & 0.4 & 0 \\
+   0 & 0 & 0 & 0 & 1 \\
+   \end{bmatrix}
+   $$
+
+   ```python
+   v = np.array([0.2, 0.3, 0.1, 0.4, 0])
+
+   Q = np.array([
+       [0, 0.1, 0.1, 0.8, 0],
+       [0, 0, 0.3, 0, 0.7],
+       [0.1, 0.2, 0.2, 0, 0.5],
+       [0.6, 0, 0, 0.4, 0],
+       [0, 0, 0, 0, 1]
+   ])
+   ```
+
+   이때 $t+1$ 시점의 state vector는 다음과 같이 구할 수 있다.
+
+   $$
+   \vec{v}Q = \begin{bmatrix}
+   0.2 & 0.3 & 0.1 & 0.4 & 0
+   \end{bmatrix}
+   \begin{bmatrix}
+   0 & 0.1 & 0.1 & 0.8 & 0 \\
+   0 & 0 & 0.3 & 0 & 0.7 \\
+   0.1 & 0.2 & 0.2 & 0 & 0.5 \\
+   0.6 & 0 & 0 & 0.4 & 0 \\
+   0 & 0 & 0 & 0 & 1 \\
+   \end{bmatrix}
+   = \begin{bmatrix}
+   0.26 & 0.08 & 0.17 & 0.32 & 0.17
+   \end{bmatrix}
+   $$
+
+   ```python
+   v_next = np.dot(v, Q)
+   ```
+
+   따라서 $t+1$ 시점의 state vector는 $\begin{bmatrix} 0.26 & 0.08 & 0.17 & 0.32 & 0.17 \end{bmatrix}$가 된다.
+
+   ```python
+   print(v_next) # 출력: [0.26 0.08 0.17 0.32 0.17]
+   ```
+
+   이와 같이 state vector와 transition matrix의 행렬곱을 이용하여 markov process의 미래 상태를 예측할 수 있다.
+
+7. stationary distribution
 
    만약 어떤 $\vec{v}Q^{n}$이 어떤 극한 분포에 수렴한다면, 이를 stationary distribution(정적 분포)이라고 한다. 이는 현재 state의 분포가 시간에 따라 변하지 않는 것을 의미한다. 이렇게 수렴하여 변하지 않는 상태를 stationary state(정상 상태)라고 한다.
 
