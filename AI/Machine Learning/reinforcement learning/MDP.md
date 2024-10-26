@@ -214,7 +214,57 @@
 
    이와 같이 state vector와 transition matrix의 행렬곱을 이용하여 markov process의 미래 상태를 예측할 수 있다.
 
-7. stationary distribution
+7. Identity Matrix
+
+   > Identity matrix는 대각선 요소가 모두 1이고 나머지 요소가 모두 0인 정방 행렬이다.
+
+   Identity matrix는 행렬 곱셈에서 항등원 역할을 한다. 즉, 어떤 행렬 $A$에 대해 $A$와 identity matrix $I$를 곱하면 $A$가 그대로 나온다. 이를 수식으로 나타내면 다음과 같다.
+
+   $$
+   AI = IA = A
+   $$
+
+   Identity matrix는 markov process의 state transition probability matrix에서 각 상태가 자기 자신으로 전이될 확률이 1인 경우를 나타낸다. 즉, 모든 상태가 변하지 않고 그대로 유지되는 경우를 의미한다. 예를 들어, 다음과 같은 3x3 identity matrix $I$가 있다고 하자.
+
+   $$
+   I = \begin{bmatrix}
+   1 & 0 & 0 \\
+   0 & 1 & 0 \\
+   0 & 0 & 1
+   \end{bmatrix}
+   $$
+
+   이 identity matrix를 어떤 행렬 $A$와 곱하면 $A$가 그대로 나온다.
+
+   $$
+   A = \begin{bmatrix}
+   a & b & c \\
+   d & e & f \\
+   g & h & i
+   \end{bmatrix}
+   $$
+
+   $$
+   AI = \begin{bmatrix}
+   a & b & c \\
+   d & e & f \\
+   g & h & i
+   \end{bmatrix}
+   \begin{bmatrix}
+   1 & 0 & 0 \\
+   0 & 1 & 0 \\
+   0 & 0 & 1
+   \end{bmatrix}
+   = \begin{bmatrix}
+   a & b & c \\
+   d & e & f \\
+   g & h & i
+   \end{bmatrix}
+   $$
+
+   이처럼 identity matrix는 행렬 곱셈에서 항등원 역할을 하며, markov process에서는 상태가 변하지 않는 경우를 나타낸다. 행렬의 크기에 따라 다양한 크기의 identity matrix가 존재한다.
+
+8. stationary distribution
 
    만약 어떤 $\vec{v}Q^{n}$이 어떤 극한 분포에 수렴한다면, 이를 stationary distribution(정적 분포)이라고 한다. 이는 현재 state의 분포가 시간에 따라 변하지 않는 것을 의미한다. 이렇게 수렴하여 변하지 않는 상태를 stationary state(정상 상태)라고 한다.
 
@@ -225,6 +275,8 @@
    이와 같이 정리할 수 있다.
 
    $$\vec{v}Q^n = \vec{v}Q^{n-1} \dots = \vec{v}Q^2 = \vec{v}Q = \vec{v}$$
+
+   이때 $Q$가 identity matrix라고 할 수 있으며, 이때의 분포가 stationary distribution이 된다.
 
    행렬 $Q$를 linear transformation(선형 변환)으로 봤을 때, $Q$에 의한 변환이 자기 자신의 상수배가 되는 vector를 eigenvector라고 한다. 이때 상수를 eigenvalue라고 한다. 이를 식으로 표현하면 다음과 같다.
 
