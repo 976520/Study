@@ -6,7 +6,7 @@
 
 ## 개념
 
-변수명과 함수명의 naming convention은 camel case, snake case, pascal case 등이 있다. 이는 프로그램 상에서 강제된 것은 아니지만, 편의를 위해 개발자들끼리 약속한 것이다. commit message에도 이와 같은 convention이 있다.
+변수명과 함수명의 naming convention은 camel case, snake case, pascal case 등이 있다. 이는 program 상에서 강제된 것은 아니지만, 편의를 위해 개발자들끼리 약속한 것이다. commit message에도 이와 같은 convention이 있다.
 
 개인 프로젝트를 혼자 개발할 때에는 commit message를 대충 작성하여도 무관하지만, 팀원과 함께 협업을 할 때에는 그럴 수 없다~~폐급~~. 모든 팀원이 이해할 수 있도록 commit message의 형식을 정하는 것이 commit message convention이다.
 
