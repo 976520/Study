@@ -22,7 +22,9 @@
 
 3. section
 
-   Process는 여러 section으로 구성되어 memory에 적재된다. 이 section들은 각각 다른 목적을 가지며, 이를 통해 program의 구조를 더 효율적으로 관리할 수 있다.
+   <img src="https://github.com/user-attachments/assets/aa4a0cb0-e4f0-4d05-874d-72e19ba74828" width="180">
+
+   Process는 여러 section으로 구성되어 memory에 적재된다. 이 section들은 각각 다른 목적을 가지며, 이를 통해 program의 구조를 더 효율적으로 관리할 수 있다. Section의 종류는 다음과 같다.
 
    1. text section(code section)
 
