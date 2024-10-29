@@ -52,13 +52,13 @@
 
 3. State transition diagram
 
-   State transition diagram은 모든 state와 state transition probability를 나타낸 directed graph이다.
+   State transition diagram은 environment의 모든 state와 state transition probability를 나타낸 directed cyclic graph이다.
 
    <img src="https://github.com/user-attachments/assets/64d2ec4f-2564-4191-b2fe-567a06bb4f98" width="500">
 
-   위 transition diagram에서는 각 원이 state $s$를 나타내고, 화살표는 state transition을 의미하며, 화살표의 숫자로 state transition probability $P_{ss'}$를 나타낸다.
+   위 transition diagram에서는 각 node가 state $s$를 나타내고, edge는 state transition을 의미하며, edge의 숫자로 state transition probability $P_{ss'}$를 나타낸다.
 
-   `독서`에서 `웹 서핑`, `취침`으로 이동할 확률을 모두 더하면 1이 나온다. 이처럼 하나의 state에서 다른 state로 이동할 확률의 총합은 1인 것을 알 수 있다. 그리고 `취침`은 종료 state이기 때문에 다른 state로 이동할 확률은 0이다.
+   `독서`에서 `웹 서핑`, `취침`으로 이동할 확률을 모두 더하면 1이 나온다. 이처럼 하나의 state에서 다른 state로 이동할 확률의 총합은 1인 것을 알 수 있다. 그리고 `취침`은 종료 state이기 때문에 다른 state로 이동할 확률은 0이며, 동시에 자신의 상태를 유지할 확률이 1이다.
 
 4. State vector
 
@@ -428,5 +428,7 @@ Markov process는 현재 state만이 다음 state를 결정하는 것이라면, 
 ## Markov Decision Process
 
 > Markov decision process는 markov reward process에 action을 추가한 것이다.
+
+일반적으로 강화학습이 다루는 문제라고 할 수 있다. 이 Markov decision process를 푸는 방법으로 Dynamic Programming, Monte Carlo method, Temporal Difference Learning 등이 있다.
 
 ---
