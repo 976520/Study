@@ -10,6 +10,8 @@
 
    여기서 $\gamma$는 discount factor이다. 이 값은 0보다 크고 1보다 작으며, 현재 시점에서 미래 reword이 얼마나 가치 있는지 나타낸다. $\gamma=0$이면, 미래 reword를 고려하지 않는다는 의미이고, $\gamma=1$이면, return은 모든 미래의 reward를 그대로 모두 더한 값이 된다.
 
+2. 재귀적 표현
+
    이 return function을 재귀적으로 표현하여 다음과 같이 쓸 수 있다.
 
    $$
