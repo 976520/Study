@@ -2,7 +2,7 @@
 
 1. 이해
 
-   FSD 디자인은 애플리케이션을 각각의 기능(Feature)을 기준으로 분할하여 설계하는 방법이다.
+   FSD 디자인은 애플리케이션을 각각의 기능(feature)을 기준으로 분할하여 설계하는 방법이다.
 
    FSD에서는 `src` 디렉토리 아래에 있는 모든 폴더의 depth를 최대 3단계로 제한하며, 이는 layers, slices, segments의 세 계층으로 구성된다.
 
@@ -12,15 +12,23 @@
 
       1. `app`
 
+         전체 application이 초기화되는 코드가 위치한다. providers, routers, global styles, global type declarations 등이 여기에 위치하게 된다.
+
       2. `pages`
 
-      3. `widgets`
+         전체 page를 구성하기 위한 코드가 위치한다. `features`, `entities`, `widgets` 등의 layer에 포함된 코드들을 이용하여 각 page를 구성하게 된다.
 
-      4. `features`
+      3. `features`
 
-      5. `entities`
+      4. `entities`
+
+      5. `widgets`
+
+         각 page에서 재사용되는 독립적인 UI components들을 위치시킨다. `entities`, `features` 등의 layer에 포함된 코드들을 결합하여 각 widget을 구성하게 된다.
 
       6. `shared`
+
+         libs, API 등 특정 business logic에 속하지 않는 components들이 위치한다.
 
    2. slices
 
