@@ -4,6 +4,8 @@
 
    FSD 디자인은 애플리케이션을 각각의 기능(feature)을 기준으로 분할하여 설계하는 방법이다.
 
+   프로젝트를 처음 만들 때, directory를 걍 만들고,
+
    FSD에서는 `src` 디렉토리 아래에 있는 모든 폴더의 depth를 최대 3단계로 제한하며, 이는 layers, slices, segments의 세 계층으로 구성된다.
 
    1. layers
@@ -18,9 +20,15 @@
 
          전체 page를 구성하기 위한 코드가 위치한다. `features`, `entities`, `widgets` 등의 layer에 포함된 코드들을 이용하여 각 page를 구성하게 된다.
 
+         Page는 보통 router를 통해 관리되는 브라우저 주소 단위의 component들을 뜻한다.
+
       3. `features`
 
+         Business value를 제공하는 user sinario와 같은 기능이 위치한다.
+
       4. `entities`
+
+         Business entity를 나타내는 코드가 위치한다.
 
       5. `widgets`
 
