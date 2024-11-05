@@ -8,7 +8,7 @@
 
    1. layers
 
-      모든 파일을 기능에 따라 layer로 분할하게 된다. 종류는 다음과 같다.
+      모든 directory를 기능에 따라 layer로 분할하게 된다. Layers의 종류는 다음과 같다.
 
       1. `app`
 
@@ -24,7 +24,9 @@
 
    2. slices
 
-      각 layer 내에서 기능별로 다시 분할하게 된다.
+      각 layer 내에서 기능별로 다시 분할하게 된다. Slices의 이름은 정해져있지 않으며, 프로젝트 내에서 그 목적에 따라 설정된다.
+
+      `app`과 `shared` layer는 slices를 가지지 않으며, 바로 segments로 이어진다.
 
    3. segments
 
