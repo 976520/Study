@@ -2,11 +2,15 @@
 
 1. 이해
 
+   <img src="https://github.com/user-attachments/assets/dddd769b-d1b2-48be-bd0b-c21ab7f7a0fa" width="600"/>
+
    FSD 디자인은 애플리케이션을 각각의 기능(feature)을 기준으로 분할하여 설계하는 방법이다.
 
    프로젝트를 처음 만들 때, directory를 걍 만들고,
 
-   FSD에서는 `src` 디렉토리 아래에 있는 모든 폴더의 depth를 최대 3단계로 제한하며, 이는 layers, slices, segments의 세 계층으로 구성된다.
+   FSD에서는 `src` 디렉토리 아래에 있는 모든 폴더의 depth를 최대 3단계로 제한하며, 이는 layers, slices, segments의 세 level로 구성된다.
+
+   각 level에서 기능에 따라 폴더를 **계층적으로** 구성한다. 이때, layered architecture를 따르기 때문에 하위 계층에서 정의된 코드를 상위 계층에서 사용할 수 있으나, 반대의 경우는 불가능하다.
 
    1. layers
 
@@ -22,21 +26,21 @@
 
          Page는 보통 router를 통해 관리되는 브라우저 주소 단위의 component들을 뜻한다.
 
-      3. `features`
-
-         Business value를 제공하는 user sinario와 같은 기능이 위치한다.
-
-      4. `entities`
-
-         Business entity를 나타내는 코드가 위치한다.
-
-      5. `widgets`
+      3. `widgets`
 
          각 page에서 재사용되는 독립적인 UI components들을 위치시킨다. `entities`, `features` 등의 layer에 포함된 코드들을 결합하여 각 widget을 구성하게 된다.
 
+      4. `features`
+
+         Business value를 제공하는 user sinario와 같은 기능이 위치한다.
+
+      5. `entities`
+
+         Business entity를 나타내는 코드가 위치한다.
+
       6. `shared`
 
-         libs, API 등 특정 business logic에 속하지 않는 components들이 위치한다.
+         libs, API 등 특정 business logic에 속하지 않는 components들이 위치한다. UI kit, axios 설정, type 설정 등이 여기에 포함된다.
 
    2. slices
 
