@@ -22,7 +22,7 @@
 
       Model과 View 간의 상호 동작을 관리하는 데 사용된다. 사용자의 입력을 받고, model에 필요한 data를 요청한다. model이 데이터를 처리한 후, 결과를 view에 전달하여 사용자에게 표시한다. Controller는 application의 logic을 포함하고, model과 view 간의 통신을 조정한다.
 
-      Controller는 model과 view의 정보를 가지고 있어야 한다. 이 말인 즉슨, **model과 view는 다른 요소들에 대한 정보를 가지고 있으면 안된다**. Model과 view는 변경이 일어났을 때 이를 다른 요소에게 전달하는 방법만 구현할 뿐이다. 이 변경 사항을 받고 이를 해석해서 각각의 요소들에게 다시 통지하는 역할은 controller가 하게 된다.
+      Controller는 model과 view의 정보를 가지고 있어야 한다. 이 말인 즉슨, **model과 view는 다른 요소들에 대한 정보를 가지고 있으면 안 된다**. Model과 view는 변경이 일어났을 때 이를 다른 요소에게 전달하는 방법만 구현할 뿐이다. 이 변경 사항을 받고 이를 해석해서 각각의 요소들에게 다시 통지하는 역할은 controller가 하게 된다.
 
    사용자가 controller를 조작하면, controller는 model을 통해 data를 가져와 view를 제어하여 사용자에게 표시한다.
 
