@@ -10,11 +10,9 @@
 
    FSD에서는 `src` 디렉토리 아래에 있는 모든 폴더의 depth를 최대 3단계로 제한하며, 이는 layers, slices, segments의 세 level로 구성된다.
 
-   각 level에서 기능에 따라 폴더를 **계층적으로** 구성한다. 이때, layered architecture를 따르기 때문에 하위 계층에서 정의된 코드를 상위 계층에서 사용할 수 있으나, 반대의 경우는 불가능하다.
-
    1. layers
 
-      모든 directory를 기능에 따라 layer로 분할하게 된다. Layers의 종류는 다음과 같다.
+      모든 directory를 기능에 따라 layer로 분할하게 된다. Layers의 종류를 계층 순으로 나열하면 다음과 같다. 이때, layered architecture를 따르기 때문에 하위 계층에서 정의된 코드를 상위 계층에서 사용할 수 있으나, 반대의 경우는 불가능하다.
 
       1. `app`
 
@@ -50,6 +48,18 @@
 
    3. segments
 
-      각 slice로 포함된 한 기능 내에서 가장 세부적인 구성 요소나 모듈을 나타낸다.
+      각 slice로 포함된 한 기능 내에서 가장 세부적인 구성 요소나 모듈을 나타낸다. 기능에 따라 필요한 코드가 다르겠지만, 보통 다음과 같은 코드들이 위치한다.
+
+      1. api
+
+      2. UI
+
+      3. model
+
+      4. lib
+
+      5. config
+
+      6. consts
 
 ---
