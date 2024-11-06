@@ -52,14 +52,26 @@
 
       1. api
 
+         서버 request 관련 코드가 위치한다.
+
       2. UI
+
+         Slices 내에서 필요한 UI components가 위치한다.
 
       3. model
 
+         Business logic이 위치한다. Actions, reducers, selectors 등 상태와의 상호 작용 logic이 여기에 위치한다.
+
       4. lib
+
+         Slices 내에서 필요한 보조 기능이 위치한다.
 
       5. config
 
+         Slices 내에서 필요한 설정 코드, 구성값이 위치한다.
+
       6. consts
+
+         Slices 내에서 필요한 상수가 위치한다.
 
 ---
