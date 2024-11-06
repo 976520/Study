@@ -23,3 +23,53 @@
       Model과 view 사이의 중재자로서, 사용자 입력을 처리하고 필요한 data를 model로부터 가져와서 view에 전달하는 역할을 수행한다.
 
       Presenter는 view에 대한 참조를 가지고 있으나, view의 구체적인 구현에 의존하지 않고 interface를 통해 통신함으로써 테스트 용이성을 높인다. 또한, presenter는 view와 model 간의 상호작용을 관리하며, business logic을 수행하여 application의 전체적인 흐름을 제어한다. 이때, 각 view와 presenter는 **일대일로 연결**되어 독립적으로 동작할 수 있도록 설계된다.
+
+2. 사용
+
+   ```python
+   class Model:
+       def __init__(self):
+           self.data = "Initial data"
+
+       def get_data(self):
+           return self.data
+
+       def set_data(self, new_data):
+           self.data = new_data
+
+   class View:
+       def __init__(self):
+           self.presenter = None
+
+       def set_presenter(self, presenter):
+           self.presenter = presenter
+
+       def display(self, data):
+           print(f"View: {data}")
+
+   class Presenter:
+       def __init__(self, model, view):
+           self.model = model
+           self.view = view
+           self.view.set_presenter(self)
+
+       def update_model(self, new_data):
+           self.model.set_data(new_data)
+
+       def get_model_data(self):
+           return self.model.get_data()
+
+       def display_view(self):
+           data = self.get_model_data()
+           self.view.display(data)
+
+   model = Model()
+   view = View()
+   presenter = Presenter(model, view)
+
+   presenter.display_view()
+   presenter.update_model("New data")
+   presenter.display_view()
+   ```
+
+---

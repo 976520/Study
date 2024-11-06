@@ -32,41 +32,41 @@
 
    ```python
    class Model:
-        def __init__(self):
-            self.data = "Initial data"
+       def __init__(self):
+           self.data = "Initial data"
 
-        def get_data(self):
-            return self.data
+       def get_data(self):
+           return self.data
 
-        def set_data(self, new_data):
-            self.data = new_data
+       def set_data(self, new_data):
+           self.data = new_data
 
-    class View:
-        def display(self, data):
-            print(f"View: {data}")
+   class View:
+       def display(self, data):
+           print(f"View: {data}")
 
-    class Controller:
-        def __init__(self, model, view):
-            self.model = model
-            self.view = view
+   class Controller:
+       def __init__(self, model, view):
+           self.model = model
+           self.view = view
 
-        def update_model(self, new_data):
-            self.model.set_data(new_data)
+       def update_model(self, new_data):
+           self.model.set_data(new_data)
 
-        def get_model_data(self):
-            return self.model.get_data()
+       def get_model_data(self):
+           return self.model.get_data()
 
-        def display_view(self):
-            data = self.get_model_data()
-            self.view.display(data)
+       def display_view(self):
+           data = self.get_model_data()
+           self.view.display(data)
 
-    model = Model()
-    view = View()
-    controller = Controller(model, view)
+   model = Model()
+   view = View()
+   controller = Controller(model, view)
 
-    controller.display_view()
-    controller.update_model("New data")
-    controller.display_view()
+   controller.display_view()
+   controller.update_model("New data")
+   controller.display_view()
    ```
 
 ---
