@@ -21,6 +21,8 @@
     }
     ```
 
+    이 경우 Service는 Client의 의존성이다.
+
     다음 그림에서는 Client가 Service를 사용하고 있으므로, Client는 Service에 대한 dependency를 가지고 있다.
 
     <img src="https://github.com/user-attachments/assets/b83e74ea-27b9-4285-960e-4e9850b53cfd" alt="image" width="500" />
