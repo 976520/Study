@@ -32,4 +32,6 @@
 
    `library()`와 달리 package를 불러올 때 확인 메시지를 출력한다.
 
+   ![image](https://github.com/user-attachments/assets/f52e7504-c89f-4640-abde-aa1090feb2c7)
+
 ---
