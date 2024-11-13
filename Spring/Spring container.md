@@ -20,8 +20,12 @@ Java에서 `new`를 통해 객체를 생성할 경우, 객체 간의 참조가 �
 
       Spring container는 대표적으로 두 가지가 있다.
 
+      1. BeanFactory
+
+         Spring container의 최상위 interface로, bean을 관리하고 조회하는 기능을 제공한다.
+
       1. ApplicationContext
 
-      1. BeanFactory
+         BeanFactory를 상속하여 만들어졌으며, application 개발을 위한 부가기능을 제공한다.
 
 ---
