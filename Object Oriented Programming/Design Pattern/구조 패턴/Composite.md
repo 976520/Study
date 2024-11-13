@@ -2,7 +2,7 @@
 
 1. 이해
 
-   > 객체들의 관계를 tree로 구성하여 부분-전체 계층을 표현하는 방법이다.
+   > 객체들의 관계를 tree로 구성하여 부분-전체 계층을 재귀적으로 표현하는 방법이다.
 
    Composite pattern은 composite(복합 객체)와 leaf(단일 객체)를 동일한 component로 취급하는 pattern이다.
 
@@ -13,5 +13,58 @@
    Composite pattern은 이 directory와 file을 구분하지 않고 동일한 interface를 사용하도록 하는 pattern이다.
 
 2. 사용
+
+   ```python
+    from abc import ABC, abstractmethod
+
+    class Element(ABC):
+        @abstractmethod
+        def show_structure(self, indent=0):
+            pass
+
+    class File(Element):
+        def __init__(self, name):
+            self.name = name
+
+        def show_structure(self, indent=0):
+            print(' ' * indent + f"File: {self.name}")
+
+    class Folder(Element):
+        def __init__(self, name):
+            self.name = name
+            self.children = []
+
+        def add(self, element):
+            self.children.append(element)
+
+        def show_structure(self, indent=0):
+            print(' ' * indent + f"Folder: {self.name}")
+            for child in self.children:
+                child.show_structure(indent + 2)
+
+    file1 = File("file1.txt")
+    file2 = File("file2.txt")
+    file3 = File("file3.txt")
+
+    folder1 = Folder("Folder1")
+    folder1.add(file1)
+    folder1.add(file2)
+
+    folder2 = Folder("Folder2")
+    folder2.add(file3)
+    folder2.add(folder1)
+
+    folder2.show_structure()
+
+    '''
+    출력:
+
+    Folder: Folder2
+      File: file3.txt
+      Folder: Folder1
+        File: file1.txt
+        File: file2.txt
+    '''
+   ```
 
 ---
