@@ -40,6 +40,6 @@ Java에서 `new`를 통해 객체를 생성할 경우, 객체 간의 참조가 �
 
       2. ApplicationContext
 
-         BeanFactory를 상속하여 만들어졌으며, application 개발을 위한 부가기능을 제공한다.
+         BeanFactory를 상속하여 만들어졌으며, application 개발을 위한 부가기능을 제공한다. 다형성이 적용되어 있어, BeanFactory를 상속받은 다른 구현체를 사용할 수 있다.
 
 ---
