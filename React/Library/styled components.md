@@ -1,6 +1,6 @@
-# Router
+# 💅
 
-> react router는 react의 css-in-js 라이브러리 중 하나이다.
+> styled components는 react의 css-in-js 라이브러리 중 하나이다.
 
 외부 라이브러리이기 때문에 별도의 설치가 필요하다.
 
