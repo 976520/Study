@@ -18,7 +18,23 @@ npm install redux @reduxjs/toolkit react-redux
 
     redux를 사용하면 store를 통해 어떤 component에서든 상태에 직접 접근할 수 있어 이러한 문제를 해결할 수 있다. 즉, 상태 관리를 component 외부에서 하는 것이다.
 
-2.  요소
+2.  원칙
+
+    Redux에는 다음과 같은 세 가지 원칙이 있다.
+
+    1.  Single source of truth
+
+        App의 모든 state를 하나의 store에 저장한다.
+
+    2.  State is read-only
+
+        Store에 저장된 state는 read-only이므로, 직접 변경할 수 없다. Action으로만 state를 변경할 수 있다.
+
+    3.  Changes are made with pure functions
+
+        변경은 순수함수로만 이루어져야 한다.
+
+3.  요소
 
     1.  store
 
@@ -91,7 +107,7 @@ npm install redux @reduxjs/toolkit react-redux
 
         Reducer 함수의 첫번째 매개변수로 state의 초기값(initialState)을 기본값으로 설정한다.
 
-3.  hooks
+4.  hooks
 
     Redux는 다음과 같은 hooks를 제공한다.
 
