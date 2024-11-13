@@ -8,6 +8,8 @@
 npm install redux @reduxjs/toolkit react-redux
 ```
 
+React를 기반으로 설계되었지만, vanilla JS에서도 사용할 수 있다.
+
 ---
 
 ## 개념
