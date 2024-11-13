@@ -37,14 +37,22 @@
 
 4. methods
 
-   Writable store에서는 다음과 같은 메서드를 제공한다.
+   Writable store에서는 다음과 같은 method들을 제공한다.
 
    1. subscribe
 
+      store의 값이 변경될 때마다 자동으로 반영되도록 한다. 이 method는 callback 함수를 인자로 받아, store의 값이 변경될 때마다 해당 callback 함수가 호출되도록 한다. 이를 통해 store의 상태 변화를 감지하고, 필요한 동작을 수행할 수 있다.
+
    2. set
+
+      `store의 값을 설정하는 데 사용된다. 이 method는 새로운 값을 인자로 받아, store의 현재 값을 해당 값으로 변경한다. 이를 통해 store의 상태를 직접적으로 업데이트할 수 있다.
 
    3. update
 
+      store의 값 중 일부를 변경하는 데 사용된다. 이 method는 현재 값을 인자로 받아 새로운 값으로 반환하는 callback 함수를 인자로 받는다. 이를 통해 store의 상태를 부분적으로 업데이트할 수 있다.
+
    4. get
+
+      store의 현재 값을 가져오는 데 사용된다. 이 method는 store의 현재 값을 반환하여, 외부에서 해당 값을 참조할 수 있도록 한다.
 
 ---
