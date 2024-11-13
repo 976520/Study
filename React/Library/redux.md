@@ -63,7 +63,7 @@ npm install redux @reduxjs/toolkit react-redux
 
     2.  action
 
-        Action은 app에서 store로 운반되는 data이다. JS 객체 형식으로 되어있으며, 어떤 action을 취할 지 결정하는 type을 가진다.
+        Action은 app에서 store로 운반되는 data이다. JS 객체 형식으로 되어있으며, 어떤 action을 취할 지 결정하는 type을 가진다. Store는 이 action을 참조하여 state를 변경한다.
 
         ```js
         const CREATE_BUCKET = "bucket/CREATE";
@@ -80,7 +80,17 @@ npm install redux @reduxjs/toolkit react-redux
         };
         ```
 
-        Store의 `dispatch()` 메소드를 호출하면서 action 객체를 인자로 전달하면, reducer 함수가 호출되면서 해당 action에 따라 state가 변경된다.
+        Component는 `subscribe()` method를 이용하여 store를 구독하고, callback function을 인자로 전달할 수 있다.
+
+        구독한 store에 저장된 state가 변경될 때마다 이 callback function이 호출된다.
+
+        ```js
+        store.subscribe(() => {
+          console.log(store.getState());
+        });
+        ```
+
+        Store의 `dispatch()` method를 호출하면서 action 객체를 인자로 전달하면, reducer 함수가 호출되면서 해당 action에 따라 state가 변경된다.
 
         ```js
         store.dispatch(createBucket({ title: "bucket" }));
