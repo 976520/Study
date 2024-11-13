@@ -18,29 +18,18 @@ npm install redux @reduxjs/toolkit react-redux
 
    redux를 사용하면 store를 통해 어떤 component에서든 상태에 직접 접근할 수 있어 이러한 문제를 해결할 수 있다. 즉, 상태 관리를 component 외부에서 하는 것이다.
 
-2. store
+2. 요소
 
-   store는 component와 별개로 state를 저장하는 전역 상태 저장소이다. 이 store에 app에서 필요한 state를 저장하고, 필요한 component에서 이 state를 쉽게 불러올 수 있다.
+   1. store
 
-   1. Action
+      Store는 component와 별개로 state를 저장하는 전역 상태 저장소이다. 이 store에 app에서 필요한 state를 저장하고, 필요한 component에서 이 state를 쉽게 불러올 수 있다.
 
-      Action의 type을 만드는 곳이다. Action을 불러올 주소를 정의한다고 생각하면 편하다.
+   2. action
 
-      ```js
-      const CREATE = "bucket/CREATE";
-      ```
+      Action은 app에서 store로 운반되는 data이며, JS 객체 형식으로 되어있다.
 
-   1. Action creator
+   3. reducer
 
-      Action creator는 말 그대로 action을 생성하는 함수이다.
-
-      ```js
-      const createBucket = (bucket) => {
-        return {
-          type: CREATE,
-          bucket: bucket,
-        };
-      };
-      ```
+      Reducer는 action을 받아 store에 저장된 state를 변경하는 함수이다. `dispatch()` method를 통해 action을 reducer에 전달할 수 있다.
 
 ---
