@@ -80,14 +80,14 @@ npm install redux @reduxjs/toolkit react-redux
         };
         ```
 
-        Component는 `subscribe()` method를 이용하여 store를 구독하고, callback function을 인자로 전달할 수 있다.
-
-        구독한 store에 저장된 state가 변경될 때마다 이 callback function이 호출된다.
+        Component는 `subscribe()` method를 이용하여 store를 구독하고, callback function `listener()`를 인자로 전달할 수 있다. 구독한 store에 저장된 state가 변경될 때마다 `listener()`가 호출된다.
 
         ```js
-        store.subscribe(() => {
+        const listener = () => {
           console.log(store.getState());
-        });
+        };
+
+        store.subscribe(listener);
         ```
 
         Store의 `dispatch()` method를 호출하면서 action 객체를 인자로 전달하면, reducer 함수가 호출되면서 해당 action에 따라 state가 변경된다.
