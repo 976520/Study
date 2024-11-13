@@ -41,7 +41,22 @@ npm install redux @reduxjs/toolkit react-redux
 
    2. action
 
-      Action은 app에서 store로 운반되는 data이며, JS 객체 형식으로 되어있다.
+      Action은 app에서 store로 운반되는 data이다. JS 객체 형식으로 되어있으며, 어떤 action을 취할 지 결정하는 type을 가진다.
+
+      ```js
+      const CREATE_BUCKET = "bucket/CREATE";
+      ```
+
+      Action creator는 action을 생성하는 함수이다.
+
+      ```js
+      const createBucket = (bucket) => {
+        return {
+          type: CREATE_BUCKET,
+          bucket: bucket,
+        };
+      };
+      ```
 
    3. reducer
 
