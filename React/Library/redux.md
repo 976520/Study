@@ -24,13 +24,19 @@ npm install redux @reduxjs/toolkit react-redux
 
       Store는 component와 별개로 state를 저장하는 전역 상태 저장소이다. 이 store에 app에서 필요한 state를 저장하고, 필요한 component에서 이 state를 쉽게 불러올 수 있다.
 
+      `createStore()` method를 불러와서 store를 생성할 수 있다.
+
+      ```js
+      import { createStore } from "redux";
+
+      const store = createStore(reducer);
+      ```
+
       `Provider` component를 이용하여 store를 사용할 component를 감싸고, `Provider` component의 props로 store를 전달한다.
 
       ```js
       import { createRoot } from "react-dom/client";
       import { Provider } from "react-redux";
-      import App from "./App.tsx";
-      import store from "./store.ts";
 
       createRoot(document.getElementById("root")!).render(
         <Provider store={store}>
