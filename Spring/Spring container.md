@@ -10,7 +10,7 @@ Java에서 `new`를 통해 객체를 생성할 경우, 객체 간의 참조가 �
 
       Spring container는 **bean의 lifecycle을 관리**하고, bean의 instance화, bean의 구성까지 한다. 또한 생성된 bean에게 추가적인 기능을 제공하는 역할도 한다.
 
-      `@ComponentScan` annotation을 통해 특정 패키지 내의 클래스를 스캔하여 bean으로 등록할 수 있다.
+      `@ComponentScan` annotation을 통해 특정 패키지 내의 class를 스캔하여 bean으로 등록할 수 있다. `@Component`, `@Service`, `@Repository`, `@Controller` 등의 annotation이 붙은 class도 자동으로 bean으로 등록된다.
 
       Spring container는 이렇게 bean을 만들어 관리하고 개발자가 필요할 때 제공한다.
 
@@ -36,10 +36,10 @@ Java에서 `new`를 통해 객체를 생성할 경우, 객체 간의 참조가 �
 
       1. BeanFactory
 
-         Spring container의 최상위 interface로, bean을 관리하고 조회하는 기능을 제공한다.
+         Spring container의 최상위 interface로, **bean을 관리하고 조회하는 기능**을 제공한다.
 
       2. ApplicationContext
 
-         BeanFactory를 상속하여 만들어졌으며, application 개발을 위한 부가기능을 제공한다. 다형성이 적용되어 있어, BeanFactory를 상속받은 다른 구현체를 사용할 수 있다.
+         BeanFactory를 상속하여 만들어졌으며, 국제화 기능, 환경변수 처리, application event, resource 조회 등 **application 개발을 위한 부가기능을 제공**한다. 다형성이 적용되어 있어, BeanFactory를 상속받은 다른 구현체를 사용할 수 있다.
 
 ---
