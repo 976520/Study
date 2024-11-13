@@ -131,6 +131,17 @@
           }
       }
 
+      /*
+      출력:
+
+      Folder: Folder2
+        File: file3.txt
+        Folder: Folder1
+          File: file1.txt
+          File: file2.txt
+      */
       ```
+
+   두 코드에서 모두 abstract class로 선언한 `Element`를 이용하여 `composite`과 `leaf`를 정의하고 있다.
 
 ---
