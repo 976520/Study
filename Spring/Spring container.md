@@ -12,7 +12,7 @@ Java에서 `new`를 통해 객체를 생성할 경우, 객체 간의 참조가 �
 
       `@ComponentScan` annotation을 통해 특정 패키지 내의 class를 스캔하여 bean으로 등록할 수 있다. `@Component`, `@Service`, `@Repository`, `@Controller` 등의 annotation이 붙은 class도 자동으로 bean으로 등록된다.
 
-      Spring container는 이렇게 bean을 만들어 관리하고 개발자가 필요할 때 제공한다.
+      Spring container는 이렇게 bean을 만들어 관리하고 application에서 container의 bean을 요청하면 container는 그 bean을 반환한다.
 
    2. 설정
 
@@ -30,6 +30,8 @@ Java에서 `new`를 통해 객체를 생성할 경우, 객체 간의 참조가 �
       }
       ```
 
+      Spring container는 configuration class의 설정을 읽어 해당 bean을 생성하고 초기화하여 container에 등록한다. 이때 Dependency Injection 작업을 수행한다.
+
    3. 종류
 
       Spring container는 대표적으로 두 가지가 있다.
@@ -41,11 +43,5 @@ Java에서 `new`를 통해 객체를 생성할 경우, 객체 간의 참조가 �
       2. ApplicationContext
 
          BeanFactory를 상속하여 만들어졌으며, 국제화 기능, 환경변수 처리, application event, resource 조회 등 **application 개발을 위한 부가기능을 제공**한다. 다형성이 적용되어 있어, BeanFactory를 상속받은 다른 구현체를 사용할 수 있다.
-
-   4. 동작
-
-      XML 설정 파일이나 configuration class에서 bean 설정을 읽는다. Spring container는 해당 bean을 생성하고 초기화하여 container에 등록한다. 이때 Dependency Injection을 통해 필요한 객체를 주입한다.
-
-      application에서 container의 bean을 요청하면 container는 그 bean을 반환한다.
 
 ---
