@@ -12,7 +12,7 @@ npm install styled-components
 
 1. inline styleing
 
-   Inline styleing은 코드 내에 style 속성을 사용하여 스타일을 적용하는 방식이다.
+   Inline styleing은 JS 코드 내에 style 속성을 사용하여 스타일을 적용하는 방식이다.
 
 2. styled components
 
