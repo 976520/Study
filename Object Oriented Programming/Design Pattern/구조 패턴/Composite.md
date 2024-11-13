@@ -142,6 +142,10 @@
       */
       ```
 
-   두 코드에서 모두 abstract class로 선언한 `Element`를 이용하여 `composite`과 `leaf`를 정의하고 있다.
+   위의 두 코드에서는 모두 `Element`라는 abstract class를 정의하고, composite와 leaf에 해당하는 `File`과 `Folder` class가 각각 `Element`를 상속받도록 하였다.
+
+   `File`은 단일 객체를 나타내며, `Folder`는 여러 `Element` 객체를 포함할 수 있는 복합 객체를 나타낸다. `Folder`는 `add` 메서드를 통해 자식 요소를 추가할 수 있다.
+
+   client 코드에서는 `Element` type만을 사용하여 `File`과 `Folder`를 구분하지 않고 일관된 방식으로 다룰 수 있다.
 
 ---
