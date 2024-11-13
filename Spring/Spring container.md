@@ -16,7 +16,7 @@ Java에서 `new`를 통해 객체를 생성할 경우, 객체 간의 참조가 �
 
    2. 설정
 
-      Spring container는 XML, annotation 기반의 java configuration class를 통해 설정할 수 있다. 옛날옛적에는 직접 설정해야만 했지만, Spring Boot의 등장으로 그럴 필요가 없어졌다.
+      옛날옛적에는 spring container를 직접 XML로 설정해야만 했지만, Spring Boot의 등장으로 annotation 기반의 java configuration class를 통해 설정할 수 있어졌다.
 
       `@Configuration` annotation을 통해 class를 configuration class로 설정할 수 있다. Configuration class는 `@Bean` annotation이 붙은 method를 모두 호출하여 bean을 spring container에 등록하는 역할을 한다.
 
