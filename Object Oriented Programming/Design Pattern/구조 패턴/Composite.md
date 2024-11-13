@@ -14,57 +14,123 @@
 
 2. 사용
 
-   ```python
-    from abc import ABC, abstractmethod
+   1. python
 
-    class Element(ABC):
-        @abstractmethod
-        def show_structure(self, indent=0):
-            pass
+      ```python
+        from abc import ABC, abstractmethod
 
-    class File(Element):
-        def __init__(self, name):
-            self.name = name
+        class Element(ABC):
+            @abstractmethod
+            def show_structure(self, indent=0):
+                pass
 
-        def show_structure(self, indent=0):
-            print(' ' * indent + f"File: {self.name}")
+        class File(Element):
+            def __init__(self, name):
+                self.name = name
 
-    class Folder(Element):
-        def __init__(self, name):
-            self.name = name
-            self.children = []
+            def show_structure(self, indent=0):
+                print(' ' * indent + f"File: {self.name}")
 
-        def add(self, element):
-            self.children.append(element)
+        class Folder(Element):
+            def __init__(self, name):
+                self.name = name
+                self.children = []
 
-        def show_structure(self, indent=0):
-            print(' ' * indent + f"Folder: {self.name}")
-            for child in self.children:
-                child.show_structure(indent + 2)
+            def add(self, element):
+                self.children.append(element)
 
-    file1 = File("file1.txt")
-    file2 = File("file2.txt")
-    file3 = File("file3.txt")
+            def show_structure(self, indent=0):
+                print(' ' * indent + f"Folder: {self.name}")
+                for child in self.children:
+                    child.show_structure(indent + 2)
 
-    folder1 = Folder("Folder1")
-    folder1.add(file1)
-    folder1.add(file2)
+        file1 = File("file1.txt")
+        file2 = File("file2.txt")
+        file3 = File("file3.txt")
 
-    folder2 = Folder("Folder2")
-    folder2.add(file3)
-    folder2.add(folder1)
+        folder1 = Folder("Folder1")
+        folder1.add(file1)
+        folder1.add(file2)
 
-    folder2.show_structure()
+        folder2 = Folder("Folder2")
+        folder2.add(file3)
+        folder2.add(folder1)
 
-    '''
-    출력:
+        folder2.show_structure()
 
-    Folder: Folder2
-      File: file3.txt
-      Folder: Folder1
-        File: file1.txt
-        File: file2.txt
-    '''
-   ```
+        '''
+        출력:
+
+        Folder: Folder2
+          File: file3.txt
+          Folder: Folder1
+            File: file1.txt
+            File: file2.txt
+        '''
+      ```
+
+   2. java
+
+      ```java
+      import java.util.ArrayList;
+      import java.util.List;
+
+      abstract class Element {
+          abstract void showStructure(int indent);
+      }
+
+      class File extends Element {
+          private final String name;
+
+          public File(String name) {
+              this.name = name;
+          }
+
+          @Override
+          public void showStructure(int indent) {
+              System.out.println(" ".repeat(indent) + "File: " + name);
+          }
+      }
+
+      class Folder extends Element {
+          private final String name;
+          private final List<Element> children = new ArrayList<>();
+
+          public Folder(String name) {
+              this.name = name;
+          }
+
+          public void add(Element element) {
+              children.add(element);
+          }
+
+          @Override
+          public void showStructure(int indent) {
+              System.out.println(" ".repeat(indent) + "Folder: " + name);
+              for (Element child : children) {
+                  child.showStructure(indent + 2);
+              }
+          }
+      }
+
+      public class Main {
+          public static void main(String[] args) {
+              File file1 = new File("file1.txt");
+              File file2 = new File("file2.txt");
+              File file3 = new File("file3.txt");
+
+              Folder folder1 = new Folder("Folder1");
+              folder1.add(file1);
+              folder1.add(file2);
+
+              Folder folder2 = new Folder("Folder2");
+              folder2.add(file3);
+              folder2.add(folder1);
+
+              folder2.showStructure(0);
+          }
+      }
+
+      ```
 
 ---
