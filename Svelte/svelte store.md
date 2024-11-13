@@ -35,4 +35,16 @@
    <button on:click={increment}>click</button>
    ```
 
+4. methods
+
+   Writable store에서는 다음과 같은 메서드를 제공한다.
+
+   1. subscribe
+
+   2. set
+
+   3. update
+
+   4. get
+
 ---
