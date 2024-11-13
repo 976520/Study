@@ -75,18 +75,47 @@ npm install redux @reduxjs/toolkit react-redux
         Reducer는 action의 type에 따라 store에 저장된 state를 변경하는 함수이다.
 
         ```js
-        const reducer = (state, action) => {
+        const reducer = (state = initialState, action) => {
           switch (action.type) {
             case CREATE_BUCKET:
               return [...state, action.bucket];
             case DELETE_BUCKET:
               return state.filter((bucket) => bucket.id !== action.id);
             case UPDATE_BUCKET:
-              return state.map((bucket) => (bucket.id === action.id ? action.bucket : bucket));
+              return state.map((bucket) => (bucket.id === action.id ? { ...bucket, ...action.bucket } : bucket));
             default:
               return state;
           }
         };
+        ```
+
+        Reducer 함수의 첫번째 매개변수로 state의 초기값(initialState)을 기본값으로 설정한다.
+
+3.  hooks
+
+    Redux는 다음과 같은 hooks를 제공한다.
+
+    1.  `useSelector`
+
+        component에서 store에 저장된 state에 접근할 수 있게 한다.
+
+        ```js
+        import { useSelector } from "react-redux";
+
+        const state = useSelector((state) => state);
+        ```
+
+        `useSelector`의 callback function 인자에 store에 저장된 모든 state가 담긴 객체가 전달된다.
+
+    2.  `useDispatch`
+
+        Dispatch를 사용할 수 있게 한다.
+
+        ```js
+        import { useDispatch } from "react-redux";
+
+        const dispatch = useDispatch();
+        dispatch(createBucket({ title: "bucket" }));
         ```
 
 ---
