@@ -38,4 +38,39 @@
 
       Proxy는 local이 아닌 원격에 있는 객체를 가져와서 local처럼 사용할 수 있다. 이를 통해 분산 system에서 원격 객체와의 통신을 투명하게 처리할 수 있다.
 
+2. 사용
+
+   ```java
+    interface Subject {
+        void request();
+    }
+
+    class RealSubject implements Subject {
+        @Override
+        public void request() {
+            System.out.println("RealSubject, Handling");
+        }
+    }
+
+    class Proxy implements Subject {
+        private RealSubject realSubject;
+
+        @Override
+        public void request() {
+            if (realSubject == null) {
+                realSubject = new RealSubject();
+            }
+            System.out.println("Proxy, Logging");
+            realSubject.request();
+        }
+    }
+
+    public class Client {
+        public static void main(String[] args) {
+            Proxy proxy = new Proxy();
+            proxy.request();
+        }
+    }
+   ```
+
 ---
