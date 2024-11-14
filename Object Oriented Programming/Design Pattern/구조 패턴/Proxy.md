@@ -71,6 +71,18 @@
             proxy.request();
         }
     }
+
+    /*
+    출력:
+    Proxy, Logging
+    RealSubject, Handling
+    */
    ```
+
+   `Subject` interface는 `request` method를 정의하고, `RealSubject` class는 `Subject` interface를 구현하며, `request` method를 실제로 처리하는 역할을 한다.
+
+   `Proxy` class는 `Subject` interface를 구현하며, `RealSubject` 객체를 참조하고, `request` method를 호출할 때, `RealSubject` 객체가 생성되지 않았다면 생성하고, logging, 즉 추가적인 logic을 수행한 후 `RealSubject`의 `request` method를 호출한다.
+
+   `Client` class는 `Proxy` 객체를 생성하고, `request` method를 호출한다. 이를 통해 `Proxy` 객체가 `RealSubject` 객체의 `request` method를 호출하기 전에 logging을 수행하는 것을 확인할 수 있다.
 
 ---
