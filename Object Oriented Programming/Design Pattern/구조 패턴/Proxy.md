@@ -4,7 +4,7 @@
 
    > 객체가 처리를 직접 하지 않고 중간에 숨겨진 다른 객체를 통해 처리하는 방법이다.
 
-   Client가 대상 객체를 직접 사용하는 것이 아니라, 대리인(proxy)을 거쳐서 쓰는 pattern이다. 따라서 subject의 method에 접근하기 위해 proxy 객체의 method에 접근한 후 추가적인 logic을 수행한 뒤 접근하게 된다.
+   Client가 대상 객체를 직접 사용하는 것이 아니라, 대리인(proxy)을 거쳐서 쓰는 pattern이다. 따라서 subject의 method에 접근하기 위해 proxy 객체의 method에 접근한 후 추가적인 logic을 수행한 뒤 접근하게 된다. 때문에 client가 객체를 신경쓰지 않고 service 객체를 제어할 수 있다.
 
    이를 통해 다음과 같은 이점을 가질 수 있다.
 
@@ -37,6 +37,8 @@
    6. Remote object
 
       Proxy는 local이 아닌 원격에 있는 객체를 가져와서 local처럼 사용할 수 있다. 이를 통해 분산 system에서 원격 객체와의 통신을 투명하게 처리할 수 있다.
+
+   기존 객체 코드를 변경하지 않고 새로운 기능을 추가할 수 있기 때문에 Open-Closed Principle을 준수하며, 대상 객체가 자신의 기능에만 집중하고, 그 이외의 기능을 proxy에 위임하기 때문에 Single Responsibility Principle을 준수한다.
 
 2. 사용
 
