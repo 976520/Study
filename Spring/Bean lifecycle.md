@@ -9,15 +9,30 @@
    Bean lifecycle의 대략적인 흐름은 다음과 같다.
 
    1. Spring Container 생성
+
    2. Bean 생성
    3. Dependency Injection
+
    4. 초기화 후 callback(init)
 
       Bean이 생성되고 DI를 받은 후 호출된다.
 
    5. 사용
+
    6. 소멸 전 callback(destroy)
 
       Bean이 소멸되기 직전에 호출된다.
 
-   7. 소멸
+   7. Spring 종료
+
+2. Bean lifecycle callback
+
+   Spring은 다음과 같은 방법을 통해 lifecycle callback을 제공한다. 이때 callback들은 조건에 따라 호출되지 않을 수 있다.
+
+   1. interface
+
+   2. annotation
+
+   3. config
+
+---
