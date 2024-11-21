@@ -27,9 +27,13 @@
 
 2. Bean lifecycle callback
 
-   Spring은 다음과 같은 방법을 통해 lifecycle callback을 제공한다. 이때 callback들은 조건에 따라 호출되지 않을 수 있다.
+   DB연결, socket 연결 등 시작 시점에 완료되어야 하고, 종료 시점에 해제되어야 하는 경우, 이 callback을 통해 편리하게 구현할 수 있다. 따라서 callback들은 조건에 따라 호출되지 않을 수 있다.
+
+   Spring은 다음과 같은 방법을 통해 lifecycle callback을 제공한다.
 
    1. interface
+
+      `InitializingBean`의 `afterPropertiesSet()` method를 통해 DI 완료 후 초기화를 진행할 수 있다. 또한 `DisposableBean`의 `destroy()` method를 통해 소멸 작업을 진행할 수 있다.
 
    2. annotation
 
