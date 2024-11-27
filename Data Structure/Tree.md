@@ -34,11 +34,11 @@ Subtree는 특정 node를 root로 하는 작은 tree를 의미한다. 위 그림
 
       모든 node가 왼쪽 혹은 오른쪽 자식 node만 가지는 tree이다.
 
-   2. 포화
+   2. Full(포화) binary tree
 
       모든 level이 꽉 차있는 완전 binary tree이다.
 
-   3. 완전
+   3. Complete(완전) binary tree
 
       처음부터 차근차근 채우는 tree이다.
 
