@@ -56,4 +56,28 @@ Subtree는 특정 node를 root로 하는 작은 tree를 의미한다. 위 그림
 
       편향 binary tree인 경우이다.
 
+4. index
+
+   Node 개수가 $n$인 binary tree의 1차원 배열에서의 index 관계는 다음과 같다.
+
+   1. node $i$의 부모 node
+
+      $[\frac{i}{2}]$
+
+      ($[x]$는 $x$를 넘지 않는 최대 정수)
+
+      이때 $i$는 1보다 커야 한다. 첫 번째 node는 root node이므로 부모가 없다.
+
+   2. node $i$의 left child
+
+      $2i$
+
+   3. node $i$의 right child
+
+      $2i+1$
+
+   4. root node
+
+      $1$
+
 ---
