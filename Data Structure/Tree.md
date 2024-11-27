@@ -56,28 +56,43 @@ Subtree는 특정 node를 root로 하는 작은 tree를 의미한다. 위 그림
 
       편향 binary tree인 경우이다.
 
-4. index
+4. 구현
 
-   Node 개수가 $n$인 binary tree의 1차원 배열에서의 index 관계는 다음과 같다.
+   1. 순차 자료구조에서 구현
 
-   1. node $i$의 부모 node
+      걍 순서대로 index 부여 해서 array 쭉 나열하는 방법인데, 구현의 편의를 위해 0번 index는 비워두는 경우가 많다.
 
-      $[\frac{i}{2}]$
+      Binary tree의 1차원 배열에서의 index 관계는 다음과 같다.
 
-      ($[x]$는 $x$를 넘지 않는 최대 정수)
+      1. node $i$의 부모 node
 
-      이때 $i$는 1보다 커야 한다. 첫 번째 node는 root node이므로 부모가 없다.
+         $[\frac{i}{2}]$
 
-   2. node $i$의 left child
+         ($[x]$는 $x$를 넘지 않는 최대 정수)
 
-      $2i$
+         이때 $i$는 1보다 커야 한다. 첫 번째 node는 root node이므로 부모가 없다.
 
-   3. node $i$의 right child
+      2. node $i$의 left child
 
-      $2i+1$
+         $2i$
 
-   4. root node
+      3. node $i$의 right child
 
-      $1$
+         $2i+1$
+
+      4. root node
+
+         $1$
+
+   2. 연결 자료구조에서 binary tree 구현
+
+      Data와 두 개의 pointer를 가진 link node를 사용하는 방법이다.
+
+      ```c
+      typedef struct TreeNode {
+        int data;
+        struct TreeNode *left, *right;
+      } TreeNode;
+      ```
 
 ---
