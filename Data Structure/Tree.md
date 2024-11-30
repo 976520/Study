@@ -14,7 +14,7 @@ Tree의 시작이 되는 최상위 node를 root node라고 하며, 이는 level 
 
 Subtree는 특정 node를 root로 하는 작은 tree를 의미한다. 위 그림에서 `2`는 `7`, `5`를 root로 하는 두 개의 subtree를 가지고 있다. 한 node가 가진 subtree의 수를 그 node의 degree(차수)라고 한다. Tree의 node 중 가장 높은 degree를 가지는 node의 degree가 그 tree의 degree가 된다.
 
-Tree의 depth(깊이)는 자신을 제외한 모든 부모 node의 개수이다. 위 그림에서 `10`의 depth는 2이다. Root node의 depth는 0이다.
+Tree의 **depth(깊이)는 root에서 자신에게 도달하기 위해 거치는 edge의 수**이다. 위 그림에서 `10`의 depth는 2이다. Root node의 depth는 0이다. Tree의 **height는 root에서 가장 멀리 떨어진(깊은) node까지의 depth**이다. 위 그림에서 tree의 height는 3이다.
 
 여러 tree가 모인 집합을 forest라고 한다.
 
