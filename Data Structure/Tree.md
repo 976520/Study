@@ -108,7 +108,11 @@ Subtree는 특정 node를 root로 하는 작은 tree를 의미한다. 위 그림
       root = &rootNode;
       rootNode.left = &leftNode;
       rootNode.right = &rightNode;
+      ```
 
+      이는 root node가 `A`이고, left child가 `B`, right child가 `C`인 tree가 된다.
+
+      ```c
       printf("%c\n", root->data); // 출력: A
       printf("%c\n", root->left->data); // 출력: B
       printf("%c\n", root->right->data); // 출력: C
