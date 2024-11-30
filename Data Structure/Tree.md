@@ -30,17 +30,17 @@ Subtree는 특정 node를 root로 하는 작은 tree를 의미한다. 위 그림
 
      <img src="https://github.com/user-attachments/assets/0bf64ffe-ae3b-48ca-a379-5f93f98da7e6" height="300"/>
 
-   1. 편향
+   1. 편향 binary tree
 
       모든 node가 왼쪽 혹은 오른쪽 자식 node만 가지는 tree이다.
 
-   2. Full(포화) binary tree
-
-      모든 level이 꽉 차있는 완전 binary tree이다.
-
-   3. Complete(완전) binary tree
+   2. Complete(완전) binary tree
 
       처음부터 차근차근 채우는 tree이다.
+
+   3. Full(포화) binary tree
+
+      모든 level이 꽉 차있는 complete binary tree의 일종이다. 따라서 높이가 $h$인 full binary tree의 최대 node 개수는 $2^{h+1}-1$개이다.
 
 3. 특징
 
@@ -60,17 +60,15 @@ Subtree는 특정 node를 root로 하는 작은 tree를 의미한다. 위 그림
 
    1. 순차 자료구조에서 구현
 
-      걍 순서대로 index 부여 해서 array 쭉 나열하는 방법인데, 구현의 편의를 위해 0번 index는 비워두는 경우가 많다.
+      걍 순서대로 index 부여 해서 array로 쭉 나열하는 방법인데, 구현의 편의를 위해 0번 index는 비워두는 경우가 많다.
 
-      Binary tree의 1차원 배열에서의 index 관계는 다음과 같다.
+      Binary tree의 1차원 배열에서의 index는 다음과 같다.
 
       1. node $i$의 부모 node
 
          $[\frac{i}{2}]$
 
-         ($[x]$는 $x$를 넘지 않는 최대 정수)
-
-         이때 $i$는 1보다 커야 한다. 첫 번째 node는 root node이므로 부모가 없다.
+         이때 $[x]$는 $x$를 넘지 않는 최대 정수이다. 또한 $i$는 1보다 커야 한다. 첫 번째 node는 root node이므로 부모가 없다.
 
       2. node $i$의 left child
 
@@ -86,13 +84,23 @@ Subtree는 특정 node를 root로 하는 작은 tree를 의미한다. 위 그림
 
    2. 연결 자료구조에서 binary tree 구현
 
-      Data와 두 개의 pointer를 가진 link node를 사용하는 방법이다.
+      Data와 두 개의 pointer를 가진 link node를 사용한 node 구조체를 정의하는 방법이다.
 
       ```c
       typedef struct TreeNode {
         int data;
         struct TreeNode *left, *right;
       } TreeNode;
+      ```
+
+      ```c
+      TreeNode *root = NULL;
+      TreeNode n1 = {1, NULL, NULL};
+      TreeNode n2 = {2, NULL, NULL};
+      TreeNode n3 = {3, NULL, NULL};
+      root = &n1;
+      n1.left = &n2;
+      n1.right = &n3;
       ```
 
 ---
