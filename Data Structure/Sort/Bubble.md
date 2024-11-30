@@ -4,4 +4,26 @@
 
    어떠한 array에서 인접한 두 수를 선택한 뒤, 두 수가 정렬되어 있지 않는 경우에만 두 수의 위치를 바꾸는 방법이다. 이 과정을 배열에 변화가 없을 때까지 반복한다.
 
+   모든 경우에서 시간 복잡도가 $O(n^2)$으로, 매우 비효율적인 알고리즘으로 꼽힌다.
+
+2. 구현
+
+   중첩 for문을 이용하여 구현할 수 있다.
+
+   ```c
+   void bubbleSort() {
+      for (int i = 0; i < length - 1; i++) {
+        for (int j = 0; j < length - 1 - i; j++) {
+          if (array[j] > array[j + 1]) {
+              int temp = array[j];
+              array[j] = array[j + 1];
+              array[j + 1] = temp;
+            }
+         }
+      }
+   }
+   ```
+
+   이때 array의 마지막 요소부터 정렬되는 것을 확인할 수 있다.
+
 ---
