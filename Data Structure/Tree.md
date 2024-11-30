@@ -84,23 +84,34 @@ Subtree는 특정 node를 root로 하는 작은 tree를 의미한다. 위 그림
 
    2. 연결 자료구조에서 binary tree 구현
 
-      Data와 두 개의 pointer를 가진 link node를 사용한 node 구조체를 정의하는 방법이다.
+      Data와 두 개의 pointer를 가진 link node를 사용한 node 구조체를 정의하여 사용하는 방법이다.
 
       ```c
       typedef struct TreeNode {
-        int data;
+        char data;
         struct TreeNode *left, *right;
       } TreeNode;
       ```
 
+      구조체를 사용하여 각 node를 정의하고,
+
       ```c
       TreeNode *root = NULL;
-      TreeNode n1 = {1, NULL, NULL};
-      TreeNode n2 = {2, NULL, NULL};
-      TreeNode n3 = {3, NULL, NULL};
-      root = &n1;
-      n1.left = &n2;
-      n1.right = &n3;
+      TreeNode rootNode = {'A', NULL, NULL};
+      TreeNode leftNode = {'B', NULL, NULL};
+      TreeNode rightNode = {'C', NULL, NULL};
+      ```
+
+      각 node를 연결하여 tree를 구성한다.
+
+      ```c
+      root = &rootNode;
+      rootNode.left = &leftNode;
+      rootNode.right = &rightNode;
+
+      printf("%c\n", root->data); // 출력: A
+      printf("%c\n", root->left->data); // 출력: B
+      printf("%c\n", root->right->data); // 출력: C
       ```
 
 ---
