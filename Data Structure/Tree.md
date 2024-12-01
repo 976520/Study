@@ -122,8 +122,28 @@ Tree의 **depth(깊이)는 root에서 자신에게 도달하기 위해 거치는
 
 5. traversal(순회)
 
-   Traversal은 tree의 모든 node를 빠뜨리지 않고 방문하는 과정이다. 이 traversal 방법에는 크게 세 가지가 있다.
+   Traversal은 tree의 모든 node를 빠뜨리지 않고 방문하는 과정이다. 순회할 때 하나의 node에서 선택할 수 있는 행동은 다음 세 가지이다.
 
-   1.
+   1. D: 현재 node를 방문한다.
+
+   2. L: 왼쪽 subtree를 방문한다.
+
+   3. R: 오른쪽 subtree를 방문한다.
+
+   이 세 가지 작업을 어떤 순서로 수행하느냐에 따라 다음과 같이 세 가지 순회 방법이 있다:
+
+   1. Preorder traversal(전위 순회)
+
+      D -> L -> R 순서로 방문한다.
+
+   2. Inorder traversal(중위 순회)
+
+      L -> D -> R 순서로 방문한다.
+
+   3. Postorder traversal(후위 순회)
+
+      L -> R -> D 순서로 방문한다.
+
+   각각의 순회 방법은 재귀 함수를 이용하여 구현할 수 있다.
 
 ---
