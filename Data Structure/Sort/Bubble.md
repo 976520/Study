@@ -19,11 +19,11 @@
    1번째와 2번째 요소를 비교하고, 2번째와 3번째 요소를 비교하고... $n - 1$번째와 $n$번째 요소를 비교한 뒤, 다시 처음으로 돌아가 1번째와 2번째 요소를 비교하고 이번에는 $n - 2$번째와 $n - 1$번째 요소를 비교하고 이짓을 반복한다. 따라서 최악의 경우 맨 안쪽의 인접한 두 수를 비교하는 if문이 $\frac{n(n - 1)}{2}$번 실행된다.
 
    ```c
-   void bubbleSort() {
+   void bubbleSort(int array[], int length) {
      for (int i = 0; i < length - 1; i++) {
        for (int j = 0; j < length - 1 - i; j++) {
           if (array[j] > array[j + 1]) {
-              int temp = array[j];
+              const int temp = array[j];
               array[j] = array[j + 1];
               array[j + 1] = temp;
           }
