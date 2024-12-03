@@ -120,4 +120,10 @@ Tree의 **depth(깊이)는 root에서 자신에게 도달하기 위해 거치는
       printf("%c\n", root->right->data); // 출력: C
       ```
 
+5. traversal(순회)
+
+   Traversal은 tree의 모든 node를 빠뜨리지 않고 방문하는 과정이다. 이 traversal 방법에는 크게 세 가지가 있다.
+
+   1.
+
 ---
