@@ -8,11 +8,11 @@
 
 <img src="https://github.com/user-attachments/assets/c9339bd1-6b99-4f96-bcdb-e697d8f9b8ce" height="300"/>
 
-Tree를 구성하는 각 원소를 node라고 하고, 부모 node와 자식 node를 연결하는 선을 edge라고 한다. Tree의 계층을 하는 level이라는 개념이 있다.
+Tree를 구성하는 각 원소를 node라고 하고, 부모 node와 자식 node를 연결하는 선을 edge라고 한다. Tree의 계층을 표현하는 level이라는 개념이 있다. Tree의 시작이 되는 최상위 node를 root node라고 하며, 이는 level 0이다.
 
-Tree의 시작이 되는 최상위 node를 root node라고 하며, 이는 level 0이다. 자식 node가 없는 최하위 node를 leaf node 또는 terminal(단말) node라고 한다. 단말 node가 아닌 degree가 1 이상인 node는 internal(내부) node라고 한다.
+자식 node가 없는 최하위 node를 leaf node 또는 terminal(단말) node라고 한다. 단말 node가 아닌 degree가 1 이상인 node는 internal(내부) node라고 한다.
 
-Subtree는 특정 node를 root로 하는 작은 tree를 의미한다. 위 그림에서 `2`는 `7`, `5`를 root로 하는 두 개의 subtree를 가지고 있다. 한 node가 가진 subtree의 수를 그 node의 degree(차수)라고 한다. Tree의 node 중 가장 높은 degree를 가지는 node의 degree가 그 tree의 degree가 된다.
+Subtree는 특정 node를 root로 하는 작은 tree를 의미한다. 위 그림에서 `2`는 `7`, `5`를 root로 하는 두 개의 subtree를 가지고 있다. **한 node가 가진 subtree의 수를 그 node의 degree(차수)**라고 한다. Tree의 node 중 가장 높은 degree를 가지는 node의 degree가 그 tree의 degree가 된다.
 
 Tree의 **depth(깊이)는 root에서 자신에게 도달하기 위해 거치는 edge의 수**이다. 위 그림에서 `10`의 depth는 2이다. Root node의 depth는 0이다. Tree의 **height는 root에서 가장 멀리 떨어진(깊은) node까지의 depth**이다. 위 그림에서 tree의 height는 3이다.
 
@@ -134,15 +134,15 @@ Tree의 **depth(깊이)는 root에서 자신에게 도달하기 위해 거치는
 
    1. Preorder traversal(전위 순회)
 
-      D -> L -> R 순서로 방문한다.
+      **D, L, R** 순서로 방문한다.
 
    2. Inorder traversal(중위 순회)
 
-      L -> D -> R 순서로 방문한다.
+      **L, D, R** 순서로 방문한다.
 
    3. Postorder traversal(후위 순회)
 
-      L -> R -> D 순서로 방문한다.
+      **L, R, D** 순서로 방문한다.
 
    각각의 순회 방법은 재귀 함수를 이용하여 구현할 수 있다.
 
@@ -152,16 +152,60 @@ Tree의 **depth(깊이)는 root에서 자신에게 도달하기 위해 거치는
 
    Binary search tree는 기존 binary tree에서 원소 탐색의 효율성을 높이기 위해 원소의 크기에 따라 node 위치를 정의한 tree이다. Binary search tree의 조건은 다음과 같다.
 
-   1. 모든 node는 서로 다른 유일한 키를 가진다.
+   1. **모든 node는 서로 다른 유일한 키**를 가진다.
 
-   2. 왼쪽 subtree에 있는 모든 node의 키 값은 부모 node의 키 값보다 작다.
+   2. 왼쪽 subtree에 있는 모든 node의 key 값은 부모 node의 key 값보다 작다.
 
-      왼쪽 node의 키 값은 부모 node의 키 값보다 작다.
+      왼쪽 node의 key 값은 부모 node의 key 값보다 작다.
 
-   3. 오른쪽 subtree에 있는 모든 node의 키 값은 부모 node의 키 값보다 크다.
+   3. 오른쪽 subtree에 있는 모든 node의 key 값은 부모 node의 key 값보다 크다.
 
-      오른쪽 node의 키 값은 부모 node의 키 값보다 크다.
+      오른쪽 node의 key 값은 부모 node의 key 값보다 크다.
 
-   4. 왼쪽, 오른쪽 subtree도 각각 binary search tree이다.
+   4. **왼쪽, 오른쪽 subtree도 각각 binary search tree**이다.
+
+2. 탐색
+
+   우선 찾고자 하는 값 `n`을 root node의 key값 역할을 하는 `data`와 비교하여, 만약 작으면 왼쪽 subtree에서 탐색하고, 크면 오른쪽 subtree에서 탐색한다. 이 과정을 재귀적으로 반복하여 원하는 key 값을 가진 node를 찾을 수 있다.
+
+   ```C
+   TreeNode* search(TreeNode* root, char n) {
+      TreeNode* p = root;
+      while (p != NULL) {
+         if (n < p->data) {
+               p = p->left;
+         } else if (n > p->data) {
+               p = p->right;
+         } else if (n == p->data) {
+               return p;
+         }
+      }
+      return p;
+   }
+   ```
+
+3. 삽입
+
+   Binary search tree에 새로운 원소를 삽입하기 전에 같은 원소가 있는지를 확인하는 과정이 필요하다. 탐색을 수행하여 탐색이 실패한 위치에 새로운 node를 삽입한다. 모든 node의 key 값은 서로 달라야 하므로, 만약 같은 원소가 이미 있으면 삽입하지 않는다.
+
+   ```c
+   TreeNode* insert(TreeNode* p, char element) {
+      if (p == NULL) {
+         TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
+         newNode -> data = element;
+         newNode -> left = NULL;
+         newNode -> right = NULL;
+         return newNode;
+      }
+      if (element < p -> data) {
+         p -> left = insert(p -> left, element);
+      } else if (element > p -> data) {
+         p -> right = insert(p -> right, element);
+      } else {
+         printf("이미 같은 값을 가진 node가 있어요");
+      }
+      return p;
+   }
+   ```
 
 ---
