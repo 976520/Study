@@ -169,18 +169,17 @@ Tree의 **depth(깊이)는 root에서 자신에게 도달하기 위해 거치는
    우선 찾고자 하는 값 `n`을 root node의 key값 역할을 하는 `data`와 비교하여, 만약 작으면 왼쪽 subtree에서 탐색하고, 크면 오른쪽 subtree에서 탐색한다. 이 과정을 재귀적으로 반복하여 원하는 key 값을 가진 node를 찾을 수 있다.
 
    ```C
-   TreeNode* search(TreeNode* root, char n) {
+   TreeNode* search(TreeNode* root, char data) {
       TreeNode* p = root;
       while (p != NULL) {
-         if (n < p->data) {
+         if (data < p->data) {
                p = p->left;
-         } else if (n > p->data) {
-               p = p->right;
-         } else if (n == p->data) {
+         } else if (data == p->data) {
                return p;
+         } else if (data > p->data) {
+               p = p->right;
          }
       }
-      return p;
    }
    ```
 
@@ -189,22 +188,101 @@ Tree의 **depth(깊이)는 root에서 자신에게 도달하기 위해 거치는
    Binary search tree에 새로운 원소를 삽입하기 전에 같은 원소가 있는지를 확인하는 과정이 필요하다. 탐색을 수행하여 탐색이 실패한 위치에 새로운 node를 삽입한다. 모든 node의 key 값은 서로 달라야 하므로, 만약 같은 원소가 이미 있으면 삽입하지 않는다.
 
    ```c
-   TreeNode* insert(TreeNode* p, char element) {
+   TreeNode* insert(TreeNode* p, char data) {
       if (p == NULL) {
          TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
-         newNode -> data = element;
+         newNode -> data = data;
          newNode -> left = NULL;
          newNode -> right = NULL;
          return newNode;
       }
-      if (element < p -> data) {
-         p -> left = insert(p -> left, element);
-      } else if (element > p -> data) {
-         p -> right = insert(p -> right, element);
+      if (data < p -> data) {
+         p -> left = insert(p -> left, data);
+      } else if (data > p -> data) {
+         p -> right = insert(p -> right, data);
       } else {
          printf("이미 같은 값을 가진 node가 있어요");
       }
       return p;
+   }
+   ```
+
+4. 삭제
+
+   Binary search tree에서 원소를 삭제하는 경우에는 삭제하고자 하는 node의 자식 node의 수에 따라 다음과 같이 세 가지 경우로 나누어 처리한다.
+
+   1. 삭제하고자 하는 node가 leaf node인 경우
+
+      그냥 삭제하고, 부모 node의 자식 링크를 NULL로 설정한다.
+
+   2. 삭제하고자 하는 node가 하나의 자식 node를 가지는 경우
+
+      삭제하고자 하는 node를 삭제하고, 자식 node를 부모 node와 직접 연결한다.
+
+   3. 삭제하고자 하는 node가 두 개의 자식 node를 가지는 경우
+
+      삭제하고자 하는 node의 왼쪽 subtree에서 가장 큰 값을 가진 node, 또는 오른쪽 subtree에서 가장 작은 값을 가진 node를 찾아 후계자로 설정하고 삭제하고자 하는 node와 교체한다.
+
+   ```c
+   TreeNode* delete(TreeNode* root, char data) {
+      TreeNode *parent = NULL;
+      TreeNode *p = root;
+
+      while ((p != NULL) && (p -> data != data)) {
+         parent = p;
+         if (data < p -> data) {
+               p = p->left;
+         } else if (data > p -> data) {
+               p = p->right;
+         }
+      }
+
+      if (p == NULL) {
+         return;
+      }
+
+      if ((p->left == NULL) && (p->right == NULL)) {
+         if (parent != NULL) {
+               if (parent -> left == p) {
+                  parent -> left = NULL;
+               } else if (parent -> right == p) {
+                  parent -> right = NULL;
+               }
+         } else {
+               root = NULL;
+         }
+      } else if((p->left == NULL) || (p->right == NULL)) {
+         TreeNode* child;
+         if (p->left == NULL) {
+               child = p->left;
+         } else if (p->right == NULL) {
+               child = p->left;
+         }
+         if (parent != NULL) {
+               if (parent -> left == p) {
+                  parent -> left = child;
+               } else if (parent -> right == p) {
+                  parent -> right = child;
+               }
+         } else {
+               root = child;
+         }
+      } else {
+         TreeNode *successorParent = p;
+         TreeNode *successor = p->left;
+         while (successor->right != NULL) {
+               successorParent = successor;
+               successor = successor->right;
+         }
+         if (successorParent->left != successor) {
+               successorParent->left = successor->left;
+         } else if (successorParent->right == successor) {
+               successorParent->right = successor->left;
+         }
+         p->data = successor->data;
+         p = successor;
+      }
+      free(p);
    }
    ```
 
