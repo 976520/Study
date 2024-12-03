@@ -146,4 +146,22 @@ Tree의 **depth(깊이)는 root에서 자신에게 도달하기 위해 거치는
 
    각각의 순회 방법은 재귀 함수를 이용하여 구현할 수 있다.
 
+## Binary Search Tree
+
+1. 이해
+
+   Binary search tree는 기존 binary tree에서 원소 탐색의 효율성을 높이기 위해 원소의 크기에 따라 node 위치를 정의한 tree이다. Binary search tree의 조건은 다음과 같다.
+
+   1. 모든 node는 서로 다른 유일한 키를 가진다.
+
+   2. 왼쪽 subtree에 있는 모든 node의 키 값은 부모 node의 키 값보다 작다.
+
+      왼쪽 node의 키 값은 부모 node의 키 값보다 작다.
+
+   3. 오른쪽 subtree에 있는 모든 node의 키 값은 부모 node의 키 값보다 크다.
+
+      오른쪽 node의 키 값은 부모 node의 키 값보다 크다.
+
+   4. 왼쪽, 오른쪽 subtree도 각각 binary search tree이다.
+
 ---
