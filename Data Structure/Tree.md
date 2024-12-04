@@ -287,3 +287,39 @@ Tree의 **depth(깊이)는 root에서 자신에게 도달하기 위해 거치는
    ```
 
 ---
+
+## AVL Tree
+
+1. 이해
+
+   > AVL Tree는 대표적인 balanced binary search tree이다.
+
+   AVL Tree는 모든 node의 왼쪽, 오른쪽 subtree의 height 차이가 1 이하인 binary search tree이다. left subtree의 height를 $h_L$, right subtree의 height를 $h_R$이라고 할 때, balance factor는 $h_L-h_R$이다. 이에 관하여 AVL Tree의 특징은 다음과 같다.
+
+   1. left subtree < parent node < right subtree의 관계를 만족한다.
+
+   2. 모든 node의 balance factor는 -1, 0, 1 중 하나이다.
+
+      만약 그렇지 않다면 rotation을 통해 균형을 맞춘다.
+
+2. 회전
+
+   AVL Tree에서의 불균형은 다음 네 가지 경우로 나뉜다.
+
+   1. LL 타입
+
+      ![image](https://github.com/user-attachments/assets/5694d38e-7281-4eeb-a759-16150c79572a)
+
+   2. LR 타입
+
+      ![image](https://github.com/user-attachments/assets/7d8767b9-e847-4641-89f6-7db356d6d2d7)
+
+   3. RL 타입
+
+      ![image](https://github.com/user-attachments/assets/7327b1c9-eeb4-434f-8f4f-09a20653068f)
+
+   4. RR 타입
+
+      ![image](https://github.com/user-attachments/assets/e001c7bb-722a-4230-ac56-5dcae51928a4)
+
+---
