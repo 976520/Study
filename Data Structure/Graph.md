@@ -68,4 +68,32 @@ Graph의 연결에 따라 다음과 같이 나뉠 수도 있다.
 
    3. queue가 공백이 될 때까지 반복한다.
 
+## spanning tree
+
+1. 이해
+
+   Tree는 cycle이 없는 graph의 일종이라고 할 수 있다. 모든 vertex가 $n$개인 undirected graph에서 정점이 $n$개이고 edge가 $n-1$개인 tree 형태의 subgraph를 spanning tree라고 한다.
+
+   ![image](https://github.com/user-attachments/assets/eed8e15b-7eaf-4f54-936b-2d5ccdb85010)
+
+   Graph에서 traversal을 하게 되면 $n-1$개의 edge를 이동하며 모든 정점 $n$개를 방문하게 되므로 이를 통해 spanning tree를 만들 수 있다. 이처럼 spanning tree는 edge를 최소로 이용하여 모든 vertex를 방문하는 경로를 나타낸 tree이다.
+
+2. minimum cost spanning tree
+
+   Weight graph에서 spanning tree를 구성할 때, edge $n-1$개의 weight 합이 최소인 spanning tree를 minimum cost spanning tree라고 한다. 이를 구하는 방법으로 다음과 같은 algorithm이 사용된다.
+
+   1. kruskal
+
+      가중치가 낮은 간선을 삽입하면서 minimum cost spanning tree를 구성하는 방법이다. 그 과정은 다음과 같다.
+
+      1. 모든 edge를 weight 순으로 정렬한다.
+
+      2. weight가 가장 낮은 edge부터 삽입하며 spanning tree를 구성한다.
+
+         만약 cycle이 형성되면 삽입하지 않고, 다음으로 weight가 낮은 edge를 삽입한다.
+
+      3. $n-1$개의 edge를 삽입할 때까지 반복한다.
+
+   2. prim
+
 ---
