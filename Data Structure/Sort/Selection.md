@@ -2,6 +2,8 @@
 
 1. 이해
 
+   ![selection](https://github.com/user-attachments/assets/4282938d-0a35-4045-92fd-7fa49af9fcbc)
+
    Selection sort의 과정은 다음과 같다.
 
    1. 처음부터 끝까지 순회하며 최소값을 찾는다.

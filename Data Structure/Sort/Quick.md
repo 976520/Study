@@ -2,6 +2,8 @@
 
 1. 이해
 
+   ![quick](https://github.com/user-attachments/assets/913e9290-6eeb-41ec-b659-9b0ebb9e5584)
+
    Quick sort는 분할 정복을 이용한 정렬 알고리즘 중 하나이다.
 
    1. pivot을 선택한다.

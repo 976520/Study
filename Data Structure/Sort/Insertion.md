@@ -2,6 +2,8 @@
 
 1. 이해
 
+   ![Insertion](https://github.com/user-attachments/assets/6f623463-c361-43f1-99f1-5de595d2b0ab)
+
    Insertion sort에서는 정렬할 array가 Sorted와 Unsorted의 두 부분집합으로 나뉘어 있다고 가정한다. 정렬 된 앞부분의 원소는 Sorted, 정렬되지 않은 뒷부분의 원소는 Unsorted이다.
 
    1. Unsorted 집합에서 원소를 선택하여 key로 설정한다.

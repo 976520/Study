@@ -2,6 +2,8 @@
 
 1. 이해
 
+   ![merge](https://github.com/user-attachments/assets/51bd10c4-49a7-46f8-9589-95584c02ecb3)
+
    Merge sort는 divide and conquer(분할 정복) 기법을 채용한 sort algorithm이다.
 
    1. 주어진 array를 2등분하여 부분 array를 만든다.
