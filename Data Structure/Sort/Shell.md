@@ -28,4 +28,22 @@
     }
    ```
 
+   주어진 interval만큼 떨어진 요소들끼리 부분집합을 만들어 insertion sort를 수행한다.
+
+   실질적인 shell sort의 구현은 다음과 같다.
+
+   ```c
+    void shellSort(int array[], int length) {
+        int interval = length / 2;
+        while (interval >= 1) {
+            for(int i = 0; i < interval; i++) {
+                insertionSort(array, i, length-1, interval);
+            }
+            interval = interval / 2;
+        }
+    }
+   ```
+
+   위 코드에서는 array 길이의 절반으로 interval을 초기화하고, interval이 1이 될 때까지 반복하게끔 되어 있다. 그 안에서 모든 부분집합에 대해 `insertionSort()`를 수행하는 것을 볼 수 있다.
+
 ---
