@@ -17,9 +17,15 @@
    Shell sort의 기반이 insertion sort이기 때문에, 이를 먼저 구현해야 한다.
 
    ```c
-   void insertionSort(int array[], int begin, int end, int interval) {
-
-   }
+    void insertionSort(int array[], int begin, int end, int interval) {
+        for(int i = begin + interval; i <= end; i++) {
+            int item = array[i];
+            for (int j = i - interval; j >= begin && array[j] > item; j = j - interval) {
+                array[j + interval] = array[j];
+            }
+            array[j + interval] = item;
+        }
+    }
    ```
 
 ---
