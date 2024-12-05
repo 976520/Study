@@ -2,6 +2,8 @@
 
 1. 이해
 
+   <img src="https://github.com/user-attachments/assets/0ec63b6c-4278-4432-8c09-367725a19185" alt="bubble" width="500" />
+
    Bubble sort의 과정은 다음과 같다.
 
    1. 인접한 두 수를 선택한다
