@@ -21,7 +21,7 @@
     }
     ```
 
-    이 경우 Service와 Client가 강하게 결합되어 이ㅆ
+    이 경우 Service와 Client가 강하게 결합되어 있다.
 
     다음 그림에서는 Client가 Service를 사용하고 있으므로, Client는 Service에 대한 dependency를 가지고 있다.
 
