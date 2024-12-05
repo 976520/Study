@@ -34,6 +34,7 @@
             while ((array[right] > array[pivot]) && (right > left)) {
                 right--;
             }
+
             if (left < right) {
                 temp = array[left];
                 array[left] = array[right];
@@ -43,6 +44,7 @@
                 }
             }
         }
+
         temp = array[pivot];
         array[pivot] = array[right];
         array[right] = temp;
@@ -50,7 +52,9 @@
     }
    ```
 
-   위 코드에서 `left`은 왼쪽에서 오른쪽으로, `right`은 오른쪽에서 왼쪽으로 이동하며 `pivot`을 기준으로 정렬되지 않은 원소를 찾는다. 이 `left`과 `right`이 각각 `pivot`보다 크거나 같은 원소와 `pivot`보다 작거나 같은 원소를 찾으면, 두 원소의 위치를 교환한다. `pivot`의 왼쪽에는 `pivot`보다 작은 원소들이, 오른쪽에는 `pivot`보다 큰 원소들이 오게 해야 하기 때문이다. 이때 교환하는 원소 중 하나가 `pivot`이면 `pivot`의 위치도 함께 갱신한다.
+   위 코드에서 `left`은 왼쪽에서 오른쪽으로, `right`은 오른쪽에서 왼쪽으로 이동하며 `pivot`을 기준으로 정렬되지 않은 원소를 찾는다.
+
+   이 `left`과 `right`이 각각 `pivot`보다 크거나 같은 원소와 `pivot`보다 작거나 같은 원소를 찾으면, 두 원소의 위치를 교환한다. `pivot`의 왼쪽에는 `pivot`보다 작은 원소들이, 오른쪽에는 `pivot`보다 큰 원소들이 오게 해야 하기 때문이다. 이때 교환하는 원소 중 하나가 `pivot`이면 `pivot`의 위치도 함께 갱신한다.
 
    이 과정을 `left`과 `right`이 만날 때까지 반복한다. `left`과 `right`이 만나면 `pivot`과 `right`이 가리키는 원소의 위치를 교환하고 `right`을 반환한다. 이렇게 반환된 `right`은 다음 정렬에서의 `pivot`이 된다.
 
