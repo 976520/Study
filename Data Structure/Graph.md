@@ -95,7 +95,23 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
 
    2. adjacency list(인접 리스트)
 
-      연결 list를 사용하여 구현하는 방법이다.
+      각 vertex에 인접한 vertex들을 단순 연결 list로 표현하는 방법이다. List의 각 node는 vertex를 저장하는 field와 다음 인접 vertex를 가리키는 link field로 구성된다.
+
+      ```c
+      typedef struct GraphNode {
+        int vertex;
+        struct GraphNode *link;
+      } GraphNode;
+      ```
+
+      한 vertex의 adjacency list는 그 vertex의 degree만큼 node가 연결되어 있으므로, vertex에 대한 head pointer를 길이가 degree인 pointer array로 정의할 수 있다.
+
+      ```c
+      typedef struct GraphType {
+        int numberOfVertices;
+        GraphNode *adjacencyList[MAX_VERTEX];
+      } GraphType;
+      ```
 
 ## traversal
 
