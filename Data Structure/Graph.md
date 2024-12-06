@@ -96,4 +96,14 @@ Graph의 연결에 따라 다음과 같이 나뉠 수도 있다.
 
    2. prim
 
+      하나의 vertex에서 시작하여 트리를 확장해 나가는 방법이다.
+
+      1. 시작 vertex를 설정한다.
+
+      2. 설정된 vertex에 incident된 edge 중에서 weight가 가장 낮은 edge를 선택하여 삽입한다.
+
+         이때 선택된 edge가 cycle을 형성하면 삽입하지 않고, 다음으로 weight가 낮은 edge를 선택한다.
+
+      3. $n-1$개의 edge를 삽입할 때까지 반복한다.
+
 ---
