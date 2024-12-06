@@ -213,4 +213,8 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
 
       Floyd-Warshall은 각 vertex 사이의 모든 경로를 구하고 비교하여 shortest path를 구하는 방법이다. Dynamic programming을 사용하여 구현할 수 있다.
 
+      1. 0부터 k까지의 vertex만을 이용하여 구한 vertex i에서 vertex j로 가는 최단 경로를 $A^k[i][j]$라고 정의한다.
+
+      2. $A^{k-1}$까지 구한 상태에서 $A^k[i][j]$를 구할 때, $A^{k-1}[i][j]$, $A^{k-1}[i][k] + A^{k-1}[k][j]$ 중 작은 값을 선택하여 저장한다.
+
 ---
