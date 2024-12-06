@@ -191,7 +191,7 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
 
    Shortest path는 weight graph에서 어떠한 두 vertex 사이의 weight의 총합이 최소인 path이다. 다음과 같은 방법을 통해 이를 구할 수 있다.
 
-   1. Dijkstra
+   1. dijkstra
 
       Dijkstra는 시작 vertex에서 가장 가까운 vertex를 찾아 최단 경로를 구하는 방법이다.
 
@@ -209,6 +209,8 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
 
       바로 위에 있는 prim과 유사하지만, prim이 단순히 최소 weight를 가지는 edge를 선택하는 방법이라면 dijkstra는 시작 vertex에서부터의 총합 weight를 비교하는 방법이라는 점에서 차이가 있다.
 
-   2. Floyd
+   2. floyd-warshall
+
+      Floyd-Warshall은 각 vertex 사이의 모든 경로를 구하고 비교하여 shortest path를 구하는 방법이다. Dynamic programming을 사용하여 구현할 수 있다.
 
 ---
