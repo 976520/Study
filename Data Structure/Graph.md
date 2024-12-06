@@ -189,6 +189,26 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
 
 3. shortest path(최단 경로)
 
-   Shortest path는 weight graph에서 어떠한 두 vertex 사이의 weight의 총합이 최소인 path이다.
+   Shortest path는 weight graph에서 어떠한 두 vertex 사이의 weight의 총합이 최소인 path이다. 다음과 같은 방법을 통해 이를 구할 수 있다.
+
+   1. Dijkstra
+
+      Dijkstra는 시작 vertex에서 가장 가까운 vertex를 찾아 최단 경로를 구하는 방법이다.
+
+      1. 경로를 저장할 array를 정의한다.
+
+         모든 값을 무한대로 초기화한다.
+
+      2. 시작 vertex의 거리를 0으로 설정하여 array에 추가한다.
+
+      3. 시작 vertex에서 가장 weight가 낮은 edge를 추가한다.
+
+         만약 새로 추가되는 edge에 대해 단축되는 경로가 있다면 수정한다.
+
+         이 과정을 모든 vertex에 대해 반복한다.
+
+      바로 위에 있는 prim과 유사하지만, prim이 단순히 최소 weight를 가지는 edge를 선택하는 방법이라면 dijkstra는 시작 vertex에서부터의 총합 weight를 비교하는 방법이라는 점에서 차이가 있다.
+
+   2. Floyd
 
 ---
