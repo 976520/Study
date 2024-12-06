@@ -44,7 +44,7 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
 
    1. adjacency matrix(인접 행렬)
 
-      2차원 array를 사용하여 구현하는 방법이다. Vertex의 수가 $n$개일 때, $n \times n$의 크기를 가지는 2차원 array를 선언하고,
+      2차원 array를 사용하여 구현하는 방법이다. Vertex의 수가 $n$개일 때, $n \times n$의 크기를 가지는 2차원 array를 이용하여 matrix를 정의하고,
 
       ```c
       typedef struct GraphType {
@@ -53,11 +53,43 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
       } GraphType;
       ```
 
-      ```c
+      이를 이용하여 다음과 같이 graph를 생성할 수 있다. Vertex가 서로 **연결되어있지 않으므로 행렬값에 0을 할당**한다.
 
+      ```c
+      void createGraph(GraphType *graph) {
+        int i, j;
+        graph->numberOfVertices = 0;
+        for (i = 0; i < MAX_VERTEX; i++) {
+          for (j = 0; j < MAX_VERTEX; j++) {
+            graph->adjacencyMatrix[i][j] = 0;
+          }
+        }
+      }
       ```
 
-      **두 vertex가 연결되어 있으면 행렬값에 1, 연결되어 있지 않으면 행렬값에 0을 할당**한다. 자기 자신 vertex와의 연결은 존재할 수 없으므로 행렬값에 0을 할당한다.
+      `createGraph()`를 통해 생성된 graph는 공백 상태이므로, 다음과 같이 vertex를 삽입할 수 있다. Vertex의 최대 개수보다 많으면 오류를 출력한다.
+
+      ```c
+      void insertVertex(GraphType *graph, int vertex) {
+        if ((graph->numberOfVertices + 1) > MAX_VERTEX) {
+          printf("vertex 개수 초과");
+          return;
+        }
+        graph->numberOfVertices++;
+      }
+      ```
+
+      **두 vertex가 연결되어 있으면 행렬값에 1을 할당**한다. 자기 자신 vertex와의 연결은 존재할 수 없으므로 행렬값에 0을 할당한다. 연결할 vertex가 존재하지 않으면 오류를 출력한다.
+
+      ```c
+      void insertEdge(GraphType *graph, int start, int end) {
+        if (start >= graph->numberOfVertices || end >= graph->numberOfVertices) {
+          printf("vertex가 존재하지 않음");
+          return;
+        }
+        graph->adjacencyMatrix[start][end] = 1;
+      }
+      ```
 
       Undirected graph의 경우 행렬값이 대칭이 되고, directed graph의 경우 row에 진출 edge, column에 진입 edge를 나타내기 때문에 대칭이 되지 않는다.
 
