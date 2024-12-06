@@ -95,8 +95,6 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
 
    2. adjacency list(인접 리스트)
 
-      ![image](https://github.com/user-attachments/assets/45e1f033-96a1-49af-810a-d9f255e0985d)
-
       각 vertex에 인접한 vertex들을 단순 연결 list로 표현하는 방법이다. List의 각 node는 vertex를 저장하는 field와 다음 인접 vertex를 가리키는 link field로 구성된다.
 
       ```c
@@ -106,7 +104,7 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
       } GraphNode;
       ```
 
-      한 vertex의 adjacency list는 그 vertex의 degree만큼 node가 연결되어 있으므로, vertex에 대한 head pointer를 길이가 degree인 pointer array로 정의할 수 있다.
+      Vertex 개수가 $n$이고, edge가 $e$개인 undirected graph에 대한 adjacency list는 크기가 $n$인 head pointer array가 필요하고, node의 개수는 $2e$개이다.
 
       ```c
       typedef struct GraphType {
@@ -114,6 +112,10 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
         GraphNode *adjacencyList[MAX_VERTEX];
       } GraphType;
       ```
+
+      한 vertex의 adjacency list는 그 vertex의 degree만큼 node가 연결되어 있으므로, vertex에 대한 head pointer를 길이가 degree인 pointer array로 정의할 수 있다.
+
+      <img src="https://github.com/user-attachments/assets/45e1f033-96a1-49af-810a-d9f255e0985d" width="450"/>
 
 ## traversal
 
