@@ -44,7 +44,22 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
 
    1. adjacency matrix(인접 행렬)
 
-      2차원 array를 사용하여 구현하는 방법이다.
+      2차원 array를 사용하여 구현하는 방법이다. Vertex의 수가 $n$개일 때, $n \times n$의 크기를 가지는 2차원 array를 선언하고,
+
+      ```c
+      typedef struct GraphType {
+        int numberOfVertices;
+        int adjacencyMatrix[MAX_VERTEX][MAX_VERTEX];
+      } GraphType;
+      ```
+
+      ```c
+
+      ```
+
+      **두 vertex가 연결되어 있으면 행렬값에 1, 연결되어 있지 않으면 행렬값에 0을 할당**한다. 자기 자신 vertex와의 연결은 존재할 수 없으므로 행렬값에 0을 할당한다.
+
+      Undirected graph의 경우 행렬값이 대칭이 되고, directed graph의 경우 row에 진출 edge, column에 진입 edge를 나타내기 때문에 대칭이 되지 않는다.
 
    2. adjacency list(인접 리스트)
 
