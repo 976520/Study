@@ -8,33 +8,47 @@
 
 Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 표현하는 자료구조이다. 두 vertex를 연결하는 edge가 존재할 때, 그 두 vertex는 adjacent(인접)하다고 하고, 그 edge는 두 vertex에 incident(부속)되어 있다고 한다. 이렇게 **vertex에 incident된 edge의 수를 그 vertex의 degree(차수)**라고 한다.
 
-Graph는 그 방향성의 유무에 따라 다음 두 종류로 나뉜다.
+1. 종류
 
-1.  undirected(무방향) graph
+   Graph는 그 방향성의 유무에 따라 다음 두 종류로 나뉜다.
 
-    두 vertex를 연결하는 edge에 방향이 없는 graph이다.
+   1. undirected(무방향) graph
 
-    Vertex $V_i$와 $V_j$를 연결하는 edge는 $(V_i, V_j)$로 표현하고, $(V_j, V_i)$와도 같은 edge이다.
+      두 vertex를 연결하는 edge에 방향이 없는 graph이다.
 
-2.  directed(방향) graph
+      Vertex $V_i$와 $V_j$를 연결하는 edge는 $(V_i, V_j)$로 표현하고, $(V_j, V_i)$와도 같은 edge이다.
 
-    두 vertex를 연결하는 edge에 방향이 있는 graph이며, digraph라고 하기도 한다.
+   2. directed(방향) graph
 
-    Vertex $V_i$에서 $V_j$로 가는 edge는 $<V_i, V_j>$로 표현하고, $V_j$에서 $V_i$로 가는 edge인 $<V_j, V_i>$와 다른 edge이다.
+      두 vertex를 연결하는 edge에 방향이 있는 graph이며, digraph라고 하기도 한다.
 
-Graph의 연결에 따라 다음과 같이 나뉠 수도 있다.
+      Vertex $V_i$에서 $V_j$로 가는 edge는 $<V_i, V_j>$로 표현하고, $V_j$에서 $V_i$로 가는 edge인 $<V_j, V_i>$와 다른 edge이다.
 
-3.  complete(완전) graph
+   Graph의 연결에 따라 다음과 같이 나뉠 수도 있다.
 
-    Graph의 모든 vertex가 서로 연결되어 있어, 최대 edge 수를 가지는 graph이다. Directed graph의 경우 모든 방향에 대해 최대 edge 수를 가진다.
+   3. complete(완전) graph
 
-4.  subgraph
+      Graph의 모든 vertex가 서로 연결되어 있어, 최대 edge 수를 가지는 graph이다. Directed graph의 경우 모든 방향에 대해 최대 edge 수를 가진다.
 
-    원래 graph에서 vertex나 edge 일부를 제거하여 만든 graph를 subgraph라고 한다.
+   4. subgraph
 
-5.  weight(가중) graph
+      원래 graph에서 vertex나 edge 일부를 제거하여 만든 graph를 subgraph라고 한다.
 
-    각 edge에 가중치를 할당한 graph이다. Network라고 하기도 한다.
+   5. weight(가중) graph
+
+      각 edge에 가중치를 할당한 graph이다. Network라고 하기도 한다.
+
+2. 구현
+
+   Graph는 크게 두 가지 방법으로 구현할 수 있다.
+
+   1. adjacency matrix(인접 행렬)
+
+      2차원 array를 사용하여 구현하는 방법이다.
+
+   2. adjacency list(인접 리스트)
+
+      연결 list를 사용하여 구현하는 방법이다.
 
 ## traversal
 
@@ -105,5 +119,9 @@ Graph의 연결에 따라 다음과 같이 나뉠 수도 있다.
          이때 선택된 edge가 cycle을 형성하면 삽입하지 않고, 다음으로 weight가 낮은 edge를 선택한다.
 
       3. $n-1$개의 edge를 삽입할 때까지 반복한다.
+
+3. shortest path(최단 경로)
+
+   Shortest path는 weight graph에서 어떠한 두 vertex 사이의 weight의 총합이 최소인 path이다.
 
 ---
