@@ -38,84 +38,84 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
 
       각 edge에 가중치를 할당한 graph이다. Network라고 하기도 한다.
 
-2. 구현
+## 구현
 
-   Graph는 크게 두 가지 방법으로 구현할 수 있다.
+Graph는 크게 두 가지 방법으로 구현할 수 있다.
 
-   1. adjacency matrix(인접 행렬)
+1.  adjacency matrix(인접 행렬)
 
-      2차원 array를 사용하여 구현하는 방법이다. Vertex의 수가 $n$개일 때, $n \times n$의 크기를 가지는 2차원 array를 이용하여 matrix를 정의하고,
+    2차원 array를 사용하여 구현하는 방법이다. Vertex의 수가 $n$개일 때, $n \times n$의 크기를 가지는 2차원 array를 이용하여 matrix를 정의하고,
 
-      ```c
-      typedef struct GraphType {
-        int numberOfVertices;
-        int adjacencyMatrix[MAX_VERTEX][MAX_VERTEX];
-      } GraphType;
-      ```
+    ```c
+    typedef struct GraphType {
+      int numberOfVertices;
+      int adjacencyMatrix[MAX_VERTEX][MAX_VERTEX];
+    } GraphType;
+    ```
 
-      이를 이용하여 다음과 같이 graph를 생성할 수 있다. Vertex가 서로 **연결되어있지 않으므로 행렬값에 0을 할당**한다.
+    이를 이용하여 다음과 같이 graph를 생성할 수 있다. Vertex가 서로 **연결되어있지 않으므로 행렬값에 0을 할당**한다.
 
-      ```c
-      void createGraph(GraphType *graph) {
-        int i, j;
-        graph->numberOfVertices = 0;
-        for (i = 0; i < MAX_VERTEX; i++) {
-          for (j = 0; j < MAX_VERTEX; j++) {
-            graph->adjacencyMatrix[i][j] = 0;
-          }
+    ```c
+    void createGraph(GraphType *graph) {
+      int i, j;
+      graph->numberOfVertices = 0;
+      for (i = 0; i < MAX_VERTEX; i++) {
+        for (j = 0; j < MAX_VERTEX; j++) {
+          graph->adjacencyMatrix[i][j] = 0;
         }
       }
-      ```
+    }
+    ```
 
-      `createGraph()`를 통해 생성된 graph는 공백 상태이므로, 다음과 같이 vertex를 삽입할 수 있다. Vertex의 최대 개수보다 많으면 오류를 출력한다.
+    `createGraph()`를 통해 생성된 graph는 공백 상태이므로, 다음과 같이 vertex를 삽입할 수 있다. Vertex의 최대 개수보다 많으면 오류를 출력한다.
 
-      ```c
-      void insertVertex(GraphType *graph, int vertex) {
-        if ((graph->numberOfVertices + 1) > MAX_VERTEX) {
-          printf("vertex 개수 초과");
-          return;
-        }
-        graph->numberOfVertices++;
+    ```c
+    void insertVertex(GraphType *graph, int vertex) {
+      if ((graph->numberOfVertices + 1) > MAX_VERTEX) {
+        printf("vertex 개수 초과");
+        return;
       }
-      ```
+      graph->numberOfVertices++;
+    }
+    ```
 
-      **두 vertex가 연결되어 있으면 행렬값에 1을 할당**한다. 자기 자신 vertex와의 연결은 존재할 수 없으므로 행렬값에 0을 할당한다. 연결할 vertex가 존재하지 않으면 오류를 출력한다.
+    **두 vertex가 연결되어 있으면 행렬값에 1을 할당**한다. 자기 자신 vertex와의 연결은 존재할 수 없으므로 행렬값에 0을 할당한다. 연결할 vertex가 존재하지 않으면 오류를 출력한다.
 
-      ```c
-      void insertEdge(GraphType *graph, int start, int end) {
-        if (start >= graph->numberOfVertices || end >= graph->numberOfVertices) {
-          printf("vertex가 존재하지 않음");
-          return;
-        }
-        graph->adjacencyMatrix[start][end] = 1;
+    ```c
+    void insertEdge(GraphType *graph, int start, int end) {
+      if (start >= graph->numberOfVertices || end >= graph->numberOfVertices) {
+        printf("vertex가 존재하지 않음");
+        return;
       }
-      ```
+      graph->adjacencyMatrix[start][end] = 1;
+    }
+    ```
 
-      Undirected graph의 경우 행렬값이 대칭이 되고, directed graph의 경우 row에 진출 edge, column에 진입 edge를 나타내기 때문에 대칭이 되지 않는다.
+    Undirected graph의 경우 행렬값이 대칭이 되고, directed graph의 경우 row에 진출 edge, column에 진입 edge를 나타내기 때문에 대칭이 되지 않는다.
 
-   2. adjacency list(인접 리스트)
+2.  adjacency list(인접 리스트)
 
-      각 vertex에 인접한 vertex들을 단순 연결 list로 표현하는 방법이다. List의 각 node는 vertex를 저장하는 field와 다음 인접 vertex를 가리키는 link field로 구성된다.
+    각 vertex에 인접한 vertex들을 단순 연결 list로 표현하는 방법이다. List의 각 node는 vertex를 저장하는 field와 다음 인접 vertex를 가리키는 link field로 구성된다.
 
-      ```c
-      typedef struct GraphNode {
-        int vertex;
-        struct GraphNode *link;
-      } GraphNode;
-      ```
+    ```c
+    typedef struct GraphNode {
+      int vertex;
+      struct GraphNode *link;
+    } GraphNode;
+    ```
 
-      Vertex 개수가 $n$이고, edge가 $e$개인 undirected graph에 대한 adjacency list는 크기가 $n$인 head pointer array가 필요하고, node의 개수는 $2e$개이다.
+    Vertex 개수가 $n$이고, edge가 $e$개인 undirected graph에 대한 adjacency list는 크기가 $n$인 head pointer array가 필요하고, node의 개수는 $2e$개이다.
 
-      ```c
-      typedef struct GraphType {
-        int numberOfVertices;
-        GraphNode *adjacencyList[MAX_VERTEX];
-      } GraphType;
-      ```
+    ```c
+    typedef struct GraphType {
+      int numberOfVertices;
+      GraphNode *adjacencyList[MAX_VERTEX];
+    } GraphType;
+    ```
 
-      한 vertex의 adjacency list는 그 vertex의 degree만큼 node가 연결되어 있으므로, vertex에 대한 head pointer를 길이가 degree인 pointer array로 정의할 수 있다.
+    한 vertex의 adjacency list는 그 vertex의 degree만큼 node가 연결되어 있으므로, vertex에 대한 head pointer를 길이가 degree인 pointer array로 정의할 수 있다.
 
-      <img src="https://github.com/user-attachments/assets/45e1f033-96a1-49af-810a-d9f255e0985d" width="450"/>
+    <img src="https://github.com/user-attachments/assets/45e1f033-96a1-49af-810a-d9f255e0985d" width="450"/>
 
 ## traversal
 
