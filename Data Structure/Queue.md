@@ -245,7 +245,7 @@ Queue는 두 가지 방법으로 구현할 수 있다.
    }
    ```
 
-   원형 queue에서는 `rear`를 1 증가시키고 배열의 크기로 나눈 나머지를 사용하여 `enQueue`를 구현한다.
+   `rear`를 1 증가시키고 배열의 크기로 나눈 나머지를 사용하여 `enQueue`를 구현한다.
 
    ```c
    void enQueue(QueueType *queue, char item) {
@@ -259,10 +259,26 @@ Queue는 두 가지 방법으로 구현할 수 있다.
    }
    ```
 
+   `front`를 1 증가시키고 배열의 크기로 나눈 나머지를 사용하여 `deQueue`를 구현한다.
+
+   ```c
+   char deQueue(QueueType *queue) {
+      if (isEmpty(queue)) {
+        printf("공백 상태\n");
+        return 0;
+      } else {
+        queue->front = (queue->front + 1) % MAX_QUEUE_SIZE;
+        return queue->queue[queue->front];
+      }
+   }
+   ```
+
 ---
 
 ## deque
 
 > Double-ended queue의 약자로, 양쪽 끝에서 삽입과 삭제가 모두 가능한 queue이다.
+
+Deque는 방향이 다른 두 개의 Queue를 붙인 형태이다.
 
 ---
