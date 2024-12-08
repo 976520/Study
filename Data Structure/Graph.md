@@ -38,6 +38,8 @@ Graph는 각 객체를 vertex(정점)과 그를 연결하는 edge(간선)으로 
 
       각 edge에 가중치를 할당한 graph이다. Network라고 하기도 한다.
 
+---
+
 ## 구현
 
 Graph는 크게 두 가지 방법으로 구현할 수 있다.
@@ -117,6 +119,8 @@ Graph는 크게 두 가지 방법으로 구현할 수 있다.
 
     <img src="https://github.com/user-attachments/assets/45e1f033-96a1-49af-810a-d9f255e0985d" width="450"/>
 
+---
+
 ## traversal
 
 한 vertex에서 시작하여 연결된 모든 vertex를 방문하는 것을 graph의 traversal(순회)이라고 한다.
@@ -148,6 +152,8 @@ Graph는 크게 두 가지 방법으로 구현할 수 있다.
       만약 $V_0$에 인접한 vertex 중에서 방문하지 않은 정점이 없다면 deQueue하여 받은 vertex를 $V_0$으로 설정하고 반복한다.
 
    3. queue가 공백이 될 때까지 반복한다.
+
+---
 
 ## spanning tree
 

@@ -8,6 +8,8 @@
 
 Stack의 맨 위 data를 가리키는 pointer를 top이라고 하고, data를 삽입하는 연산을 ~~git~~ push, 삭제하는 연산을 pop이라고 한다. 이 top에서만 data를 push하거나 pop할 수 있다. 따라서 data가 여러 번 push되는 경우 **top을 통해 가장 먼저 삽입된 data가 가장 나중에 삭제**되며, 이를 Last In First Out(LIFO)이라고 한다.
 
+---
+
 ## 구현
 
 Stack은 두 가지 방법으로 구현할 수 있다.
