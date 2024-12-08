@@ -6,7 +6,7 @@
 
 ## 이해
 
-Stack의 맨 위 data를 가리키는 pointer를 top이라고 하고, data를 삽입하는 연산을 push, 삭제하는 연산을 pop이라고 한다. 이 top에서만 data를 push하거나 pop할 수 있다. 따라서 data가 여러 번 push되는 경우 **top을 통해 가장 먼저 삽입된 data가 가장 나중에 삭제**되며, 이를 Last In First Out(LIFO)이라고 한다.
+Stack의 맨 위 data를 가리키는 pointer를 top이라고 하고, data를 삽입하는 연산을 ~~git~~ push, 삭제하는 연산을 pop이라고 한다. 이 top에서만 data를 push하거나 pop할 수 있다. 따라서 data가 여러 번 push되는 경우 **top을 통해 가장 먼저 삽입된 data가 가장 나중에 삭제**되며, 이를 Last In First Out(LIFO)이라고 한다.
 
 1. 구현
 
@@ -41,6 +41,32 @@ Stack의 맨 위 data를 가리키는 pointer를 top이라고 하고, data를 �
           return 1;
         else
           return 0;
+      }
+      ```
+
+      Push 연산은 `top`을 1 증가시키고, 그 위치에 원소를 넣는 것이다. 따라서 이미 가득 차있는 경우에는 오류를 반환한다.
+
+      ```c
+      void push(int item) {
+        if (isFull()) {
+          printf("stack is full");
+          return;
+        } else {
+          stack[++top] = item;
+        }
+      }
+      ```
+
+      Pop 연산은 `top`을 1 감소시키고, 그 위치의 원소를 반환하는 것이다. 따라서 비어있는 경우에는 오류를 반환한다.
+
+      ```c
+      int pop() {
+        if (isEmpty()) {
+          printf("stack is empty");
+          return;
+        } else {
+          return stack[top--];
+        }
       }
       ```
 
