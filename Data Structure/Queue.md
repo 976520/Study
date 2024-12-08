@@ -279,6 +279,6 @@ Queue는 두 가지 방법으로 구현할 수 있다.
 
 > Double-ended queue의 약자로, 양쪽 끝에서 삽입과 삭제가 모두 가능한 queue이다.
 
-Deque는 방향이 다른 두 개의 Queue를 붙인 형태이다.
+Deque는 방향이 다른 두 개의 queue를 붙인 형태이다.
 
 ---
