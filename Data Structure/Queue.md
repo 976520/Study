@@ -200,7 +200,9 @@ Queue는 두 가지 방법으로 구현할 수 있다.
    } QueueType;
    ```
 
-   원형 queue에서는 공백 상태와 포화 상태의 구분을 위해 자리를 하나 비워둔다. `front`와 `rear`의 초기값을 0으로 설정하여 queue를 초기화한다.
+   원형 queue에서는 공백 상태와 포화 상태의 구분을 위해 자리를 하나 비워둔다. 순차 queue에서는 `front`를 1 증가시키고 `rear`를 1 증가시키는 방법으로 삽입과 삭제를 수행하였다. 원형 queue에서는 index가 n-1 다음 0이 되어야 하므로 **`front`와 `rear`를 1 증가시키고 배열의 크기로 나눈 나머지를 사용한다.**
+
+   `front`와 `rear`의 초기값을 0으로 설정하여 queue를 초기화한다.
 
    ```c
    QueueType *createQueue() {
@@ -208,6 +210,52 @@ Queue는 두 가지 방법으로 구현할 수 있다.
       queue->front = 0;
       queue->rear = 0;
       return queue;
+   }
+   ```
+
+   원형 queue가 공백인 조건은 다음과 같이 초기화되는 값을 제외하고 선형 queue와 동일하다.
+
+   1. Queue가 초기화되어 `front`와 `rear`가 둘다 0인 경우
+
+   2. `front`와 `rear`가 같은 경우
+
+      `rear`에 있던 마지막에 삽입된 원소를 `deQueue`한 경우이다.
+
+   따라서 선형 queue와 동일하게 공백 상태를 검사할 수 있다.
+
+   ```c
+   int isEmpty(QueueType *queue) {
+     if (queue->front == queue->rear) {
+       return 1;
+     } else {
+       return 0;
+     }
+   }
+   ```
+
+   `rear`가 원형 queue를 한 바퀴 돌며 data를 삽입하여 queue를 모두 채우면, 다음 삽입 위치는 현재 `front`가 가리키는 위치가 된다. 따라서 포화 상태는 `front`와 `rear`가 같은 경우이다.
+
+   ```c
+   int isFull(QueueType *queue) {
+     if ((queue->rear + 1) % MAX_QUEUE_SIZE == queue->front) {
+       return 1;
+     } else {
+       return 0;
+     }
+   }
+   ```
+
+   원형 queue에서는 `rear`를 1 증가시키고 배열의 크기로 나눈 나머지를 사용하여 `enQueue`를 구현한다.
+
+   ```c
+   void enQueue(QueueType *queue, char item) {
+      if (isFull(queue)) {
+        printf("포화 상태\n");
+        return;
+      } else {
+        queue->rear = (queue->rear + 1) % MAX_QUEUE_SIZE;
+        queue->queue[queue->rear] = item;
+      }
    }
    ```
 
