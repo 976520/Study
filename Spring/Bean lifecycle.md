@@ -37,6 +37,12 @@
 
    2. annotation
 
+      최신 spring에서 가장 권장하는 방법이다. `@PostConstruct`와 `@PreDestroy` annotation을 통해 초기화와 소멸 전 작업을 진행할 수 있다.
+
    3. config
+
+      설정 정보에서 초기화와 소멸 전 method를 지정하는 방법이다. Spring 코드에 의존하지 않고 method명을 자유롭게 설정 할 수 있다.
+
+      `@Bean` 지정 시 initMethod와 destroyMethod를 직접 지정해야 하기 때문에 좀 귀찮다.
 
 ---
