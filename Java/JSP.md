@@ -2,6 +2,8 @@
 
 > JSP는 HTML에 java code를 넣어 동적인 web page를 생성하는 도구이다.
 
+JSP는 WAS의 servlet container에서 servlet으로 변환되고, 이 servlet code가 compile되어 실행된다. Servlet 형태이기 때문에 HTML 형태의 response를 생성하는데, 이를 통해 동적인 web page를 생성할 수 있다.
+
 ---
 
 ## servlet
@@ -53,7 +55,7 @@
 
 4. 특징
 
-   Java의 thread를 이용한다.
+   Multi thread를 지원하기 위해 java의 thread를 이용한다.
 
    MVC pattern에서 controller의 역할을 한다.
 
