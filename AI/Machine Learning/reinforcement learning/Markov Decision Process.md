@@ -429,7 +429,7 @@
 
    Markov process는 현재 state만이 다음 state를 결정하는 것이라면, Markov reward process는 현재 state와 **다음 state의 reward를 고려**하여 다음 state를 결정하는 것이다. 여기서 reward는 현재 state에서 다음 state로 transition할 때 이동한 미래 state의 좋고 나쁨에 따라 현재 state에 부여하는 보상을 의미한다.
 
-2. return function
+2. return(대가) function
 
    1. 이해
 
@@ -451,7 +451,7 @@
 
       이는 시점 t에서 return이 즉각적인 보상 $r$과 다음 시점 $t+1$에서 discount factor이 적용된 미래의 return을 더한 것이라는 의미이다.
 
-3. policy function
+3. policy(정책) function
 
    1. 이해
 
