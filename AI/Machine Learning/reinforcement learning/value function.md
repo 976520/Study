@@ -18,7 +18,11 @@
    v_\pi(s) = E_\pi[R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+\cdots|S_t=s] = E_\pi[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_t=s]
    $$
 
-   이를 bellman equation이라고 한다.
+   $$
+   v_\pi(s) = \sum_{a\in A}\pi(a|s)\sum_{s'\in S}p(s'|s,a)[R(s,a,s')+\gamma v_\pi(s')]
+   $$
+
+   이를 bellman equation이라고 한다. 이 방정식은 현재 상태의 가치를 immediate(즉각적) reward $R(s,a,s')$과 다음 상태의 discounted(할인된) value $\gamma v_\pi(s')$의 합으로 표현한다.
 
 3. action-value funtion
 
