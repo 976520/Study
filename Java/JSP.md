@@ -10,6 +10,6 @@
 
 2. 이해
 
-   JSP는 WAS의 servlet container에서 **servlet으로 변환**되고, 이 servlet code가 compile되어 실행된다. Servlet 형태이기 때문에 HTML 형태의 response를 생성하는데, 이를 통해 dynamic web page를 생성할 수 있다.
+   JSP는 WAS의 servlet container에서 **servlet으로 변환**되고, 이 servlet code가 compile되어 실행된다. Servlet이기 때문에 HTML 형태의 response를 생성하는데, 이를 통해 dynamic web page를 생성할 수 있다. 한변 servlet으로 변환된 JSP file은 cache에 저장되어 다음 요청이 있을 때 이를 통해 빠르게 응답할 수 있다.
 
 ---

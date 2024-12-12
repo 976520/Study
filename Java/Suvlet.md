@@ -51,6 +51,6 @@
 
    MVC pattern에서 controller의 역할을 한다.
 
-   HTML을 이용하여 response를 작성한다. 이 HTML의 변경이 일어나면 다시 compile 과정을 거쳐 변경된 내용을 반영한다.
+   HTML을 이용하여 response를 작성한다. 이 HTML의 변경이 일어나면 다시 compile 과정을 거쳐 변경된 내용을 반영한다. 이 HTML을 일일히 java로 생성하다 보니 code의 양이 많은 편이다. 때문에 HTML을 기반으로 필요한 부분에 java를 삽입하는 JSP가 등장하게 되었다.
 
 ---
