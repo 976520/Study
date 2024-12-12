@@ -451,35 +451,21 @@
 
       이는 시점 t에서 return이 즉각적인 보상 $r$과 다음 시점 $t+1$에서 discount factor이 적용된 미래의 return을 더한 것이라는 의미이다.
 
-3. policy(정책) function
-
-   1. 이해
-
-      Policy는 다음에 선택할 action을 결정하는 함수이다. 이는 결정적일 수도 있고, 확률적일 수도 있다는 특징이 있다. 확률적 policy는 주어진 state에서 agent가 선택할 수 있는 action에 대한 확률 분포를 가진다.
-
-      $$
-      \pi(a|s)=P[A_t=a|S_t=s]
-      $$
-
-   2. optimal policy
-
-      학습 중에 agent가 더 많은 경험을 얻으면 policy가 바뀔 수 있다. 만약 처음에 agent가 모든 action의 확률이 균등한 policy로 시작했다면, agent는 optimal policy에 가깝게 되도록 학습을 할 것이다. 이때 optimal policy는 가장 높은 return을 만드는 policy로, $\pi^*(a|s)$로 표현한다.
-
-4. state-value function
+3. state-value function
 
    강화학습에서 agent는 reword를 많이 받는 행동을 선택하도록 학습한다. 보상은 action을 수행한 후 다음 state에서 제공되므로, 이처럼 받지 않은 reword를 고려해야 한다.
 
    State value function은 특정 상태가 궁극적인 목표를 달성하는데 있어서 얼마나 좋은지 나쁜지를 측정하는 척도이다. 이는 return을 기준으로 한다.
 
-   상태 $s$의 value function을 policy $\pi$를 따른 후 모든 episode에 걸친 평균 return $G_t$의 기댓값 $v_\pi(s)$는 다음과 같다.
+   상태 $s$의 value function을 모든 episode에 걸친 평균 return $G_t$의 기댓값 $v(s)$는 다음과 같다.
 
    $$
-   v_\pi(s) = E_\pi[G_t|S_t=s]=E_\pi[\displaystyle\sum_{k=0}^{\infty}\gamma^k R_{t+k+1}|S_t=s]
+   v(s) = E[G_t|S_t=s]=E[\displaystyle\sum_{k=0}^{\infty}\gamma^k R_{t+k+1}|S_t=s]
    $$
 
    현재 state에서 한 episode가 끝날 때까지 받은 reword의 합을 통해 현재 state의 value를 측정할 수 있다. 하지만 reword의 단순 합으로 value function을 작성하면 시간 개념을 적용할 수 없다는 단점이 있다. 따라서 discount factor $\gamma$를 곱해 미래의 reword를 discount하여 return을 구하는 것이다. Reword가 확률변수임에 따라 return도 확률변수이기 때문에 평균을 의미하는 기댓값을 취하여 value function을 유도하는 것이다.
 
-5. bellman equation
+4. bellman equation
 
    $v_\pi(s)$는 다음과 같이 재귀적으로 표현할 수 있으며,
 
@@ -493,7 +479,41 @@
 
    이를 bellman equation이라고 한다. 이 방정식은 현재 상태의 가치를 immediate(즉각적) reward $R(s,a,s')$과 다음 상태의 discounted(할인된) value $\gamma v_\pi(s')$의 합으로 표현한다.
 
-6. action-value function
+---
+
+## Markov Decision Process
+
+> Markov decision process는 markov reward process에 action을 추가한 것이다.
+
+일반적으로 강화학습이 다루는 문제라고 할 수 있다. 이 Markov decision process를 푸는 방법으로 Dynamic Programming, Monte Carlo method, Temporal Difference Learning(시간 차 학습) 등이 있다.
+
+1. policy(정책) function
+
+   1. 이해
+
+      Policy는 다음에 선택할 action을 결정하는 함수이다. 이는 결정적일 수도 있고, 확률적일 수도 있다는 특징이 있다. 확률적 policy는 주어진 state에서 agent가 선택할 수 있는 action에 대한 확률 분포를 가진다.
+
+      $$
+      \pi(a|s)=P[A_t=a|S_t=s]
+      $$
+
+   2. optimal policy
+
+      학습 중에 agent가 더 많은 경험을 얻으면 policy가 바뀔 수 있다. 만약 처음에 agent가 모든 action의 확률이 균등한 policy로 시작했다면, agent는 optimal policy에 가깝게 되도록 학습을 할 것이다. 이때 optimal policy는 가장 높은 return을 만드는 policy로, $\pi^*(a|s)$로 표현한다.
+
+1. state-value function with policy
+
+   State-value function은 특정 policy $\pi$를 따를 때 각 state의 가치를 나타내는 함수이다. 이는 앞서 설명한 state-value function과 동일하지만, policy가 명시적으로 포함되어 있다는 점이 다르다.
+
+   Policy $\pi$를 따를 때 state $s$에서의 value function $v_\pi(s)$는 다음과 같이 정의된다:
+
+   $$
+   v_\pi(s) = E_\pi[G_t|S_t=s] = E_\pi[\sum_{k=0}^{\infty}\gamma^k R_{t+k+1}|S_t=s]
+   $$
+
+   이는 현재 state $s$에서 시작하여 policy $\pi$를 따를 때 얻을 수 있는 모든 미래 보상의 할인된 합의 기댓값을 나타낸다. 여기서 $\gamma$는 discount factor로, 일반적인 state-value function과 마찬가지로 미래의 reword를 현재 value로 discount하는 역할을 한다.
+
+1. action-value function
 
    State-value function을 통해 다음 state들의 value를 판단할 수 있으며, agent는 이를 바탕으로 더 value가 높은 state로 가기 위한 action을 선택하여 state를 transition하게 된다.
 
@@ -510,13 +530,5 @@
    $$
    q_\pi(s,a) = E_\pi[G_t|S_t=s,A_t=a] = E_\pi[\displaystyle\sum_{k=0}^{\infty}\gamma^k R_{t+k+1}|S_t=s,A_t=a]
    $$
-
----
-
-## Markov Decision Process
-
-> Markov decision process는 markov reward process에 action을 추가한 것이다.
-
-일반적으로 강화학습이 다루는 문제라고 할 수 있다. 이 Markov decision process를 푸는 방법으로 Dynamic Programming, Monte Carlo method, Temporal Difference Learning(시간 차 학습) 등이 있다.
 
 ---
