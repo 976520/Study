@@ -74,8 +74,12 @@
 
    2. 특정 action을 선택하더라도 원하는 state로 항상 이동할 수 있다는 보장이 없다. 즉, state transition probability를 고려해야 한다.
 
-   때문에 action에 대한 value function이 필요하다. Action-value function은 state-action pair에 대해 value를 정의한 것으로, q function이라고 하기도 한다.
+   때문에 action에 대한 value function이 필요하다. Action-value function은 state-action pair에 대해 value를 정의한 것으로, 특정 state에서 취한 action이 얼마나 좋을 지 판단하는 것이다.
 
-   상태 $s$에서 선택한 행동 $a$에 대한 return $G_t$의 기댓값
+   상태 $s$에서 선택한 행동 $a$에 대한 return $G_t$의 기댓값 $q_\pi(s,a)$는 다음과 같다.
+
+   $$
+   q_\pi(s,a) = E_\pi[G_t|S_t=s,A_t=a] = E_\pi[\displaystyle\sum_{k=0}\gamma^{k+1}R_{t+k+1}|S_t=s,A_t=a]
+   $$
 
 ---
