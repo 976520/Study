@@ -24,6 +24,115 @@
    <% %>
    ```
 
-   이 안에 JSP 문법을 넣을 수 있다.
+   이 안에 java code나 JSP 지시어, JSP action tag를 넣을 수 있다.
+
+   1. directive(지시어)
+
+      JSP directive는 그 속성에 따라 java code를 생성한다. Directive는 `<%@ ... %>`와 같은 형태로 작성되며, JSP 페이지의 전체적인 속성을 지정할 때 사용된다. 주요 directive에는 다음과 같은 것들이 있다:
+
+      1. page directive
+
+         JSP page의 전반적인 속성을 지정한다.
+
+         ```jsp
+         <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+         ```
+
+         이 속성의 종류는 다음과 같다.
+
+         1. `language`
+
+            사용할 script language를 지정한다.
+
+         2. `contentType`
+
+            생성할 문서의 type과 encoding을 지정한다.
+
+         3. `import`
+
+            사용할 java class를 지정한다.
+
+         4. `errorPage`
+
+            Error 발생 시 보여줄 page를 지정한다.
+
+      2. include directive
+
+         다른 HTML이나 JSP 문서를 현재 JSP page에 포함시킨다.
+
+         ```jsp
+         <%@ include file="header.jsp" %>
+         ```
+
+         지정한 파일의 code를 그대로 현재 위치에 포함시킨다. 이름처럼 C언어의 `#include`랑 비슷하다.
+
+      3. taglib directive
+
+         ```jsp
+         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+         ```
+
+         JSTL이나 사용자 정의 tag를 사용할 수 있도록 한다.
+
+   2. declaration(선언부)
+
+      Servlet class의 member variable이나 method를 선언하는 부분이다.
+
+      ```jsp
+      <%! %>
+      ```
+
+   3. expression(표현부)
+
+      결과를 출력하는 역할을 한다.
+
+      ```jsp
+      <%= %>
+      ```
+
+   4. JSP action
+
+      JSP에서 제공하는 tag들을 JSP action tag라고 한다.
+
+      1. `<jsp:include>`
+
+         다른 JSP 페이지를 포함시킨다.
+
+         ```jsp
+         <jsp:include page="example.jsp" />
+         ```
+
+      2. `<jsp:forward>`
+
+         현재 page를 멈추고 `page`에 지정한 곳으로 이동시킨다.
+
+         ```jsp
+         <jsp:forward page="example.jsp" />
+         ```
+
+      3. `<jsp:param>`
+
+         `<jsp:include>`, `<jsp:forard>`의 자식 tag로서 사용된다. 다른 page로 이동할 때 필요한 parameter를 전달한다.
+
+         ```jsp
+         <jsp:include page="example.jsp">
+            <jsp:param name="id" value="123" />
+         </jsp:include>
+         ```
+
+      4. `<jsp:element>`
+
+         `<jsp:element>`은 특정 요소를 생성하는데 사용된다.
+
+         ```jsp
+         <jsp:element name="div">
+            <jsp:attribute name="class">example</jsp:attribute>
+            <jsp:body>Hello</jsp:body>
+         </jsp:element>
+         ```
+
+   5. JSP implicit object
+
+      JSP에서 별도의 선언 없이 사용할 수 있는 객체들을 말한다.
 
 ---
