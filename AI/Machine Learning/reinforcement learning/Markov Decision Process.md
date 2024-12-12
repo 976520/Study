@@ -435,6 +435,6 @@
 
 > Markov decision process는 markov reward process에 action을 추가한 것이다.
 
-일반적으로 강화학습이 다루는 문제라고 할 수 있다. 이 Markov decision process를 푸는 방법으로 Dynamic Programming, Monte Carlo method, Temporal Difference Learning 등이 있다.
+일반적으로 강화학습이 다루는 문제라고 할 수 있다. 이 Markov decision process를 푸는 방법으로 Dynamic Programming, Monte Carlo method, Temporal Difference Learning(시간 차 학습) 등이 있다.
 
 ---

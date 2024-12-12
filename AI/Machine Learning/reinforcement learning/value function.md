@@ -7,7 +7,7 @@
       시점 $t$에서 return은 episode의 모든 기간에 걸쳐 얻은 reward의 총합이다. $R_{t+1}=r$이 $t$에서 action을 수행한 후 얻은 즉각적인 reword이라고 할 때, 다음으로 이어지는 reword은 $R_{t+2}, R_{t+3}, \cdots$이다. 이러한 reword들을 모두 더하면 시점 $t$에서의 return이 된다.
 
       $$
-      G_t = R_{t+1} + R_{t+2} + R_{t+3} + \cdots = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}
+      G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}
       $$
 
       여기서 $\gamma$는 discount factor이다. 이 값은 0보다 크고 1보다 작으며, 현재 시점에서 미래 reword이 얼마나 가치 있는지 나타낸다. $\gamma=0$이면, 미래 reword를 고려하지 않는다는 의미이고, $\gamma=1$이면, return은 모든 미래의 reward를 그대로 모두 더한 값이 된다.
@@ -45,7 +45,7 @@
    상태 $s$의 value function을 policy $\pi$를 따른 후 모든 episode에 걸친 평균 return $G_t$의 기댓값 $v_\pi(s)$는 다음과 같다.
 
    $$
-   v_\pi(s) = E_\pi[G_t|S_t=s]=E_\pi[\displaystyle\sum_{k=0}\gamma^{k+1}R_{t+k+1}|S_t=s]
+   v_\pi(s) = E_\pi[G_t|S_t=s]=E_\pi[\displaystyle\sum_{k=0}^{\infty}\gamma^k R_{t+k+1}|S_t=s]
    $$
 
    현재 state에서 한 episode가 끝날 때까지 받은 reword의 합을 통해 현재 state의 value를 측정할 수 있다. 하지만 reword의 단순 합으로 value function을 작성하면 시간 개념을 적용할 수 없다는 단점이 있다. 따라서 discount factor $\gamma$를 곱해 미래의 reword를 discount하여 return을 구하는 것이다. Reword가 확률변수임에 따라 return도 확률변수이기 때문에 평균을 의미하는 기댓값을 취하여 value function을 유도하는 것이다.
@@ -79,7 +79,7 @@
    상태 $s$에서 선택한 행동 $a$에 대한 return $G_t$의 기댓값 $q_\pi(s,a)$는 다음과 같다.
 
    $$
-   q_\pi(s,a) = E_\pi[G_t|S_t=s,A_t=a] = E_\pi[\displaystyle\sum_{k=0}\gamma^{k+1}R_{t+k+1}|S_t=s,A_t=a]
+   q_\pi(s,a) = E_\pi[G_t|S_t=s,A_t=a] = E_\pi[\displaystyle\sum_{k=0}^{\infty}\gamma^k R_{t+k+1}|S_t=s,A_t=a]
    $$
 
 ---
