@@ -131,8 +131,44 @@
          </jsp:element>
          ```
 
-   5. JSP implicit object
+   5. JSP implicit object(내장 객체)
 
       JSP에서 별도의 선언 없이 사용할 수 있는 객체들을 말한다.
+
+      1. `request`
+
+         Client의 request 정보를 담고 있는 객체이다.
+
+      2. `response`
+
+         Client의 request에 대한 response 정보를 담고 있는 객체이다.
+
+      3. `out`
+
+         JSP page에 출력할 내용을 담는 output stream 객체이다.
+
+      4. `session`
+
+         Session 정보를 담고 있는 객체이다.
+
+      5. `application`
+
+         Application당 하나 생성되며, context를 담고 있는 객체이다. 따라서 모든 JSP page에서 access할 수 있다.
+
+      6. `pageContext`
+
+         JSP page의 context를 담고 있는 객체이다.
+
+      7. `page`
+
+         현재 JSP page를 구현한 java class의 instance이다.
+
+      8. `config`
+
+         JSP page의 설정 정보를 담고 있는 객체이다.
+
+      9. `exception`
+
+         JSP page에서 발생한 exception 정보를 담고 있는 객체이다. 오류명과 오류 메시지를 확인할 수 있다.
 
 ---
