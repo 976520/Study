@@ -2,7 +2,7 @@
 
 1. state-value function
 
-   State value function은 특정 상태가 얼마나 좋은지 나쁜지를 측정하는 척도이다. 이는 return을 기준으로 한다.
+   State value function은 특정 상태가 궁극적인 목표를 달성하는데 있어서 얼마나 좋은지 나쁜지를 측정하는 척도이다. 이는 return을 기준으로 한다.
 
    상태 $s$의 value function을 policy $\pi$를 따른 후 모든 episode에 걸친 평균 return $G_t$의 기댓값 $v_\pi(s)$는 다음과 같다.
 
@@ -10,7 +10,17 @@
    v_\pi(s) = E_\pi[G_t|S_t=s]=E_\pi[\displaystyle\sum_{k=0}\gamma^{k+1}R_{t+k+1}|S_t=s]
    $$
 
-2. action-value funtion
+2. bellman equation
+
+   $v_\pi(s)$는 다음과 같이 재귀적으로 표현할 수 있으며,
+
+   $$
+   v_\pi(s) = E_\pi[R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+\cdots|S_t=s] = E_\pi[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_t=s]
+   $$
+
+   이를 bellman equation이라고 한다.
+
+3. action-value funtion
 
    Action-value function은 state-action pair에 대해 value를 정의한 것이다.
 

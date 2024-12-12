@@ -8,7 +8,7 @@
 
 ## Stochastic process
 
-1. Stochastic process
+1. 이해
 
    > Stochastic process(확률 과정)는 시간의 진행에 대해 확률적인 변화를 가지는 구조를 의미한다.
 
@@ -423,9 +423,11 @@
 
 ## Markov Reward Process
 
-> Markov reward process는 markov process에 reward system을 추가한 것이다.
+1. 이해
 
-Markov process는 현재 state만이 다음 state를 결정하는 것이라면, Markov reward process는 현재 state와 다음 state의 reward를 고려하여 다음 state를 결정하는 것이다. 여기서 reward는 현재 state에서 다음 state로 transition할 때 이동한 미래 state의 좋고 나쁨에 따라 현재 state에 부여하는 보상을 의미한다.
+   > Markov reward process는 markov process에 reward system을 추가한 것이다.
+
+   Markov process는 현재 state만이 다음 state를 결정하는 것이라면, Markov reward process는 현재 state와 **다음 state의 reward를 고려**하여 다음 state를 결정하는 것이다. 여기서 reward는 현재 state에서 다음 state로 transition할 때 이동한 미래 state의 좋고 나쁨에 따라 현재 state에 부여하는 보상을 의미한다.
 
 ---
 
