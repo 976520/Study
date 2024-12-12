@@ -493,8 +493,6 @@
 
    MDP에서는 agent가 각 state에서 취할 수 있는 action들이 정의되어 있으며, 이 action에 따라 다음 state로의 transition probability와 reward가 결정된다. 즉, agent의 decision making이 환경과의 상호작용에 직접적인 영향을 미치는 구조이다.
 
-   일반적으로 강화학습이 다루는 문제라고 할 수 있다. 이 Markov decision process를 푸는 방법으로 Dynamic Programming, Monte Carlo method, Temporal Difference Learning(시간 차 학습) 등이 있다.
-
 2. policy(정책) function
 
    1. 이해
@@ -538,5 +536,15 @@
    $$
    q_\pi(s,a) = E_\pi[G_t|S_t=s,A_t=a] = E_\pi[\displaystyle\sum_{k=0}^{\infty}\gamma^k R_{t+k+1}|S_t=s,A_t=a]
    $$
+
+5. solve MDP
+
+   Markov decision process는 일반적으로 강화학습이 다루는 문제라고 할 수 있다. 다음과 같은 방법으로 풀 수 있다.
+
+   1. Dynamic Programming
+
+   2. Monte Carlo method
+
+   3. Temporal Difference Learning
 
 ---
