@@ -8,29 +8,27 @@
 
 ## Stochastic process
 
-1. 이해
+> Stochastic process(확률 과정)는 시간의 진행에 대해 확률적인 변화를 가지는 구조를 의미한다.
 
-   > Stochastic process(확률 과정)는 시간의 진행에 대해 확률적인 변화를 가지는 구조를 의미한다.
+쉽게 설명하면, 시간에 따라 일어나는 일들이 확률에 따라 결정되는 과정이다. 이때 시간은 연속적이거나 이산적일 수 있다.
 
-   쉽게 설명하면, 시간에 따라 일어나는 일들이 확률에 따라 결정되는 과정이다. 이때 시간은 연속적이거나 이산적일 수 있다.
+예를 들어, 날씨를 stochastic process로 modeling한다고 할 때, 날씨의 state는 "맑음", "흐림", "비"의 세 가지로 정의할 수 있다. 각 state에서 다른 state로 바뀔 확률이 다음과 같다고 가정하면,
 
-   예를 들어, 날씨를 stochastic process로 modeling한다고 할 때, 날씨의 state는 "맑음", "흐림", "비"의 세 가지로 정의할 수 있다. 각 state에서 다른 state로 바뀔 확률이 다음과 같다고 가정하면,
+- "맑음" => "맑음" 일 확률: 0.7
+- "맑음" => "흐림" 일 확률: 0.2
+- "맑음" => "비" 일 확률: 0.1
 
-   - "맑음" => "맑음" 일 확률: 0.7
-   - "맑음" => "흐림" 일 확률: 0.2
-   - "맑음" => "비" 일 확률: 0.1
+- "흐림" => "맑음" 일 확률: 0.4
+- "흐림" => "흐림" 일 확률: 0.4
+- "흐림" => "비" 일 확률: 0.2
 
-   - "흐림" => "맑음" 일 확률: 0.4
-   - "흐림" => "흐림" 일 확률: 0.4
-   - "흐림" => "비" 일 확률: 0.2
+- "비" => "맑음" 일 확률: 0.3
+- "비" => "흐림" 일 확률: 0.5
+- "비" => "비" 일 확률: 0.2
 
-   - "비" => "맑음" 일 확률: 0.3
-   - "비" => "흐림" 일 확률: 0.5
-   - "비" => "비" 일 확률: 0.2
+이 예시에서 각 상태에서 변경될 수 있는 모든 확률의 합은 1이 된다. 예를 들어 "맑음" 상태에서 "맑음", "흐림", "비"로 변경될 확률의 합은 0.7 + 0.2 + 0.1 = 1이다.
 
-   이 예시에서 각 상태에서 변경될 수 있는 모든 확률의 합은 1이 된다. 예를 들어 "맑음" 상태에서 "맑음", "흐림", "비"로 변경될 확률의 합은 0.7 + 0.2 + 0.1 = 1이다.
-
-2. State transition probability
+1. State transition probability
 
    Stochastic process에서 시간 $t$에 따른 state $S_{t}$의 변화를 나타내고, 이 상태의 변화를 transition(전이)이라고 한다. 이러한 변화를 확률로 표현하면 state transition probability(상태 전이 확률)이라고 한다.
 
@@ -50,7 +48,7 @@
 
       즉, 상태 $i$에서 반드시 어떤 상태 $j$로 transition하게 된다.
 
-3. State transition diagram
+2. State transition diagram
 
    State transition diagram은 environment의 모든 state와 state transition probability를 나타낸 directed cyclic graph이다.
 
@@ -60,7 +58,7 @@
 
    `독서`에서 `웹 서핑`, `취침`으로 이동할 확률을 모두 더하면 1이 나온다. 이처럼 하나의 state에서 다른 state로 이동할 확률의 총합은 1인 것을 알 수 있다. 그리고 `취침`은 종료 state이기 때문에 다른 state로 이동할 확률은 0이며, 동시에 자신의 상태를 유지할 확률이 1이다.
 
-4. State vector
+3. State vector
 
    > State vector는 현재 시점에서 각 state에 있을 확률을 나타낸 vector이다.
 
@@ -84,7 +82,7 @@
    \vec{v}' = \vec{v}Q
    $$
 
-5. State transition probability matrix
+4. State transition probability matrix
 
    > State transition probability matrix는 모든 state의 전이 확률을 나타낸 행렬이다.
 
@@ -423,15 +421,13 @@
 
 ## Markov Reward Process
 
-1. 이해
+> Markov reward process는 markov process에 reward system을 추가한 것이다.
 
-   > Markov reward process는 markov process에 reward system을 추가한 것이다.
+Markov reward process는 Markov process에 각 state transition마다 얻을 수 있는 reward를 추가한 것이다. 이는 <S, P, R, γ>로 구성되며, S는 state의 집합, P는 state transition probability matrix, R은 reward function, γ는 discount factor이다.
 
-   Markov reward process는 Markov process에 각 state transition마다 얻을 수 있는 reward를 추가한 것이다. 이는 <S, P, R, γ>로 구성되며, S는 state의 집합, P는 state transition probability matrix, R은 reward function, γ는 discount factor이다.
+Markov process는 현재 state만이 다음 state를 결정하는 것이라면, Markov reward process는 현재 state와 **다음 state의 reward를 고려**하여 다음 state를 결정하는 것이다. 여기서 reward는 현재 state에서 다음 state로 transition할 때 이동한 미래 state의 좋고 나쁨에 따라 현재 state에 부여하는 보상을 의미한다.
 
-   Markov process는 현재 state만이 다음 state를 결정하는 것이라면, Markov reward process는 현재 state와 **다음 state의 reward를 고려**하여 다음 state를 결정하는 것이다. 여기서 reward는 현재 state에서 다음 state로 transition할 때 이동한 미래 state의 좋고 나쁨에 따라 현재 state에 부여하는 보상을 의미한다.
-
-2. return(대가) function
+1. return(대가) function
 
    1. 이해
 
@@ -453,7 +449,7 @@
 
       이는 시점 t에서 return이 즉각적인 보상 $r$과 다음 시점 $t+1$에서 discount factor이 적용된 미래의 return을 더한 것이라는 의미이다.
 
-3. state-value function
+2. state-value function
 
    강화학습에서 agent는 reword를 많이 받는 행동을 선택하도록 학습한다. 보상은 action을 수행한 후 다음 state에서 제공되므로, 이처럼 받지 않은 reword를 고려해야 한다.
 
@@ -467,7 +463,7 @@
 
    현재 state에서 한 episode가 끝날 때까지 받은 reword의 합을 통해 현재 state의 value를 측정할 수 있다. 하지만 reword의 단순 합으로 value function을 작성하면 시간 개념을 적용할 수 없다는 단점이 있다. 따라서 discount factor $\gamma$를 곱해 미래의 reword를 discount하여 return을 구하는 것이다. Reword가 확률변수임에 따라 return도 확률변수이기 때문에 평균을 의미하는 기댓값을 취하여 value function을 유도하는 것이다.
 
-4. bellman equation
+3. bellman equation
 
    $v_\pi(s)$는 다음과 같이 재귀적으로 표현할 수 있으며,
 
@@ -485,15 +481,13 @@
 
 ## Markov Decision Process
 
-1. 이해
+> Markov decision process는 markov reward process에 action을 추가한 것이다.
 
-   > Markov decision process는 markov reward process에 action을 추가한 것이다.
+Markov decision process는 <S, A, P, R, γ>로 구성되며, S는 state의 집합, A는 action의 집합, P는 state transition probability matrix, R은 reward function, γ는 discount factor이다. MRP와는 달리 action의 집합 A가 추가되었다.
 
-   Markov decision process는 <S, A, P, R, γ>로 구성되며, S는 state의 집합, A는 action의 집합, P는 state transition probability matrix, R은 reward function, γ는 discount factor이다. MRP와는 달리 action의 집합 A가 추가되었다.
+MDP에서는 agent가 각 state에서 취할 수 있는 action들이 정의되어 있으며, 이 action에 따라 다음 state로의 transition probability와 reward가 결정된다. 즉, agent의 decision making이 환경과의 상호작용에 직접적인 영향을 미치는 구조이다.
 
-   MDP에서는 agent가 각 state에서 취할 수 있는 action들이 정의되어 있으며, 이 action에 따라 다음 state로의 transition probability와 reward가 결정된다. 즉, agent의 decision making이 환경과의 상호작용에 직접적인 영향을 미치는 구조이다.
-
-2. policy(정책) function
+1. policy(정책) function
 
    1. 이해
 
@@ -507,7 +501,7 @@
 
       학습 중에 agent가 더 많은 경험을 얻으면 policy가 바뀔 수 있다. 만약 처음에 agent가 모든 action의 확률이 균등한 policy로 시작했다면, agent는 optimal policy에 가깝게 되도록 학습을 할 것이다. 이때 optimal policy는 가장 높은 return을 만드는 policy로, $\pi^*(a|s)$로 표현한다.
 
-3. state-value function with policy
+2. state-value function with policy
 
    State-value function은 특정 policy $\pi$를 따를 때 각 state의 가치를 나타내는 함수이다. 이는 앞서 설명한 state-value function과 동일하지만, policy가 명시적으로 포함되어 있다는 점이 다르다.
 
@@ -519,7 +513,7 @@
 
    이는 현재 state $s$에서 시작하여 policy $\pi$를 따를 때 얻을 수 있는 모든 미래 보상의 할인된 합의 기댓값을 나타낸다. 여기서 $\gamma$는 discount factor로, 일반적인 state-value function과 마찬가지로 미래의 reword를 현재 value로 discount하는 역할을 한다.
 
-4. action-value function
+3. action-value function
 
    State-value function을 통해 다음 state들의 value를 판단할 수 있으며, agent는 이를 바탕으로 더 value가 높은 state로 가기 위한 action을 선택하여 state를 transition하게 된다.
 
@@ -537,7 +531,7 @@
    q_\pi(s,a) = E_\pi[G_t|S_t=s,A_t=a] = E_\pi[\displaystyle\sum_{k=0}^{\infty}\gamma^k R_{t+k+1}|S_t=s,A_t=a]
    $$
 
-5. solve MDP
+4. solve MDP
 
    Markov decision process는 일반적으로 강화학습이 다루는 문제라고 할 수 있다. 다음과 같은 방법으로 풀 수 있다.
 
