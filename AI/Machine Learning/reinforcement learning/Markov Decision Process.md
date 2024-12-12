@@ -427,6 +427,8 @@
 
    > Markov reward process는 markov process에 reward system을 추가한 것이다.
 
+   Markov reward process는 Markov process에 각 state transition마다 얻을 수 있는 reward를 추가한 것이다. 이는 <S, P, R, γ>로 구성되며, S는 state의 집합, P는 state transition probability matrix, R은 reward function, γ는 discount factor이다.
+
    Markov process는 현재 state만이 다음 state를 결정하는 것이라면, Markov reward process는 현재 state와 **다음 state의 reward를 고려**하여 다음 state를 결정하는 것이다. 여기서 reward는 현재 state에서 다음 state로 transition할 때 이동한 미래 state의 좋고 나쁨에 따라 현재 state에 부여하는 보상을 의미한다.
 
 2. return(대가) function
@@ -483,11 +485,17 @@
 
 ## Markov Decision Process
 
-> Markov decision process는 markov reward process에 action을 추가한 것이다.
+1. 이해
 
-일반적으로 강화학습이 다루는 문제라고 할 수 있다. 이 Markov decision process를 푸는 방법으로 Dynamic Programming, Monte Carlo method, Temporal Difference Learning(시간 차 학습) 등이 있다.
+   > Markov decision process는 markov reward process에 action을 추가한 것이다.
 
-1. policy(정책) function
+   Markov decision process는 <S, A, P, R, γ>로 구성되며, S는 state의 집합, A는 action의 집합, P는 state transition probability matrix, R은 reward function, γ는 discount factor이다. MRP와는 달리 action의 집합 A가 추가되었다.
+
+   MDP에서는 agent가 각 state에서 취할 수 있는 action들이 정의되어 있으며, 이 action에 따라 다음 state로의 transition probability와 reward가 결정된다. 즉, agent의 decision making이 환경과의 상호작용에 직접적인 영향을 미치는 구조이다.
+
+   일반적으로 강화학습이 다루는 문제라고 할 수 있다. 이 Markov decision process를 푸는 방법으로 Dynamic Programming, Monte Carlo method, Temporal Difference Learning(시간 차 학습) 등이 있다.
+
+2. policy(정책) function
 
    1. 이해
 
@@ -501,7 +509,7 @@
 
       학습 중에 agent가 더 많은 경험을 얻으면 policy가 바뀔 수 있다. 만약 처음에 agent가 모든 action의 확률이 균등한 policy로 시작했다면, agent는 optimal policy에 가깝게 되도록 학습을 할 것이다. 이때 optimal policy는 가장 높은 return을 만드는 policy로, $\pi^*(a|s)$로 표현한다.
 
-1. state-value function with policy
+3. state-value function with policy
 
    State-value function은 특정 policy $\pi$를 따를 때 각 state의 가치를 나타내는 함수이다. 이는 앞서 설명한 state-value function과 동일하지만, policy가 명시적으로 포함되어 있다는 점이 다르다.
 
@@ -513,7 +521,7 @@
 
    이는 현재 state $s$에서 시작하여 policy $\pi$를 따를 때 얻을 수 있는 모든 미래 보상의 할인된 합의 기댓값을 나타낸다. 여기서 $\gamma$는 discount factor로, 일반적인 state-value function과 마찬가지로 미래의 reword를 현재 value로 discount하는 역할을 한다.
 
-1. action-value function
+4. action-value function
 
    State-value function을 통해 다음 state들의 value를 판단할 수 있으며, agent는 이를 바탕으로 더 value가 높은 state로 가기 위한 action을 선택하여 state를 transition하게 된다.
 
