@@ -33,11 +33,13 @@
 
    Transaction은 다음과 같은 상태를 가진다.
 
+   <img src="https://github.com/user-attachments/assets/8ea0dfa5-5176-442e-bc8a-4742452ee1e0" alt="Transaction State" width="500">
+
    1. **Active(활동)**
 
       Transaction이 시작되고 연산들이 처리 중인 상태이다. 이때 transaction은 DB에 대한 읽기/쓰기 작업을 실행하며, 이 상태에서는 transaction의 결과가 아직 DB에 반영되지 않는다.
 
-   이때 처리의 성공 여부에 따라 그 transaction의 운명이 결정된다. 처리를 성공적으로 수행했다면 Partially Committed 상태로 넘어가고, 실패했다면 Failed 상태로 넘어간다.
+   이때 처리의 성공 여부에 따라 그 transaction의 운명이 결정된다. 처리를 성공적으로 수행했다면 Partially Committed 상태로 넘어간다.
 
    2. **Partially Committed(부분 완료)**
 
