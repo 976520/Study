@@ -6,7 +6,7 @@
 
    SPA는 application 속도의 향상을 기대할 수 있다. 이는 User experience와도 직결되며, mobile first 전략에도 부합한다.
 
-   application에 필요한 모든 static(정적) resource를 최초에 단 한번만 다운로드하고 사용자가 새로운 페이지를 요청할 시, 페이지 갱신에 필요한 데이터만 전달받아 기존 페이지의 내부를 동적으로 수정하여 보여준다.
+   application에 필요한 모든 static(정적) resource를 최초에 단 한번만 다운로드하고 사용자가 새로운 페이지를 요청할 시, 페이지 갱신에 필요한 데이터만 전달받아 기존 페이지의 내부를 동적으로 수정하여 보여준다(client-side rendering).
 
 2. 장점
 
