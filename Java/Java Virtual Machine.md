@@ -4,11 +4,11 @@
 
 1. 이해
 
-   Java code를 compile하면 bytecode가 생성된다. 이 bytecode를 JVM이 해석하여 실행한다.
+   Java code를 compile하면 `.class` 확장자를 가진 java bytecode가 생성된다. 이 java bytecode를 JVM이 해석하여 실행한다.
 
    Java는 OS에 종속되지 않고, 아무 OS 환경에서나 동일하게 실행할 수 있다는 장점이 있다. 이때 OS 위에서 CPU가 java를 인식하고 실행하도록 하는 것이 JVM이다.
 
-1. 특징
+2. 특징
 
    1. Stack 기반
 
@@ -22,7 +22,7 @@
 
    5. 명시적인 type 정의
 
-      이로써 platform-independent한 program을 만들 수 있다.|
+      이로써 platform-independent한 program을 만들 수 있다
 
    6. Data flow analysis 기반 byte code verifier
 
