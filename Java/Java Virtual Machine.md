@@ -20,6 +20,8 @@
 
    Java는 OS에 종속되지 않고, 아무 OS 환경에서나 동일하게 실행할 수 있다는 장점이 있다. 이때 OS 위에서 CPU가 java를 인식하고 실행하도록 하는 것이 JVM이다.
 
+   JVM은 이 뿐만 아니라 memory management, garbage collection 등의 기능을 제공한다.
+
 1. byte code
 
    위에서 `.class` 파일이 byte code라고 했는데, byte code는 컴퓨터가 직접 실행하는 binary code가 아닌 가상 머신이 이해할 수 있는 중간 단계의 code이다. 이 byte code는 플랫폼에 독립적이라 어떤 OS에서든 해당 OS의 JVM만 있다면 실행이 가능하다.
