@@ -30,9 +30,9 @@
 
 1. JIT(Just-In-Time) compiler
 
-   > JIT compiler는 byte code를 binary code로 변환하여 실행한다.
+   JIT는 프로그램을 실행하기 전에 한 번에 compile하는 것이 아니라, 프로그램을 실행하는 시점에서 필요한 부분만 compile하는 방식이다. 이 과정을 JIT compilation 또는 dynamic translation이라고 한다. JVM의 JIT compiler는 byte code를 binary code로 변환하여 실행한다.
 
-   이 과정을 JIT compilation 또는 dynamic translation이라고 한다.
+   필요한 부분을 한 줄씩 읽는 interpreter 방식과 비슷하지만, JIT는 interpreter와 달리 자주 실행되는 부분을 cache하여 다음 실행 시 빠르게 실행할 수 있다는 차이가 있다. JVM의 경우 code cache라는 공간에 자주 실행되는 부분을 binary code로 저장한다.
 
 1. 특징
 
