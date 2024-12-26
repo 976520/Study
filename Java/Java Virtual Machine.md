@@ -40,9 +40,13 @@
 
    2. 단일 상속 형태의 객체 지향 프로그래밍을 가상 머신 수준에서 구현
 
-   3. Pointer 지원
+   3. Reference(참조) 지원
 
-      C처럼 주소 값 조작이 가능한 pointer 연산은 불가
+      Reference는 C나 C++의 Pointer와 동일하게 주소를 통해 원본 data에 접근할 수 있다.
+
+      Pointer는 저수준 언어의 특성으로서 memory를 아얘 조작할 수 있다. 이는 성능에 도움이 될 지는 몰라도 segment fault를 발생시킬 가능성이 있어서 안전하지 않다.
+
+      때문에 java의 reference는 memory의 직접적인 접근을 제한하여 안정성을 챙겼다고 할 수 있다. 이는 후술할 Garbage Collection에서 중요한 역할을 한다.
 
    4. Garbage Collection
 
