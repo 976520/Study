@@ -50,29 +50,37 @@
 
    4. Garbage Collection
 
-      > Garbage collection은 더이상 사용되지 않는 memory 영역을 자동으로 찾아 제거하는 기능이다.
+      1. 이해
 
-      JVM의 heap에서 동적으로 할당된 memory 중 쓸모없는 memory object(garbage)를 찾아 주기적으로 해제하는 process라고 할 수 있다. C나 C++의 경우~~에만~~ 이런 기능이 없어서 개발자가 수동으로 memory를 할당하고 해제해야 한다.
+         > Garbage collection은 더이상 사용되지 않는 memory 영역을 자동으로 찾아 제거하는 기능이다.
 
-      ```c
-      void main() {
-         int* dontHaveGC = (int*)malloc(sizeof(int));
-         *dontHaveGC = 10;
-         free(dontHaveGC);
-         dontHaveGC = NULL;
-      }
-      ```
+         JVM의 heap에서 동적으로 할당된 memory 중 쓸모없는 memory object(garbage)를 찾아 주기적으로 해제하는 process라고 할 수 있다. C나 C++의 경우~~에만~~ 이런 기능이 없어서 개발자가 수동으로 memory를 할당하고 해제해야 한다.
 
-      반면 java에서는 GC가 이를 자동으로 처리하기 때문에, memory 자원을 더 효율적으로 사용할 수 있고, memory leak(누수) issue에 대해 신경쓰지 않아도 된다는 장점이 있다. 아래 코드에서는 `haveGC` 변수가 `null`로써 더 이상 참조되지 않으면, garbage로 간주하고 GC가 자동으로 메모리를 해제한다.
-
-      ```java
-      public class JavaHaveGC {
-         public static void main(String[] args) {
-            Integer haveGC = new Integer(10);
-            haveGC = null;
+         ```c
+         void main() {
+            int* dontHaveGC = (int*)malloc(sizeof(int));
+            *dontHaveGC = 10;
+            free(dontHaveGC);
+            dontHaveGC = NULL;
          }
-      }
-      ```
+         ```
+
+         반면 java에서는 GC가 이를 자동으로 처리하기 때문에, memory 자원을 더 효율적으로 사용할 수 있고, memory leak(누수) issue에 대해 신경쓰지 않아도 된다는 장점이 있다. 아래 코드에서는 `haveGC` 변수가 `null`로써 더 이상 참조되지 않으면, garbage로 간주하고 GC가 자동으로 메모리를 해제한다.
+
+         ```java
+         public class JavaHaveGC {
+            public static void main(String[] args) {
+               Integer haveGC = new Integer(10);
+               haveGC = null;
+            }
+         }
+         ```
+
+      2. Stop The World
+
+         > JVM이 GC가 수행되는 동안 모든 thread를 멈추는 것을 STW(Stop The World)라고 한다.
+
+         GC관련 thread를 제외한 모든 thread의 연산이 정지하기~~로드롤러다~~ 때문에 GC가 너무 자주 실행되면 처리 시간이 오래 걸리는 문제가 생긴다. 이제는 사장된 인터넷 익스플로러가 대표적인 예시이다.
 
    5. 명시적인 type 정의
 
