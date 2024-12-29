@@ -50,6 +50,30 @@
 
    4. Garbage Collection
 
+      > Garbage collection은 더이상 사용되지 않는 memory 영역을 자동으로 찾아 제거하는 기능이다.
+
+      JVM의 heap에서 동적으로 할당된 memory 중 쓸모없는 memory object(garbage)를 찾아 주기적으로 해제하는 process라고 할 수 있다. C나 C++의 경우 이런 ~~고오급~~ 기능이 없어서 개발자가 수동으로 memory를 할당하고 해제해야 한다.
+
+      ```c
+      void main() {
+         int* dontHaveGC = (int*)malloc(sizeof(int));
+         *dontHaveGC = 10;
+         free(dontHaveGC);
+         dontHaveGC = NULL;
+      }
+      ```
+
+      반면 java에서는 GC가 이를 자동으로 처리하기 때문에, memory 자원을 더 효율적으로 사용할 수 있고, memory leak(누수) issue에 대해 신경쓰지 않아도 된다는 장점이 있다.
+
+      ```java
+      public class JavaHaveGC {
+         public static void main(String[] args) {
+            Integer haveGC = new Integer(10);
+            haveGC = null;
+         }
+      }
+      ```
+
    5. 명시적인 type 정의
 
       이로써 platform-independent한 program을 만들 수 있다
