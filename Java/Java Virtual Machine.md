@@ -84,15 +84,19 @@
 
          Heap 위의 object가 사용중이라면, 직접 가져다 쓸 수는 없기에 그 object를 사용하는 코드가 있는 곳에서 그 object를 참조하는 reference가 있을 것이다. 이때 그 object는 reachable이라고 할 수 있다.
 
+         Heap 위의 unreachable object는 더이상 사용되지 않는 data이기에 이를 garbage로 간주한다.
+
       3. Stop The World
 
          > JVM이 GC가 수행되는 동안 모든 thread를 멈추는 것을 STW(Stop The World)라고 한다.
 
          GC관련 thread를 제외한 모든 thread의 연산이 정지하기~~로드롤러다~~ 때문에 GC가 너무 자주 실행되면 처리 시간이 오래 걸리는 문제가 생긴다. 이제는 사장된 인터넷 익스플로러가 대표적인 예시이다.
 
+         이 STW 시간을 최소화하기 위해 GC의 빈도와 크기를 최적화 하는 것을 GC tuning이라고 한다.
+
    5. 명시적인 type 정의
 
-      이로써 platform-independent한 program을 만들 수 있다
+      이로써 platform-independent한 program을 만들 수 있다.
 
    6. Data flow analysis 기반 byte code verifier
 
