@@ -76,7 +76,15 @@
          }
          ```
 
-      2. Stop The World
+      2. Garbage의 조건
+
+         GC는 object를 reachability~~도달가능미~~에 따라, object에게 유효한 reference가 있다면 reachable, 그렇지 않다면 unreachable로 구분한다.
+
+         <img src="https://github.com/user-attachments/assets/862bcd65-1262-4409-bbe7-23fa08741c6d" width="450">
+
+         Heap 위의 object가 사용중이라면, 직접 가져다 쓸 수는 없기에 그 object를 사용하는 코드가 있는 곳에서 그 object를 참조하는 reference가 있을 것이다. 이때 그 object는 reachable이라고 할 수 있다.
+
+      3. Stop The World
 
          > JVM이 GC가 수행되는 동안 모든 thread를 멈추는 것을 STW(Stop The World)라고 한다.
 
