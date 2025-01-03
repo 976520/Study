@@ -14,7 +14,7 @@
 
    2. view
 
-      UI를 담당하는 계층으로, 사용자로부터의 입력을 받고 결과를 표시하는 역할을 한다.
+      UI를 담당하는 계층으로, 사용자로부터의 입력을 받고 결과를 표시하는 역할을 한다.   
 
       MVP pattern에서는 view가 model로부터 직접 data를 가져오지 않고, presenter를 통해 필요한 data를 받는다. 이는 view가 business logic과 분리되어 오로지 UI 관련 코드에만 집중할 수 있도록 도와준다.
 
