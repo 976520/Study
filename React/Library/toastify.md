@@ -58,6 +58,37 @@ npm install react-toastify`
    toast.info("i am info toast");
    ```
 
-   위에서부터 순서대로 기본, 성공, 오류, 경고, 정보 알림을 위한 toast이다. 기호에 맞게 사용하면 된다.
+   위에서부터 순서대로 기본, 성공, 오류, 경고, 정보 알림을 위한
+   toast이다. 기호에 맞게 사용하면 된다. 각 toast는 아이콘과 색상이 다르게 표시되어 사용자가 알림의 성격을 한눈에 파악할 수 있다.
+
+4. custom options
+
+   Toast의 기본 options을 더 세세히 바꿀 수 있다.
+
+   1. `position`
+
+      Toast가 나타날 위치를 지정할 수 있다. `top-left`, `top-right`, `bottom-left`, `bottom-right` 등의 값을 사용할 수 있다.
+
+   2. `autoClose`
+
+      Toast가 자동으로 사라지는 시간을 지정할 수 있다. 단위는 ms이다.
+
+      만약 `false`값으로 설정하면 사용자가 직접 닫기 전까지 사라지지 않는다.
+
+   3. `hideProgressBar`
+
+      프로그레스바를 숨길 수 있다.
+
+   4. `closeOnClick`
+
+      사용자가 toast를 click하여 사라지게끔 할 수 있다.
+
+   5. `pauseOnHover`
+
+      사용자가 toast 위에 마우스를 올리면(hover) `autoClose` 진행 시간이 멈추도록 한다.
+
+   6. `draggable`
+
+      사용자가 toast를 drag하여 이동할 수 있도록 할 수 있다.
 
 ---
