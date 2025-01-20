@@ -91,4 +91,17 @@ npm install react-toastify`
 
       사용자가 toast를 drag하여 이동할 수 있도록 할 수 있다.
 
+   이런 식으로 설정하면 된다.
+
+   ```jsx
+   toast("i am customed toast", {
+     position: "top-right",
+     autoClose: 5000,
+     hideProgressBar: false,
+     closeOnClick: true,
+     pauseOnHover: true,
+     draggable: true,
+   });
+   ```
+
 ---
