@@ -6,7 +6,7 @@
 
 2. 사용
 
-   다음은 간단한 게시물 생성을 위한 model을 정의한 예시이다.
+   다음은 간단한 게시물 model을 정의한 예시이다.
 
    ```python
    from django.db import models
@@ -16,5 +16,22 @@
        slug = models.SlugField(max_length=100)
        content = models.TextField()
    ```
+
+   `title`은 게시물의 제목을 나타내는 field이며, SQL에서 `VARCHAR` type으로 변환되는 `CharField`이다.
+
+   `slug`는 게시물의 고유 식별자를 나타내는 field이며, `VARCHAR` type으로 변환되는 `SlugField`이다.
+
+   `content`는 게시물의 본문을 나타내는 field이며, `TEXT` type으로 변환되는 `TextField`이다.
+
+   ```sql
+   CREATE TABLE posts (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       title VARCHAR(100),
+       slug VARCHAR(100),
+       content TEXT
+   );
+   ```
+
+   Django는 이 field들에 대응하는 DB column을 생성한다. 이때 각 model에 자동으로 primary key field를 추가하며, 이는 `settings.py`의 `DEFAULT_AUTO_FIELD`를 통해 설정되고, 기본값은 `BigAutoField`이다. Model field에 `primary_key=True`를 설정하여 model field 중 하나를 primary key로 정의할 수 있다.
 
 ---
