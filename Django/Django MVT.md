@@ -22,4 +22,14 @@ Django framework 자체가 controller 역할을 수행한다. URL 구성에 따�
 
       Dynamic data를 HTML로 rendering하는 presentation 계층으로, 사용자에게 보여질 HTML을 제어한다.
 
+2. 구조
+
+   아래 그림은 MVT pattern을 이용하여 django가 HTTP request를 처리하는 방법을 나타낸다.
+
+   <img src="https://github.com/user-attachments/assets/31d65400-d041-46e1-bc97-a36067d173f5" alt="Image" width="500">
+
+   Browser에서 URL을 통해 요청을 보내면, Web server가 요청을 받아서 Django에 전달한다. Django는 요청을 뜯어서 설정된 URL을 확인하고, 일치하는 URL에 해당하는 view를 실행한다.
+
+   그럼 view는 model을 이용하여 DB로부터 data를 검색하여 가져오고 template을 이용하여 표시할 HTML을 생성한다. 이는 Web server에 의해 browser로 전달되어 사용자에게 표시된다.
+
 ---
