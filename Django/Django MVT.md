@@ -1,10 +1,12 @@
-## model-view-template pattern
+## controller는 어디갔어요?
+
+Django framework 자체가 controller 역할을 수행한다. URL 구성에 따라 적절한 view로 요청을 보내는 방식이다.
 
 1. 이해
 
    1. model
 
-      Django에서 model은 사용될 data에 대한 정의를 담당하며, DB의 구조를 Python class로 표현한다. Model class는 django.db.models.Model을 상속받아 구현되며, 각 attribute는 DB의 필드를 나타낸다.
+      Django에서 model은 **DB와 view 사이**에서 사용될 data에 대한 정의를 담당하며, **DB의 구조를 Python class로 표현**한다. Model class는 django.db.models.Model을 상속받아 구현되며, 각 attribute는 DB의 필드를 나타낸다.
 
       1. object relational mapping
 
@@ -14,12 +16,10 @@
 
    2. view
 
-      UI를 담당하는 계층으로, 사용자로부터의 입력을 받고 결과를 표시하는 역할을 한다.
-
-      MVT pattern에서는 view가 controller 역할을 수행하여 business logic을 처리하고, 그 결과를 적절한 template를 통해 사용자에게 응답한다.
+      UI를 담당하는 계층으로, 사용자로부터의 입력을 받고 결과를 적절한 template를 통해 사용자에게 표시하는 역할을 한다.
 
    3. template
 
-      Dynamic data를 HTML로 렌더링하여, 사용자에게 보여질 HTML을 제어한다.
+      Dynamic data를 HTML로 rendering하는 presentation 계층으로, 사용자에게 보여질 HTML을 제어한다.
 
 ---
