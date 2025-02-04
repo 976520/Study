@@ -79,6 +79,61 @@ function identity<T>(arg: Array<T>): Array<T> {
    }
    ```
 
-2. 클래스 제약
+2. 속성 제약
+
+   특정 속성을 가진 객체만 받도록 제약할 수도 있다. 다음은 length 속성을 가진 객체만 받는 예시이다.
+
+   ```tsx
+   interface Lengthwise {
+     length: number;
+   }
+
+   function IfYouWantToGetLength<T extends Lengthwise>(arg: T): number {
+     return arg.length;
+   }
+   ```
+
+   `interface`를 통해 length 속성을 가진 객체를 `Lengthwise`라는 이름으로 정의하였다. Generic에 `extends`를 통해 `Lengthwise`만 받을 수 있도록 제약을 두었기 때문에 결과적으로,
+
+   ```tsx
+   IfYouWantToGetLength("die");
+   IfYouWantToGetLength([4, 6, 8]);
+   ```
+
+   string과 array는 모두 length 속성을 가지고 있기 때문에 위 코드는 모두 정상적으로 실행된다.
+
+   ```tsx
+   IfYouWantToGetLength(123);
+   IfYouWantToGetLength<string>(123);
+   ```
+
+   하지만 number는 length 속성을 가지고 있지 않기 때문에 에러가 발생한다. 이걸 해결하겠답시고 어거지로 string으로 지정해봤자, 인수의 type과 generic type이 다르기 때문에 에러가 발생한다.
+
+   또한 custom property를 가진 객체에 대해서도 제약을 걸 수 있다.
+
+   ```tsx
+   interface HasName {
+     name: string;
+     age: number;
+   }
+
+   function getNameAndAge<T extends HasName>(obj: T): string {
+     return `${obj.name}은 ${obj.age}살입니다.`;
+   }
+   ```
+
+   이렇게 정의된 함수에는 `name`과 `age` 속성을 가진 객체만 인수로 전달될 수 있다.
+
+   ```tsx
+   const person = { name: "이주언", age: 17 };
+   console.log(getNameAndAge(person)); // 출력: 이주언은 17살입니다.
+   ```
+
+   그러나 다음과 같이 속성을 이상하게 전달하면 가차없이 에러가 발생한다.
+
+   ```tsx
+   const person = { name: "이주언", major: "flutter" };
+   console.log(getNameAndAge(person));
+   ```
 
 ---
