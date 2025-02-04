@@ -38,4 +38,35 @@
 
    이 코드에서는 `withStyle`이라는 HOC를 만들어 `React.ComponentType<P>` type의 component를 parameter로 받아 style을 추가한 새로운 component를 반환하게끔 하였다.
 
+   또한, **여러 HOC를 조합하여 사용**할 수 있다. 이전에 만든 `button`의 style을 마우스를 올렸을 때만 다르게 적용하는 기능을 추가하기 위해 `withHover`라는 HOC를 다음과 같이 만들어,
+
+   ```tsx
+   interface WithHoverProps {
+     isHovered?: boolean;
+     onMouseEnter?: () => void;
+     onMouseLeave?: () => void;
+   }
+
+   function withHover<P extends WithHoverProps>(Component: React.ComponentType<P>) {
+     return (props: Omit<P, keyof WithHoverProps>) => {
+       const [isHovered, setIsHovered] = React.useState(false);
+
+       const handleMouseEnter = () => setIsHovered(true);
+       const handleMouseLeave = () => setIsHovered(false);
+
+       return (
+         <Component
+           isHovered={isHovered}
+           onMouseEnter={handleMouseEnter}
+           onMouseLeave={handleMouseLeave}
+           {...(props as P)}
+         />
+       );
+     };
+   }
+
+   const HoverButton = withHover(withStyle(Button));
+   const HoverTitle = withHover(withStyle(Title));
+   ```
+
 ---
