@@ -10,4 +10,6 @@ Hooks를 이용하면 다음과 같은 구현이 가능하다.
 2. lifecycle method 없이 component lifecycle 관리
 3. 여러 component 간에 동일한 logic 재사용
 
+~~얘때문에 HOC며 rendered props며 온갖 패턴이 사장되었다.~~
+
 ---
