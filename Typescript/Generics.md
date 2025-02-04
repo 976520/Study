@@ -2,6 +2,8 @@
 
 Generics는 type을 담는 변수라고 생각하면 편하다. Type을 지정할 대상의 선언지점이 아니라 실질적인 객체의 생성지점에서 그 type을 지정할 수 있게 해준다. 따라서 같은 함수에서 다양한 type의 interface가 생성될 수 있다.
 
+일반적인 프로그래밍 언어의 변수처럼 TS에서 정말정말정말정말정말 많이 사용하는 문법이다.
+
 ---
 
 ## 문법
@@ -40,5 +42,43 @@ function identity<T>(arg: Array<T>): Array<T> {
 ```
 
 이런식으로 명시해주어야 한다.
+
+---
+
+## Generic 제약
+
+말 그대로 Generic에 조건을 걸어 제약을 둘 수 있다.
+
+1. type 제약
+
+   다음은 `extends`를 사용하여 parameter의 type을 number로 제한한 예시이다.
+
+   ```tsx
+   function identity<T extends number>(arg: T): T {
+     return arg;
+   }
+   ```
+
+   만약 이 함수를 호출할 때 number가 아닌 다른 타입을 넣으면 에러가 발생한다.
+
+   여러 type을 제한할 때는 &(앰퍼샌드)를 사용하거나,
+
+   ```tsx
+   function identity<T extends number & string>(arg: T): T {
+     return arg;
+   }
+   ```
+
+   이렇게 type을 따로 선언하여 사용할 수 있다.
+
+   ```tsx
+   type NumberOrString = number | string;
+
+   function identity<T extends NumberOrString>(arg: T): T {
+     return arg;
+   }
+   ```
+
+2. 클래스 제약
 
 ---
