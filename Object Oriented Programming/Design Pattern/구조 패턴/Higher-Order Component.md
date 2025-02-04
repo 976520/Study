@@ -64,9 +64,15 @@
        );
      };
    }
-
-   const HoverButton = withHover(withStyle(Button));
-   const HoverTitle = withHover(withStyle(Title));
    ```
+
+   다음과 같이 component를 감싸면,
+
+   ```tsx
+   export const HoverButton = withHover(withStyle(Button));
+   export const HoverTitle = withHover(withStyle(Title));
+   ```
+
+   `withHover`와 `withStyle`에서 전달된 모든 props를 가질 수 있다.
 
 ---
