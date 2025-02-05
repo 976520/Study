@@ -171,6 +171,8 @@ console.log(NumberCalculate(2, 8)); // 출력: 10
 console.log(StringCalculate("White", "Ferrari")); // 출력: WhiteFerrari
 ```
 
+이 코드에서는 `Calculate` interface를 구현한 `NumberCalculate`와 `StringCalculate` 함수를 정의하였다. 함수 호출 시 type이 각각 number와 string으로 추론되어 compile된다.
+
 ---
 
 ## Generic Class
