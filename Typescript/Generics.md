@@ -137,3 +137,9 @@ function identity<T>(arg: Array<T>): Array<T> {
    ```
 
 ---
+
+## Generic Function
+
+---
+
+## Generic Class
