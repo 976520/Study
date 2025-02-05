@@ -140,6 +140,37 @@ function identity<T>(arg: Array<T>): Array<T> {
 
 ## Generic Function
 
+TypeScript에서는 함수 자체도 하나의 type이기 때문에 다음과 같이 interface로 정의할 수 있고,
+
+```tsx
+interface Add {
+  (a: number, b: number): number;
+}
+
+const add: Add = (a, b) => {
+  return a + b;
+};
+```
+
+여기서 Generic을 사용할 수도 있다.
+
+```tsx
+interface Calculate<T> {
+  (a: T, b: T): T;
+}
+
+const NumberCalculate: Calculate<number> = (a, b) => {
+  return a + b;
+};
+
+const StringCalculate: Calculate<string> = (a, b) => {
+  return a + b;
+};
+
+console.log(NumberCalculate(2, 8)); // 출력: 10
+console.log(StringCalculate("White", "Ferrari")); // 출력: WhiteFerrari
+```
+
 ---
 
 ## Generic Class
