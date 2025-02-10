@@ -176,3 +176,28 @@ console.log(StringCalculate("White", "Ferrari")); // 출력: WhiteFerrari
 ---
 
 ## Generic Class
+
+만약 class에서 generic을 사용하면, 그 type은 해당 class의 모든 메서드에서 사용할 수 있다.
+
+```tsx
+class Container<T> {
+  constructor(private item: T) {}
+
+  getItem(): T {
+    return this.item;
+  }
+}
+
+const numberContainer = new Container(123);
+console.log(numberContainer.getItem()); // 출력: 123
+
+const stringContainer = new Container("Hello");
+console.log(stringContainer.getItem()); // 출력: Hello
+```
+
+이 코드에서는 `Container` class를 generic class로 만들기 위해 class 이름 뒤에 `<T>`를 붙여 type parameter를 지정하였다. 이러면 객체를 생성할 때 constructor에 전달하는 값의 type에 따라 자동으로 `T`의 type이 결정된다.
+
+이렇게 한번 지정된 type `T`는 class 내의 모든 곳(constructor, method, 속성 등)에서 일관되게 사용된다.
+이 코드에서 `getItem()` method는 constructor에서 받은 것과 동일한 type의 값을 반환하게 된다.
+
+---
