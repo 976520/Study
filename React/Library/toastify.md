@@ -2,8 +2,11 @@
 
 > react-toastify는 react에서 toast를 만들 수 있게 해주는 라이브러리이다.
 
-외부 라이브러리이기 때문에 별도의 설치가 필요하다.`shell
-npm install react-toastify`
+외부 라이브러리이기 때문에 별도의 설치가 필요하다.
+
+```shell
+npm install react-toastify
+```
 
 1. toast
 
