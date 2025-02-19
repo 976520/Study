@@ -24,7 +24,7 @@ git flow는 branch를 다음 다섯 종류로 나눈다. 이때 master와 develo
 
 3. feature
 
-   develop에서 갈라진 branch로, 각 기능별로 개발된 내용을 가지고 있는 branch이다. 이때 branch명을 'feat/<기능 이름>' 으로 설정한다.
+   develop에서 갈라진 branch로, 각 기능별로 개발된 내용을 가지고 있는 branch이다. 이때 branch명을 `feat/<기능 이름>` 으로 설정한다.
    작업이 완료된 후 develop branch로 merge된다.
 
 4. release
