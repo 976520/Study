@@ -14,10 +14,12 @@ npm install react-toastify
 
 ## 개념
 
-React query 데이터 관리는, **서버 상태**에 대해 fatching, caching 등의 작업을 수행하는 것이다.
+React query에서의 데이터 관리는, **server state**에 대해 fatching, caching 등의 작업을 수행하는 것이다.
 
-1. 서버 상태
+1. Server state
 
-   > 서버 상태란 클라이언트에서 제어할 수 없는 위치에서 관리되는 상태이다.
+   > Server state란 client에서 제어할 수 없는 위치에서 관리되는 상태이다.
 
-   소유권이 공유되어 다른 사용자가 데이터를 변경할 수 있다는 특징이 있다. 이를 fatching하고 update하기 위해서는 비동기 api가 필요하다.
+   프론트엔드 개발을 하며 익숙하게 다루는 state는 대부분 client state이다. ~~이것만 해도 벅차다.~~
+
+   Server state는 client state와 달리 소유권이 공유되어 다른 사용자가 데이터를 변경할 수 있다는 특징이 있다. 이를 client state로 fatching하고 update하기 위해서는 비동기 api가 필요하다.
