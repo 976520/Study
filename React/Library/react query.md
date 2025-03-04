@@ -46,7 +46,27 @@ React query에서의 데이터 관리는, **server state**에 대해 fatching, c
 
    1. options로 들어갈 수 있는 것들
 
-   `useQuery` 호출 시 query의 고유 키값인 `queryKey`와 promise function `queryFn`가 인자로 제공되어야만 한다. 이때 `queryFn`은 data를 가져오는 함수가 위치하여
+      1. `queryKey`
+
+         query의 고유 키값
+
+      2. `queryFn`
+
+         data를 가져오는 promise function
+
+      3. `enabled`
+
+      4. `retry`
+
+      5. `staleTime`
+
+      6. `cacheTime`
+
+      7. `refetchOnMount`
+
+      8. `refetchOnWindowFocus`
+
+   2. result로 나올 수 있는 것들.
 
    ```tsx
    import { useQuery } from "@tanstack/react-query";
