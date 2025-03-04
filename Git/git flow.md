@@ -16,7 +16,7 @@ git flow는 branch를 다음 다섯 종류로 나눈다. 이때 master와 develo
 
 1. master(main)
 
-   제품으로 배포할 수 있는 완성된 branch이다. 따라서 master에 merge 한다는 것은 서비스의 새로운 버전을 배포한다는 뜻이다.
+   제품으로 배포할 수 있는 완성된 branch이며, 보통 CI/CD 파이프라인을 통해 master branch의 변경 사항이 자동으로 실제 서비스에 적용되도록 한다. 따라서 **master에 merge 한다는 것은 서비스의 새로운 버전을 배포한다는 뜻**이다.
 
 2. develop
 
