@@ -2,7 +2,7 @@
 
 > Docker는 linux container에 여러 기능을 추가하여 application을 container로서 더 쉽게 사용할 수 있게 한 프로젝트이다.
 
-Docker는 Go로 개발되어 오픈소스로 꾸준히 개발되고 있다.
+Docker는 Go로 개발되어 오픈소스로 꾸준히 업데이트되고 있다.
 
 ---
 
