@@ -24,8 +24,14 @@ npm install react-beautiful-dnd
 
    `Dropable`은 Drop은 Drag가 끝나는 것이기 때문에, `onDragEnd`를 바인딩 받아 동작한다. DND에 대한 DOM을 그려주기 때문에 이에 따른 영역을 지정해줘야 한다.
 
+   여기에는 `droppableId`를 string으로 입력하여 Drop될 영역의 고유 ID를 설정해야 한다.
+
 3. `Dragable`
 
    > drag가 가능한 영역이다.
 
-   `Dragable`은 Drag 동작이 시작될 수 있는 컴포넌트이다. 따라서 `onDragStart`를 바인딩 받아 동작한다.
+   `Dragable`은 Drag 동작이 시작될 수 있는 컴포넌트이다. `onDragStart`를 바인딩 받아 동작하지만, 이는 선택사항이다.
+
+   여기에는 `draggableId`를 입력하여 DND 동작으로 움직이게 될 요소들이 가지는 고유 ID를 설정해야 한다.
+
+---
