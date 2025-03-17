@@ -18,7 +18,7 @@ npx shadcn@latest init
 npm install radix-ui
 ```
 
-radix-ui는 개발자들이 디자인 시스템을 쉽게 구축하도록 도와주는 Headless UI 라이브러리이다. 즉, UI나 UX보다는 DX를 위한 것이다. Headless UI 라이브러리는 디자인 없이 기능만 제공하는 라이브러리이다.
+radix-ui는 개발자들이 디자인 시스템을 쉽게 구축하도록 도와주는 Headless UI 라이브러리이다. 즉, UI나 UX보다는 DX를 위한 것이다. Headless UI 라이브러리는 디자인 없이 기능만 제공하는 component를 의미한다.
 
 1. 디자인 시스템
 
