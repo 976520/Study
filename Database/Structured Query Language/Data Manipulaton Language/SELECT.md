@@ -21,7 +21,7 @@ SELECT column1, column2, ... FROM table_name
 SELECT column1, column2 FROM EMP;
 ```
 
-`EMP` table의 `column1`과 `column2` 열을 출력한다. 이 자리에 \*(애스터리스크)를 넣어서 모든 열을 출력하게 할 수 있다.
+`EMP` table의 `column1`과 `column2` 열을 출력한다. 이 자리에 `*`를 넣어서 모든 열을 출력하게 할 수 있다.
 
 1. **WHERE 절**
 
@@ -54,7 +54,7 @@ SELECT column1, column2 FROM EMP;
 
       사전 순서로 알파벳 `'J'`보다 뒤에 있는 데이터만 출력한다.
 
-   1. 산술 연산자
+   2. 산술 연산자
 
       조건에서 여러 산술 연산자를 이용할 수 있다.
 
@@ -63,11 +63,11 @@ SELECT column1, column2 FROM EMP;
       WHERE SAL * 12 + 1000 >= 36000;
       ```
 
-   1. `NOT`
+   3. `NOT`
 
       특정 조건 앞에 붙여서 만족하지 않는 데이터만 출력하게 할 수 있다.
 
-   1. `AND` `OR`
+   4. `AND` `OR`
 
       여러 조건을 만족하는 결과만 출력하게 할 수 있다.
 
@@ -78,7 +78,7 @@ SELECT column1, column2 FROM EMP;
 
       이와 같이 압력하면 `DEPTNO`가 30임과 동시에 `JOB`이 `'SALESMAN'`인 열만 출력한다.
 
-   1. `IN`
+   5. `IN`
 
       더 여러 조건을 만족하는 결과만 출력하게 할 수 있다.
 
@@ -89,7 +89,7 @@ SELECT column1, column2 FROM EMP;
 
       이 경우 `'MANAGER'`, `'SALESMAN'`, `'CLERK'` 중 하나라도 해당되는 데이터를 출력한다.
 
-   1. `BETWEEN`
+   6. `BETWEEN`
 
       다음과 같이 입력하여 `SAL`값이 2000과 3000 사이인 데이터를 출력할 수 있다.
 
@@ -105,9 +105,20 @@ SELECT column1, column2 FROM EMP;
       WHERE SAL >= 2000 AND SAL <= 3000
       ```
 
-   1. `IS NULL`
+   7. `IS NULL`
 
       값이 `NULL`인 데이터를 출력한다. `IS NOT NULL`로 `NULL`이 아닌 데이터를 출력 할 수도 있다.
+
+   8. `LIKE`
+
+      문자열 패턴 매칭을 위해 사용된다. `%`와 `_` 와일드카드를 사용하여 다양한 패턴을 검색할 수 있다. `%`는 0개 이상의 임의의 문자를 나타내고, `_`은 정확히 1개의 임의의 문자를 나타낸다.
+
+      ```sql
+      SELECT * FROM EMP
+      WHERE ENAME LIKE '__S%'
+      ```
+
+      이와 같이 입력하면 이름의 3번째 글자가 'S'인 모든 사원을 검색한다. 처음 두 글자는 어떤 문자든 가능하고, 'S' 뒤에는 어떤 문자열이 어떤 개수로든 올 수 있다.
 
 2. **GROUP BY 절**
 
