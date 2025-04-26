@@ -28,31 +28,64 @@ SELECT column1, column2 FROM EMP;
    특정 조건에 맞는 data만 필터링하여 조회하게 한다. 프로그래밍 언어에서 if문과 비슷하다.
 
    ```sql
-   SELECT * FROM EMP
+   SELECT ENAME FROM EMP
    WHERE DEPTNO = 30;
+
+   /*
+    ENAME
+    --------------------
+    ALLEN
+    WARD
+    MARTIN
+    BLAKE
+    TURNER
+    JAMES
+   */
    ```
 
-   이와 같이 입력하면 `DEPTNO`가 30인 열만 출력하는 식이다.
+   이와 같이 입력하면 `DEPTNO`가 30인 열의 `ENAME`만 출력하는 식이다.
 
    1. 비교 연산자
 
       등호 뿐만 아니라 여러 비교 연산자를 사용하여 이를 만족하는 결과만 출력하게 할 수 있다.
 
       ```SQL
-      SELECT * FROM EMP
+      SELECT ENAME, SAL FROM EMP
       WHERE SAL >= 3000;
+
+      /*
+      ENAME                       SAL
+      -------------------- ----------
+      SCOTT                      3000
+      KING                       5000
+      FORD                       3000
+      */
       ```
 
-      이와 같이 입력하면 `SAL`이 3000 이상인 열을 출력한다.
+      이와 같이 입력하면 `SAL`이 3000 이상인 열의 `ENAME`과 `SAL`을 출력한다.
 
       숫자 뿐만 아니라 문자도 비교할 수 있다. 예를 들어 다음과 같이 입력하면,
 
       ```SQL
-      SELECT * FROM EMP
-      WHERE ENAME >= `J`;
+      SELECT ENAME FROM EMP
+      WHERE ENAME >= 'J';
+
+      /*
+      ENAME
+      --------------------
+      SMITH
+      WARD
+      JONES
+      MARTIN
+      SCOTT
+      KING
+      TURNER
+      JAMES
+      MILLER
+      */
       ```
 
-      사전 순서로 알파벳 `'J'`보다 뒤에 있는 데이터만 출력한다.
+      사전 순서로 알파벳 `'J'`보다 뒤에 있는 `ENAME`만 출력한다. 이때 대소문자를 구분한다.
 
    2. 산술 연산자
 
@@ -83,8 +116,25 @@ SELECT column1, column2 FROM EMP;
       더 여러 조건을 만족하는 결과만 출력하게 할 수 있다.
 
       ```sql
-      SELECT * FROM EMP
+      SELECT ENAME, JOB FROM EMP
       WHERE JOB IN ('MANAGER', 'SALESMAN', 'CLERK');
+
+
+      /*
+      ENAME                JOB
+      -------------------- ------------------
+      SMITH                CLERK
+      ALLEN                SALESMAN
+      WARD                 SALESMAN
+      JONES                MANAGER
+      MARTIN               SALESMAN
+      BLAKE                MANAGER
+      CLARK                MANAGER
+      TURNER               SALESMAN
+      ADAMS                CLERK
+      JAMES                CLERK
+      MILLER               CLERK
+      */
       ```
 
       이 경우 `'MANAGER'`, `'SALESMAN'`, `'CLERK'` 중 하나라도 해당되는 데이터를 출력한다.
@@ -94,8 +144,18 @@ SELECT column1, column2 FROM EMP;
       다음과 같이 입력하여 `SAL`값이 2000과 3000 사이인 데이터를 출력할 수 있다.
 
       ```sql
-      SELECT * FROM EMP
+      SELECT ENAME, SAL FROM EMP
       WHERE SAL BETWEEN 2000 AND 3000;
+
+      /*
+      ENAME                       SAL
+      -------------------- ----------
+      JONES                      2975
+      BLAKE                      2850
+      CLARK                      2450
+      SCOTT                      3000
+      FORD                       3000
+      */
       ```
 
       이는 비교 연산자를 활용하여 다음과 같이 나타낼 수 있다.
@@ -122,14 +182,57 @@ SELECT column1, column2 FROM EMP;
 
 2. **GROUP BY 절**
 
-3. **ORDER BY 절**
+   `GROUP BY` 바로 다음에 오는 column 기준으로 같은 값을 가진 행들을 하나의 그룹으로 묶어 처리한다. 주로 집계 함수와 함께 사용하여 그룹별 통계를 계산할 때 활용된다.
+
+   ```sql
+   SELECT DEPTNO, COUNT(*), AVG(SAL) FROM EMP
+   GROUP BY DEPTNO;
+
+   /*
+         DEPTNO   COUNT(*)   AVG(SAL)
+     ---------- ---------- ----------
+             30          6 1566.66667
+             20          5       2175
+             10          3 2916.66667
+   */
+   ```
+
+   이 쿼리는 부서별로 직원 수, 평균 급여, 최대 급여, 최소 급여를 계산한다. `GROUP BY`를 사용할 때는 SELECT 절에 그룹화 기준 열과 집계 함수만 사용할 수 있다.
+
+   여러 열을 기준으로 그룹화도 가능하다.
+
+   ```sql
+   SELECT DEPTNO, JOB, COUNT(*), AVG(SAL)
+   FROM EMP
+   GROUP BY DEPTNO, JOB;
+
+   /*
+      DEPTNO JOB                  COUNT(*)   AVG(SAL)
+   ---------- ------------------ ---------- ----------
+          20 CLERK                       2        950
+          30 SALESMAN                    4       1400
+          20 MANAGER                     1       2975
+          30 CLERK                       1        950
+          10 PRESIDENT                   1       5000
+          30 MANAGER                     1       2850
+          10 CLERK                       1       1300
+          10 MANAGER                     1       2450
+          20 ANALYST                     2       3000
+   */
+   ```
+
+   이 쿼리는 `DEPTNO`와 `JOB`별로 열의 수와 `SAL`의 평균을 계산한다.
+
+3. **HAVING 절**
+
+4. **ORDER BY 절**
 
    특정 속성을 기준으로 정렬할 수 있다.
 
    다음 명령어를 실행하면
 
    ```sql
-   SELECT * FROM EMP
+   SELECT ENAME, SAL FROM EMP
    ORDER BY SAL DESC;
    ```
 
@@ -138,33 +241,22 @@ SELECT column1, column2 FROM EMP;
    다음과 같이 사용하여 오름차순과 내림차순을 동시에 사용할 수 있다.
 
    ```sql
-   SELECT * FROM EMP
+   SELECT ENAME, SAL FROM EMP
+   WHERE SAL >= 2500
    ORDER BY DEPTNO ASC, SAL DESC;
+
+   /*
+    ENAME                       SAL
+    -------------------- ----------
+    KING                       5000
+    SCOTT                      3000
+    FORD                       3000
+    JONES                      2975
+    BLAKE                      2850
+   */
    ```
 
-   `DEPTNO`에 대해 오름차순, `SAL`에 대해 내림차순으로 정렬된다.
-
-4. **LIMIT 절**
-
-   결과 집합의 행 수를 제한할 수 있다. 많은 양의 데이터 중 일부만 보고 싶을 때 사용된다. 페이지네이션같은걸 구현할 때 유용하다.
-
-   다음 명령어를 실행하면
-
-   ```sql
-   SELECT * FROM EMP
-   LIMIT 5;
-   ```
-
-   `EMP` table의 상위 5개 행만 출력한다.
-
-   OFFSET과 함께 사용하여 시작 위치를 지정할 수도 있다.
-
-   ```sql
-   SELECT * FROM EMP
-   LIMIT 5 OFFSET 10;
-   ```
-
-   이와 같이 입력하면 10개를 건너뛰고 11번째 행부터 5개의 행을 출력한다.
+   `SAL`이 2500 이상인 열을 `DEPTNO`에 대해 오름차순, `SAL`에 대해 내림차순으로 정렬하여 출력한다.
 
 5. **집계 함수**
 
