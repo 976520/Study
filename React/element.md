@@ -131,6 +131,6 @@ Component끼리 decoupled된다는 장점이 있다.
 
 > The returned element tree can contain both elements describing DOM nodes, and elements describing other components. This lets you compose independent parts of UI without relying on their internal DOM structure.
 
-우리가 작성한 JSX를 element로 변환하는데 이 JS object가 우리가 아는 [VDOM](https://github.com/976520/Study/blob/main/React/virtual%20dom.mdx)을 이루게 된다. 
+update가 일어날 때 우리가 작성한 JSX를 element로 변환하는데 이 JS object가 우리가 아는 [VDOM](https://github.com/976520/Study/blob/main/React/virtual%20dom.mdx)을 이루게 된다. 
 
 ---
