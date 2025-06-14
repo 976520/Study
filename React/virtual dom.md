@@ -4,9 +4,17 @@
 
 **React는 렌더링이 발생할 때 마다 이러한 VDOM을 생성**한다. 이 VDOM은 우선 진짜 DOM의 가벼운 복사본 정도로 이해하면 되며, JS plain object 형태로 존재한다.
 
-1. double buffering
+1. Reconciliation
 
-    React는 항상 VDOM을 rendering 전, 후 버전으로 2개 가지고 있으며, 이는 총 2개의 tree로 구성된다.
+    이는 [공식 문서](https://ko.legacy.reactjs.org/docs/reconciliation.html)에 다음과 같이 정의되어 있다.
+
+    > Virtual DOM은 UI의 이상적인 또는 “가상”적인 표현을 메모리에 저장하고 ReactDOM과 같은 라이브러리에 의해 “실제” DOM과 동기화하는 프로그래밍 개념입니다. 이 과정을 Reconciliation이라고 합니다.
+
+   React 패키지 내부의 Reconciler가 이를 비교(diffing)하여 전체 app을 다시 rendering 하지 않고 실질적으로 **변경이 일어난 부분만 renderer를 통해 DOM에 update**한다. 이때 update 작업은 여러 개의 **Work Unit**으로 쪼개져 처리된다. 각 Work Unit은 컴포넌트 트리 내의 Fiber 노드 하나에 대응하며, React는 변경점이 생겼을 때 Work들을 스케줄러에 등록하여 우선순위에 따라 순차적으로 처리한다. 이 과정을 **Reconciliation**이라고 한다.
+
+2. double buffering
+
+    React는 항상 VDOM을 rendering 전, 후 버전으로 2개 가지고 있으며, 이는 총 2개의 tree로 구성된다. 이렇게 똑같은 정보를 2번 가지고 있는 구조를 double buffering이라고 한다.
 
     <image src="https://goidle.github.io/static/258b43ce623e7b6340fc6aed969199ed/374ac/vDOM.png" width=500px/>
 
@@ -16,7 +24,7 @@
 
     - current
 
-      실제 DOM tree를 Fiber로 표현한 것이다. 다른 말로 지금 React 앱이 브라우저 상에 보여지고 있는 모습을 반영한 tree이다.
+      실제 DOM tree를 Fiber로 표현한 것이다. 다른 말로 지금 React 앱이 브라우저 상에 보여지고 있는 모습을 반영한 tree이다. 부모는 첫 번째 자식을 child로 참조하고, 자식은 부모를 return으로 참조한다. 한가지 특징은, 자식 node가 여러개일 때 나머지 자식들은 sibling으로 참조한다는 것이다.
 
     - workInProgress
 
@@ -47,15 +55,20 @@
 
       `current.alternate`가 null이면 `createFiber()`로 새 Fiber를 생성하고, 새 Fiber의 alternate를 current로 지정하고, current의 alternate를 새 Fiber로 지정하는 식으로 교차 참조되도록 한다. 이를 통해 workInProgress는 current tree를 복제하고 각 node가 alternate로 서로 참조하는 tree임을 알 수 있다. 
       
-      render phase에서 새로운 상태/props/render 결과를 반영하기 위해 이 tree를 조작한다. 작업이 끝나면 commit phase에서 다시 current가 된다.
+      render phase에서 새로운 상태/props/render 결과를 반영하기 위해 이 tree를 조작한다. 모든 작업이 끝나면 commit phase에서 기존에 Root Node가 새로운 workInProgress를 참조한다. 실제 주석에도 **'The work-in-progress tree is now the current tree.'** 라고 설명되어 있다. 이 시점이 잘못되면 lifecycle method에서 참조하는 tree가 엇갈리는 문제가 일어날 수 있기 때문에, 이것도 주석에 추가로 설명해놓은 모습이다.
 
-2. Reconciliation
+      ```jsx
+      function flushAfterMutationEffects(): void {
+        ...
 
-    이는 [공식 문서](https://ko.legacy.reactjs.org/docs/reconciliation.html)에 다음과 같이 정의되어 있다.
-
-    > Virtual DOM은 UI의 이상적인 또는 “가상”적인 표현을 메모리에 저장하고 ReactDOM과 같은 라이브러리에 의해 “실제” DOM과 동기화하는 프로그래밍 개념입니다. 이 과정을 Reconciliation이라고 합니다.
-
-   React 패키지 내부의 Reconciler가 이를 비교(diffing)하여 전체 app을 다시 rendering 하지 않고 실질적으로 **변경이 일어난 부분만 renderer를 통해 DOM에 update**한다. 이 과정을 **Reconciliation**이라고 한다.
+        // The work-in-progress tree is now the current tree. This must come after
+        // the mutation phase, so that the previous tree is still current during
+        // componentWillUnmount, but before the layout phase, so that the finished
+        // work is current during componentDidMount/Update.
+        root.current = finishedWork;
+        pendingEffectsStatus = PENDING_LAYOUT_PHASE;
+      }
+      ```
 
 Virtual DOM은 실제 DOM을 직접 조작하는 대신 간접적으로 조작하면서 비용을 절약하는 데에 목적을 둔다.
 

@@ -22,12 +22,11 @@
    - **Mount**
       Renderer가 React element를 DOM에 삽입하는 과정(Commit Phase)이다. `componentDidMount`와 `componentDidUpdate`라는 side effect가 실행된다.
 
-   - **Paint**
-      브라우저가 DOM tree를 뿌리는 과정(Reflow/Repaint)이다. 이 부분은 React가 제어할 수 없다.
+   여기까지 끝내고 나면 브라우저가 DOM tree를 뿌리는 과정(Reflow/Repaint)이다. 이 부분은 React가 제어할 수 없다.
 
   그림에 따르면 여기서 **VDOM Reconcliation 까지가 Render Phase**로, 순수하고(pure) side effect가 없으며, 중단되거나 반복될 수 있다고 한다.
 
-2. Rendering과 Reconcliation
+1. Rendering과 Reconcliation
 
     얼핏 비슷해 보일 수 있지만, [React는 rendering 환경과 Reconciliation 과정을 완전히 분리해 놓았다.](https://github.com/facebook/react/tree/v19.1.0/packages) 왜냐하면 Renderer는 렌더링 환경에 의존적이기 때문이다. 
 
