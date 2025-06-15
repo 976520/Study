@@ -38,7 +38,7 @@ root.render(<Counter />);
    ); 
    ```
    
-   이는 예시 코드의 return 부분을 Babel이 트랜스파일한 것이다. `createElement`에 props로 뭘 내려주고 있는데, 이것이 DOM node를 설명하기 위한 것임을 유추할 수 있다. 이제 `createElement`에서 return받는 JS object는 다음과 같다.
+   이는 예시 코드의 return 부분을 Babel이 트랜스파일한 것이며, runtime이 아니라 빌드 시에 작업한다. `createElement`에 props로 뭘 내려주고 있는데, 이것이 DOM node를 설명하기 위한 것임을 유추할 수 있다. `createElement`에서 return받는 JS object는 다음과 같다.
    
    ```js
    {
@@ -81,6 +81,8 @@ root.render(<Counter />);
 [createElement를 통해 반환되는 ReactElement를 정의한 코드](https://github.com/facebook/react/blob/v19.1.0/packages/react/src/jsx/ReactJSXElement.js)이다. `createElement`의 경우 이 `ReactElement()`를 통해 JS 객체를 만드는 factory 함수 역할을 한다.
 
 ```js
+// packages > react > src > jsx > ReactJSXElement.js
+
 function ReactElement(type, key, props) {
   const refProp = props.ref;
   const ref = refProp !== undefined ? refProp : null;
