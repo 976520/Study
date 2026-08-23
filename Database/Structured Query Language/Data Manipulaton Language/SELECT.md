@@ -265,3 +265,23 @@ SELECT column1, column2 FROM EMP;
 6. **JOIN 절**
 
 ## 사용
+
+다음 명령어를 실행하면
+
+```sql
+SELECT FACTORY_ID, FACTORY_NAME, ADDRESS 
+FROM FOOD_FACTORY
+WHERE substring(ADDRESS, 1, 3) = '강원도'
+ORDER BY FACTORY_ID asc
+```
+
+FOOD_FACTORY 테이블에서 주소가 강원도로 시작하는 공장만 조회할 수 있다.
+
+* `SELECT` : 공장 ID, 공장 이름, 주소를 조회한다.
+* `substring(ADDRESS, 1, 3)` : 주소의 앞 3글자를 가져온다.
+* `= '강원도'` : 앞 3글자가 강원도인 데이터만 찾는다.
+* `ORDER BY FACTORY_ID ASC` : 공장 ID를 작은 순서부터 정렬한다.
+
+
+
+
